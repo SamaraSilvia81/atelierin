@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
+import { useExitProgress } from '@/lib/useExitProgress'
 
 // Como funciona: as três camadas, um painel de módulos que liga e desliga
 // de verdade, o passo a passo da implantação e a ponte para "As linhas".
@@ -9,9 +10,11 @@ export default function How() {
   const m = h.modules
   const [on, setOn] = useState(() => Object.fromEntries(m.items.map((i) => [i.id, i.on])))
   const active = m.items.filter((i) => on[i.id])
+  const ref = useRef(null)
+  useExitProgress(ref)
 
   return (
-    <section id="como-funciona" data-theme="dark" className="section how" aria-labelledby="como-funciona-t">
+    <section ref={ref} id="como-funciona" data-theme="dark" className="section how" aria-labelledby="como-funciona-t">
       <div className="wrap">
         <header className="how-head" data-reveal>
           <p className="label piece"><b aria-hidden="true">&gt;</b> {h.label}</p>

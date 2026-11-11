@@ -435,18 +435,19 @@ h1, h2, h3, p { margin: 0; }
 .mods-log b { color: var(--palette-crimson); font-weight: 400; }
 
 /* passo a passo: pipeline presa na tela (mesmo esquema da Check.AI) */
-.steps-sec {
-  /* passagem suave do escuro (Como funciona) para o claro: degradê longo com
-     paradas intermediárias, para não formar uma faixa nem uma linha reta */
-  padding-top: clamp(260px, 26vw, 380px);
-  background:
-    linear-gradient(180deg,
-      #100D0D 0,
-      color-mix(in srgb, #100D0D 82%, var(--palette-areia)) 70px,
-      color-mix(in srgb, #100D0D 55%, var(--palette-areia)) 140px,
-      color-mix(in srgb, #100D0D 28%, var(--palette-areia)) 210px,
-      color-mix(in srgb, #100D0D 10%, var(--palette-areia)) 270px,
-      var(--palette-areia) 330px);
+.steps-sec { padding-top: clamp(110px, 12vw, 170px); }
+
+/* "Como funciona" sai de cena como um cartão: encolhe e arredonda os cantos
+   conforme a pessoa rola, revelando o fundo claro do passo a passo (--exit vem
+   do useExitProgress). */
+.exit-stage { background: var(--palette-areia); }
+.how {
+  --exit: 0;
+  transform: scale(calc(1 - var(--exit) * .06));
+  transform-origin: 50% 100%;
+  border-radius: 0 0 calc(var(--exit) * 56px) calc(var(--exit) * 56px);
+  box-shadow: 0 calc(var(--exit) * 40px) calc(var(--exit) * 80px) -40px rgba(26,15,15,.55);
+  will-change: transform;
 }
 .steps-sec .label { color: var(--text-muted); }
 .steps-sec .label b { color: var(--acc); }

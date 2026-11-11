@@ -22,8 +22,13 @@ export default function App() {
       <main id="conteudo">
         {isEnabled('hero') && <Hero />}
         {isEnabled('problem') && <Problem />}
-        {isEnabled('how') && <How />}
-        {isEnabled('how') && <Steps />}
+        {isEnabled('how') && (
+          // fundo claro por trás: aparece nos cantos quando "Como funciona" encolhe ao sair
+          <div className="exit-stage">
+            <How />
+            <Steps />
+          </div>
+        )}
         {isEnabled('lines') && <Lines />}
         {isEnabled('custom') && <Custom />}
         {isEnabled('plans') && <Plans />}
