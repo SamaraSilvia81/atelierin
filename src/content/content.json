@@ -40,8 +40,8 @@
   "hero": {
     "badge": "Plataforma para quem atende pessoas",
     "lede": "Atenda, ensine, acompanhe e cobre num ambiente com a sua marca e o seu endereço.",
-    "image": "/hero-desk.webp",
-    "imageFallback": "/hero-desk.jpg",
+    "image": "/hero-desk.png",
+    "imageFallback": "/hero-desk.png",
     "imageAlt": "",
     "addressPlaceholder": "seunome",
     "addressSuffix": ".atelierin.com.br",
