@@ -36,6 +36,17 @@ src/
     global.css      layout e componentes
 ```
 
+## Páginas
+
+| Caminho | Arquivo | Conteúdo |
+| --- | --- | --- |
+| `/` | `src/App.jsx` (Home) | landing |
+| `/quem-faz` | `src/pages/About.jsx` | currículo da Samara |
+| `/proposta` | `src/pages/Proposal.jsx` | proposta comercial em blocos tipo slide |
+| `/casos` | `src/pages/Cases.jsx` | estudos de caso (01: Atelier.sh na ETE) |
+
+O roteamento é um roteador mínimo em `src/lib/router.js` (sem dependência). No Cloudflare Pages, o `public/_redirects` manda qualquer caminho para o `index.html`. Os textos das páginas internas ficam em `src/content/pages.json`.
+
 ## Direção visual
 
 **Hero (v2, aprovado):** foto de uma mesa de trabalho com monitor crimson ocupando a tela inteira. O texto fica dentro do monitor, em Bebas Neue (título, com efeito prata na segunda linha), Inter (texto) e JetBrains Mono (selo e endereço).
