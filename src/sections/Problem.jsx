@@ -6,6 +6,7 @@ import {
 import { content } from '@/lib/content'
 import { useScrollProgress } from '@/lib/useScrollProgress'
 import { play } from '@/lib/sounds'
+import Stitch from '@/components/Stitch'
 
 // Ícones disponíveis para problem.chips em content.json
 const ICONS = { ChatCircle, FolderSimple, CalendarBlank, Receipt }
@@ -28,7 +29,7 @@ function tokenize(text) {
 // Card no mesmo desenho dos cards de grupo do Atelier.sh
 function ScrapCard({ s, i }) {
   return (
-    <li className={`gcard is-${s.status}`} data-reveal style={{ transitionDelay: `${i * 60}ms` }} onPointerEnter={() => play('tick')}>
+    <li className={`gcard is-${s.status}`} style={{ animationDelay: `${i * 50}ms` }} onPointerEnter={() => play('tick')}>
       <span className="gcard-bar" aria-hidden="true" />
       <div className="gcard-head">
         <div className="gcard-id">
@@ -108,27 +109,23 @@ export default function Problem() {
           </div>
         </div>
 
-        <ul className="gcards" aria-live="polite">
+        <div data-reveal><ul className="gcards" aria-live="polite">
           {shown.map((s, i) => <ScrapCard key={s.path} s={s} i={i} />)}
-          <li className="gcard-add" data-reveal>
+          <li className="gcard-add">
             <a href={p.addCard.href} onClick={() => play('click')} onPointerEnter={() => play('tick')}>
               <Plus size={18} aria-hidden="true" />
               <strong>{p.addCard.label}</strong>
               <span>{p.addCard.note}</span>
             </a>
           </li>
-        </ul>
+        </ul></div>
 
         <div className="problem-end">
           <span className="problem-blob" aria-hidden="true" />
           <p data-reveal>{p.closing}</p>
-          <a href={p.next.href} className="next" aria-label={p.next.label} onClick={() => play('click')} onPointerEnter={() => play('tick')} data-reveal>
-            {/* linha de costura curva, como um alinhavo */}
-            <svg viewBox="0 0 120 190" width="120" height="190" aria-hidden="true">
-              <path className="next-line" d="M60 2 C 60 50, 104 58, 100 98 C 96 138, 30 128, 34 168 C 35 176, 44 182, 54 184" />
-              <path className="next-head" d="M44 176 L56 184 L44 192" />
-            </svg>
-          </a>
+          <div className="stitch-host">
+            <Stitch to="#como-funciona .piece" />
+          </div>
         </div>
       </div>
     </section>

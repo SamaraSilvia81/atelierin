@@ -9,12 +9,14 @@
 /* Escala geral: no desktop a página é desenhada como se estivesse em 80% de zoom.
    --z entra nas contas com vw/svh (unidades de tela não encolhem com o zoom). */
 :root { --z: 1; }
+/* Fundo da landing um pouco acima do noir puro, para não "furar" a tela. */
+[data-theme="dark"] { --bg: #100D0D; --bg-card: #171313; --border: #2A1E1E; }
 @media (min-width: 1100px) { :root { --z: .8; } html { zoom: var(--z); } }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
 html, body { overflow-x: clip; }
 body {
   margin: 0;
-  background: var(--palette-noir);
+  background: #100D0D;
   color: var(--text);
   font: 400 var(--text-md)/1.6 var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -257,7 +259,7 @@ h1, h2, h3, p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { .h-in { opacity: 1; } }
 
 /* ---------- problema: retalhos ---------- */
-.problem { background: var(--palette-noir); padding-block: clamp(110px, 14vw, 180px); overflow: hidden; }
+.problem { background: var(--bg); padding-block: clamp(110px, 14vw, 180px); z-index: 2; }
 .problem::before { /* brilho crimson vindo do hero */
   content: ""; position: absolute; left: 50%; top: -240px; width: 900px; height: 480px; transform: translateX(-50%);
   background: radial-gradient(closest-side, rgba(192,33,28,.14), transparent 75%); pointer-events: none;
@@ -309,10 +311,12 @@ h1, h2, h3, p { margin: 0; }
 .gcard {
   --st: #c8922a;
   position: relative; display: flex; flex-direction: column;
-  background: var(--palette-carvao); border: 1px solid #251818; border-radius: 4px; overflow: hidden;
+  background: #161212; border: 1px solid #2A1E1E; border-radius: 4px; overflow: hidden;
+  animation: card-in .45s ease both;
   transition: border-color .3s, translate .3s;
 }
 .gcard.is-parado { --st: #6b5555; }
+@keyframes card-in { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
 .gcard:hover { border-color: #5a1f1f; translate: 0 -2px; }
 .gcard-bar { height: 3px; background: linear-gradient(90deg, #c8922a, #7a5010); }
 .gcard.is-parado .gcard-bar { background: #251818; }
@@ -353,18 +357,19 @@ h1, h2, h3, p { margin: 0; }
 .gcard-add span { font-size: var(--text-sm); }
 
 /* fechamento + seta longa tracejada + brilho claro */
-.problem-end { position: relative; margin-top: clamp(96px, 11vw, 150px); display: flex; flex-direction: column; align-items: center; gap: 40px; text-align: center; }
+.problem-end { position: relative; margin-top: clamp(96px, 11vw, 150px); display: flex; flex-direction: column; align-items: center; gap: 36px; text-align: center; }
 .problem-blob {
-  position: absolute; left: 22%; top: 40%; width: min(1000px, 110%); height: 640px; transform: translate(-50%, -30%);
+  position: absolute; left: 18%; top: 20%; width: min(1100px, 120%); height: 1000px; transform: translate(-50%, 0);
   background: radial-gradient(closest-side, rgba(240,237,232,.13), rgba(196,184,176,.05) 55%, transparent 80%);
   filter: blur(20px); pointer-events: none; z-index: 0;
 }
 .problem-end p { position: relative; max-width: 24ch; font: 400 clamp(36px, 4.4vw, 64px)/.95 var(--font-display); text-transform: uppercase; letter-spacing: .01em; }
-.next { position: relative; display: block; color: var(--palette-brasa); transition: color .2s; }
-.next svg { display: block; overflow: visible; }
-.next-line { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-dasharray: 7 7; stroke-linecap: round; }
-.next-head { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.next:hover { color: var(--palette-osso); }
+.stitch-host { position: relative; align-self: stretch; height: 0; }
+.stitch { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.stitch-line { fill: none; stroke: var(--palette-brasa); stroke-width: 1.5; stroke-dasharray: 7 7; stroke-linecap: round; opacity: .85; }
+.stitch-head { fill: none; stroke: var(--palette-brasa); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 760px) { .stitch-host { display: none; } }
+
 
 .problem { overflow: visible; }
 .problem::before { overflow: hidden; }
@@ -515,3 +520,17 @@ h1, h2, h3, p { margin: 0; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* ---------- voltar ao topo ---------- */
+.to-top {
+  position: fixed; right: 24px; bottom: 24px; z-index: 40;
+  display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px;
+  border-radius: 2px; border: 1px solid #5a1f1f; background: rgba(16,13,13,.88); color: var(--palette-osso);
+  font: 500 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; cursor: pointer;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  opacity: 0; translate: 0 10px; pointer-events: none; transition: opacity .25s, translate .25s, border-color .15s, background .15s;
+}
+.to-top.is-on { opacity: 1; translate: 0 0; pointer-events: auto; }
+.to-top:hover { border-color: var(--palette-crimson); background: rgba(158,26,23,.18); }
+.to-top svg { color: var(--palette-brasa); }
+@media (max-width: 600px) { .to-top { right: 16px; bottom: 16px; padding: 0 12px; } .to-top span { display: none; } }
