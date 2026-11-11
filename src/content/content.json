@@ -4,12 +4,15 @@
     "tagline": "O seu ateliê digital",
     "contactEmail": "[SEU E-MAIL]",
     "whatsapp": "[SEU WHATSAPP COM DDD, SÓ NÚMEROS]",
-    "whatsappMessage": "Oi! Vi o Atelierin e quero saber mais sobre ter um ambiente meu."
+    "whatsappMessage": "Oi! Vi o Atelierin e quero saber mais sobre ter um ambiente meu.",
+    "soundsDefault": false
   },
   "a11y": {
     "skipLink": "Pular para o conteúdo",
     "menuOpen": "Abrir menu",
-    "menuClose": "Fechar menu"
+    "menuClose": "Fechar menu",
+    "soundOn": "Ligar sons da interface",
+    "soundOff": "Desligar sons da interface"
   },
   "nav": [
     {
@@ -40,8 +43,8 @@
   "hero": {
     "badge": "Plataforma para quem atende pessoas",
     "lede": "Atenda, ensine, acompanhe e cobre num ambiente com a sua marca e o seu endereço.",
-    "image": "/hero-desk.png",
-    "imageFallback": "/hero-desk.png",
+    "image": "/hero-desk.webp",
+    "imageFallback": "/hero-desk.jpg",
     "imageAlt": "",
     "addressPlaceholder": "seunome",
     "addressSuffix": ".atelierin.com.br",
@@ -54,54 +57,150 @@
       "_comoUsar": "Posição de cada bloco, em % da tela do monitor (0,0 = canto superior esquerdo; 50,50 = centro). Ajuste arrastando em /?editar e cole aqui.",
       "badge": {
         "x": 50,
-        "y": 14,
+        "y": 15.9,
         "s": 1
       },
       "title": {
         "x": 50,
-        "y": 42,
+        "y": 45.2,
         "s": 1
       },
       "lede": {
         "x": 50,
-        "y": 73,
+        "y": 75.8,
         "s": 1
       },
       "address": {
         "x": 50,
-        "y": 100,
+        "y": 102.2,
         "s": 1
       }
-    }
+    },
+    "addressPrompt": "›_"
   },
   "problem": {
-    "piece": "Nº 02 · Retalhos",
-    "title": "Seu trabalho está",
-    "titleAccent": "em retalhos",
-    "lede": "Atendimento no WhatsApp, material no Drive, agenda de cabeça, pagamento conferido no extrato. Cada pedaço funciona sozinho, e quem costura tudo é você.",
+    "label": "Nº 02 · retalhos",
+    "statement": "Hoje o atendimento fica no [WhatsApp], o material no [Drive], a [agenda] na cabeça e o pagamento no [extrato do Pix]. Cada pedaço funciona sozinho, e quem costura tudo é você.",
+    "chips": {
+      "WhatsApp": "ChatCircle",
+      "Drive": "FolderSimple",
+      "agenda": "CalendarBlank",
+      "extrato do Pix": "Receipt"
+    },
+    "aside": "Profissional que atende pessoas passa boa parte do dia juntando informação que está em cinco lugares diferentes.",
     "scraps": [
       {
-        "label": "WhatsApp",
-        "note": "suporte 24 horas"
+        "path": "~/whatsapp",
+        "title": "WhatsApp",
+        "status": "atencao",
+        "count": "38",
+        "desc": "Suporte a qualquer hora",
+        "log": "38 mensagens não lidas",
+        "logMeta": "última às 23:47",
+        "group": "espalhado em",
+        "items": [
+          "grupos",
+          "áudios",
+          "prints",
+          "fixadas"
+        ],
+        "source": "whatsapp",
+        "foot": "sem integração"
       },
       {
-        "label": "Drive",
-        "note": "material espalhado"
+        "path": "~/drive",
+        "title": "Drive",
+        "status": "atencao",
+        "count": "214",
+        "desc": "Material espalhado",
+        "log": "aula-03-final-v2-AGORA.pdf",
+        "logMeta": "3 versões do mesmo arquivo",
+        "group": "pastas",
+        "items": [
+          "aulas",
+          "exercícios",
+          "novo",
+          "novo (1)"
+        ],
+        "source": "drive",
+        "foot": "sem integração"
       },
       {
-        "label": "Planilha",
-        "note": "quem pagou?"
+        "path": "~/planilha",
+        "title": "Planilha",
+        "status": "parado",
+        "count": "12",
+        "desc": "Quem pagou?",
+        "log": "12 linhas sem status",
+        "logMeta": "editada há 3 semanas",
+        "group": "colunas",
+        "items": [
+          "nome",
+          "valor",
+          "pagou?"
+        ],
+        "source": "planilha",
+        "foot": "desatualizada"
       },
       {
-        "label": "Extrato do Pix",
-        "note": "conferência na mão"
+        "path": "~/pix",
+        "title": "Extrato do Pix",
+        "status": "atencao",
+        "count": "9",
+        "desc": "Conferência na mão",
+        "log": "R$ 150,00 · sem nome",
+        "logMeta": "de quem é esse?",
+        "group": "conferir",
+        "items": [
+          "agosto",
+          "setembro",
+          "outubro"
+        ],
+        "source": "banco",
+        "foot": "conferência manual"
       },
       {
-        "label": "Agenda",
-        "note": "de cabeça"
+        "path": "~/agenda",
+        "title": "Agenda",
+        "status": "parado",
+        "count": "0",
+        "desc": "De cabeça",
+        "log": "reagendar? qual dia mesmo?",
+        "logMeta": "nenhum registro",
+        "group": "onde está",
+        "items": [
+          "na cabeça",
+          "no WhatsApp"
+        ],
+        "source": "memória",
+        "foot": "sem registro"
       }
     ],
-    "closing": "O Atelierin junta os retalhos numa peça só, com o seu nome na etiqueta."
+    "closing": "O Atelierin junta os retalhos numa peça só, com o seu nome na etiqueta.",
+    "next": {
+      "label": "como funciona",
+      "href": "#como-funciona"
+    },
+    "filters": [
+      {
+        "id": "todos",
+        "label": "Todos"
+      },
+      {
+        "id": "atencao",
+        "label": "Atenção"
+      },
+      {
+        "id": "parado",
+        "label": "Parados"
+      }
+    ],
+    "countLabel": "retalhos",
+    "addCard": {
+      "label": "Costurar tudo",
+      "note": "num ambiente só, com a sua marca",
+      "href": "#como-funciona"
+    }
   },
   "how": {
     "piece": "Nº 03 · O molde",
