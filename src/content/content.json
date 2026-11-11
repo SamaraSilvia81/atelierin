@@ -298,57 +298,73 @@
         {
           "n": "01",
           "title": "Conversa",
-          "text": "Você me conta como trabalha hoje: quem atende, o que ensina, como cobra.",
-          "image": {
-            "src": "https://picsum.photos/seed/atelierin-conversa/1200/750",
-            "alt": ""
-          },
-          "meta": "~/conversa · 30 a 40 min"
+          "actors": [
+            "nos"
+          ],
+          "text": "Uma conversa para entender como você trabalha hoje: quem você atende, o que ensina ou entrega, como cobra e o que mais toma o seu tempo.",
+          "deliverable": "proposta com escopo, módulos e prazo",
+          "mock": "conversa"
         },
         {
           "n": "02",
           "title": "Molde",
-          "text": "Escolhemos a linha e os módulos que fazem sentido. Nada de peça sobrando.",
-          "image": {
-            "src": "https://picsum.photos/seed/atelierin-molde/1200/750",
-            "alt": ""
-          },
-          "meta": "~/molde · linha + módulos"
+          "actors": [
+            "eu"
+          ],
+          "text": "Com a conversa em mãos, defino a linha e os módulos do seu ambiente. O que não faz sentido para o seu trabalho fica de fora.",
+          "deliverable": "mapa do ambiente: linha, módulos e vocabulário",
+          "mock": "molde"
         },
         {
           "n": "03",
           "title": "Prova",
-          "text": "Aplico a sua marca e o seu vocabulário. Você vê o ambiente antes de abrir.",
-          "image": {
-            "src": "https://picsum.photos/seed/atelierin-prova/1200/750",
-            "alt": ""
-          },
-          "meta": "~/prova · marca e vocabulário"
+          "actors": [
+            "eu"
+          ],
+          "text": "Aplico a sua marca, cores, logo e vocabulário e monto o ambiente com o seu conteúdo inicial. Você recebe um link para navegar antes de abrir.",
+          "deliverable": "ambiente de prova no seu endereço",
+          "mock": "prova"
         },
         {
           "n": "04",
           "title": "Ajuste",
-          "text": "Mexemos no que não caiu bem até ficar do seu jeito.",
-          "image": {
-            "src": "https://picsum.photos/seed/atelierin-ajuste/1200/750",
-            "alt": ""
-          },
-          "meta": "~/ajuste · rodadas de revisão"
+          "actors": [
+            "voce",
+            "eu"
+          ],
+          "text": "Você aponta o que não caiu bem e eu ajusto: textos, cores, ordem dos menus, o que for. Quantas rodadas forem combinadas.",
+          "deliverable": "ambiente aprovado por você",
+          "mock": "ajuste"
         },
         {
           "n": "05",
           "title": "No ar",
-          "text": "Seu endereço funcionando e as pessoas convidadas. Depois disso, a manutenção é comigo.",
-          "image": {
-            "src": "https://picsum.photos/seed/atelierin-no-ar/1200/750",
-            "alt": ""
-          },
-          "meta": "~/no-ar · seunome.atelierin.com.br"
+          "actors": [
+            "eu"
+          ],
+          "text": "Abro o endereço, convido as pessoas e acompanho as primeiras semanas de uso. Daí em diante, a manutenção é comigo.",
+          "deliverable": "ambiente publicado e manutenção",
+          "mock": "noar"
         }
       ],
       "label": "o passo a passo",
       "screenUrl": "maria.atelierin.com.br",
-      "placeholderNote": "imagem provisória"
+      "lede": "Você participa nos momentos que importam e eu cuido do resto. Nada vai ao ar sem você ver e aprovar.",
+      "actors": {
+        "nos": "nós",
+        "eu": "eu",
+        "voce": "você"
+      },
+      "needs": {
+        "title": "Você vai precisar de",
+        "items": [
+          "Logo, se já tiver (se não tiver, a gente resolve junto)",
+          "Cores ou referências do que você gosta",
+          "Lista de alunos ou clientes",
+          "Conteúdo inicial: aulas, materiais, modelos"
+        ]
+      },
+      "deliverableLabel": "entrega"
     },
     "bridge": {
       "text": "Tudo começa pela linha certa para o seu trabalho.",
