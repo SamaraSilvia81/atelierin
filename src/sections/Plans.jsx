@@ -37,6 +37,11 @@ export default function Plans() {
           ))}
         </ul>
 
+        <div className="plans-why" data-reveal>
+          <strong>{p.pricingNote.title}</strong>
+          <p>{p.pricingNote.text}</p>
+        </div>
+
         <div className="plans-incl" data-reveal>
           <strong>{p.includesTitle}</strong>
           <ul>{p.includes.map((x) => <li key={x}><Check size={14} weight="bold" aria-hidden="true" />{x}</li>)}</ul>

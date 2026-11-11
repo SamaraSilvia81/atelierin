@@ -36,7 +36,7 @@ export default function Proposal() {
                     {s.points.map((pt) => <li key={pt}><Check size={16} weight="bold" aria-hidden="true" />{pt}</li>)}
                   </ul>
                 )}
-                {s.cta && <a href={whatsappHref() === '#contato' ? s.cta.href : whatsappHref()} className="bridge-link slide-cta">{s.cta.label}</a>}
+                {s.cta && <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="bridge-link slide-cta">{s.cta.label}</a>}
               </div>
             </div>
           </section>

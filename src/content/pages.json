@@ -164,11 +164,12 @@
       {
         "kicker": "investimento",
         "title": "Duas partes, combinadas na proposta",
-        "text": "O investimento é dividido em implantação (valor único, que pode ser parcelado) e manutenção mensal, proporcional ao tamanho do seu trabalho. Os valores saem depois da conversa, porque dependem do que entra no seu ambiente.",
+        "text": "O investimento é dividido em implantação (valor único, que pode ser parcelado) e manutenção mensal, proporcional ao tamanho do seu trabalho. A implantação depende de quanto do seu ambiente já existe: sair de um molde pronto custa menos do que criar algo novo.",
         "points": [
-          "Implantação: valor único, com parcelamento",
+          "Ambiente a partir de um molde que já existe: implantação menor, só marca, configuração e cadastro",
+          "Ambiente com funcionalidade nova: implantação maior, porque inclui desenvolvimento",
           "Manutenção: mensal, proporcional ao seu tamanho",
-          "Funcionalidades exclusivas: orçamento à parte"
+          "Implantação parcelada"
         ]
       },
       {
