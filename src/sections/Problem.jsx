@@ -124,7 +124,7 @@ export default function Problem() {
           <span className="problem-blob" aria-hidden="true" />
           <p data-reveal>{p.closing}</p>
           <div className="stitch-host">
-            <Stitch to="#como-funciona .piece" />
+            <Stitch to="#como-funciona .lede" />
           </div>
         </div>
       </div>
