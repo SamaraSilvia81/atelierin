@@ -4,8 +4,9 @@
 import base from '@/content/content.json'
 import lines from '@/content/lines.json'
 import faq from '@/content/faq.json'
+import pages from '@/content/pages.json'
 
-export const content = { ...base, lines: { ...base.lines, items: lines }, faq }
+export const content = { ...base, lines: { ...base.lines, items: lines }, faq, pages }
 
 export const isEnabled = (key) => content[key] && content[key].enabled !== false
 

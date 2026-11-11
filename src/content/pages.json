@@ -1,0 +1,265 @@
+{
+  "about": {
+    "label": "quem faz",
+    "name": "Samara Silvia Sabino",
+    "role": "Desenvolvedora frontend e designer UX/UI",
+    "intro": "Eu desenho, construo e mantenho cada ambiente do Atelierin. Do primeiro papo à manutenção, quem cuida é uma pessoa só, que entende de interface, de código e de quem está do outro lado da tela.",
+    "place": "Recife, PE",
+    "photo": "",
+    "facts": [
+      [
+        "formação",
+        "Mestrado em Ciência da Computação · CIn/UFPE"
+      ],
+      [
+        "base",
+        "Sistemas para Internet · UNICAP (laureada)"
+      ],
+      [
+        "foco",
+        "Arquitetura frontend, UX/UI e documentação"
+      ]
+    ],
+    "blocks": [
+      {
+        "title": "Pesquisa",
+        "items": [
+          {
+            "h": "Mestrado em Ciência da Computação · CIn/UFPE",
+            "p": "Engenharia de Software. Pesquiso dívida técnica como lente de diagnóstico para arquiteturas de microfrontends, com um conjunto de dados próprio de 455 projetos open source validados."
+          }
+        ]
+      },
+      {
+        "title": "Experiência",
+        "items": [
+          {
+            "h": "Check.AI · freelance",
+            "p": "Frontend, landing page e documentação técnica do produto."
+          },
+          {
+            "h": "ETE Cícero Dias · professora",
+            "p": "Design Thinking, Design Centrado no Usuário, Projeto Integrador e programação. Foi lá que nasceu o Atelier.sh, a base do Atelierin."
+          },
+          {
+            "h": "FAIR Creativity Shop · PJ",
+            "p": "Trabalho PJ para a agência, incluindo a administração do workspace de projetos da equipe."
+          }
+        ]
+      },
+      {
+        "title": "Formação",
+        "items": [
+          {
+            "h": "Sistemas para Internet · UNICAP",
+            "p": "Graduação concluída como laureada."
+          }
+        ]
+      }
+    ],
+    "skillsTitle": "Com o que eu trabalho",
+    "skills": [
+      "React",
+      "Vite",
+      "JavaScript",
+      "Supabase",
+      "PostgreSQL",
+      "Cloudflare",
+      "Vercel",
+      "Astro",
+      "Git e GitHub",
+      "LaTeX",
+      "Markdown e MDX",
+      "UX/UI",
+      "Design systems",
+      "Documentação técnica"
+    ],
+    "projectsTitle": "Outros projetos",
+    "projects": [
+      {
+        "name": "Atelier.sh",
+        "text": "Gestão de projetos e avaliações de turmas, com integrações GitHub, Trello e Figma.",
+        "href": "/casos"
+      },
+      {
+        "name": "Summa.sh",
+        "text": "Plataforma de gestão de pesquisa acadêmica, em construção."
+      },
+      {
+        "name": "Delicatte",
+        "text": "E-commerce de confeitaria com catálogo, carrinho, contas e painel administrativo."
+      }
+    ],
+    "links": [
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/samara-silvia-9a2a26231"
+      },
+      {
+        "label": "Portfólio",
+        "href": "https://samarasilviadev.vercel.app"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/SamaraSilvia81"
+      }
+    ],
+    "cta": {
+      "text": "Quer um ambiente com a sua cara?",
+      "label": "Conversar comigo",
+      "href": "/#contato"
+    }
+  },
+  "proposal": {
+    "label": "proposta comercial",
+    "title": "Como funciona contratar um ambiente",
+    "lede": "A proposta de cada cliente é montada depois da conversa, mas a estrutura é sempre esta. Aqui está ela, item por item, sem letra miúda.",
+    "slides": [
+      {
+        "kicker": "o que você recebe",
+        "title": "Um ambiente seu, não uma conta numa plataforma",
+        "text": "Você recebe um ambiente com a sua marca, o seu endereço e só os módulos que fazem sentido para o seu trabalho. Seus alunos ou clientes entram por convite e veem você.",
+        "points": [
+          "Endereço seunome.atelierin.com.br",
+          "Sua identidade aplicada no ambiente inteiro, do login ao rodapé",
+          "Linha e vocabulário da sua área",
+          "Painel para você acompanhar tudo"
+        ]
+      },
+      {
+        "kicker": "implantação",
+        "title": "O que entra na implantação",
+        "text": "A implantação é o trabalho de montar o seu ambiente do zero até ele estar no ar, com tudo testado.",
+        "points": [
+          "Estudo e análise da infraestrutura de melhor custo-benefício para o seu tamanho",
+          "Aplicação da sua identidade: cores, fontes, logo e tela de entrada",
+          "Configuração da linha, dos módulos e do vocabulário",
+          "Cadastro inicial de alunos ou clientes e do conteúdo que você já tem",
+          "Rodadas de ajuste até você aprovar",
+          "Uma conversa para te mostrar como usar"
+        ]
+      },
+      {
+        "kicker": "manutenção",
+        "title": "Depois que está no ar",
+        "text": "O ambiente não fica abandonado. A manutenção mensal cobre o que mantém tudo funcionando e o trabalho de operação do dia a dia.",
+        "points": [
+          "Hospedagem e infraestrutura",
+          "Atualizações e correções",
+          "Cópias de segurança",
+          "Suporte por mensagem",
+          "Pequenos ajustes de texto e configuração"
+        ]
+      },
+      {
+        "kicker": "cobrança",
+        "title": "O dinheiro vai direto para você",
+        "text": "Seus alunos pagam para você, pelo Pix que você já usa. No painel financeiro você marca quem pagou e vê de uma vez quem está em dia, pendente ou atrasado. O Atelierin não fica com comissão do que você recebe.",
+        "points": [
+          "Sem intermediário no pagamento",
+          "Status por pessoa: em dia, pendente, atrasado",
+          "Integração bancária automática pode entrar depois, sob orçamento"
+        ]
+      },
+      {
+        "kicker": "investimento",
+        "title": "Duas partes, combinadas na proposta",
+        "text": "O investimento é dividido em implantação (valor único, que pode ser parcelado) e manutenção mensal, proporcional ao tamanho do seu trabalho. Os valores saem depois da conversa, porque dependem do que entra no seu ambiente.",
+        "points": [
+          "Implantação: valor único, com parcelamento",
+          "Manutenção: mensal, proporcional ao seu tamanho",
+          "Funcionalidades exclusivas: orçamento à parte"
+        ]
+      },
+      {
+        "kicker": "fora do escopo",
+        "title": "O que não está incluso",
+        "text": "Para não ter surpresa, o que fica de fora também fica escrito. Tudo isso pode entrar, com orçamento próprio.",
+        "points": [
+          "Funcionalidades feitas só para você",
+          "Integrações com bancos e outros sistemas",
+          "Produção de conteúdo (aulas, textos, fotos)",
+          "Linhas que ainda não foram lançadas"
+        ]
+      },
+      {
+        "kicker": "próximo passo",
+        "title": "Começa com uma conversa",
+        "text": "Me chama, me conta como você trabalha hoje e eu volto com uma proposta montada para o seu caso.",
+        "points": [],
+        "cta": {
+          "label": "Chamar no WhatsApp",
+          "href": "/#contato"
+        }
+      }
+    ]
+  },
+  "cases": {
+    "label": "estudos de caso",
+    "title": "Sistemas que já estão rodando",
+    "lede": "Cada caso conta o problema, o que foi feito e o que mudou. O primeiro é o sistema que deu origem ao Atelierin.",
+    "items": [
+      {
+        "id": "atelier-sh-ete",
+        "tag": "Caso 01 · Educação",
+        "name": "Atelier.sh na ETE Cícero Dias",
+        "summary": "O painel que eu criei para acompanhar os projetos das minhas turmas de técnico e que virou a base do Atelierin.",
+        "image": "/caso-atelier-sh-ete.webp",
+        "imageAlt": "Painel do Atelier.sh com os grupos de um projeto ODS em tempo real",
+        "meta": [
+          [
+            "onde",
+            "ETE Cícero Dias · Recife"
+          ],
+          [
+            "quem usava",
+            "professora e grupos de alunos"
+          ],
+          [
+            "stack",
+            "React, Vite, Supabase"
+          ],
+          [
+            "uso",
+            "em sala, com turmas reais"
+          ]
+        ],
+        "sections": [
+          {
+            "h": "Contexto",
+            "p": "Eu dava aula de Design Thinking, Design Centrado no Usuário e Projeto Integrador. Cada turma tinha vários grupos fazendo projetos ligados aos Objetivos de Desenvolvimento Sustentável, cada um com repositório, quadro de tarefas, protótipo e relatório."
+          },
+          {
+            "h": "Problema",
+            "p": "Acompanhar tudo isso significava abrir o GitHub de um grupo, o Trello de outro, o Figma de um terceiro e ainda guardar anotações e notas em planilhas. As devolutivas saíam do zero a cada entrega."
+          },
+          {
+            "h": "O que foi feito",
+            "p": "Criei o Atelier.sh: um painel com todos os grupos em tempo real, com último commit, integrantes e status de cada um. Ele junta GitHub, Trello e Figma, tem anotações por grupo, uma extensão de navegador para anotar em cima dos sites dos alunos e um sistema de avaliação individual e em grupo, com devolutivas geradas em LaTeX."
+          },
+          {
+            "h": "O que mudou",
+            "p": "O acompanhamento das turmas passou a caber num lugar só. A avaliação ficou mais justa, com critérios claros e registro do que cada pessoa fez, e as devolutivas passaram a sair padronizadas."
+          },
+          {
+            "h": "Como virou o Atelierin",
+            "p": "A estrutura de grupos, papéis, anotações e avaliações é a base da linha School. O que era um sistema para a minha sala de aula virou um ambiente que qualquer professor pode ter, com a própria marca."
+          }
+        ],
+        "features": [
+          "Grupos em tempo real",
+          "GitHub, Trello e Figma",
+          "Anotações por grupo",
+          "Extensão de navegador",
+          "Avaliação individual e em grupo",
+          "Devolutivas em LaTeX"
+        ]
+      }
+    ],
+    "next": {
+      "text": "O próximo caso pode ser o seu.",
+      "label": "Quero meu ambiente",
+      "href": "/#contato"
+    }
+  }
+}
