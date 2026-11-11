@@ -24,7 +24,7 @@ export default function Header() {
     <header data-theme="dark" className={`top ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="wrap top-in">
         <a href="#conteudo" className="top-logo" aria-label="Atelierin, início">
-          <img src="/brand/atelierin-horizontal-osso-terminal-crimson.svg" alt="Atelierin" height="28" />
+          <img src="/brand/atelierin-horizontal-osso-terminal-crimson.svg" alt="Atelierin" height="26" />
         </a>
         <nav id="menu" className="top-nav" aria-label="Principal">
           <ul>
@@ -32,7 +32,7 @@ export default function Header() {
               <li key={n.href}><a href={n.href} onClick={() => setOpen(false)}>{n.label}</a></li>
             ))}
           </ul>
-          <a href={content.navCta.href} className="btn btn-primary btn-sm" onClick={() => setOpen(false)}>{content.navCta.label}</a>
+          <a href={content.navCta.href} className="top-cta" onClick={() => setOpen(false)}>{content.navCta.label}</a>
         </nav>
         <button
           className="top-toggle"

@@ -12,41 +12,97 @@
     "menuClose": "Fechar menu"
   },
   "nav": [
-    { "label": "Como funciona", "href": "#como-funciona" },
-    { "label": "Linhas", "href": "#linhas" },
-    { "label": "Sob medida", "href": "#sob-medida" },
-    { "label": "Planos", "href": "#planos" },
-    { "label": "Dúvidas", "href": "#duvidas" }
+    {
+      "label": "Como funciona",
+      "href": "#como-funciona"
+    },
+    {
+      "label": "Linhas",
+      "href": "#linhas"
+    },
+    {
+      "label": "Sob medida",
+      "href": "#sob-medida"
+    },
+    {
+      "label": "Planos",
+      "href": "#planos"
+    },
+    {
+      "label": "Dúvidas",
+      "href": "#duvidas"
+    }
   ],
-  "navCta": { "label": "Quero meu ambiente", "href": "#contato" },
-
-  "hero": {
-    "piece": "Nº 01 · Coleção",
-    "prompt": "atelierin · ambiente pronto",
-    "titleLine1": "Seu ateliê",
-    "titleLine2": "digital",
-    "lede": "Um ambiente com a sua marca e o seu endereço para atender, ensinar, acompanhar e cobrar. Feito sob medida para profissionais que atendem pessoas.",
-    "primary": { "label": "Quero meu ambiente", "href": "#contato" },
-    "secondary": { "label": "Ver as linhas", "href": "#linhas" },
-    "address": "seunome.atelierin.com.br",
-    "tags": ["Marca própria", "Módulos sob medida", "Sem comissão por venda"]
+  "navCta": {
+    "label": "Quero meu ambiente",
+    "href": "#contato"
   },
-
+  "hero": {
+    "badge": "Plataforma para quem atende pessoas",
+    "lede": "Atenda, ensine, acompanhe e cobre num ambiente com a sua marca e o seu endereço.",
+    "image": "/hero-desk.webp",
+    "imageFallback": "/hero-desk.jpg",
+    "imageAlt": "",
+    "addressPlaceholder": "seunome",
+    "addressSuffix": ".atelierin.com.br",
+    "addressLabel": "Digite o seu nome para ver o seu endereço",
+    "cta": "Quero o meu",
+    "ctaMessage": "Oi! Vi o Atelierin e quero o meu ambiente: {endereco}",
+    "titleLine1": "Seu ateliê digital,",
+    "titleLine2": "feito sob medida",
+    "layout": {
+      "_comoUsar": "Posição de cada bloco, em % da tela do monitor (0,0 = canto superior esquerdo; 50,50 = centro). Ajuste arrastando em /?editar e cole aqui.",
+      "badge": {
+        "x": 50,
+        "y": 14,
+        "s": 1
+      },
+      "title": {
+        "x": 50,
+        "y": 42,
+        "s": 1
+      },
+      "lede": {
+        "x": 50,
+        "y": 73,
+        "s": 1
+      },
+      "address": {
+        "x": 50,
+        "y": 100,
+        "s": 1
+      }
+    }
+  },
   "problem": {
     "piece": "Nº 02 · Retalhos",
     "title": "Seu trabalho está",
     "titleAccent": "em retalhos",
     "lede": "Atendimento no WhatsApp, material no Drive, agenda de cabeça, pagamento conferido no extrato. Cada pedaço funciona sozinho, e quem costura tudo é você.",
     "scraps": [
-      { "label": "WhatsApp", "note": "suporte 24 horas" },
-      { "label": "Drive", "note": "material espalhado" },
-      { "label": "Planilha", "note": "quem pagou?" },
-      { "label": "Extrato do Pix", "note": "conferência na mão" },
-      { "label": "Agenda", "note": "de cabeça" }
+      {
+        "label": "WhatsApp",
+        "note": "suporte 24 horas"
+      },
+      {
+        "label": "Drive",
+        "note": "material espalhado"
+      },
+      {
+        "label": "Planilha",
+        "note": "quem pagou?"
+      },
+      {
+        "label": "Extrato do Pix",
+        "note": "conferência na mão"
+      },
+      {
+        "label": "Agenda",
+        "note": "de cabeça"
+      }
     ],
     "closing": "O Atelierin junta os retalhos numa peça só, com o seu nome na etiqueta."
   },
-
   "how": {
     "piece": "Nº 03 · O molde",
     "title": "Como",
@@ -57,48 +113,78 @@
         "tag": "Camada 01",
         "name": "Núcleo",
         "text": "Login, convites, papéis, a sua marca e o seu endereço. Todo ambiente tem.",
-        "items": ["Marca e tema próprios", "Endereço seunome.atelierin.com.br", "Alunos e clientes por convite"]
+        "items": [
+          "Marca e tema próprios",
+          "Endereço seunome.atelierin.com.br",
+          "Alunos e clientes por convite"
+        ]
       },
       {
         "tag": "Camada 02",
         "name": "Módulos",
         "text": "Peças que ligam e desligam. Você usa só o que faz sentido para o seu trabalho.",
-        "items": ["Agenda e encontros", "Materiais e anotações", "Financeiro com status por pessoa"]
+        "items": [
+          "Agenda e encontros",
+          "Materiais e anotações",
+          "Financeiro com status por pessoa"
+        ]
       },
       {
         "tag": "Camada 03",
         "name": "Linhas",
         "text": "Combinações prontas para cada tipo de profissional, com o vocabulário certo: aluno ou cliente, aula ou sessão.",
-        "items": ["School, Consult, Fit, Studio, Care", "Modelos por especialidade", "Ajuste fino na implantação"]
+        "items": [
+          "School, Consult, Fit, Studio, Care",
+          "Modelos por especialidade",
+          "Ajuste fino na implantação"
+        ]
       }
     ]
   },
-
   "lines": {
     "piece": "Nº 04 · Lookbook",
     "title": "As",
     "titleAccent": "linhas",
     "lede": "Cada linha é uma peça pensada para um tipo de profissional. A School já está em uso; as outras chegam conforme a demanda."
   },
-
   "custom": {
     "piece": "Nº 05 · Sob medida",
     "title": "A marca é",
     "titleAccent": "sua",
     "lede": "Seu aluno ou cliente vê você, não a plataforma. O Atelierin só aparece pequeno, no rodapé.",
     "features": [
-      { "icon": "Palette", "title": "Sua identidade", "text": "Cores, fontes e logo aplicadas no ambiente inteiro." },
-      { "icon": "ToggleRight", "title": "Só o que você usa", "text": "Módulos ligados e desligados para o seu jeito de trabalhar." },
-      { "icon": "Receipt", "title": "Cobrança sem planilha", "text": "Quem pagou, quem está pendente, quem atrasou. O pagamento vai direto para você." },
-      { "icon": "UsersThree", "title": "Alguém por trás", "text": "Implantação, ajustes e manutenção feitos por uma pessoa, não por um formulário." }
+      {
+        "icon": "Palette",
+        "title": "Sua identidade",
+        "text": "Cores, fontes e logo aplicadas no ambiente inteiro."
+      },
+      {
+        "icon": "ToggleRight",
+        "title": "Só o que você usa",
+        "text": "Módulos ligados e desligados para o seu jeito de trabalhar."
+      },
+      {
+        "icon": "Receipt",
+        "title": "Cobrança sem planilha",
+        "text": "Quem pagou, quem está pendente, quem atrasou. O pagamento vai direto para você."
+      },
+      {
+        "icon": "UsersThree",
+        "title": "Alguém por trás",
+        "text": "Implantação, ajustes e manutenção feitos por uma pessoa, não por um formulário."
+      }
     ],
     "mock": {
       "name": "Escola de Música [Nome]",
-      "items": ["Cursos", "Agenda", "Materiais", "Financeiro"],
+      "items": [
+        "Cursos",
+        "Agenda",
+        "Materiais",
+        "Financeiro"
+      ],
       "footer": "feito com"
     }
   },
-
   "plans": {
     "piece": "Nº 06 · Etiquetas",
     "title": "Planos",
@@ -110,20 +196,34 @@
         "status": "Disponível",
         "highlight": true,
         "text": "O ambiente com a sua identidade completa, montado por mim.",
-        "features": ["Implantação com a sua marca", "Módulos e vocabulário ajustados", "Manutenção e suporte contínuos", "Funcionalidade específica sob orçamento"],
-        "cta": { "label": "Conversar", "href": "#contato" }
+        "features": [
+          "Implantação com a sua marca",
+          "Módulos e vocabulário ajustados",
+          "Manutenção e suporte contínuos",
+          "Funcionalidade específica sob orçamento"
+        ],
+        "cta": {
+          "label": "Conversar",
+          "href": "#contato"
+        }
       },
       {
         "name": "Padrão",
         "status": "Em breve",
         "highlight": false,
         "text": "A linha como ela é, com o seu nome e logo, para começar rápido.",
-        "features": ["Cadastro e configuração guiada", "Módulos padrão da linha", "Tema Atelierin com a sua logo"],
-        "cta": { "label": "Avise quando abrir", "href": "#contato" }
+        "features": [
+          "Cadastro e configuração guiada",
+          "Módulos padrão da linha",
+          "Tema Atelierin com a sua logo"
+        ],
+        "cta": {
+          "label": "Avise quando abrir",
+          "href": "#contato"
+        }
       }
     ]
   },
-
   "finalCta": {
     "piece": "Nº 08 · Prova",
     "title": "Vamos tirar",
@@ -132,7 +232,6 @@
     "primary": "Chamar no WhatsApp",
     "secondary": "Enviar e-mail"
   },
-
   "footer": {
     "text": "Plataforma para profissionais que atendem pessoas.",
     "place": "Recife, PE",
