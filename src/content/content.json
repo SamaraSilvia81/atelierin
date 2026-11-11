@@ -389,15 +389,163 @@
         "text": "Implantação, ajustes e manutenção feitos por uma pessoa, não por um formulário."
       }
     ],
-    "mock": {
-      "name": "Escola de Música [Nome]",
-      "items": [
-        "Cursos",
-        "Agenda",
-        "Materiais",
-        "Financeiro"
-      ],
-      "footer": "feito com"
+    "morph": {
+      "label": "trocando a identidade",
+      "pauseHint": "passe o mouse para pausar",
+      "identities": [
+        {
+          "id": "musica",
+          "line": "School",
+          "name": "Escola Maestro",
+          "initials": "EM",
+          "side": "#1F2A44",
+          "sideInk": "#FFFFFF",
+          "acc": "#E0B04C",
+          "accInk": "#1F2A44",
+          "paper": "#FBF8F2",
+          "font": "Georgia, 'Times New Roman', serif",
+          "people": "alunos",
+          "menu": [
+            "Cursos",
+            "Agenda",
+            "Materiais",
+            "Financeiro"
+          ],
+          "rows": [
+            [
+              "Ana Luiza",
+              "em dia"
+            ],
+            [
+              "Bruno",
+              "pendente"
+            ],
+            [
+              "Carla",
+              "em dia"
+            ],
+            [
+              "Diego",
+              "atrasado"
+            ]
+          ],
+          "slug": "maestro"
+        },
+        {
+          "id": "consult",
+          "line": "Consult",
+          "name": "Clara Rocha Consultoria",
+          "initials": "CR",
+          "side": "#2F3E34",
+          "sideInk": "#F3EFE6",
+          "acc": "#C9A27E",
+          "accInk": "#2F3E34",
+          "paper": "#F6F4EE",
+          "font": "'Inter Variable', Inter, system-ui, sans-serif",
+          "people": "clientes",
+          "menu": [
+            "Sessões",
+            "Planos de ação",
+            "Metas",
+            "Financeiro"
+          ],
+          "rows": [
+            [
+              "Mariana T.",
+              "em dia"
+            ],
+            [
+              "Grupo Ventura",
+              "em dia"
+            ],
+            [
+              "Rafael",
+              "pendente"
+            ],
+            [
+              "Lívia",
+              "em dia"
+            ]
+          ],
+          "slug": "clararocha"
+        },
+        {
+          "id": "fit",
+          "line": "Fit",
+          "name": "Studio Movimento",
+          "initials": "SM",
+          "side": "#0F0F0F",
+          "sideInk": "#FFFFFF",
+          "acc": "#D6FF3F",
+          "accInk": "#0F0F0F",
+          "paper": "#F4F4F1",
+          "font": "'Bebas Neue', Impact, sans-serif",
+          "people": "alunos",
+          "menu": [
+            "Fichas",
+            "Avaliações",
+            "Evolução",
+            "Financeiro"
+          ],
+          "rows": [
+            [
+              "Pedro",
+              "em dia"
+            ],
+            [
+              "Júlia",
+              "atrasado"
+            ],
+            [
+              "Thiago",
+              "em dia"
+            ],
+            [
+              "Renata",
+              "pendente"
+            ]
+          ],
+          "slug": "studiomovimento"
+        },
+        {
+          "id": "studio",
+          "line": "Studio",
+          "name": "Lente Estúdio",
+          "initials": "LE",
+          "side": "#EFE6DC",
+          "sideInk": "#3A2A20",
+          "acc": "#C2410C",
+          "accInk": "#FFFFFF",
+          "paper": "#FFFFFF",
+          "font": "'JetBrains Mono Variable', 'JetBrains Mono', monospace",
+          "people": "clientes",
+          "menu": [
+            "Briefing",
+            "Etapas",
+            "Aprovações",
+            "Financeiro"
+          ],
+          "rows": [
+            [
+              "Casa Aurora",
+              "em dia"
+            ],
+            [
+              "Noivos M&J",
+              "pendente"
+            ],
+            [
+              "Café Sertão",
+              "em dia"
+            ],
+            [
+              "Loja Tecer",
+              "em dia"
+            ]
+          ],
+          "slug": "lente"
+        }
+      ]
     }
   },
   "plans": {
