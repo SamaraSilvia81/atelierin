@@ -28,7 +28,11 @@ export default function Plans() {
               <p className="plan-text">{it.text}</p>
               <ul>{it.features.map((f) => <li key={f}><Check size={14} weight="bold" aria-hidden="true" />{f}</li>)}</ul>
               <div className="plan-foot">
-                <span className="plan-price">{it.price}</span>
+                <div className="plan-price">
+                  <strong>{it.price}</strong>
+                  {it.priceSub && <span>{it.priceSub}</span>}
+                  {it.priceExtra && <small>{it.priceExtra}</small>}
+                </div>
                 <a href={it.cta.href} className="plan-cta" onClick={() => play('click')} onPointerEnter={() => play('tick')}>
                   {it.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" />
                 </a>
@@ -36,6 +40,22 @@ export default function Plans() {
             </li>
           ))}
         </ul>
+
+        <div className="modes" data-reveal>
+          <div className="modes-head">
+            <h3 className="display">{p.modes.title}</h3>
+            <p>{p.modes.lede}</p>
+          </div>
+          <div className="modes-grid">
+            {p.modes.cols.map((c, i) => (
+              <div key={c.name} className={`mode ${i === 0 ? 'is-rec' : ''}`}>
+                <div className="mode-top"><strong>{c.name}</strong><span>{c.tag}</span></div>
+                <dl>{c.rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+                <p className="mode-price">{c.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="plans-why" data-reveal>
           <strong>{p.pricingNote.title}</strong>

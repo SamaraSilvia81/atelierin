@@ -5,7 +5,7 @@
     "role": "Desenvolvedora frontend e designer UX/UI",
     "intro": "Eu desenho, construo e mantenho cada ambiente do Atelierin. Do primeiro papo à manutenção, quem cuida é uma pessoa só, que entende de interface, de código e de quem está do outro lado da tela.",
     "place": "Recife, PE",
-    "photo": "",
+    "photo": "/samara.webp",
     "facts": [
       [
         "formação",
@@ -154,7 +154,7 @@
       {
         "kicker": "cobrança",
         "title": "O dinheiro vai direto para você",
-        "text": "Seus alunos pagam para você, pelo Pix que você já usa. No painel financeiro você marca quem pagou e vê de uma vez quem está em dia, pendente ou atrasado. O Atelierin não fica com comissão do que você recebe.",
+        "text": "Seus alunos pagam para você, pelo Pix que você já usa. No painel financeiro você marca quem pagou e vê de uma vez quem está em dia, pendente ou atrasado. O dinheiro não passa pela plataforma.",
         "points": [
           "Sem intermediário no pagamento",
           "Status por pessoa: em dia, pendente, atrasado",
@@ -163,13 +163,24 @@
       },
       {
         "kicker": "investimento",
-        "title": "Duas partes, combinadas na proposta",
-        "text": "O investimento é dividido em implantação (valor único, que pode ser parcelado) e manutenção mensal, proporcional ao tamanho do seu trabalho. A implantação depende de quanto do seu ambiente já existe: sair de um molde pronto custa menos do que criar algo novo.",
+        "title": "R$ 3.000, em até 10x de R$ 300",
+        "text": "A implantação de um ambiente School personalizado é R$ 3.000, que podem ser parcelados em 10x de R$ 300. Depois que ele vai ao ar, a manutenção é 8% do que você recebe dos alunos ativos no mês: acompanha o seu tamanho, para cima ou para baixo.",
         "points": [
-          "Ambiente a partir de um molde que já existe: implantação menor, só marca, configuração e cadastro",
-          "Ambiente com funcionalidade nova: implantação maior, porque inclui desenvolvimento",
-          "Manutenção: mensal, proporcional ao seu tamanho",
-          "Implantação parcelada"
+          "Implantação: R$ 3.000 ou 10x de R$ 300",
+          "Manutenção: 8% do recebido dos alunos ativos no mês",
+          "Ambiente a partir de um molde pronto: implantação menor",
+          "Funcionalidade nova: orçamento à parte"
+        ]
+      },
+      {
+        "kicker": "com ou sem manutenção",
+        "title": "Você escolhe quem cuida depois",
+        "text": "Com a manutenção, eu cuido de tudo: hospedagem, atualizações, cópias de segurança e suporte. Sem ela, o ambiente é entregue nas suas contas, com documentação, e você passa a cuidar dele (ou contrata alguém).",
+        "points": [
+          "Com manutenção: nada técnico fica com você",
+          "Sem manutenção: hospedagem nas suas contas, paga direto aos serviços",
+          "Sem manutenção: entrega técnica e garantia de correções por um período",
+          "Depois da garantia: ajustes e atualizações por orçamento"
         ]
       },
       {

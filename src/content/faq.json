@@ -15,12 +15,20 @@
       "a": "Não. Quando o seu ambiente sai de um molde que já existe, como o de um professor de música que já está no ar, a implantação é menor: você paga pela sua marca, configuração, cadastro e ajustes, não pelo desenvolvimento que já foi feito. Só sobe quando entra alguma funcionalidade nova, que é orçada à parte."
     },
     {
+      "q": "Posso contratar só a implantação, sem manutenção?",
+      "a": "Pode. Nesse caso o ambiente fica nas suas contas de hospedagem, você paga direto aos serviços e recebe uma entrega técnica com tudo documentado. Há um período de garantia para correções; depois disso, ajustes e atualizações entram por orçamento. Para quem não tem alguém técnico por perto, a manutenção costuma sair mais em conta."
+    },
+    {
+      "q": "Como funciona a manutenção de 8%?",
+      "a": "Todo mês a manutenção é 8% do que você recebeu dos alunos ativos. Se a turma cresce, ela acompanha; se diminui, ela cai junto. Cobre hospedagem, atualizações, cópias de segurança, suporte e pequenos ajustes."
+    },
+    {
       "q": "O dinheiro dos alunos passa pelo Atelierin?",
       "a": "Não. O pagamento vai direto para você. No painel financeiro você marca quem pagou e acompanha quem está pendente ou atrasado."
     },
     {
       "q": "Qual a diferença para Hotmart ou Kiwify?",
-      "a": "Essas plataformas são feitas para vender cursos em escala e cobram comissão por venda. O Atelierin é para quem atende pessoas de forma recorrente: turmas, sessões, acompanhamento, com a sua marca e sem comissão de plataforma."
+      "a": "Essas plataformas são feitas para vender cursos em escala e ficam com uma parte de cada venda, porque o dinheiro passa por elas. No Atelierin o pagamento vai direto para você; a manutenção é uma cobrança mensal à parte. E o foco é quem atende pessoas de forma recorrente: turmas, sessões, acompanhamento, com a sua marca."
     },
     {
       "q": "Posso pedir uma funcionalidade específica?",

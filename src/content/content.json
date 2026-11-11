@@ -423,7 +423,7 @@
     "piece": "Nº 06 · Etiquetas",
     "title": "Planos",
     "titleAccent": "",
-    "lede": "Hoje a linha disponível é a School, para professores e escolas pequenas. As outras linhas entram conforme a demanda; dá para entrar na lista e conversar antes.",
+    "lede": "Hoje a linha disponível é a School, para professores e escolas pequenas. O valor é aberto: implantação única, parcelada, e manutenção mensal proporcional ao seu tamanho.",
     "items": [
       {
         "line": "School",
@@ -439,11 +439,13 @@
           "Manutenção, atualizações e suporte contínuos",
           "Funcionalidade específica sob orçamento"
         ],
-        "price": "Implantação + manutenção mensal",
+        "price": "R$ 3.000",
         "cta": {
           "label": "Conversar sobre o meu",
           "href": "/#contato"
-        }
+        },
+        "priceSub": "ou 10x de R$ 300",
+        "priceExtra": "+ manutenção de 8% do que você recebe dos alunos ativos no mês"
       },
       {
         "line": "School",
@@ -458,11 +460,13 @@
           "Tema Atelierin com a sua logo",
           "Suporte por mensagem"
         ],
-        "price": "Assinatura mensal",
+        "price": "Assinatura",
         "cta": {
           "label": "Avise quando abrir",
           "href": "/#contato"
-        }
+        },
+        "priceSub": "valor no lançamento",
+        "priceExtra": ""
       },
       {
         "line": "Consult · Fit · Studio · Care",
@@ -480,13 +484,15 @@
         "cta": {
           "label": "Entrar na lista",
           "href": "/#contato"
-        }
+        },
+        "priceSub": "condição especial para quem abre a linha",
+        "priceExtra": ""
       }
     ],
     "includesTitle": "Em qualquer plano",
     "includes": [
-      "Sem comissão sobre o que você recebe",
-      "O pagamento vai direto para você",
+      "O pagamento dos alunos vai direto para você",
+      "Nenhuma taxa por transação: o dinheiro não passa pela plataforma",
       "Seus dados exportáveis em .md, Word e .txt",
       "Seu endereço seunome.atelierin.com.br"
     ],
@@ -497,7 +503,75 @@
     },
     "pricingNote": {
       "title": "Por que o valor muda",
-      "text": "Quando o seu ambiente sai de um molde que já existe, você paga pela implantação (sua marca, configuração, cadastro e ajustes), não pelo desenvolvimento do que já está pronto. Por isso ele custa menos do que um ambiente com funcionalidade nova, que entra com orçamento próprio."
+      "text": "Os R$ 3.000 valem para um ambiente personalizado, com a School ajustada ao seu jeito de trabalhar. Quando o seu ambiente sai de um molde pronto, sem nada novo, a implantação é menor. Funcionalidade nova entra com orçamento próprio."
+    },
+    "modes": {
+      "title": "Com ou sem manutenção",
+      "lede": "A implantação é a mesma nos dois casos. O que muda é quem cuida do ambiente depois que ele vai ao ar.",
+      "cols": [
+        {
+          "name": "Implantação + manutenção",
+          "tag": "recomendado",
+          "price": "R$ 3.000 + 8% ao mês",
+          "rows": [
+            [
+              "Hospedagem e infraestrutura",
+              "Comigo, já incluída"
+            ],
+            [
+              "Atualizações e correções",
+              "Incluídas"
+            ],
+            [
+              "Cópias de segurança",
+              "Incluídas"
+            ],
+            [
+              "Suporte por mensagem",
+              "Incluído"
+            ],
+            [
+              "Pequenos ajustes",
+              "Incluídos"
+            ],
+            [
+              "Você precisa de alguém técnico?",
+              "Não"
+            ]
+          ]
+        },
+        {
+          "name": "Só a implantação",
+          "tag": "entrega técnica",
+          "price": "R$ 3.000 + entrega técnica (sob consulta)",
+          "rows": [
+            [
+              "Hospedagem e infraestrutura",
+              "Nas suas contas, você paga direto aos serviços"
+            ],
+            [
+              "Atualizações e correções",
+              "Garantia de correções por um período; depois, por orçamento"
+            ],
+            [
+              "Cópias de segurança",
+              "Por sua conta"
+            ],
+            [
+              "Suporte por mensagem",
+              "Durante a garantia"
+            ],
+            [
+              "Pequenos ajustes",
+              "Por orçamento"
+            ],
+            [
+              "Você precisa de alguém técnico?",
+              "Recomendado"
+            ]
+          ]
+        }
+      ]
     }
   },
   "finalCta": {
