@@ -1,33 +1,21 @@
-import { Palette, ToggleRight, Receipt, UsersThree, Sparkle } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
-import Section from '@/components/Section'
-import BrandMorph from '@/components/BrandMorph'
+import LoginShowcase from '@/components/LoginShowcase'
 
-// Ícones disponíveis para o campo "icon" em content.json (custom.features)
-const ICONS = { Palette, ToggleRight, Receipt, UsersThree, Sparkle }
-
+// "A marca é sua": a vitrine de telas de login ocupa a seção inteira.
 export default function Custom() {
   const c = content.custom
   return (
-    <Section id="sob-medida" theme="dark" piece={c.piece} title={c.title} accent={c.titleAccent} lede={c.lede}>
-      <div className="custom-grid">
-        <ul className="features">
-          {c.features.map((f) => {
-            const Icon = ICONS[f.icon] ?? Sparkle
-            return (
-              <li key={f.title} className="feature" data-reveal>
-                <Icon size={24} weight="light" aria-hidden="true" />
-                <div>
-                  <h3>{f.title}</h3>
-                  <p>{f.text}</p>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-
-        <div data-reveal><BrandMorph data={c.morph} /></div>
+    <section id="sob-medida" data-theme="dark" className="section custom" aria-labelledby="sob-medida-t">
+      <div className="wrap">
+        <header className="custom-head" data-reveal>
+          <div>
+            <p className="label"><b aria-hidden="true">&gt;</b> {c.piece}</p>
+            <h2 id="sob-medida-t" className="display">{c.title} <em>{c.titleAccent}</em></h2>
+          </div>
+          <p className="lede">{c.lede}</p>
+        </header>
+        <div data-reveal><LoginShowcase data={c.showcase} /></div>
       </div>
-    </Section>
+    </section>
   )
 }

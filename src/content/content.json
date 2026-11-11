@@ -382,183 +382,33 @@
     "piece": "Nº 05 · Sob medida",
     "title": "A marca é",
     "titleAccent": "sua",
-    "lede": "Seu aluno ou cliente vê você, não a plataforma. O Atelierin só aparece pequeno, no rodapé.",
-    "features": [
-      {
-        "icon": "Palette",
-        "title": "Sua identidade",
-        "text": "Cores, fontes e logo aplicadas no ambiente inteiro."
-      },
-      {
-        "icon": "ToggleRight",
-        "title": "Só o que você usa",
-        "text": "Módulos ligados e desligados para o seu jeito de trabalhar."
-      },
-      {
-        "icon": "Receipt",
-        "title": "Cobrança sem planilha",
-        "text": "Quem pagou, quem está pendente, quem atrasou. O pagamento vai direto para você."
-      },
-      {
-        "icon": "UsersThree",
-        "title": "Alguém por trás",
-        "text": "Implantação, ajustes e manutenção feitos por uma pessoa, não por um formulário."
-      }
-    ],
-    "morph": {
-      "label": "trocando a identidade",
-      "pauseHint": "passe o mouse para pausar",
-      "identities": [
+    "lede": "Seu aluno ou cliente vê você, não a plataforma. Cores, fontes, logo e até o jeito da tela de entrada mudam com a sua identidade. O Atelierin só aparece pequeno, no rodapé.",
+    "showcase": {
+      "label": "estilos de login",
+      "note": "Três dos estilos que já desenhei. O seu sai da sua marca.",
+      "styles": [
         {
-          "id": "musica",
-          "line": "School",
+          "id": "editorial",
+          "tab": "Editorial",
           "name": "Escola Maestro",
-          "initials": "EM",
-          "side": "#1F2A44",
-          "sideInk": "#FFFFFF",
-          "acc": "#E0B04C",
-          "accInk": "#1F2A44",
-          "paper": "#FBF8F2",
-          "font": "Georgia, 'Times New Roman', serif",
-          "people": "alunos",
-          "menu": [
-            "Cursos",
-            "Agenda",
-            "Materiais",
-            "Financeiro"
-          ],
-          "rows": [
-            [
-              "Ana Luiza",
-              "em dia"
-            ],
-            [
-              "Bruno",
-              "pendente"
-            ],
-            [
-              "Carla",
-              "em dia"
-            ],
-            [
-              "Diego",
-              "atrasado"
-            ]
-          ],
+          "caption": "serifada, dourado e fotografia, para quem quer elegância",
+          "email": "ana@maestro.com.br",
           "slug": "maestro"
         },
         {
-          "id": "consult",
-          "line": "Consult",
+          "id": "moderno",
+          "tab": "Moderno",
           "name": "Clara Rocha Consultoria",
-          "initials": "CR",
-          "side": "#2F3E34",
-          "sideInk": "#F3EFE6",
-          "acc": "#C9A27E",
-          "accInk": "#2F3E34",
-          "paper": "#F6F4EE",
-          "font": "'Inter Variable', Inter, system-ui, sans-serif",
-          "people": "clientes",
-          "menu": [
-            "Sessões",
-            "Planos de ação",
-            "Metas",
-            "Financeiro"
-          ],
-          "rows": [
-            [
-              "Mariana T.",
-              "em dia"
-            ],
-            [
-              "Grupo Ventura",
-              "em dia"
-            ],
-            [
-              "Rafael",
-              "pendente"
-            ],
-            [
-              "Lívia",
-              "em dia"
-            ]
-          ],
+          "caption": "limpo, arredondado e leve, para quem quer clareza",
+          "email": "rafael@email.com",
           "slug": "clararocha"
         },
         {
-          "id": "fit",
-          "line": "Fit",
-          "name": "Studio Movimento",
-          "initials": "SM",
-          "side": "#0F0F0F",
-          "sideInk": "#FFFFFF",
-          "acc": "#D6FF3F",
-          "accInk": "#0F0F0F",
-          "paper": "#F4F4F1",
-          "font": "'Bebas Neue', Impact, sans-serif",
-          "people": "alunos",
-          "menu": [
-            "Fichas",
-            "Avaliações",
-            "Evolução",
-            "Financeiro"
-          ],
-          "rows": [
-            [
-              "Pedro",
-              "em dia"
-            ],
-            [
-              "Júlia",
-              "atrasado"
-            ],
-            [
-              "Thiago",
-              "em dia"
-            ],
-            [
-              "Renata",
-              "pendente"
-            ]
-          ],
-          "slug": "studiomovimento"
-        },
-        {
-          "id": "studio",
-          "line": "Studio",
+          "id": "retro",
+          "tab": "Retrô",
           "name": "Lente Estúdio",
-          "initials": "LE",
-          "side": "#EFE6DC",
-          "sideInk": "#3A2A20",
-          "acc": "#C2410C",
-          "accInk": "#FFFFFF",
-          "paper": "#FFFFFF",
-          "font": "'JetBrains Mono Variable', 'JetBrains Mono', monospace",
-          "people": "clientes",
-          "menu": [
-            "Briefing",
-            "Etapas",
-            "Aprovações",
-            "Financeiro"
-          ],
-          "rows": [
-            [
-              "Casa Aurora",
-              "em dia"
-            ],
-            [
-              "Noivos M&J",
-              "pendente"
-            ],
-            [
-              "Café Sertão",
-              "em dia"
-            ],
-            [
-              "Loja Tecer",
-              "em dia"
-            ]
-          ],
+          "caption": "mono, contornos fortes e cor viva, para quem quer personalidade",
+          "email": "cliente@lente.art",
           "slug": "lente"
         }
       ]
