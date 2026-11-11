@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
 // Revela os elementos [data-reveal] quando entram na tela.
-// Com prefers-reduced-motion, mostra tudo de uma vez.
-export function useReveal() {
+// Roda de novo a cada troca de página (dep). Com prefers-reduced-motion, mostra tudo.
+export function useReveal(dep) {
   useEffect(() => {
-    const els = document.querySelectorAll('[data-reveal]')
+    const els = document.querySelectorAll('[data-reveal]:not(.is-in)')
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce || !('IntersectionObserver' in window)) {
       els.forEach((el) => el.classList.add('is-in'))
@@ -18,5 +18,5 @@ export function useReveal() {
     )
     els.forEach((el) => io.observe(el))
     return () => io.disconnect()
-  }, [])
+  }, [dep])
 }

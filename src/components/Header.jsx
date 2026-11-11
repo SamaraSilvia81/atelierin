@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header data-theme="dark" className={`top ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="wrap top-in">
-        <a href="#conteudo" className="top-logo" aria-label="Atelierin, início">
+        <a href="/" className="top-logo" aria-label="Atelierin, início">
           <img src="/brand/atelierin-horizontal-osso-terminal-crimson.svg" alt="Atelierin" height="34" />
         </a>
         <nav id="menu" className="top-nav" aria-label="Principal">
