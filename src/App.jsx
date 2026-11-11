@@ -12,6 +12,7 @@ import Faq from '@/sections/Faq'
 import FinalCta from '@/sections/FinalCta'
 import Footer from '@/sections/Footer'
 import BackToTop from '@/components/BackToTop'
+import ExitStage from '@/components/ExitStage'
 
 export default function App() {
   useReveal()
@@ -22,18 +23,15 @@ export default function App() {
       <main id="conteudo">
         {isEnabled('hero') && <Hero />}
         {isEnabled('problem') && <Problem />}
-        {isEnabled('how') && (
-          // fundo claro por trás: aparece nos cantos quando "Como funciona" encolhe ao sair
-          <div className="exit-stage">
-            <How />
-            <Steps />
-          </div>
-        )}
-        {isEnabled('lines') && <Lines />}
-        {isEnabled('custom') && <Custom />}
-        {isEnabled('plans') && <Plans />}
-        {isEnabled('faq') && <Faq />}
-        {isEnabled('finalCta') && <FinalCta />}
+        {/* Seções que mudam de cor saem de cena como cartão (ExitStage).
+            "to" é a cor que aparece por trás: a da seção seguinte. */}
+        {isEnabled('how') && <ExitStage to="light" className="how-stage"><How /></ExitStage>}
+        {isEnabled('how') && <Steps />}
+        {isEnabled('lines') && <ExitStage to="dark"><Lines /></ExitStage>}
+        {isEnabled('custom') && <ExitStage to="light"><Custom /></ExitStage>}
+        {isEnabled('plans') && <ExitStage to="dark"><Plans /></ExitStage>}
+        {isEnabled('faq') && <ExitStage to="light"><Faq /></ExitStage>}
+        {isEnabled('finalCta') && <ExitStage to="dark"><FinalCta /></ExitStage>}
       </main>
       <Footer />
       <BackToTop />

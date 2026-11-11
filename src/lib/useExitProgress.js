@@ -6,7 +6,8 @@ import { useEffect } from 'react'
 // Com "reduzir movimento", não faz nada.
 export function useExitProgress(ref) {
   useEffect(() => {
-    const el = ref.current
+    // o efeito vai na seção dentro do invólucro (o primeiro filho)
+    const el = ref.current?.firstElementChild
     if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
     let frame = 0
     const update = () => {
