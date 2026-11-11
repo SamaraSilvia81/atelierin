@@ -218,7 +218,8 @@
           "Endereço seunome.atelierin.com.br",
           "Alunos e clientes por convite",
           "Papéis: você, equipe e quem você atende"
-        ]
+        ],
+        "tag": "Camada 01"
       },
       {
         "n": "02",
@@ -230,7 +231,8 @@
           "Materiais e anotações",
           "Financeiro com status por pessoa",
           "Avaliações, trilha, mural…"
-        ]
+        ],
+        "tag": "Camada 02"
       },
       {
         "n": "03",
@@ -242,7 +244,8 @@
           "School, Consult, Fit, Studio, Care",
           "Modelos por especialidade",
           "Ajuste fino na implantação"
-        ]
+        ],
+        "tag": "Camada 03"
       }
     ],
     "modules": {
@@ -295,29 +298,57 @@
         {
           "n": "01",
           "title": "Conversa",
-          "text": "Você me conta como trabalha hoje: quem atende, o que ensina, como cobra."
+          "text": "Você me conta como trabalha hoje: quem atende, o que ensina, como cobra.",
+          "image": {
+            "src": "https://picsum.photos/seed/atelierin-conversa/1200/750",
+            "alt": ""
+          },
+          "meta": "~/conversa · 30 a 40 min"
         },
         {
           "n": "02",
           "title": "Molde",
-          "text": "Escolhemos a linha e os módulos que fazem sentido. Nada de peça sobrando."
+          "text": "Escolhemos a linha e os módulos que fazem sentido. Nada de peça sobrando.",
+          "image": {
+            "src": "https://picsum.photos/seed/atelierin-molde/1200/750",
+            "alt": ""
+          },
+          "meta": "~/molde · linha + módulos"
         },
         {
           "n": "03",
           "title": "Prova",
-          "text": "Aplico a sua marca e o seu vocabulário. Você vê o ambiente antes de abrir."
+          "text": "Aplico a sua marca e o seu vocabulário. Você vê o ambiente antes de abrir.",
+          "image": {
+            "src": "https://picsum.photos/seed/atelierin-prova/1200/750",
+            "alt": ""
+          },
+          "meta": "~/prova · marca e vocabulário"
         },
         {
           "n": "04",
           "title": "Ajuste",
-          "text": "Mexemos no que não caiu bem até ficar do seu jeito."
+          "text": "Mexemos no que não caiu bem até ficar do seu jeito.",
+          "image": {
+            "src": "https://picsum.photos/seed/atelierin-ajuste/1200/750",
+            "alt": ""
+          },
+          "meta": "~/ajuste · rodadas de revisão"
         },
         {
           "n": "05",
           "title": "No ar",
-          "text": "Seu endereço funcionando e as pessoas convidadas. Depois disso, a manutenção é comigo."
+          "text": "Seu endereço funcionando e as pessoas convidadas. Depois disso, a manutenção é comigo.",
+          "image": {
+            "src": "https://picsum.photos/seed/atelierin-no-ar/1200/750",
+            "alt": ""
+          },
+          "meta": "~/no-ar · seunome.atelierin.com.br"
         }
-      ]
+      ],
+      "label": "o passo a passo",
+      "screenUrl": "maria.atelierin.com.br",
+      "placeholderNote": "imagem provisória"
     },
     "bridge": {
       "text": "Tudo começa pela linha certa para o seu trabalho.",

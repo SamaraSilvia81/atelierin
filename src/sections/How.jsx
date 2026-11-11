@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowDown } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
+import Pipeline from '@/components/Pipeline'
 
 // Como funciona: as três camadas, um painel de módulos que liga e desliga
 // de verdade, o passo a passo da implantação e a ponte para "As linhas".
@@ -22,14 +23,10 @@ export default function How() {
 
         {/* camadas */}
         <ol className="layers">
-          {h.layers.map((l, i) => (
-            <li key={l.name} className={`layer layer-${i + 1}`} data-reveal>
-              <span className="layer-bar" aria-hidden="true" />
-              <div className="layer-top">
-                <span className="layer-n">{l.n}</span>
-                <span className="layer-kicker">{l.kicker}</span>
-              </div>
-              <h3 className="display">{l.name}</h3>
+          {h.layers.map((l) => (
+            <li key={l.name} className="layer" data-reveal>
+              <span className="layer-tag">{l.tag}</span>
+              <h3 className="display layer-name">{l.name}</h3>
               <p>{l.text}</p>
               <ul>{l.items.map((it) => <li key={it}>{it}</li>)}</ul>
             </li>
@@ -70,19 +67,8 @@ export default function How() {
           </div>
         </div>
 
-        {/* passo a passo */}
-        <div className="steps" data-reveal>
-          <h3 className="steps-title">{h.steps.title}</h3>
-          <ol>
-            {h.steps.items.map((s) => (
-              <li key={s.n}>
-                <span className="step-n">{s.n}</span>
-                <strong>{s.title}</strong>
-                <p>{s.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
+        {/* passo a passo: linha do tempo presa na tela */}
+        <Pipeline data={h.steps} />
 
         <div className="bridge" data-reveal>
           <p>{h.bridge.text}</p>
