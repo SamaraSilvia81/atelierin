@@ -10,6 +10,7 @@ import Plans from '@/sections/Plans'
 import Faq from '@/sections/Faq'
 import FinalCta from '@/sections/FinalCta'
 import Footer from '@/sections/Footer'
+import BackToTop from '@/components/BackToTop'
 
 export default function App() {
   useReveal()
@@ -28,6 +29,7 @@ export default function App() {
         {isEnabled('finalCta') && <FinalCta />}
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }
