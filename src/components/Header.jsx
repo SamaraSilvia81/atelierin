@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
-import { List, X } from '@phosphor-icons/react'
+import { List, X, SpeakerHigh, SpeakerSlash } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
+import { play, setSounds, useSoundsEnabled } from '@/lib/sounds'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const sounds = useSoundsEnabled()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -24,16 +26,25 @@ export default function Header() {
     <header data-theme="dark" className={`top ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="wrap top-in">
         <a href="#conteudo" className="top-logo" aria-label="Atelierin, início">
-          <img src="/brand/atelierin-horizontal-osso-terminal-crimson.svg" alt="Atelierin" height="26" />
+          <img src="/brand/atelierin-horizontal-osso-terminal-crimson.svg" alt="Atelierin" height="34" />
         </a>
         <nav id="menu" className="top-nav" aria-label="Principal">
           <ul>
             {content.nav.map((n) => (
-              <li key={n.href}><a href={n.href} onClick={() => setOpen(false)}>{n.label}</a></li>
+              <li key={n.href}><a href={n.href} onPointerEnter={() => play('tick')} onClick={() => { play('click'); setOpen(false) }}>{n.label}</a></li>
             ))}
           </ul>
-          <a href={content.navCta.href} className="top-cta" onClick={() => setOpen(false)}>{content.navCta.label}</a>
+          <a href={content.navCta.href} className="top-cta" onClick={() => { play('click'); setOpen(false) }}>{content.navCta.label}</a>
         </nav>
+        <button
+          className="top-sound"
+          aria-pressed={sounds}
+          aria-label={sounds ? content.a11y.soundOff : content.a11y.soundOn}
+          title={sounds ? content.a11y.soundOff : content.a11y.soundOn}
+          onClick={() => setSounds(!sounds)}
+        >
+          {sounds ? <SpeakerHigh size={18} /> : <SpeakerSlash size={18} />}
+        </button>
         <button
           className="top-toggle"
           aria-expanded={open}
