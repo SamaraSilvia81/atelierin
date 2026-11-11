@@ -1,0 +1,47 @@
+[
+  {
+    "id": "school",
+    "piece": "Peça 01",
+    "name": "School",
+    "status": "Disponível",
+    "for": "Professores particulares e escolas pequenas",
+    "text": "Cursos, aulas gravadas e ao vivo, trilha de estudo e correções.",
+    "modules": ["Cursos e aulas", "Trilha", "Avaliações", "Mural"]
+  },
+  {
+    "id": "consult",
+    "piece": "Peça 02",
+    "name": "Consult",
+    "status": "Em breve",
+    "for": "Consultores, mentores e coaches",
+    "text": "Sessões, diagnóstico, planos de ação e acompanhamento de metas.",
+    "modules": ["Sessões", "Planos de ação", "Metas"]
+  },
+  {
+    "id": "fit",
+    "piece": "Peça 03",
+    "name": "Fit",
+    "status": "Em breve",
+    "for": "Personal trainers e instrutores",
+    "text": "Fichas de treino, avaliação física e evolução por medidas.",
+    "modules": ["Fichas", "Avaliações", "Evolução"]
+  },
+  {
+    "id": "studio",
+    "piece": "Peça 04",
+    "name": "Studio",
+    "status": "Em breve",
+    "for": "Fotógrafos, designers e criativos",
+    "text": "Briefing, projetos por etapas e entregas com aprovação do cliente.",
+    "modules": ["Briefing", "Etapas", "Aprovações"]
+  },
+  {
+    "id": "care",
+    "piece": "Peça 05",
+    "name": "Care",
+    "status": "Em estudo",
+    "for": "Terapeutas e profissionais de saúde",
+    "text": "Sessões e acompanhamento, com o cuidado que dado de saúde pede.",
+    "modules": ["Sessões", "Acompanhamento"]
+  }
+]

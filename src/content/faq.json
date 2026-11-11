@@ -1,0 +1,30 @@
+{
+  "piece": "Nº 07 · Provador",
+  "title": "Dúvidas",
+  "items": [
+    {
+      "q": "Preciso entender de tecnologia?",
+      "a": "Não. A implantação é feita por mim: você me passa a sua identidade, o seu conteúdo e o seu jeito de trabalhar, e recebe o ambiente pronto para usar."
+    },
+    {
+      "q": "Meus alunos ou clientes vão ver a marca Atelierin?",
+      "a": "Só no rodapé, pequena, como \"feito com Atelierin\". O nome, as cores e a logo que aparecem são os seus."
+    },
+    {
+      "q": "O dinheiro dos alunos passa pelo Atelierin?",
+      "a": "Não. O pagamento vai direto para você. No painel financeiro você marca quem pagou e acompanha quem está pendente ou atrasado."
+    },
+    {
+      "q": "Qual a diferença para Hotmart ou Kiwify?",
+      "a": "Essas plataformas são feitas para vender cursos em escala e cobram comissão por venda. O Atelierin é para quem atende pessoas de forma recorrente: turmas, sessões, acompanhamento, com a sua marca e sem comissão de plataforma."
+    },
+    {
+      "q": "Posso pedir uma funcionalidade específica?",
+      "a": "Pode. Se ela servir para outros profissionais, vira um módulo da plataforma. Se for só para você, entra como módulo exclusivo. Nos dois casos, o orçamento é combinado antes."
+    },
+    {
+      "q": "E se eu quiser sair?",
+      "a": "Você pode exportar os dados do seu ambiente. O conteúdo e os dados dos seus alunos ou clientes são seus."
+    }
+  ]
+}

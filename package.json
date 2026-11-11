@@ -1,0 +1,24 @@
+{
+  "name": "atelierin-landing",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Landing page do Atelierin: plataforma para profissionais que atendem pessoas",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/bebas-neue": "^5.2.5",
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "@phosphor-icons/react": "^2.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.0.0"
+  }
+}
