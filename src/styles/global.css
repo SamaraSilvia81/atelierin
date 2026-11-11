@@ -366,8 +366,8 @@ h1, h2, h3, p { margin: 0; }
 .problem-end p { position: relative; max-width: 24ch; font: 400 clamp(36px, 4.4vw, 64px)/.95 var(--font-display); text-transform: uppercase; letter-spacing: .01em; }
 .stitch-host { position: relative; align-self: stretch; height: 0; }
 .stitch { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
-.stitch-line { fill: none; stroke: var(--palette-brasa); stroke-width: 1.5; stroke-dasharray: 7 7; stroke-linecap: round; opacity: .85; }
-.stitch-head { fill: none; stroke: var(--palette-brasa); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.stitch-line { fill: none; stroke: var(--palette-brasa); stroke-width: 2; stroke-dasharray: 8 9; stroke-linecap: round; opacity: .85; }
+.stitch-head { fill: none; stroke: var(--palette-brasa); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 760px) { .stitch-host { display: none; } }
 
 

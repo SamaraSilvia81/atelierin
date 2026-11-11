@@ -1,16 +1,19 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
-// Linha de alinhavo desenhada à mão: sai de baixo do texto de fechamento,
-// dá uma voltinha, passeia para a direita, desce pela lateral e termina
-// apontando para o texto de "Como funciona" (seletor em "to").
-// Os pontos vêm do rascunho da Samara (em px, relativos ao início) e são
-// escalados para caber entre o início e o alvo em qualquer tela.
-const SKETCH = [
-  [0, 0], [-20, 18], [-16, 43], [12, 53], [10, 73], [-6, 113], [7, 148], [32, 183],
-  [72, 195], [132, 195], [182, 197], [232, 188], [312, 184], [372, 196], [412, 228],
-  [434, 260], [412, 308], [402, 348], [414, 393], [410, 433], [387, 453], [332, 453], [297, 447],
+// Linha de alinhavo com laçadas: sai de baixo do texto de fechamento,
+// desce, faz duas voltinhas indo para a direita, desce pela lateral e
+// termina apontando para o texto de "Como funciona" (seletor em "to").
+// LOOPS é o desenho das laçadas (coordenadas de um rascunho 1200x560);
+// ele é escalado para caber na largura disponível.
+const LOOPS = [
+  [48, 100], [45, 160], [55, 220], [85, 280], [140, 320], [200, 330], [240, 322], [285, 285],
+  [295, 245], [268, 228], [240, 245], [225, 290], [232, 345], [260, 385], [310, 400], [370, 395],
+  [450, 365], [530, 325], [600, 312], [660, 325], [705, 355], [725, 410], [718, 465], [680, 490],
+  [635, 480], [622, 440], [645, 400], [690, 378], [745, 375], [790, 410], [830, 460], [880, 490],
+  [940, 480], [985, 430], [995, 350], [980, 270], [1000, 220], [1050, 203], [1100, 212],
+  [1150, 250], [1175, 300], [1180, 350],
 ]
-const H = 453, W = 434 // altura e largura do rascunho
+const LW = 1132, LH = 250 // largura do desenho e altura do ponto final em relação ao início
 
 // Catmull-Rom -> curvas cúbicas, para o traço ficar suave passando pelos pontos
 function smooth(pts) {
@@ -38,9 +41,11 @@ export default function Stitch({ to }) {
       const w = host.offsetWidth
       const sx = w / 2
       const ey = (tr.top - hr.top) / k + (tr.height / k) / 2   // meio do texto alvo
-      const ky = ey / H
-      const kx = Math.min(ky, (w - sx + 40) / W)                // não passa muito da borda direita
-      const pts = SKETCH.map(([x, y]) => [sx + x * kx, y * ky])
+      const kk = Math.max(0.25, Math.min((w - sx + 30) / LW, (ey - 170) / LH))
+      const pts = LOOPS.map(([x, y]) => [sx + (x - 48) * kk, (y - 100) * kk])
+      const [lx, ly] = pts[pts.length - 1]
+      // depois das laçadas: desce pela lateral e vira para a esquerda
+      pts.push([lx + 4, ly + (ey - ly) * 0.45], [lx - 4, ey - 50], [lx - 40, ey - 6], [lx - 120, ey])
       const end = pts[pts.length - 1], prev = pts[pts.length - 2]
       const ang = Math.atan2(end[1] - prev[1], end[0] - prev[0])
       const head = [ang + 2.6, ang - 2.6].map((a) => [end[0] + Math.cos(a) * 10, end[1] + Math.sin(a) * 10])
