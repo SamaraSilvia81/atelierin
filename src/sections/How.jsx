@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import { ArrowDown } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
-import Pipeline from '@/components/Pipeline'
 
 // Como funciona: as três camadas, um painel de módulos que liga e desliga
 // de verdade, o passo a passo da implantação e a ponte para "As linhas".
@@ -67,15 +65,6 @@ export default function How() {
           </div>
         </div>
 
-        {/* passo a passo: linha do tempo presa na tela */}
-        <Pipeline data={h.steps} />
-
-        <div className="bridge" data-reveal>
-          <p>{h.bridge.text}</p>
-          <a href={h.bridge.href} className="bridge-link" onClick={() => play('click')} onPointerEnter={() => play('tick')}>
-            {h.bridge.link} <ArrowDown size={14} weight="bold" aria-hidden="true" />
-          </a>
-        </div>
       </div>
     </section>
   )

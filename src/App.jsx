@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Hero from '@/sections/Hero'
 import Problem from '@/sections/Problem'
 import How from '@/sections/How'
+import Steps from '@/sections/Steps'
 import Lines from '@/sections/Lines'
 import Custom from '@/sections/Custom'
 import Plans from '@/sections/Plans'
@@ -22,6 +23,7 @@ export default function App() {
         {isEnabled('hero') && <Hero />}
         {isEnabled('problem') && <Problem />}
         {isEnabled('how') && <How />}
+        {isEnabled('how') && <Steps />}
         {isEnabled('lines') && <Lines />}
         {isEnabled('custom') && <Custom />}
         {isEnabled('plans') && <Plans />}
