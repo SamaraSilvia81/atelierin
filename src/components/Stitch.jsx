@@ -1,19 +1,18 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
 // Linha de alinhavo com laçadas: sai de baixo do texto de fechamento,
-// desce, faz duas voltinhas indo para a direita, desce pela lateral e
-// termina apontando para o texto de "Como funciona" (seletor em "to").
+// faz duas voltinhas indo para a direita e termina numa curva curta que
+// aponta para baixo, em direção a "Como funciona".
 // LOOPS é o desenho das laçadas (coordenadas de um rascunho 1200x560);
 // ele é escalado para caber na largura disponível.
 const LOOPS = [
   [48, 100], [45, 160], [55, 220], [85, 280], [140, 320], [200, 330], [240, 322], [285, 285],
   [295, 245], [268, 228], [240, 245], [225, 290], [232, 345], [260, 385], [310, 400], [370, 395],
   [450, 365], [530, 325], [600, 312], [660, 325], [705, 355], [725, 410], [718, 465], [680, 490],
-  [635, 480], [622, 440], [645, 400], [690, 378], [745, 375], [790, 410], [830, 460], [880, 490],
-  [940, 480], [985, 430], [995, 350], [980, 270], [1000, 220], [1050, 203], [1100, 212],
-  [1150, 250], [1175, 300], [1180, 350],
+  [635, 480], [622, 440], [645, 400], [690, 378], [730, 385],
+  // depois da segunda laçada: uma curva curta descendo para a esquerda, em direção a "Como funciona"
+  [750, 420], [735, 470], [695, 505], [640, 525],
 ]
-const LW = 1132, LH = 250 // largura do desenho e altura do ponto final em relação ao início
 
 // Catmull-Rom -> curvas cúbicas, para o traço ficar suave passando pelos pontos
 function smooth(pts) {
@@ -41,15 +40,12 @@ export default function Stitch({ to }) {
       const w = host.offsetWidth
       const sx = w / 2
       const ey = (tr.top - hr.top) / k + (tr.height / k) / 2   // meio do texto alvo
-      const kk = Math.max(0.25, Math.min((w - sx + 30) / LW, (ey - 170) / LH))
+      const kk = Math.max(0.3, Math.min(0.6, (w - sx) / 760))
       const pts = LOOPS.map(([x, y]) => [sx + (x - 48) * kk, (y - 100) * kk])
-      const [lx, ly] = pts[pts.length - 1]
-      // depois das laçadas: desce pela lateral e vira para a esquerda
-      pts.push([lx + 4, ly + (ey - ly) * 0.45], [lx - 4, ey - 50], [lx - 40, ey - 6], [lx - 120, ey])
       const end = pts[pts.length - 1], prev = pts[pts.length - 2]
       const ang = Math.atan2(end[1] - prev[1], end[0] - prev[0])
       const head = [ang + 2.6, ang - 2.6].map((a) => [end[0] + Math.cos(a) * 10, end[1] + Math.sin(a) * 10])
-      setGeo({ w, h: ey + 30, d: smooth(pts), head: `M ${head[0][0]} ${head[0][1]} L ${end[0]} ${end[1]} L ${head[1][0]} ${head[1][1]}` })
+      setGeo({ w, h: Math.max(...pts.map((q) => q[1])) + 30, d: smooth(pts), head: `M ${head[0][0]} ${head[0][1]} L ${end[0]} ${end[1]} L ${head[1][0]} ${head[1][1]}` })
     }
     measure()
     const ro = new ResizeObserver(measure)
