@@ -8,8 +8,7 @@ export default function Footer() {
   const mail = mailHref()
   return (
     <footer data-theme="dark" className="foot">
-      <img className="foot-art" src={f.image} alt="" aria-hidden="true" />
-      <div className="foot-body">
+      <div className="foot-body" style={{ '--foot-art': `url(${f.image})` }}>
         <div className="wrap foot-grid">
           <div className="foot-brand">
             <a href="/" aria-label="Atelierin, início"><img src="/brand/atelierin-horizontal-osso-terminal-crimson.svg" alt="Atelierin" height="30" /></a>
