@@ -2,10 +2,11 @@
   "site": {
     "name": "Atelierin",
     "tagline": "O seu ateliê digital",
-    "contactEmail": "[SEU E-MAIL]",
-    "whatsapp": "[SEU WHATSAPP COM DDD, SÓ NÚMEROS]",
-    "whatsappMessage": "Oi! Vi o Atelierin e quero saber mais sobre ter um ambiente meu.",
-    "soundsDefault": false
+    "contactEmail": "",
+    "whatsapp": "5581994668775",
+    "whatsappMessage": "Oi, Samara! Vim pelo site do Atelierin e quero saber mais sobre ter um ambiente meu.",
+    "soundsDefault": false,
+    "whatsappDisplay": "(81) 99466-8775"
   },
   "a11y": {
     "skipLink": "Pular para o conteúdo",
@@ -493,41 +494,131 @@
       "text": "Quer ver como uma proposta é montada, item por item?",
       "link": "Ver a proposta comercial",
       "href": "/proposta"
+    },
+    "pricingNote": {
+      "title": "Por que o valor muda",
+      "text": "Quando o seu ambiente sai de um molde que já existe, você paga pela implantação (sua marca, configuração, cadastro e ajustes), não pelo desenvolvimento do que já está pronto. Por isso ele custa menos do que um ambiente com funcionalidade nova, que entra com orçamento próprio."
     }
   },
   "finalCta": {
     "piece": "Nº 08 · Prova",
     "title": "Vamos tirar",
     "titleAccent": "as suas medidas",
-    "lede": "Me conte como você trabalha hoje. Eu respondo com o que faria sentido para o seu ambiente.",
-    "primary": "Chamar no WhatsApp",
-    "secondary": "Enviar e-mail"
+    "lede": "Responda a ficha ao lado em um minuto. Ela vira uma mensagem no meu WhatsApp e eu volto com o que faria sentido para o seu ambiente.",
+    "aside": [
+      "Sem compromisso",
+      "Conversa com quem vai fazer",
+      "Proposta montada para o seu caso"
+    ],
+    "form": {
+      "title": "Ficha de medidas",
+      "name": {
+        "label": "Seu nome",
+        "placeholder": "Como posso te chamar?"
+      },
+      "groups": [
+        {
+          "id": "area",
+          "label": "O que você faz?",
+          "multi": false,
+          "options": [
+            "Dou aulas",
+            "Consultoria ou mentoria",
+            "Treino e saúde física",
+            "Trabalho criativo",
+            "Terapia",
+            "Outro"
+          ]
+        },
+        {
+          "id": "size",
+          "label": "Quantas pessoas você atende?",
+          "multi": false,
+          "options": [
+            "Até 10",
+            "De 10 a 30",
+            "De 30 a 60",
+            "Mais de 60"
+          ]
+        },
+        {
+          "id": "pain",
+          "label": "O que mais toma o seu tempo?",
+          "multi": true,
+          "options": [
+            "Responder mensagens",
+            "Organizar material",
+            "Cobrança",
+            "Agenda",
+            "Acompanhar evolução"
+          ]
+        },
+        {
+          "id": "brand",
+          "label": "Você já tem marca?",
+          "multi": false,
+          "options": [
+            "Tenho logo e cores",
+            "Só o logo",
+            "Ainda não"
+          ]
+        }
+      ],
+      "note": {
+        "label": "Quer contar mais alguma coisa?",
+        "placeholder": "Opcional"
+      },
+      "submit": "Enviar pelo WhatsApp",
+      "email": "Prefiro e-mail",
+      "intro": "Oi, Samara! Vim pelo site do Atelierin. Segue a minha ficha:"
+    }
   },
   "footer": {
     "text": "Plataforma para profissionais que atendem pessoas.",
     "place": "Recife, PE",
     "credit": "Desenvolvido por Samara Silvia Sabino",
-    "links": [
+    "image": "/footer-carmesim.webp",
+    "cols": [
       {
-        "label": "Como funciona",
-        "href": "/#como-funciona"
+        "title": "Atelierin",
+        "links": [
+          {
+            "label": "Como funciona",
+            "href": "/#como-funciona"
+          },
+          {
+            "label": "Linhas",
+            "href": "/#linhas"
+          },
+          {
+            "label": "Planos",
+            "href": "/#planos"
+          },
+          {
+            "label": "Dúvidas",
+            "href": "/#duvidas"
+          }
+        ]
       },
       {
-        "label": "Planos",
-        "href": "/#planos"
-      },
-      {
-        "label": "Estudos de caso",
-        "href": "/casos"
-      },
-      {
-        "label": "Proposta comercial",
-        "href": "/proposta"
-      },
-      {
-        "label": "Quem faz",
-        "href": "/quem-faz"
+        "title": "Conheça",
+        "links": [
+          {
+            "label": "Estudos de caso",
+            "href": "/casos"
+          },
+          {
+            "label": "Proposta comercial",
+            "href": "/proposta"
+          },
+          {
+            "label": "Quem faz",
+            "href": "/quem-faz"
+          }
+        ]
       }
-    ]
+    ],
+    "contactTitle": "Fale comigo",
+    "cta": "Chamar no WhatsApp"
   }
 }

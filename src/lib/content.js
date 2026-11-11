@@ -17,7 +17,14 @@ export function whatsappHref() {
   return `https://wa.me/${digits}?text=${encodeURIComponent(whatsappMessage)}`
 }
 
-export function mailHref() {
+export function mailHref(body = '') {
   const { contactEmail } = content.site
-  return contactEmail.includes('@') ? `mailto:${contactEmail}` : '#contato'
+  if (!contactEmail || !contactEmail.includes('@')) return null
+  const q = body ? `?subject=${encodeURIComponent('Atelierin · minha ficha')}&body=${encodeURIComponent(body)}` : ''
+  return `mailto:${contactEmail}${q}`
+}
+
+export function whatsappWith(text) {
+  const digits = String(content.site.whatsapp).replace(/\D/g, '')
+  return `https://wa.me/${digits}?text=${encodeURIComponent(text)}`
 }
