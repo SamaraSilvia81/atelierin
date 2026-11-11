@@ -870,6 +870,7 @@ h1, h2, h3, p { margin: 0; }
 .plan-foot { margin-top: auto; padding-top: 16px; display: grid; gap: 12px; }
 .plan-price { display: grid; gap: 4px; }
 .plan-price strong { font: 400 clamp(34px, 3.4vw, 46px)/1 var(--font-display); letter-spacing: .01em; }
+.plan-price strong em { font-style: normal; font-size: .58em; margin-right: .22em; color: var(--text-sub); }
 .plan-price span { font: 500 12px/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acc); }
 .plan-price small { font-size: 13px; line-height: 1.4; color: var(--text-sub); }
 .modes { margin-top: 56px; display: grid; grid-template-columns: .8fr 1.6fr; gap: 24px 48px; align-items: start; }

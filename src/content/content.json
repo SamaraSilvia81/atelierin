@@ -439,12 +439,13 @@
           "Manutenção, atualizações e suporte contínuos",
           "Funcionalidade específica sob orçamento"
         ],
-        "price": "R$ 3.000",
+        "pricePre": "10x de",
+        "price": "R$ 300",
         "cta": {
           "label": "Conversar sobre o meu",
           "href": "/#contato"
         },
-        "priceSub": "ou 10x de R$ 300",
+        "priceSub": "ou R$ 3.000 à vista",
         "priceExtra": "+ manutenção de 8% do que você recebe dos alunos ativos no mês"
       },
       {

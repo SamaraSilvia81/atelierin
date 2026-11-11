@@ -29,7 +29,7 @@ export default function Plans() {
               <ul>{it.features.map((f) => <li key={f}><Check size={14} weight="bold" aria-hidden="true" />{f}</li>)}</ul>
               <div className="plan-foot">
                 <div className="plan-price">
-                  <strong>{it.price}</strong>
+                  <strong>{it.pricePre && <em>{it.pricePre}</em>}{it.price}</strong>
                   {it.priceSub && <span>{it.priceSub}</span>}
                   {it.priceExtra && <small>{it.priceExtra}</small>}
                 </div>
