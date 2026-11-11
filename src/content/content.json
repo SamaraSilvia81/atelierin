@@ -203,42 +203,127 @@
     }
   },
   "how": {
-    "piece": "Nº 03 · O molde",
+    "label": "Nº 03 · o molde",
     "title": "Como",
     "titleAccent": "funciona",
-    "lede": "Uma base só, em três camadas. Cada profissional recebe o seu ambiente montado a partir dela.",
+    "lede": "Todo ambiente nasce do mesmo molde, em três camadas. O que muda de um profissional para outro é o que entra em cada uma.",
     "layers": [
       {
-        "tag": "Camada 01",
+        "n": "01",
         "name": "Núcleo",
-        "text": "Login, convites, papéis, a sua marca e o seu endereço. Todo ambiente tem.",
+        "kicker": "vem em todo ambiente",
+        "text": "A base que todo ambiente tem: quem entra, como entra e com qual cara.",
         "items": [
-          "Marca e tema próprios",
+          "Sua marca, cores e logo",
           "Endereço seunome.atelierin.com.br",
-          "Alunos e clientes por convite"
+          "Alunos e clientes por convite",
+          "Papéis: você, equipe e quem você atende"
         ]
       },
       {
-        "tag": "Camada 02",
+        "n": "02",
         "name": "Módulos",
-        "text": "Peças que ligam e desligam. Você usa só o que faz sentido para o seu trabalho.",
+        "kicker": "liga e desliga",
+        "text": "As funcionalidades. Cada uma é uma peça que entra ou sai do seu ambiente, sem mexer no resto.",
         "items": [
           "Agenda e encontros",
           "Materiais e anotações",
-          "Financeiro com status por pessoa"
+          "Financeiro com status por pessoa",
+          "Avaliações, trilha, mural…"
         ]
       },
       {
-        "tag": "Camada 03",
+        "n": "03",
         "name": "Linhas",
-        "text": "Combinações prontas para cada tipo de profissional, com o vocabulário certo: aluno ou cliente, aula ou sessão.",
+        "kicker": "o caimento",
+        "text": "Combinações prontas de módulos para cada tipo de profissional, já com o vocabulário certo.",
         "items": [
+          "Aluno ou cliente, aula ou sessão",
           "School, Consult, Fit, Studio, Care",
           "Modelos por especialidade",
           "Ajuste fino na implantação"
         ]
       }
-    ]
+    ],
+    "modules": {
+      "title": "Você escolhe as peças",
+      "text": "Um professor de música pode precisar de cursos e financeiro; uma consultora, de sessões e planos de ação. No Atelierin os módulos ligam e desligam, e o ambiente mostra só o que você usa. Experimente:",
+      "address": "maria.atelierin.com.br",
+      "items": [
+        {
+          "id": "cursos",
+          "label": "Cursos e aulas",
+          "note": "gravadas ou ao vivo",
+          "on": true
+        },
+        {
+          "id": "agenda",
+          "label": "Agenda",
+          "note": "encontros e remarcações",
+          "on": true
+        },
+        {
+          "id": "materiais",
+          "label": "Materiais",
+          "note": "arquivos por turma ou pessoa",
+          "on": true
+        },
+        {
+          "id": "financeiro",
+          "label": "Financeiro",
+          "note": "em dia, pendente, atrasado",
+          "on": true
+        },
+        {
+          "id": "avaliacoes",
+          "label": "Avaliações",
+          "note": "correções e devolutivas",
+          "on": false
+        },
+        {
+          "id": "mural",
+          "label": "Mural",
+          "note": "avisos para todo mundo",
+          "on": false
+        }
+      ],
+      "activeLabel": "módulos ativos"
+    },
+    "steps": {
+      "title": "Do primeiro papo ao ambiente no ar",
+      "items": [
+        {
+          "n": "01",
+          "title": "Conversa",
+          "text": "Você me conta como trabalha hoje: quem atende, o que ensina, como cobra."
+        },
+        {
+          "n": "02",
+          "title": "Molde",
+          "text": "Escolhemos a linha e os módulos que fazem sentido. Nada de peça sobrando."
+        },
+        {
+          "n": "03",
+          "title": "Prova",
+          "text": "Aplico a sua marca e o seu vocabulário. Você vê o ambiente antes de abrir."
+        },
+        {
+          "n": "04",
+          "title": "Ajuste",
+          "text": "Mexemos no que não caiu bem até ficar do seu jeito."
+        },
+        {
+          "n": "05",
+          "title": "No ar",
+          "text": "Seu endereço funcionando e as pessoas convidadas. Depois disso, a manutenção é comigo."
+        }
+      ]
+    },
+    "bridge": {
+      "text": "Tudo começa pela linha certa para o seu trabalho.",
+      "link": "Ver as linhas",
+      "href": "#linhas"
+    }
   },
   "lines": {
     "piece": "Nº 04 · Lookbook",
