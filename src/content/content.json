@@ -17,28 +17,32 @@
   "nav": [
     {
       "label": "Como funciona",
-      "href": "#como-funciona"
+      "href": "/#como-funciona"
     },
     {
       "label": "Linhas",
-      "href": "#linhas"
-    },
-    {
-      "label": "Sob medida",
-      "href": "#sob-medida"
+      "href": "/#linhas"
     },
     {
       "label": "Planos",
-      "href": "#planos"
+      "href": "/#planos"
     },
     {
-      "label": "Dúvidas",
-      "href": "#duvidas"
+      "label": "Casos",
+      "href": "/casos"
+    },
+    {
+      "label": "Proposta",
+      "href": "/proposta"
+    },
+    {
+      "label": "Quem faz",
+      "href": "/quem-faz"
     }
   ],
   "navCta": {
     "label": "Quero meu ambiente",
-    "href": "#contato"
+    "href": "/#contato"
   },
   "hero": {
     "badge": "Plataforma para quem atende pessoas",
@@ -418,40 +422,78 @@
     "piece": "Nº 06 · Etiquetas",
     "title": "Planos",
     "titleAccent": "",
-    "lede": "Os valores dependem do tamanho do seu trabalho e do que precisa entrar no ambiente. A conversa é sem compromisso.",
+    "lede": "Hoje a linha disponível é a School, para professores e escolas pequenas. As outras linhas entram conforme a demanda; dá para entrar na lista e conversar antes.",
     "items": [
       {
+        "line": "School",
         "name": "Personalizado",
-        "status": "Disponível",
-        "highlight": true,
-        "text": "O ambiente com a sua identidade completa, montado por mim.",
+        "status": "Disponível agora",
+        "tone": "on",
+        "for": "Professores particulares e escolas pequenas",
+        "text": "O ambiente School com a sua identidade completa, montado e mantido por mim.",
         "features": [
-          "Implantação com a sua marca",
-          "Módulos e vocabulário ajustados",
-          "Manutenção e suporte contínuos",
+          "Implantação com estudo da infraestrutura de melhor custo-benefício para o seu tamanho",
+          "Sua marca, cores, logo e vocabulário em tudo",
+          "Módulos ligados conforme o seu jeito de dar aula",
+          "Manutenção, atualizações e suporte contínuos",
           "Funcionalidade específica sob orçamento"
         ],
+        "price": "Implantação + manutenção mensal",
         "cta": {
-          "label": "Conversar",
-          "href": "#contato"
+          "label": "Conversar sobre o meu",
+          "href": "/#contato"
         }
       },
       {
+        "line": "School",
         "name": "Padrão",
         "status": "Em breve",
-        "highlight": false,
-        "text": "A linha como ela é, com o seu nome e logo, para começar rápido.",
+        "tone": "soon",
+        "for": "Quem quer começar rápido",
+        "text": "A School como ela é, com o seu nome e logo. Você mesmo configura, em poucos passos.",
         "features": [
           "Cadastro e configuração guiada",
-          "Módulos padrão da linha",
-          "Tema Atelierin com a sua logo"
+          "Módulos padrão da linha School",
+          "Tema Atelierin com a sua logo",
+          "Suporte por mensagem"
         ],
+        "price": "Assinatura mensal",
         "cta": {
           "label": "Avise quando abrir",
-          "href": "#contato"
+          "href": "/#contato"
+        }
+      },
+      {
+        "line": "Consult · Fit · Studio · Care",
+        "name": "Outras linhas",
+        "status": "Lista de espera",
+        "tone": "wait",
+        "for": "Consultores, personal trainers, criativos e terapeutas",
+        "text": "Se a sua área ainda não tem linha, a gente conversa. Você pode ser quem abre a linha, com o ambiente desenhado junto comigo.",
+        "features": [
+          "Conversa para entender o seu fluxo",
+          "Módulos e vocabulário da sua área",
+          "Condição especial para quem abre a linha"
+        ],
+        "price": "Sob proposta",
+        "cta": {
+          "label": "Entrar na lista",
+          "href": "/#contato"
         }
       }
-    ]
+    ],
+    "includesTitle": "Em qualquer plano",
+    "includes": [
+      "Sem comissão sobre o que você recebe",
+      "O pagamento vai direto para você",
+      "Seus dados exportáveis em .md, Word e .txt",
+      "Seu endereço seunome.atelierin.com.br"
+    ],
+    "proposal": {
+      "text": "Quer ver como uma proposta é montada, item por item?",
+      "link": "Ver a proposta comercial",
+      "href": "/proposta"
+    }
   },
   "finalCta": {
     "piece": "Nº 08 · Prova",
@@ -464,6 +506,28 @@
   "footer": {
     "text": "Plataforma para profissionais que atendem pessoas.",
     "place": "Recife, PE",
-    "credit": "Desenvolvido por Samara Silvia Sabino"
+    "credit": "Desenvolvido por Samara Silvia Sabino",
+    "links": [
+      {
+        "label": "Como funciona",
+        "href": "/#como-funciona"
+      },
+      {
+        "label": "Planos",
+        "href": "/#planos"
+      },
+      {
+        "label": "Estudos de caso",
+        "href": "/casos"
+      },
+      {
+        "label": "Proposta comercial",
+        "href": "/proposta"
+      },
+      {
+        "label": "Quem faz",
+        "href": "/quem-faz"
+      }
+    ]
   }
 }
