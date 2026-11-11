@@ -435,7 +435,19 @@ h1, h2, h3, p { margin: 0; }
 .mods-log b { color: var(--palette-crimson); font-weight: 400; }
 
 /* passo a passo: pipeline presa na tela (mesmo esquema da Check.AI) */
-.steps-sec { padding-top: clamp(100px, 12vw, 160px); }
+.steps-sec {
+  /* passagem suave do escuro (Como funciona) para o claro: degradê longo com
+     paradas intermediárias, para não formar uma faixa nem uma linha reta */
+  padding-top: clamp(260px, 26vw, 380px);
+  background:
+    linear-gradient(180deg,
+      #100D0D 0,
+      color-mix(in srgb, #100D0D 82%, var(--palette-areia)) 70px,
+      color-mix(in srgb, #100D0D 55%, var(--palette-areia)) 140px,
+      color-mix(in srgb, #100D0D 28%, var(--palette-areia)) 210px,
+      color-mix(in srgb, #100D0D 10%, var(--palette-areia)) 270px,
+      var(--palette-areia) 330px);
+}
 .steps-sec .label { color: var(--text-muted); }
 .steps-sec .label b { color: var(--acc); }
 .pipeline { }
