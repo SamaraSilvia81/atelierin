@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowRight } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { useHeroLayout } from '@/lib/useHeroLayout'
+import { play } from '@/lib/sounds'
 
 // Hero "mesa de trabalho": a foto ocupa a tela inteira e o texto vive DENTRO
 // do monitor. O palco (.stage) mantém a proporção da foto e cobre a tela como
@@ -30,6 +31,7 @@ export default function Hero() {
   const onSubmit = (e) => {
     e.preventDefault()
     if (editing) return
+    play('click')
     const digits = String(content.site.whatsapp).replace(/\D/g, '')
     if (!digits) { document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }); return }
     const text = h.ctaMessage.replace('{endereco}', address)
@@ -63,11 +65,11 @@ export default function Hero() {
             <form className="address" onSubmit={onSubmit}>
               <label htmlFor="hero-name" className="sr-only">{h.addressLabel}</label>
               <span className="address-field">
-                <b className="address-prompt" aria-hidden="true">~/</b>
+                <b className="address-prompt" aria-hidden="true">{h.addressPrompt}</b>
                 <input
                   id="hero-name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => { play('key'); setName(e.target.value) }}
                   maxLength={30}
                   placeholder={h.addressPlaceholder}
                   autoComplete="off"
