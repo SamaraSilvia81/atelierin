@@ -1,0 +1,89 @@
+[
+  {
+    "file": "banner-topo",
+    "code": "LANDING",
+    "t1": "Landing",
+    "t2": "Atelierin",
+    "sub": "O site que apresenta o Atelierin e vende o primeiro ambiente"
+  },
+  {
+    "file": "docs/lp-indice",
+    "code": "LP-DOCS",
+    "t1": "Documentação",
+    "t2": "da landing",
+    "sub": "Arquitetura, visual, operação e decisões do site"
+  },
+  {
+    "file": "docs/lp-arq-001",
+    "code": "LP-ARQ-001",
+    "t1": "Arquitetura",
+    "t2": "da landing",
+    "sub": "Camadas, rotas, conteúdo em JSON e como a página monta"
+  },
+  {
+    "file": "docs/lp-arq-002",
+    "code": "LP-ARQ-002",
+    "t1": "Mapa de",
+    "t2": "seções e páginas",
+    "sub": "O que cada seção faz, de onde vem o texto e qual componente desenha"
+  },
+  {
+    "file": "docs/lp-dsg-001",
+    "code": "LP-DSG-001",
+    "t1": "Sistema",
+    "t2": "visual",
+    "sub": "Tokens, tipografia, temas por seção, escala e animações"
+  },
+  {
+    "file": "docs/lp-opr-001",
+    "code": "LP-OPR-001",
+    "t1": "Operação",
+    "t2": "e conteúdo",
+    "sub": "Rodar, editar textos, ajustar o hero, publicar"
+  },
+  {
+    "file": "docs/lp-adr-001",
+    "code": "LP-ADR-001",
+    "t1": "Conteúdo",
+    "t2": "em JSON",
+    "sub": "Texto fora dos componentes"
+  },
+  {
+    "file": "docs/lp-adr-002",
+    "code": "LP-ADR-002",
+    "t1": "Roteador",
+    "t2": "próprio",
+    "sub": "Quatro páginas sem dependência de rotas"
+  },
+  {
+    "file": "docs/lp-adr-003",
+    "code": "LP-ADR-003",
+    "t1": "Escala de 80%",
+    "t2": "no desktop",
+    "sub": "zoom no html e cálculos divididos por --z"
+  },
+  {
+    "file": "docs/lp-adr-004",
+    "code": "LP-ADR-004",
+    "t1": "Troca de tema",
+    "t2": "em cartão",
+    "sub": "A seção sai de cena como um cartão, até Planos"
+  },
+  {
+    "file": "docs/lp-adr-005",
+    "code": "LP-ADR-005",
+    "t1": "Preço",
+    "t2": "na página",
+    "sub": "10x de R$ 300, manutenção de 8% e o que ainda está em aberto"
+  },
+  {
+    "file": "banner-rodape",
+    "footer": true,
+    "text": "Landing do Atelierin · plataforma para profissionais que atendem pessoas · Recife, PE"
+  },
+  {
+    "file": "docs/rodape",
+    "footer": true,
+    "text": "Plataforma para profissionais que atendem pessoas · Recife, PE"
+  }
+]
