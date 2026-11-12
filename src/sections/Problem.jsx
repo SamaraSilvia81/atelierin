@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   ChatCircle, FolderSimple, CalendarBlank, Receipt, Circle, Users, FileText, Monitor, Copy, PencilSimple,
-  Trash, CaretRight, GitBranch, Plus,
+  Trash, CaretRight, GitBranch, Plus, ArrowLeft,
 } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { useScrollProgress } from '@/lib/useScrollProgress'
@@ -10,7 +10,7 @@ import Stitch from '@/components/Stitch'
 
 // Ícones disponíveis para problem.chips em content.json
 const ICONS = { ChatCircle, FolderSimple, CalendarBlank, Receipt }
-const STATUS = { atencao: 'atenção', parado: 'parado', ativo: 'ativo' }
+const STATUS = { atencao: 'atenção', parado: 'parado', ativo: 'em dia' }
 
 // Quebra o texto em palavras; trechos entre [colchetes] viram chips com ícone.
 function tokenize(text) {
@@ -27,9 +27,12 @@ function tokenize(text) {
 }
 
 // Card no mesmo desenho dos cards de grupo do Atelier.sh
-function ScrapCard({ s, i }) {
+function ScrapCard({ s, i, onOpen }) {
+  const open = (e) => { play('click'); onOpen(s, e.currentTarget) }
   return (
-    <li className={`gcard is-${s.status}`} style={{ animationDelay: `${i * 50}ms` }} onPointerEnter={() => play('tick')}>
+    <li className={`gcard is-${s.status} is-clickable`} style={{ animationDelay: `${i * 50}ms` }} onPointerEnter={() => play('tick')}
+      role="button" tabIndex={0} aria-label={`Abrir ${s.title}`} onClick={open}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open() } }}>
       <span className="gcard-bar" aria-hidden="true" />
       <div className="gcard-head">
         <div className="gcard-id">
@@ -60,6 +63,48 @@ function ScrapCard({ s, i }) {
   )
 }
 
+// Módulo aberto: substitui os cards no mesmo lugar, entrando com um recorte
+// circular que nasce do ponto clicado (como as telas de "A marca é sua").
+// Voltar faz o caminho inverso. Abas embaixo trocam de módulo sem voltar.
+function ModuleView({ s, all, host, origin, closing, onBack, onPick }) {
+  return (
+    <div className={`gview is-${s.status} ${closing ? 'is-closing' : ''}`} style={{ '--cx': origin.x, '--cy': origin.y }}>
+      <span className="gcard-bar" aria-hidden="true" />
+      <div className="gview-top">
+        <button className="gview-back" onClick={onBack} onPointerEnter={() => play('tick')}><ArrowLeft size={14} weight="bold" aria-hidden="true" /> todos os módulos</button>
+        <code>{host}/{s.path}</code>
+      </div>
+      <div className="gview-body" key={s.path}>
+        <div className="gview-head">
+          <div>
+            <h3>{s.title}</h3>
+            <p className="gcard-desc">{s.desc}</p>
+          </div>
+          <span className="gcard-status"><i />{STATUS[s.status]}</span>
+        </div>
+        <p className="gview-sub"><b>›_</b> {s.detail.title}</p>
+        <table className="gview-table">
+          <thead><tr>{s.detail.cols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
+          <tbody>{s.detail.rows.map((r, k) => (
+            <tr key={r.join()} style={{ animationDelay: `${200 + k * 70}ms` }}>
+              {r.map((v, j) => <td key={j} className={j === r.length - 1 ? 'st' : undefined}>{v}</td>)}
+            </tr>
+          ))}</tbody>
+        </table>
+        <p className="gview-note">{s.detail.note}</p>
+      </div>
+      <div className="gview-tabs" role="tablist" aria-label="Módulos">
+        {all.map((m) => (
+          <button key={m.path} role="tab" aria-selected={m.path === s.path} className={m.path === s.path ? 'on' : ''}
+            onClick={() => onPick(m)} onPointerEnter={() => play('tick')}>
+            <i className={`dot-${m.status === 'ativo' ? 'green' : 'amber'}`} />{m.title}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Problem() {
   const p = content.problem
   const tokens = tokenize(p.statement)
@@ -68,6 +113,25 @@ export default function Problem() {
   const [filter, setFilter] = useState('todos')
   const shown = p.scraps.filter((s) => filter === 'todos' || s.status === filter)
   const count = (id) => p.scraps.filter((s) => s.status === id).length
+  const [open, setOpen] = useState(null)
+  const [closing, setClosing] = useState(false)
+  const [origin, setOrigin] = useState({ x: '50%', y: '50%' })
+  const stage = useRef(null)
+  const openAt = (s, el) => {
+    const st = stage.current?.getBoundingClientRect(); const r = el?.getBoundingClientRect()
+    if (st && r) setOrigin({ x: `${((r.left + r.width / 2 - st.left) / st.width) * 100}%`, y: `${((r.top + r.height / 2 - st.top) / st.height) * 100}%` })
+    setClosing(false); setOpen(s)
+  }
+  const back = () => {
+    play('click'); setClosing(true)
+    setTimeout(() => { setOpen(null); setClosing(false) }, 650)
+  }
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => { if (e.key === 'Escape') back() }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
   return (
     <section id="problema" data-theme="dark" className="section problem" aria-labelledby="problema-t">
@@ -91,6 +155,7 @@ export default function Problem() {
 
         {/* barra de filtros igual à do Atelier.sh */}
         <div className="pfilters" data-reveal>
+          <p className="pfilters-intro">{p.cardsIntro}</p>
           <div className="pfilters-row">
             <div role="group" aria-label="Filtrar retalhos">
               {p.filters.map((f) => (
@@ -104,13 +169,14 @@ export default function Problem() {
           </div>
           <div className="pfilters-stats" aria-hidden="true">
             <span><i className="dot-red" />total <b>{p.scraps.length}</b></span>
+            <span><i className="dot-green" />em dia <b>{count('ativo')}</b></span>
             <span><i className="dot-amber" />atenção <b>{count('atencao')}</b></span>
-            <span><i className="dot-dim" />parados <b>{count('parado')}</b></span>
+            <code className="pfilters-host">{p.host}</code>
           </div>
         </div>
 
-        <div data-reveal><ul className="gcards" aria-live="polite">
-          {shown.map((s, i) => <ScrapCard key={s.path} s={s} i={i} />)}
+        <div data-reveal className={`gstage ${open ? 'is-open' : ''} ${closing ? 'is-closing' : ''}`} ref={stage}><ul className="gcards" aria-live="polite" inert={open && !closing ? '' : undefined}>
+          {shown.map((s, i) => <ScrapCard key={s.path} s={s} i={i} onOpen={openAt} />)}
           <li className="gcard-add">
             <a href={p.addCard.href} onClick={() => play('click')} onPointerEnter={() => play('tick')}>
               <Plus size={18} aria-hidden="true" />
@@ -118,7 +184,9 @@ export default function Problem() {
               <span>{p.addCard.note}</span>
             </a>
           </li>
-        </ul></div>
+        </ul>
+        {open && <ModuleView s={open} all={p.scraps} host={p.host} origin={origin} closing={closing} onBack={back} onPick={(m) => { play('click'); setOpen(m) }} />}
+        </div>
 
         <div className="problem-end">
           <span className="problem-blob" aria-hidden="true" />

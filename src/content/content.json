@@ -95,90 +95,263 @@
     "aside": "Profissional que atende pessoas passa boa parte do dia juntando informação que está em cinco lugares diferentes.",
     "scraps": [
       {
-        "path": "~/whatsapp",
-        "title": "WhatsApp",
-        "status": "atencao",
-        "count": "38",
-        "desc": "Suporte a qualquer hora",
-        "log": "38 mensagens não lidas",
-        "logMeta": "última às 23:47",
-        "group": "espalhado em",
+        "path": "atendimento",
+        "title": "Atendimento",
+        "status": "ativo",
+        "count": "21",
+        "desc": "Era o WhatsApp",
+        "log": "3 dúvidas abertas",
+        "logMeta": "última respondida há 5 min",
+        "group": "canais",
         "items": [
-          "grupos",
-          "áudios",
-          "prints",
-          "fixadas"
+          "avisos",
+          "dúvidas",
+          "turma A",
+          "turma B"
         ],
-        "source": "whatsapp",
-        "foot": "sem integração"
+        "source": "atendimento",
+        "foot": "ver conversas",
+        "detail": {
+          "title": "Conversas",
+          "cols": [
+            "Aluno",
+            "Assunto",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Ana Lima",
+              "Posso trocar a aula de sexta?",
+              "respondida"
+            ],
+            [
+              "Rafael Souza",
+              "Dúvida no exercício 4",
+              "aberta"
+            ],
+            [
+              "Júlia Mendes",
+              "Enviei o vídeo da prática",
+              "aberta"
+            ],
+            [
+              "Turma A",
+              "Aviso: recital dia 30",
+              "enviado"
+            ],
+            [
+              "Pedro Alves",
+              "Esqueci a senha",
+              "respondida"
+            ]
+          ],
+          "note": "Tudo fica registrado por aluno, não some no meio dos grupos."
+        }
       },
       {
-        "path": "~/drive",
-        "title": "Drive",
-        "status": "atencao",
-        "count": "214",
-        "desc": "Material espalhado",
-        "log": "aula-03-final-v2-AGORA.pdf",
-        "logMeta": "3 versões do mesmo arquivo",
+        "path": "materiais",
+        "title": "Materiais",
+        "status": "ativo",
+        "count": "48",
+        "desc": "Era o Drive",
+        "log": "Aula 03 · escalas maiores.pdf",
+        "logMeta": "publicada para a Turma A",
         "group": "pastas",
         "items": [
           "aulas",
           "exercícios",
-          "novo",
-          "novo (1)"
+          "partituras"
         ],
-        "source": "drive",
-        "foot": "sem integração"
+        "source": "materiais",
+        "foot": "ver materiais",
+        "detail": {
+          "title": "Materiais publicados",
+          "cols": [
+            "Arquivo",
+            "Para quem",
+            "Versão"
+          ],
+          "rows": [
+            [
+              "Aula 01 · postura e mãos.pdf",
+              "Todos",
+              "v1"
+            ],
+            [
+              "Aula 02 · leitura de cifra.pdf",
+              "Turma A",
+              "v2"
+            ],
+            [
+              "Aula 03 · escalas maiores.pdf",
+              "Turma A",
+              "v1"
+            ],
+            [
+              "Exercício 04 · arpejos.pdf",
+              "Turma B",
+              "v1"
+            ],
+            [
+              "Partitura · Asa Branca.pdf",
+              "Todos",
+              "v1"
+            ]
+          ],
+          "note": "Uma versão por arquivo. O aluno só vê o que é da turma dele."
+        }
       },
       {
-        "path": "~/planilha",
-        "title": "Planilha",
-        "status": "parado",
-        "count": "12",
-        "desc": "Quem pagou?",
-        "log": "12 linhas sem status",
-        "logMeta": "editada há 3 semanas",
-        "group": "colunas",
-        "items": [
-          "nome",
-          "valor",
-          "pagou?"
-        ],
-        "source": "planilha",
-        "foot": "desatualizada"
-      },
-      {
-        "path": "~/pix",
-        "title": "Extrato do Pix",
+        "path": "cobranca",
+        "title": "Cobrança",
         "status": "atencao",
-        "count": "9",
-        "desc": "Conferência na mão",
-        "log": "R$ 150,00 · sem nome",
-        "logMeta": "de quem é esse?",
-        "group": "conferir",
+        "count": "21",
+        "desc": "Era a planilha e o Pix",
+        "log": "18 de 21 mensalidades pagas",
+        "logMeta": "3 vencem na sexta",
+        "group": "novembro",
         "items": [
-          "agosto",
-          "setembro",
-          "outubro"
+          "18 pagas",
+          "3 pendentes"
         ],
-        "source": "banco",
-        "foot": "conferência manual"
+        "source": "cobrança",
+        "foot": "ver cobranças",
+        "detail": {
+          "title": "Mensalidades de novembro",
+          "cols": [
+            "Aluno",
+            "Valor",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Ana Lima",
+              "R$ 150,00",
+              "paga · 05/11"
+            ],
+            [
+              "Rafael Souza",
+              "R$ 150,00",
+              "paga · 07/11"
+            ],
+            [
+              "Júlia Mendes",
+              "R$ 180,00",
+              "vence 15/11"
+            ],
+            [
+              "Pedro Alves",
+              "R$ 150,00",
+              "vence 15/11"
+            ],
+            [
+              "Carla Dias",
+              "R$ 150,00",
+              "vence 15/11"
+            ]
+          ],
+          "note": "A Ana pagou dia 05 e você marcou em um clique. Quem ainda falta aparece aqui, sem abrir planilha nem extrato."
+        }
       },
       {
-        "path": "~/agenda",
+        "path": "agenda",
         "title": "Agenda",
-        "status": "parado",
-        "count": "0",
-        "desc": "De cabeça",
-        "log": "reagendar? qual dia mesmo?",
-        "logMeta": "nenhum registro",
-        "group": "onde está",
+        "status": "ativo",
+        "count": "4",
+        "desc": "Era de cabeça",
+        "log": "Próxima: Ana Lima, 14h",
+        "logMeta": "4 aulas hoje",
+        "group": "esta semana",
         "items": [
-          "na cabeça",
-          "no WhatsApp"
+          "seg 6",
+          "qua 5",
+          "sex 7"
         ],
-        "source": "memória",
-        "foot": "sem registro"
+        "source": "agenda",
+        "foot": "ver agenda",
+        "detail": {
+          "title": "Aulas de hoje",
+          "cols": [
+            "Horário",
+            "Aluno",
+            "Tipo"
+          ],
+          "rows": [
+            [
+              "09:00",
+              "Carla Dias",
+              "individual"
+            ],
+            [
+              "14:00",
+              "Ana Lima",
+              "individual"
+            ],
+            [
+              "16:00",
+              "Turma A",
+              "grupo · 6 alunos"
+            ],
+            [
+              "18:30",
+              "Rafael Souza",
+              "reposição"
+            ]
+          ],
+          "note": "O aluno remarca pelo ambiente, dentro dos horários que você liberou."
+        }
+      },
+      {
+        "path": "evolucao",
+        "title": "Evolução",
+        "status": "ativo",
+        "count": "21",
+        "desc": "Era o caderninho",
+        "log": "Rafael concluiu o módulo 2",
+        "logMeta": "há 2 horas",
+        "group": "módulos",
+        "items": [
+          "iniciante",
+          "intermediário"
+        ],
+        "source": "evolução",
+        "foot": "ver alunos",
+        "detail": {
+          "title": "Andamento dos alunos",
+          "cols": [
+            "Aluno",
+            "Módulo",
+            "Progresso"
+          ],
+          "rows": [
+            [
+              "Ana Lima",
+              "Módulo 3",
+              "80%"
+            ],
+            [
+              "Rafael Souza",
+              "Módulo 2",
+              "100%"
+            ],
+            [
+              "Júlia Mendes",
+              "Módulo 1",
+              "45%"
+            ],
+            [
+              "Pedro Alves",
+              "Módulo 2",
+              "60%"
+            ],
+            [
+              "Carla Dias",
+              "Módulo 1",
+              "20%"
+            ]
+          ],
+          "note": "Cada aluno vê o próprio caminho. Você vê a turma inteira."
+        }
       }
     ],
     "closing": "O Atelierin junta os retalhos numa peça só, com o seu nome na etiqueta.",
@@ -192,20 +365,22 @@
         "label": "Todos"
       },
       {
-        "id": "atencao",
-        "label": "Atenção"
+        "id": "ativo",
+        "label": "Em dia"
       },
       {
-        "id": "parado",
-        "label": "Parados"
+        "id": "atencao",
+        "label": "Atenção"
       }
     ],
-    "countLabel": "retalhos",
+    "countLabel": "módulos",
     "addCard": {
       "label": "Costurar tudo",
       "note": "num ambiente só, com a sua marca",
       "href": "#como-funciona"
-    }
+    },
+    "host": "maria.atelierin.com.br",
+    "cardsIntro": "No ambiente da Maria, professora de teclado, cada retalho vira um módulo. Clique num card para ver por dentro."
   },
   "how": {
     "label": "Nº 03 · o molde",

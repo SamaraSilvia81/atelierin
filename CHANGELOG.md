@@ -16,6 +16,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- Seção 2 (retalhos): os cards viraram módulos prontos do ambiente de exemplo (Atendimento, Materiais, Cobrança, Agenda, Evolução), cada um dizendo de qual retalho veio; status "em dia" e "atenção"
+- Clique num card abre o módulo no lugar dos cards, com recorte circular a partir do card clicado, tabela completa e abas para trocar de módulo; "todos os módulos" ou Esc volta
 - Rodapé: "Todos os direitos reservados" e "Desenvolvido com 🤍 por Samara Silvia Sabino"
 - "Tudo começa pela linha certa" centralizado entre o passo a passo e as linhas, com fita métrica, rótulo e destaque em "linha certa"
 - Linha de alinhavo: a segunda laçada ficou mais aberta e a curva final mais longa
