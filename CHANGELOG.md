@@ -24,6 +24,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- Proposta, ajustes finais: zoom 10% menor só na proposta; cards do 07 mais largos; exemplo da Ana Ribeiro sem menu (página única), com "Ver valores" e o depoimento em duas linhas centralizadas; textos maiores no 10 (prazos, reuniões e contrato); no 12, o número em cima do título, o texto à esquerda e a conversa maior, centralizada sobre a faixa vermelha, com a área escura à direita
 - Proposta: 02 escuro, 03 claro, 04 escuro; slide 08 com tabela maior e mais distante do exemplo; "Começa com uma conversa" com o número em cima e a conversa maior ao lado
 - Proposta: fundos dos slides definidos um a um (claro/escuro); exemplo da página simples centralizado atravessando a divisa entre o slide 07 e o 08, como banner real (foto de fundo em `public/proposta/exemplo-fundo.jpg` e, se existir, o mockup em `public/proposta/exemplo-tablet.png`)
 - Proposta: diagrama maior, com as etapas embaixo; ficha da implantação em camadas, sem card; identidade com Monograma R$ 450 e Identidade básica R$ 1.200 (com dois mockups), INPI como aviso embaixo; infraestrutura e vídeo em tabela; "de sua escolha" nas integrações
@@ -45,6 +46,9 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ### Removido
 - Opção "só a implantação" e a palavra "assinatura"
 - Bloco "Com ou sem manutenção"
+
+### Corrigido
+- Slide 12 da proposta ficava mais estreito que a tela por causa de uma regra antiga com o nome `.slide-cta`
 
 ## [0.1.0] · 11/11/2026
 
