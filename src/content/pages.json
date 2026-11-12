@@ -117,8 +117,8 @@
     "slides": [
       {
         "kicker": "o que você recebe",
-        "title": "Feito sob medida pra você. Mantido por mim.",
-        "text": "Você recebe um ambiente com a sua marca, o seu endereço e só os módulos que fazem sentido para o seu trabalho. O que é seu continua seu; o sistema por trás é meu, e por isso você não precisa se preocupar com nada técnico.",
+        "title": "Com a sua marca. Mantido por mim.",
+        "text": "Você recebe um ambiente com a sua marca, o seu endereço e só os módulos que fazem sentido para o seu trabalho. O sistema é o mesmo para todos e já está pronto; o que muda é a identidade e o que fica ligado. O que é seu continua seu, e a parte técnica fica comigo.",
         "points": [
           "Você usa o ambiente por licença, enquanto o contrato estiver ativo",
           "Seus alunos entram por convite e veem você"
@@ -151,12 +151,12 @@
       {
         "kicker": "implantação",
         "title": "O que entra na implantação",
-        "text": "A implantação é o trabalho de montar o seu ambiente do zero até ele estar no ar, com tudo testado.",
+        "text": "O sistema já existe. A implantação é o trabalho de montar o seu ambiente, aplicar a sua marca, cadastrar o que você já tem e te ensinar a usar, até tudo estar no ar e testado.",
         "points": [
           "Uma prévia com a sua marca já na primeira conversa",
-          "Estudo e análise da infraestrutura de melhor custo-benefício para o seu tamanho",
+          "Estudo da infraestrutura de melhor custo-benefício para o seu tamanho",
           "Aplicação da sua identidade: cores, fontes, logo e tela de entrada",
-          "Configuração da linha, dos módulos e do vocabulário",
+          "Escolha dos módulos que ficam ligados e do vocabulário da sua área",
           "Cadastro inicial de alunos ou clientes e do conteúdo que você já tem",
           "Rodadas de ajuste até você aprovar",
           "Uma conversa para te mostrar como usar"
@@ -221,13 +221,13 @@
       {
         "kicker": "manutenção",
         "title": "Depois que está no ar",
-        "text": "O ambiente não fica abandonado. A manutenção mensal cobre o que mantém tudo funcionando e o trabalho de operação do dia a dia.",
+        "text": "Todo mês entra a licença e manutenção: um valor fixo, pela faixa de alunos, com a infraestrutura incluída. Você sabe quanto vai pagar e não precisa se preocupar com nada técnico.",
         "points": [
-          "Atualizações e correções",
-          "Cópias de segurança",
-          "Monitoramento do ambiente",
-          "Suporte por mensagem",
-          "Pequenos ajustes de texto e configuração"
+          "Licença de uso do sistema",
+          "Hospedagem, banco de dados e domínio",
+          "Cópias de segurança e atualizações de segurança",
+          "Correções e monitoramento do ambiente",
+          "Suporte por mensagem e pequenos ajustes de texto e configuração"
         ],
         "accent": "no ar",
         "deco": "mark",
@@ -249,7 +249,7 @@
       {
         "kicker": "investimento",
         "title": "Dois degraus, o mesmo ambiente",
-        "text": "Quem está começando entra pelo Padrão; quem já tem turma formada vai direto para o Personalizado. A implantação é paga uma vez. Todo mês entram a manutenção, que acompanha o que você recebe dos alunos, e uma taxa fixa de infraestrutura.",
+        "text": "O sistema é o mesmo nos dois. A diferença está no quanto eu adapto para você, não no tamanho da sua turma. A implantação é paga uma vez; todo mês entra a licença e manutenção, pela faixa de alunos.",
         "points": [
           "Do Padrão para o Personalizado: você paga só a diferença",
           "Funcionalidade nova: orçamento à parte, combinado antes"
@@ -266,8 +266,8 @@
           "rows": [
             [
               "Para quem",
-              "está começando",
-              "já tem turma formada"
+              "quer o ambiente como ele é, com a sua marca",
+              "quer o ambiente ajustado ao seu jeito de trabalhar"
             ],
             [
               "Implantação",
@@ -275,14 +275,9 @@
               "R$ 3.000 ou 10x de R$ 300"
             ],
             [
-              "Manutenção",
-              "5% do que você recebe, mínimo R$ 110",
-              "8% do que você recebe, mínimo R$ 180"
-            ],
-            [
-              "Infraestrutura",
-              "R$ 45 por mês",
-              "R$ 65 por mês"
+              "Por mês",
+              "pela faixa de alunos, infraestrutura incluída",
+              "pela faixa de alunos, infraestrutura incluída"
             ],
             [
               "Vídeo",
@@ -376,9 +371,9 @@
         "theme": "light"
       },
       {
-        "kicker": "infraestrutura e vídeo",
-        "title": "Um valor fixo para o que mantém tudo no ar",
-        "text": "Banco de dados, armazenamento e serviços que o ambiente usa ficam comigo. Você paga uma taxa fixa por mês, revista uma vez por ano.",
+        "kicker": "licença e manutenção",
+        "title": "Um valor fixo por mês, pelo tamanho da turma",
+        "text": "Licença, hospedagem, banco de dados, backup, atualizações e suporte num valor só. Ele muda só se a sua turma mudar de faixa, e é revisto uma vez por ano.",
         "points": [],
         "accent": "valor fixo",
         "deco": "mark",
@@ -386,29 +381,94 @@
         "table": {
           "cols": [
             "",
-            "Padrão",
-            "Personalizado"
+            "Por mês"
           ],
           "rows": [
             [
-              "Infraestrutura",
-              "R$ 45 por mês",
-              "R$ 65 por mês"
+              "Até 15 alunos",
+              "R$ 190"
+            ],
+            [
+              "De 16 a 30 alunos",
+              "R$ 290"
+            ],
+            [
+              "De 31 a 50 alunos",
+              "R$ 390"
+            ],
+            [
+              "Mais de 50 alunos",
+              "sob consulta"
             ],
             [
               "Vídeo pelo YouTube ou Drive",
-              "sem custo",
               "sem custo"
             ],
             [
               "Vídeo próprio (Bunny)",
-              "não disponível",
               "à parte, a partir de ~R$ 49 por mês"
+            ]
+          ],
+          "highlight": 1
+        },
+        "theme": "dark"
+      },
+      {
+        "kicker": "comparando",
+        "title": "Entre o pronto e o feito só para você",
+        "accent": "feito só para você",
+        "layout": "table",
+        "deco": "stitch",
+        "theme": "light",
+        "text": "Existem três caminhos para organizar alunos, cobrança e agenda. O Atelierin fica no meio: o sistema já existe, então você não paga para construir, e mesmo assim ele tem a sua cara e alguém de verdade cuidando.",
+        "table": {
+          "cols": [
+            "",
+            "Plataforma pronta",
+            "Atelierin",
+            "Sistema só seu"
+          ],
+          "rows": [
+            [
+              "Para começar",
+              "sem entrada",
+              "R$ 900 a R$ 3.000",
+              "a partir de R$ 15.000"
+            ],
+            [
+              "Por mês",
+              "~R$ 60 a R$ 200",
+              "R$ 190 a R$ 390, tudo incluso",
+              "hospedagem + manutenção por hora"
+            ],
+            [
+              "Marca e endereço",
+              "os da plataforma",
+              "os seus",
+              "os seus"
+            ],
+            [
+              "Quem se adapta",
+              "você, à ferramenta",
+              "o ambiente, ao seu trabalho",
+              "o sistema, ao seu trabalho"
+            ],
+            [
+              "Parte técnica",
+              "da plataforma",
+              "comigo",
+              "sua, ou de quem você contratar"
+            ],
+            [
+              "Com quem você fala",
+              "suporte por ticket",
+              "comigo",
+              "com quem você contratar"
             ]
           ],
           "highlight": 2
         },
-        "theme": "dark"
+        "points": []
       },
       {
         "kicker": "fora do escopo",
@@ -462,9 +522,9 @@
         "contract": [
           "Escopo: o que entra e o que fica de fora",
           "Prazos de cada etapa",
-          "Valores, forma de pagamento e reajuste",
+          "Valores, forma de pagamento e reajuste anual",
           "Cancelamento com 30 dias e exportação dos dados",
-          "Seus dados são seus; o sistema e o subdomínio são do Atelierin"
+          "Seus dados são seus; o sistema, inclusive o que for feito na implantação, e o subdomínio são do Atelierin"
         ],
         "notice": "Trabalho com prazo combinado e respeito dos dois lados. Se a ideia é ter tudo pra ontem, eu não sou a pessoa certa, e tudo bem. Pressa costuma sair caro para quem pede e para quem faz.",
         "points": [],

@@ -24,6 +24,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- **Mensal por faixa de alunos** ([`LP-ADR-006`](docs/decisoes/LP-ADR-006-mensal-por-faixa.md)): sai a manutenção em porcentagem e a infraestrutura separada; entra a licença e manutenção fixa (R$ 190 até 15 alunos, R$ 290 de 16 a 30, R$ 390 de 31 a 50, acima sob consulta), igual nos dois degraus
+- Padrão e Personalizado agora se diferenciam pelo quanto o ambiente é ajustado, não pelo número de alunos
+- Calculadora sem a mensalidade dos alunos: pergunta alunos, tipo de ambiente, acesso e vídeo
+- Tabela "Uma vez, e todo mês" e FAQ ("quanto eu pago por mês", "se já existe um ambiente parecido", Hotmart, "e se eu crescer") com o modelo novo
+- Proposta: slide 1 sem "sob medida", implantação explicada como montagem de um sistema que já existe, manutenção como licença e manutenção, slide 08 com as faixas, slide 09 novo comparando plataforma pronta, Atelierin e sistema só do cliente, contrato com reajuste anual e o que é feito na implantação continuando do sistema
 - Proposta, ajustes finais: zoom 10% menor só na proposta; cards do 07 mais largos; exemplo da Ana Ribeiro sem menu (página única), com "Ver valores" e o depoimento em duas linhas centralizadas; textos maiores no 10 (prazos, reuniões e contrato); no 12, o número em cima do título, o texto à esquerda e a conversa maior, centralizada sobre a faixa vermelha, com a área escura à direita
 - Proposta: 02 escuro, 03 claro, 04 escuro; slide 08 com tabela maior e mais distante do exemplo; "Começa com uma conversa" com o número em cima e a conversa maior ao lado
 - Proposta: fundos dos slides definidos um a um (claro/escuro); exemplo da página simples centralizado atravessando a divisa entre o slide 07 e o 08, como banner real (foto de fundo em `public/proposta/exemplo-fundo.jpg` e, se existir, o mockup em `public/proposta/exemplo-tablet.png`)

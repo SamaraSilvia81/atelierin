@@ -576,14 +576,14 @@
     "piece": "Nº 06 · Etiquetas",
     "title": "Planos",
     "titleAccent": "",
-    "lede": "Comece com 5 alunos ou com 50: o Atelierin cresce junto. Hoje a linha disponível é a School, para professores e escolas pequenas.",
+    "lede": "Comece com 5 alunos ou com 50: o sistema é o mesmo e o mensal acompanha o tamanho da turma. Hoje a linha disponível é a School, para professores e escolas pequenas.",
     "items": [
       {
         "line": "School",
         "name": "Padrão",
         "status": "Disponível",
         "tone": "avail",
-        "for": "Quem está começando, até uns 15 alunos",
+        "for": "Quem quer o ambiente como ele é, com a sua marca",
         "text": "O ambiente School com o tema Atelierin, a sua logo e as suas cores principais. Montado por mim a partir de um molde pronto.",
         "priceLabel": "a partir de",
         "price": "R$ 900",
@@ -606,7 +606,7 @@
         "name": "Personalizado",
         "status": "Disponível agora",
         "tone": "on",
-        "for": "Professores e escolas com turma formada, a partir de 15 alunos",
+        "for": "Quem quer o ambiente ajustado ao seu jeito de trabalhar",
         "text": "O ambiente School com a sua identidade completa, montado e mantido por mim.",
         "pricePre": "10x de",
         "price": "R$ 300",
@@ -621,7 +621,7 @@
           "Estudo da infraestrutura de melhor custo-benefício",
           "Sua marca, cores, logo e vocabulário em tudo",
           "Módulos ligados conforme o seu jeito de dar aula",
-          "Manutenção, atualizações e suporte contínuos",
+          "Licença, manutenção, atualizações e suporte no mensal",
           "Vídeo pelo YouTube, Drive ou Bunny (à parte)",
           "Funcionalidade nova sob orçamento"
         ]
@@ -659,24 +659,35 @@
       }
     ],
     "pricing": {
-      "threshold": 15,
       "padrao": {
         "name": "Padrão",
         "setup": 900,
-        "setupStudents": 1200,
-        "pct": 5,
-        "min": 110,
-        "infra": 45
+        "setupStudents": 1200
       },
       "personalizado": {
         "name": "Personalizado",
         "setup": 3000,
         "installments": 10,
-        "pct": 8,
-        "min": 180,
-        "infra": 65,
         "bunny": 49
-      }
+      },
+      "tiers": [
+        {
+          "max": 15,
+          "price": 190,
+          "label": "até 15 alunos"
+        },
+        {
+          "max": 30,
+          "price": 290,
+          "label": "16 a 30 alunos"
+        },
+        {
+          "max": 50,
+          "price": 390,
+          "label": "31 a 50 alunos"
+        }
+      ],
+      "overLabel": "mais de 50 alunos"
     },
     "rules": {
       "label": "Como é cobrado",
@@ -697,18 +708,26 @@
         },
         {
           "mark": "↻",
-          "name": "Manutenção",
+          "name": "Até 15 alunos",
           "values": [
-            "5% · mín. R$ 110",
-            "8% · mín. R$ 180"
+            "R$ 190",
+            "R$ 190"
           ]
         },
         {
           "mark": "↻",
-          "name": "Infraestrutura",
+          "name": "16 a 30 alunos",
           "values": [
-            "R$ 45 fixo",
-            "R$ 65 fixo"
+            "R$ 290",
+            "R$ 290"
+          ]
+        },
+        {
+          "mark": "↻",
+          "name": "31 a 50 alunos",
+          "values": [
+            "R$ 390",
+            "R$ 390"
           ]
         },
         {
@@ -720,12 +739,11 @@
           ]
         }
       ],
-      "note": "Manutenção é a porcentagem do que você recebe dos alunos no mês. Infraestrutura é revista uma vez por ano. Funcionalidade nova só entra se você pedir, com orçamento antes."
+      "note": "O mensal é a licença e manutenção: um valor fixo pela faixa de alunos, com hospedagem, backup, atualizações e suporte incluídos. É revisto uma vez por ano. Mais de 50 alunos, sob consulta. Funcionalidade nova só entra se você pedir, com orçamento antes."
     },
     "calc": {
       "label": "Simule o seu",
       "students": "Quantos alunos você tem",
-      "fee": "Quanto cada um paga por mês",
       "access": "Seus alunos vão acessar o ambiente?",
       "accessYes": "Sim",
       "accessNo": "Não, é só para mim",
@@ -736,15 +754,18 @@
       "plan": "Plano indicado",
       "setup": "Implantação",
       "once": "uma vez",
-      "maint": "Manutenção",
-      "infra": "Infraestrutura",
       "bunny": "Vídeo Bunny",
       "estimated": "estimado",
       "month": "Por mês",
-      "share": "do que você recebe por mês",
       "year1": "1º ano, com a implantação",
       "years": "Anos seguintes",
-      "note": "Valores de referência. A proposta final sai da nossa conversa."
+      "note": "Valores de referência. A proposta final sai da nossa conversa.",
+      "kind": "Como você quer o ambiente?",
+      "kindPadrao": "Como ele é, com a minha marca",
+      "kindPers": "Ajustado ao meu jeito",
+      "tier": "Licença e manutenção",
+      "over": "sob consulta",
+      "overNote": "Acima de 50 alunos, o mensal é combinado na conversa."
     },
     "foot": {
       "text": "O pagamento dos alunos vai direto para você. Nenhuma taxa por transação.",

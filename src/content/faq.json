@@ -16,7 +16,7 @@
     },
     {
       "q": "Se já existe um ambiente parecido com o que eu quero, eu pago o mesmo valor?",
-      "a": "Não. Quem está começando entra pelo Padrão, que sai de um molde pronto: a implantação é a partir de R$ 900 (R$ 1.200 com área dos alunos). O Personalizado, com a sua identidade completa, é R$ 3.000. Funcionalidade que ainda não existe é orçada à parte nos dois."
+      "a": "Não. O sistema é o mesmo para todos, então você não paga para construir, só para montar. No Padrão, o ambiente fica como ele é, com a sua marca: a implantação é a partir de R$ 900 (R$ 1.200 com área dos alunos). No Personalizado eu ajusto o ambiente ao seu jeito de trabalhar, por R$ 3.000. Funcionalidade que ainda não existe é orçada à parte nos dois."
     },
     {
       "q": "Quero um sistema só meu, no meu servidor. Dá?",
@@ -24,7 +24,7 @@
     },
     {
       "q": "Quanto eu pago por mês?",
-      "a": "Duas coisas. A manutenção é uma porcentagem do que você recebe dos alunos no mês: 5% no Padrão (mínimo R$ 110) e 8% no Personalizado (mínimo R$ 180). A infraestrutura é um valor fixo, revisto uma vez por ano: R$ 45 no Padrão e R$ 65 no Personalizado. Se você quiser vídeo próprio pelo Bunny, ele entra à parte. A calculadora em Planos faz a conta para o seu caso."
+      "a": "Um valor fixo, pela faixa de alunos: R$ 190 até 15, R$ 290 de 16 a 30 e R$ 390 de 31 a 50. Acima disso, a gente combina. Ele cobre a licença de uso, a hospedagem, as cópias de segurança, as atualizações e o suporte, e é revisto uma vez por ano. Vídeo próprio pelo Bunny entra à parte. A calculadora em Planos mostra o seu caso."
     },
     {
       "q": "O dinheiro dos alunos passa pelo Atelierin?",
@@ -32,7 +32,7 @@
     },
     {
       "q": "Qual a diferença para Hotmart ou Kiwify?",
-      "a": "Essas plataformas são feitas para vender cursos em escala e ficam com uma parte de cada venda, porque o dinheiro passa por elas. No Atelierin o pagamento vai direto para você; a manutenção é uma cobrança mensal à parte. E o foco é quem atende pessoas de forma recorrente: turmas, sessões, acompanhamento, com a sua marca."
+      "a": "Essas plataformas são feitas para vender cursos em escala e ficam com uma parte de cada venda, porque o dinheiro passa por elas. No Atelierin o pagamento vai direto para você, e o mensal é um valor fixo, que não depende de quanto você recebe. E o foco é quem atende pessoas de forma recorrente: turmas, sessões, acompanhamento, com a sua marca."
     },
     {
       "q": "Posso pedir uma funcionalidade específica?",
@@ -40,7 +40,7 @@
     },
     {
       "q": "Comecei pequeno. E se eu crescer?",
-      "a": "Você sobe do Padrão para o Personalizado pagando só a diferença da implantação. Nada do que você já pagou se perde, e o seu ambiente continua no mesmo endereço."
+      "a": "O sistema continua o mesmo. Se a turma muda de faixa, o mensal muda junto. E se quiser o ambiente mais ajustado ao seu jeito, você sobe do Padrão para o Personalizado pagando só a diferença da implantação, no mesmo endereço."
     },
     {
       "q": "E se eu quiser sair?",

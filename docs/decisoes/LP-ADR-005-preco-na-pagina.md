@@ -12,7 +12,7 @@
 | Código | `LP-ADR-005` |
 | Data | quarta-feira, 11/11/2026 |
 | Tipo | Registro de decisão |
-| Status | Aceita |
+| Status | Aceita, substituída em parte pelo [`LP-ADR-006`](LP-ADR-006-mensal-por-faixa.md) (manutenção e infraestrutura) |
 | Decisão de | Samara Silvia |
 | Referências | `PRD-005` · proposta comercial do Maxwell (v1.5, a atualizar na v1.6) |
 | Redigido por | Samara Silvia |
