@@ -63,40 +63,69 @@ function ScrapCard({ s, i, onOpen }) {
   )
 }
 
-// Módulo aberto: substitui os cards no mesmo lugar, entrando com um recorte
-// circular que nasce do ponto clicado (como as telas de "A marca é sua").
-// Voltar faz o caminho inverso. Abas embaixo trocam de módulo sem voltar.
-function ModuleView({ s, all, host, origin, closing, onBack, onPick }) {
+const LOOP = 5200 // tempo de cada módulo antes de passar para o próximo
+
+function ModuleBody({ s }) {
   return (
-    <div className={`gview is-${s.status} ${closing ? 'is-closing' : ''}`} style={{ '--cx': origin.x, '--cy': origin.y }}>
+    <div className="gview-body">
+      <div className="gview-head">
+        <div>
+          <h3>{s.title}</h3>
+          <p className="gcard-desc">{s.desc}</p>
+        </div>
+        <span className="gcard-status"><i />{STATUS[s.status]}</span>
+      </div>
+      <p className="gview-sub"><b>›_</b> {s.detail.title}</p>
+      <table className="gview-table">
+        <thead><tr>{s.detail.cols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
+        <tbody>{s.detail.rows.map((r, k) => (
+          <tr key={r.join()} style={{ animationDelay: `${250 + k * 70}ms` }}>
+            {r.map((v, j) => <td key={j} className={j === r.length - 1 ? 'st' : undefined}>{v}</td>)}
+          </tr>
+        ))}</tbody>
+      </table>
+      <p className="gview-note">{s.detail.note}</p>
+    </div>
+  )
+}
+
+// Módulo aberto: substitui os cards no mesmo lugar, entrando com um recorte
+// circular que nasce do card clicado. Depois passa sozinho de um módulo para
+// o outro, em loop, com o mesmo recorte e a barra de progresso de
+// "A marca é sua". Pausa com o mouse em cima; com "reduzir movimento" não
+// troca sozinho. Voltar faz o caminho inverso até os cards.
+function ModuleView({ start, all, host, origin, closing, onBack }) {
+  const [i, setI] = useState(() => Math.max(0, all.findIndex((m) => m.path === start.path)))
+  const [prev, setPrev] = useState(null)
+  const [paused, setPaused] = useState(false)
+  const [reduced] = useState(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const go = (k) => { if (k === i) return; setPrev(i); setI(k) }
+
+  useEffect(() => {
+    if (paused || reduced || closing) return undefined
+    const t = setTimeout(() => go((i + 1) % all.length), LOOP)
+    return () => clearTimeout(t)
+  }, [i, paused, reduced, closing, all.length])
+  useEffect(() => { if (prev === null) return undefined; const t = setTimeout(() => setPrev(null), 1000); return () => clearTimeout(t) }, [prev])
+
+  const s = all[i]
+  return (
+    <div className={`gview is-${s.status} ${closing ? 'is-closing' : ''}`} style={{ '--cx': origin.x, '--cy': origin.y }}
+      onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)}>
       <span className="gcard-bar" aria-hidden="true" />
       <div className="gview-top">
         <button className="gview-back" onClick={onBack} onPointerEnter={() => play('tick')}><ArrowLeft size={14} weight="bold" aria-hidden="true" /> todos os módulos</button>
-        <code>{host}/{s.path}</code>
+        <code key={s.path} className="lgs-url">{host}/{s.path}</code>
       </div>
-      <div className="gview-body" key={s.path}>
-        <div className="gview-head">
-          <div>
-            <h3>{s.title}</h3>
-            <p className="gcard-desc">{s.desc}</p>
-          </div>
-          <span className="gcard-status"><i />{STATUS[s.status]}</span>
-        </div>
-        <p className="gview-sub"><b>›_</b> {s.detail.title}</p>
-        <table className="gview-table">
-          <thead><tr>{s.detail.cols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
-          <tbody>{s.detail.rows.map((r, k) => (
-            <tr key={r.join()} style={{ animationDelay: `${200 + k * 70}ms` }}>
-              {r.map((v, j) => <td key={j} className={j === r.length - 1 ? 'st' : undefined}>{v}</td>)}
-            </tr>
-          ))}</tbody>
-        </table>
-        <p className="gview-note">{s.detail.note}</p>
+      <div className="gview-stage">
+        {prev !== null && <div className="gview-layer is-out"><ModuleBody s={all[prev]} /></div>}
+        <div key={s.path} className={`gview-layer ${prev !== null ? 'is-wipe' : ''}`}><ModuleBody s={s} /></div>
+        {!paused && !reduced && !closing && <span key={`p-${i}`} className="gview-progress" aria-hidden="true" />}
       </div>
       <div className="gview-tabs" role="tablist" aria-label="Módulos">
-        {all.map((m) => (
-          <button key={m.path} role="tab" aria-selected={m.path === s.path} className={m.path === s.path ? 'on' : ''}
-            onClick={() => onPick(m)} onPointerEnter={() => play('tick')}>
+        {all.map((m, k) => (
+          <button key={m.path} role="tab" aria-selected={k === i} className={k === i ? 'on' : ''}
+            onClick={() => { play('click'); go(k) }} onPointerEnter={() => play('tick')}>
             <i className={`dot-${m.status === 'ativo' ? 'green' : 'amber'}`} />{m.title}
           </button>
         ))}
@@ -185,7 +214,7 @@ export default function Problem() {
             </a>
           </li>
         </ul>
-        {open && <ModuleView s={open} all={p.scraps} host={p.host} origin={origin} closing={closing} onBack={back} onPick={(m) => { play('click'); setOpen(m) }} />}
+        {open && <ModuleView key={open.path} start={open} all={p.scraps} host={p.host} origin={origin} closing={closing} onBack={back} />}
         </div>
 
         <div className="problem-end">

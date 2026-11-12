@@ -293,7 +293,7 @@ h1, h2, h3, p { margin: 0; }
 .problem-aside { grid-column: 2; justify-self: end; max-width: 34ch; font-size: var(--text-sm); color: var(--text-muted); border-left: 1px solid var(--border); padding-left: 16px; }
 
 /* filtros e cards no desenho do Atelier.sh (raio 2px/4px, mono, barra de status) */
-.pfilters { margin-top: clamp(64px, 9vw, 112px); border-bottom: 1px solid var(--border); }
+.pfilters { margin-top: clamp(120px, 15vw, 200px); border-bottom: 1px solid var(--border); }
 .pfilters-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; }
 .pfilters-row > div { display: flex; gap: 8px; flex-wrap: wrap; }
 .filter-btn {
@@ -347,7 +347,13 @@ h1, h2, h3, p { margin: 0; }
 .gview-top code { font: 400 11px/1 var(--font-mono); color: var(--text-muted); }
 .gview-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 2px; border: 1px solid #251818; background: var(--palette-fuligem); color: var(--text-sub); cursor: pointer; font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .gview-back:hover { color: var(--text); border-color: #5a1f1f; }
-.gview-body { padding: 0 0 4px; animation: m-in .5s ease .35s both; }
+.gview-stage { position: relative; display: grid; overflow: hidden; background: #161212; }
+.gview-layer { grid-area: 1 / 1; background: #161212; }
+.gview-layer.is-wipe { z-index: 2; animation: lg-wipe 1s cubic-bezier(.7,0,.2,1) both; }
+.gview-layer.is-out { z-index: 1; animation: lg-out 1s ease both; }
+.gview-progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--palette-crimson); transform-origin: left; animation: m-progress 5.2s linear both; z-index: 3; }
+.gview-body { padding: 0 0 4px; }
+.gview-layer:not(.is-out) .gview-body { animation: m-in .5s ease .3s both; }
 .gview-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 24px 8px; }
 .gview-head h3 { font: 400 clamp(36px, 4vw, 52px)/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
 .gview-head .gcard-desc { margin-top: 8px; }
@@ -361,6 +367,7 @@ h1, h2, h3, p { margin: 0; }
 .gview-table tbody tr { animation: card-in .4s ease both; }
 .gview-note { margin: 18px 24px 22px; padding: 12px 14px; border-left: 2px solid var(--st); background: var(--palette-fuligem); color: var(--text-sub); font-size: var(--text-sm); }
 .gview-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px 20px; border-top: 1px solid #251818; }
+.gview-top .lgs-url { flex: none; text-align: right; }
 .gview-tabs button { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 2px; border: 1px solid #251818; background: none; color: var(--text-muted); cursor: pointer; font: 400 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .gview-tabs button i { width: 6px; height: 6px; border-radius: 50%; }
 .gview-tabs button:hover { color: var(--text); border-color: #3a2424; }

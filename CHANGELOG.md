@@ -17,7 +17,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Alterado
 - Seção 2 (retalhos): os cards viraram módulos prontos do ambiente de exemplo (Atendimento, Materiais, Cobrança, Agenda, Evolução), cada um dizendo de qual retalho veio; status "em dia" e "atenção"
-- Clique num card abre o módulo no lugar dos cards, com recorte circular a partir do card clicado, tabela completa e abas para trocar de módulo; "todos os módulos" ou Esc volta
+- Clique num card abre o módulo no lugar dos cards, com recorte circular a partir do card clicado, tabela completa e abas; depois passa sozinho de um módulo para o outro, em loop, com o mesmo recorte e a barra de progresso de "A marca é sua" (pausa com o mouse em cima); "todos os módulos" ou Esc volta
+- Mais espaço entre o texto de apoio da seção 2 e os cards
 - Rodapé: "Todos os direitos reservados" e "Desenvolvido com 🤍 por Samara Silvia Sabino"
 - "Tudo começa pela linha certa" centralizado entre o passo a passo e as linhas, com fita métrica, rótulo e destaque em "linha certa"
 - Linha de alinhavo: a segunda laçada ficou mais aberta e a curva final mais longa
