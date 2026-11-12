@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import Proposal from '@/pages/Proposal'
+import { useReveal } from '@/lib/useReveal'
 
 // Proposta de um cliente: /proposta/<cliente>, só rodando local (yarn dev).
 // Os dados ficam em public/proposta/<cliente>/dados.json, que está no
 // .gitignore: não vão para o GitHub nem para o site.
 export default function ClientProposal({ slug }) {
   const [state, setState] = useState({ status: 'loading' })
+  // os dados chegam depois da página montar: revela de novo quando chegam
+  useReveal(state.status)
 
   useEffect(() => {
     const meta = document.createElement('meta')
@@ -24,7 +27,7 @@ export default function ClientProposal({ slug }) {
     return () => { alive = false }
   }, [slug])
 
-  if (state.status === 'ok') return <Proposal client={state.data} />
+  if (state.status === 'ok') return <Proposal client={state.data} slug={slug} />
   return (
     <section data-theme="dark" className="section client-gate">
       <div className="wrap">

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
 import FlowMap from '@/components/FlowMap'
+import OfferPicker, { ClientCtx } from '@/components/OfferPicker'
 
 // Proposta comercial em "slides" que se lê rolando. Cada slide tem um
 // desenho próprio (layout) e um detalhe gráfico (deco), sempre com as peças
@@ -83,10 +84,11 @@ function Body({ s }) {
     <>
       <div className="s-options">
         {s.options.map((o) => (
-          <div key={o.name} className="s-option">
+          <div key={o.name} className={`s-option ${o.tag ? 'has-tag' : ''}`}>
+            {o.tag && <span className="s-option-tag">{o.tag}</span>}
             <span className="s-option-for">{o.for}</span>
             <strong>{o.name}</strong>
-            <span className="s-option-price">{o.price}</span>
+            <span className="s-option-price">{o.was && <s>{o.was}</s>}{o.price}</span>
             <ul>{o.items.map((it) => <li key={it}><Check size={14} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
             <p>{o.note}</p>
           </div>
@@ -120,16 +122,7 @@ function Body({ s }) {
   )
   if (s.layout === 'offer') return (
     <>
-      <div className="s-options s-offer">
-        {s.offers.map((o) => (
-          <div key={o.name} className={`s-option ${o.hl ? 'is-hl' : ''}`}>
-            <span className="s-option-for">{o.for}</span>
-            <strong>{o.name}</strong>
-            <ul className="s-offer-lines">{o.lines.map(([k, v, was]) => <li key={k}><span>{k}</span><b>{was && <s>{was}</s>}{v}</b></li>)}</ul>
-            <div className="s-offer-tot">{o.totals.map(([k, v]) => <div key={k}><span>{k}</span><strong>{v}</strong></div>)}</div>
-          </div>
-        ))}
-      </div>
+      <OfferPicker s={s} />
       <Points list={s.points} />
     </>
   )
@@ -207,19 +200,36 @@ function Chat({ list }) {
 
 
 // Monta os slides: os gerais e, se houver cliente, os dele no lugar marcado (insertAfter = kicker).
+// hide: kickers que somem; patch: { kicker: campos que trocam }, com
+// "cards": { nome: campos } para ajustar um card (options ou cards) pelo nome.
 function withClient(slides, client) {
-  if (!client?.slides?.length) return slides
-  const i = slides.findIndex((s) => s.kicker === client.insertAfter)
-  const at = i < 0 ? slides.length - 1 : i + 1
-  return [...slides.slice(0, at), ...client.slides, ...slides.slice(at)]
+  if (!client) return slides
+  const hide = new Set(client.hide ?? [])
+  let out = slides.filter((s) => !hide.has(s.kicker)).map((s) => {
+    const pt = client.patch?.[s.kicker]
+    if (!pt) return s
+    const { cards, ...rest } = pt
+    const next = { ...s, ...rest }
+    if (cards) for (const key of ['options', 'cards']) {
+      if (next[key]) next[key] = next[key].map((o) => (cards[o.name] ? { ...o, ...cards[o.name] } : o))
+    }
+    return next
+  })
+  if (client.slides?.length) {
+    const i = out.findIndex((s) => s.kicker === client.insertAfter)
+    const at = i < 0 ? out.length - 1 : i + 1
+    out = [...out.slice(0, at), ...client.slides, ...out.slice(at)]
+  }
+  return out
 }
 
-export default function Proposal({ client }) {
+export default function Proposal({ client, slug }) {
   const base = content.pages.proposal
   const p = client ? { ...base, title: client.title ?? base.title, titleAccent: client.titleAccent ?? base.titleAccent, lede: client.lede ?? base.lede } : base
   const slides = withClient(base.slides, client)
   const total = String(slides.length).padStart(2, '0')
   return (
+    <ClientCtx.Provider value={client ? { client, slug } : null}>
     <div className="page page-proposal">
       <section data-theme="dark" className="section slide slide-cover">
         {/* fundo do hero: faixa carmesim, o símbolo gigante cortado pela borda,
@@ -281,5 +291,6 @@ export default function Proposal({ client }) {
         )
       })}
     </div>
+    </ClientCtx.Provider>
   )
 }
