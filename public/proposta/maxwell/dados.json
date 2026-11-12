@@ -1,0 +1,96 @@
+{
+  "name": "Maxwell",
+  "title": "Proposta para o",
+  "titleAccent": "Maxwell",
+  "lede": "O ambiente de aulas de teclado com a sua marca, os seus alunos e a sua cobrança num lugar só. Abaixo está o caminho, o que entra em cada etapa e as duas opções que montei para você.",
+  "insertAfter": "comparando",
+  "slides": [
+    {
+      "kicker": "sua proposta",
+      "title": "Duas opções, o mesmo mensal",
+      "accent": "o mesmo mensal",
+      "layout": "offer",
+      "deco": "none",
+      "theme": "dark",
+      "text": "Com uns 33 alunos, você fica na faixa de 31 a 50: R$ 390 por mês, nas duas opções. Por ser o primeiro cliente do Atelierin, o Monograma vai de presente.",
+      "offers": [
+        {
+          "name": "Para começar",
+          "for": "o ambiente e a sua página",
+          "lines": [
+            [
+              "Ambiente Personalizado",
+              "R$ 3.000"
+            ],
+            [
+              "Monograma",
+              "de presente",
+              "R$ 450"
+            ],
+            [
+              "Página simples",
+              "inclusa"
+            ]
+          ],
+          "totals": [
+            [
+              "Entrada",
+              "R$ 3.000 ou 10x de R$ 300"
+            ],
+            [
+              "Por mês",
+              "R$ 390"
+            ],
+            [
+              "1º ano",
+              "R$ 7.680"
+            ]
+          ]
+        },
+        {
+          "name": "Completo",
+          "for": "com landing page para atrair aluno novo",
+          "hl": true,
+          "lines": [
+            [
+              "Ambiente Personalizado",
+              "R$ 3.000"
+            ],
+            [
+              "Monograma",
+              "de presente",
+              "R$ 450"
+            ],
+            [
+              "Página simples",
+              "inclusa"
+            ],
+            [
+              "Landing page",
+              "R$ 2.000",
+              "R$ 2.500"
+            ]
+          ],
+          "totals": [
+            [
+              "Entrada",
+              "R$ 5.000 ou 10x de R$ 500"
+            ],
+            [
+              "Por mês",
+              "R$ 390"
+            ],
+            [
+              "1º ano",
+              "R$ 9.680"
+            ]
+          ]
+        }
+      ],
+      "points": [
+        "O mensal inclui licença, hospedagem, backup, atualizações e suporte",
+        "A landing page pode entrar depois, pelo mesmo valor do combo"
+      ]
+    }
+  ]
+}

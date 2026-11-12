@@ -6,6 +6,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ## [Não lançado]
 
 ### Adicionado
+- **Proposta por cliente** em `/proposta/<cliente>`: os dados ficam em `public/proposta/<cliente>/dados.json` (fora do código), entram como slides extras e trocam o título e o nome no diagrama; página com `noindex` e protegida pelo Cloudflare Access. Primeiro caso: `/proposta/maxwell`, com as duas opções e o Monograma de presente
 - **Versões da proposta** em `/versoes/`: página A/B com duas versões lado a lado (rolagem junto, trocar lados, uma de cada vez) e cópias congeladas v1 a v5 em `public/versoes/vN/`
 - **Proposta: diagrama do caminho** (`FlowMap`): fundo quadriculado, blocos e ligações em ângulo reto; clicar numa etapa ou num bloco acende e anima só aquela parte; `?para=nome` troca "você" pelo nome do cliente
 - **Proposta: hero novo** com faixa carmesim, o símbolo gigante cortado pela borda, alinhavos e botões de costura, textura de papel e tarja no título
@@ -24,6 +25,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- Identidade básica de R$ 1.200 para R$ 850; slide de comparação sem o alinhavo pontilhado
 - **Mensal por faixa de alunos** ([`LP-ADR-006`](docs/decisoes/LP-ADR-006-mensal-por-faixa.md)): sai a manutenção em porcentagem e a infraestrutura separada; entra a licença e manutenção fixa (R$ 190 até 15 alunos, R$ 290 de 16 a 30, R$ 390 de 31 a 50, acima sob consulta), igual nos dois degraus
 - Padrão e Personalizado agora se diferenciam pelo quanto o ambiente é ajustado, não pelo número de alunos
 - Calculadora sem a mensalidade dos alunos: pergunta alunos, tipo de ambiente, acesso e vídeo

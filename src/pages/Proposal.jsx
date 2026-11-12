@@ -118,6 +118,21 @@ function Body({ s }) {
       </div>
     </>
   )
+  if (s.layout === 'offer') return (
+    <>
+      <div className="s-options s-offer">
+        {s.offers.map((o) => (
+          <div key={o.name} className={`s-option ${o.hl ? 'is-hl' : ''}`}>
+            <span className="s-option-for">{o.for}</span>
+            <strong>{o.name}</strong>
+            <ul className="s-offer-lines">{o.lines.map(([k, v, was]) => <li key={k}><span>{k}</span><b>{was && <s>{was}</s>}{v}</b></li>)}</ul>
+            <div className="s-offer-tot">{o.totals.map(([k, v]) => <div key={k}><span>{k}</span><strong>{v}</strong></div>)}</div>
+          </div>
+        ))}
+      </div>
+      <Points list={s.points} />
+    </>
+  )
   if (s.layout === 'terms') return (
     <>
       <div className="s-terms">
@@ -191,9 +206,19 @@ function Chat({ list }) {
 }
 
 
-export default function Proposal() {
-  const p = content.pages.proposal
-  const total = String(p.slides.length).padStart(2, '0')
+// Monta os slides: os gerais e, se houver cliente, os dele no lugar marcado (insertAfter = kicker).
+function withClient(slides, client) {
+  if (!client?.slides?.length) return slides
+  const i = slides.findIndex((s) => s.kicker === client.insertAfter)
+  const at = i < 0 ? slides.length - 1 : i + 1
+  return [...slides.slice(0, at), ...client.slides, ...slides.slice(at)]
+}
+
+export default function Proposal({ client }) {
+  const base = content.pages.proposal
+  const p = client ? { ...base, title: client.title ?? base.title, titleAccent: client.titleAccent ?? base.titleAccent, lede: client.lede ?? base.lede } : base
+  const slides = withClient(base.slides, client)
+  const total = String(slides.length).padStart(2, '0')
   return (
     <div className="page page-proposal">
       <section data-theme="dark" className="section slide slide-cover">
@@ -216,7 +241,7 @@ export default function Proposal() {
         <div className="wrap">
           <PageHead label={p.label} title={p.title} titleAccent={p.titleAccent} lede={p.lede}>
             <ol className="slide-index">
-              {p.slides.map((s, i) => <li key={s.kicker}><a href={`#slide-${i + 1}`}><b>{String(i + 1).padStart(2, '0')}</b> {s.kicker}</a></li>)}
+              {slides.map((s, i) => <li key={s.kicker}><a href={`#slide-${i + 1}`}><b>{String(i + 1).padStart(2, '0')}</b> {s.kicker}</a></li>)}
             </ol>
           </PageHead>
         </div>
@@ -228,10 +253,10 @@ export default function Proposal() {
             <h2 className="display">{p.flow.title}</h2>
             <p className="lede">{p.flow.lede}</p>
           </header>
-          <div data-reveal><FlowMap data={p.flow} /></div>
+          <div data-reveal><FlowMap data={p.flow} name={client?.name} /></div>
         </div>
       </section>
-      {p.slides.map((s, i) => {
+      {slides.map((s, i) => {
         const n = String(i + 1).padStart(2, '0')
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (

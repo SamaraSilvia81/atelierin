@@ -78,19 +78,19 @@ function pointAt(pts, f) {
   return pts[pts.length - 1]
 }
 
-function useClientName() {
+function useClientName(fixed) {
   return useMemo(() => {
     if (typeof window === 'undefined') return null
-    const raw = new URLSearchParams(window.location.search).get('para')
+    const raw = fixed || new URLSearchParams(window.location.search).get('para')
     if (!raw) return null
     const name = raw.trim().slice(0, 30)
     const slug = name.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '')
     return name && slug ? { name: name[0].toUpperCase() + name.slice(1), slug } : null
-  }, [])
+  }, [fixed])
 }
 
-export default function FlowMap({ data }) {
-  const client = useClientName()
+export default function FlowMap({ data, name }) {
+  const client = useClientName(name)
   const who = client?.name ?? data.you
   const slug = client?.slug ?? 'seunome'
   const fill = (s) => String(s).replaceAll('{voce}', who).replaceAll('{slug}', slug)
