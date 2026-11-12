@@ -3,3 +3,8 @@ dist
 .env
 .env.*
 *.log
+
+# yarn 4: guarda só o executável, o resto é cache local
+.yarn/*
+!.yarn/releases
+.pnp.*
