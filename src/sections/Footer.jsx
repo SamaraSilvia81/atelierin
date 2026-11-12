@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
         <div className="foot-bottom">
           <div className="wrap foot-bottom-in">
-            <span>© {new Date().getFullYear()} Atelierin</span>
+            <span>© {new Date().getFullYear()} Atelierin · {f.rights}</span>
             <span>{f.credit}</span>
           </div>
         </div>

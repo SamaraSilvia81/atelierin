@@ -11,7 +11,9 @@ export default function Steps() {
       <div className="wrap">
         <Pipeline data={h.steps} />
         <div className="bridge" data-reveal>
-          <p>{h.bridge.text}</p>
+          <span className="bridge-tape" aria-hidden="true">{Array.from({ length: 21 }, (_, i) => <i key={i} />)}</span>
+          <span className="bridge-label"><b aria-hidden="true">&gt;</b> {h.bridge.label}</span>
+          <p>{h.bridge.text} <em>{h.bridge.textAccent}</em> {h.bridge.textAfter}</p>
           <a href={h.bridge.href} className="bridge-link" onClick={() => play('click')} onPointerEnter={() => play('tick')}>
             {h.bridge.link} <ArrowDown size={14} weight="bold" aria-hidden="true" />
           </a>

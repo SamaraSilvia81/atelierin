@@ -16,6 +16,10 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- Rodapé: "Todos os direitos reservados" e "Desenvolvido com 🤍 por Samara Silvia Sabino"
+- "Tudo começa pela linha certa" centralizado entre o passo a passo e as linhas, com fita métrica, rótulo e destaque em "linha certa"
+- Linha de alinhavo: a segunda laçada ficou mais aberta e a curva final mais longa
+- Textos maiores nas respostas do FAQ e no passo a passo (descrição, "entrega", "o que você me passa")
 - Aviso interno da lista de espera só sai para inscrição nova (antes também saía quando o mesmo e-mail repetia)
 - Planos: Personalizado no centro em destaque, "Disponível" em verde, só o valor centralizado com o "10x de" à esquerda
 - FAQ: "quero um sistema só meu", "quanto eu pago por mês", "consigo ver antes de fechar", "e se eu crescer"

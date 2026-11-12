@@ -8,10 +8,12 @@ import { useLayoutEffect, useRef, useState } from 'react'
 const LOOPS = [
   [48, 100], [45, 160], [55, 220], [85, 280], [140, 320], [200, 330], [240, 322], [285, 285],
   [295, 245], [268, 228], [240, 245], [225, 290], [232, 345], [260, 385], [310, 400], [370, 395],
-  [450, 365], [530, 325], [600, 312], [660, 325], [705, 355], [725, 410], [718, 465], [680, 490],
-  [635, 480], [622, 440], [645, 400], [690, 378], [730, 385],
-  // depois da segunda laçada: uma curva curta descendo para a esquerda, em direção a "Como funciona"
-  [750, 420], [735, 470], [695, 505], [640, 525],
+  [450, 365], [530, 325], [590, 310],
+  // segunda laçada, mais aberta (a original ampliada 1,3x em torno do centro dela)
+  [650, 312], [700, 328], [732, 360], [745, 407], [731, 478], [682, 511], [623, 498], [606, 446],
+  [636, 394], [694, 365], [746, 374],
+  // depois da segunda laçada: uma curva longa descendo para a esquerda, em direção a "Como funciona"
+  [790, 425], [800, 500], [770, 570], [705, 615], [630, 630],
 ]
 
 // Catmull-Rom -> curvas cúbicas, para o traço ficar suave passando pelos pontos

@@ -372,7 +372,10 @@
       "deliverableLabel": "entrega"
     },
     "bridge": {
-      "text": "Tudo começa pela linha certa para o seu trabalho.",
+      "text": "Tudo começa pela",
+      "textAccent": "linha certa",
+      "textAfter": "para o seu trabalho.",
+      "label": "Antes do molde",
       "link": "Ver as linhas",
       "href": "#linhas"
     }
@@ -675,7 +678,8 @@
   "footer": {
     "text": "Plataforma para profissionais que atendem pessoas.",
     "place": "Recife, PE",
-    "credit": "Desenvolvido por Samara Silvia Sabino",
+    "rights": "Todos os direitos reservados",
+    "credit": "Desenvolvido com 🤍 por Samara Silvia Sabino",
     "image": "/footer-carmesim.webp",
     "cols": [
       {
