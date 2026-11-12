@@ -145,7 +145,8 @@
               "Evolução da plataforma"
             ]
           }
-        ]
+        ],
+        "theme": "light"
       },
       {
         "kicker": "implantação",
@@ -163,7 +164,8 @@
         "accent": "implantação",
         "layout": "layer",
         "deco": "tape",
-        "fichaTitle": "Ficha da implantação"
+        "fichaTitle": "Ficha da implantação",
+        "theme": "dark"
       },
       {
         "kicker": "sem marca ainda",
@@ -213,7 +215,8 @@
           }
         },
         "points": [],
-        "complete": "Quer uma identidade completa, com manual, aplicações e papelaria? É outro projeto, com orçamento próprio."
+        "complete": "Quer uma identidade completa, com manual, aplicações e papelaria? É outro projeto, com orçamento próprio.",
+        "theme": "light"
       },
       {
         "kicker": "manutenção",
@@ -227,7 +230,8 @@
           "Pequenos ajustes de texto e configuração"
         ],
         "accent": "no ar",
-        "deco": "mark"
+        "deco": "mark",
+        "theme": "dark"
       },
       {
         "kicker": "cobrança",
@@ -239,7 +243,8 @@
           "Integração bancária automática pode entrar depois, sob orçamento"
         ],
         "accent": "direto para você",
-        "deco": "stitch"
+        "deco": "stitch",
+        "theme": "light"
       },
       {
         "kicker": "investimento",
@@ -286,14 +291,15 @@
             ]
           ],
           "highlight": 2
-        }
+        },
+        "theme": "dark"
       },
       {
         "kicker": "página de divulgação",
         "title": "Quer também uma página para divulgar?",
         "accent": "divulgar",
         "layout": "lp",
-        "deco": "stitch",
+        "deco": "none",
         "text": "Todo ambiente já vem com uma página simples no seu endereço: sua foto, o que você oferece, contato e o botão de entrar. Uma landing page completa, com texto, seções e design próprios, é outro serviço, e quem quiser só ela contrata só ela.",
         "points": [],
         "cards": [
@@ -331,28 +337,31 @@
         ],
         "example": {
           "label": "exemplo de página simples",
-          "host": "maria.atelierin.com.br",
-          "name": "Maria Lima",
-          "role": "Professora de teclado",
-          "bio": "Aulas de teclado para iniciantes e intermediários, presenciais em Recife e online.",
+          "host": "anaribeiro.atelierin.com.br",
+          "name": "Ana Ribeiro",
+          "role": "Consultora de imagem e estilo",
+          "bio": "Ajudo mulheres a montar um guarda-roupa que conversa com quem elas são. Atendimento em Recife e online.",
           "offers": [
             [
-              "Aula individual",
-              "R$ 150 / mês",
-              "4 aulas"
+              "Consultoria de estilo",
+              "R$ 380",
+              "2 encontros"
             ],
             [
-              "Turma de sábado",
-              "R$ 120 / mês",
-              "grupo de até 8"
+              "Análise de coloração",
+              "R$ 220",
+              "1 encontro"
             ],
             [
-              "Aula experimental",
-              "sem custo",
-              "30 minutos"
+              "Personal shopper",
+              "R$ 150 / hora",
+              "em loja ou online"
             ]
-          ]
-        }
+          ],
+          "image": "/proposta/exemplo-fundo.jpg",
+          "mockup": "/proposta/exemplo-tablet.png"
+        },
+        "theme": "light"
       },
       {
         "kicker": "infraestrutura e vídeo",
@@ -386,7 +395,8 @@
             ]
           ],
           "highlight": 2
-        }
+        },
+        "theme": "dark"
       },
       {
         "kicker": "fora do escopo",
@@ -400,7 +410,8 @@
         ],
         "accent": "não",
         "layout": "strike",
-        "deco": "none"
+        "deco": "none",
+        "theme": "light"
       },
       {
         "kicker": "prazos e contrato",
@@ -444,7 +455,8 @@
           "Seus dados são seus; o sistema e o subdomínio são do Atelierin"
         ],
         "notice": "Trabalho com prazo combinado e respeito dos dois lados. Se a ideia é ter tudo pra ontem, eu não sou a pessoa certa, e tudo bem. Pressa costuma sair caro para quem pede e para quem faz.",
-        "points": []
+        "points": [],
+        "theme": "dark"
       },
       {
         "kicker": "se quiser sair",
@@ -457,7 +469,8 @@
           "O sistema e o subdomínio continuam da Atelierin"
         ],
         "accent": "com os seus dados",
-        "deco": "tape"
+        "deco": "tape",
+        "theme": "dark"
       },
       {
         "kicker": "próximo passo",
@@ -488,7 +501,8 @@
             "ela",
             "Já dá pra te mostrar uma prévia com a sua marca. Sexta às 15h?"
           ]
-        ]
+        ],
+        "theme": "light"
       }
     ],
     "flow": {

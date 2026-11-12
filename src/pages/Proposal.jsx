@@ -1,4 +1,5 @@
 import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle } from '@phosphor-icons/react'
+import { useState } from 'react'
 import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
 import FlowMap from '@/components/FlowMap'
@@ -115,7 +116,6 @@ function Body({ s }) {
           </div>
         ))}
       </div>
-      <PublicPage ex={s.example} />
     </>
   )
   if (s.layout === 'terms') return (
@@ -142,24 +142,26 @@ function Body({ s }) {
   return <Points list={s.points} />
 }
 
-// Exemplo da página simples que todo ambiente ganha (mesma moldura de navegador dos módulos)
+// Exemplo da página simples que todo ambiente ganha. Se existir a imagem do
+// mockup (public/proposta/exemplo-tablet.png), mostra a imagem; senão, a página
+// desenhada em HTML, como um banner de verdade (com foto de fundo, se houver).
 function PublicPage({ ex }) {
+  const [useImg, setUseImg] = useState(Boolean(ex.mockup))
+  if (useImg) return <img className="s-public-img" src={ex.mockup} alt={`${ex.label}: ${ex.name}, ${ex.role}`} onError={() => setUseImg(false)} />
   return (
     <figure className="s-public" aria-label={ex.label}>
       <div className="mods-bar"><span className="dots"><i /><i /><i /></span><code>{ex.host}</code><span className="mods-count">{ex.label}</span></div>
-      <div className="s-public-body">
+      <div className="s-public-banner" style={{ '--bg': `url(${ex.image})` }}>
+        <div className="s-public-nav"><strong>{ex.name}</strong><span>início · serviços · contato</span><em>Entrar</em></div>
         <div className="s-public-hero">
-          <span className="s-public-photo" aria-hidden="true">{ex.name.split(' ').map((w) => w[0]).join('')}</span>
-          <div>
-            <strong>{ex.name}</strong>
-            <small>{ex.role}</small>
-            <p>{ex.bio}</p>
-          </div>
-          <div className="s-public-actions"><span className="is-wa"><WhatsappLogo size={14} weight="fill" /> WhatsApp</span><span>Entrar</span></div>
+          <small>{ex.role}</small>
+          <h4>{ex.name}</h4>
+          <p>{ex.bio}</p>
+          <div className="s-public-actions"><span className="is-wa"><WhatsappLogo size={14} weight="fill" /> Agendar pelo WhatsApp</span><span>Área da cliente</span></div>
         </div>
-        <ul className="s-public-offers">{ex.offers.map(([a, b, c]) => <li key={a}><strong>{a}</strong><span>{b}</span><small>{c}</small></li>)}</ul>
-        <small className="s-public-foot">feito com Atelierin</small>
       </div>
+      <ul className="s-public-offers">{ex.offers.map(([a, b, c]) => <li key={a}><strong>{a}</strong><span>{b}</span><small>{c}</small></li>)}</ul>
+      <small className="s-public-foot">feito com Atelierin</small>
     </figure>
   )
 }
@@ -216,7 +218,7 @@ export default function Proposal() {
       </section>
       {p.slides.map((s, i) => {
         const n = String(i + 1).padStart(2, '0')
-        const theme = i % 2 === 0 ? 'light' : 'dark'
+        const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (
           <section key={s.kicker} id={`slide-${i + 1}`} data-theme={theme} className={`section slide slide-${s.layout || 'default'} has-${s.deco || 'none'}`}>
             <Deco kind={s.deco} n={n} />
@@ -234,6 +236,7 @@ export default function Proposal() {
                 {s.chat && <Chat list={s.chat} />}
               </div>
             </div>
+            {s.example && <div className="wrap s-public-wrap"><PublicPage ex={s.example} /></div>}
           </section>
         )
       })}

@@ -6,6 +6,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ## [Não lançado]
 
 ### Adicionado
+- **Versões da proposta** em `/versoes/`: página A/B com duas versões lado a lado (rolagem junto, trocar lados, uma de cada vez) e cópias congeladas v1 a v5 em `public/versoes/vN/`
 - **Proposta: diagrama do caminho** (`FlowMap`): fundo quadriculado, blocos e ligações em ângulo reto; clicar numa etapa ou num bloco acende e anima só aquela parte; `?para=nome` troca "você" pelo nome do cliente
 - **Proposta: hero novo** com faixa carmesim, o símbolo gigante cortado pela borda, alinhavos e botões de costura, textura de papel e tarja no título
 - **Proposta: cada slide com desenho próprio** (seu × meu, ficha da implantação, tabela dos degraus, itens riscados, botão grande) e detalhe gráfico da identidade (faixa, fita métrica, alinhavo, símbolo)
@@ -23,6 +24,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- Proposta: 02 escuro, 03 claro, 04 escuro; slide 08 com tabela maior e mais distante do exemplo; "Começa com uma conversa" com o número em cima e a conversa maior ao lado
+- Proposta: fundos dos slides definidos um a um (claro/escuro); exemplo da página simples centralizado atravessando a divisa entre o slide 07 e o 08, como banner real (foto de fundo em `public/proposta/exemplo-fundo.jpg` e, se existir, o mockup em `public/proposta/exemplo-tablet.png`)
 - Proposta: diagrama maior, com as etapas embaixo; ficha da implantação em camadas, sem card; identidade com Monograma R$ 450 e Identidade básica R$ 1.200 (com dois mockups), INPI como aviso embaixo; infraestrutura e vídeo em tabela; "de sua escolha" nas integrações
 - Seção 2 (retalhos): os cards viraram módulos prontos do ambiente de exemplo (Atendimento, Materiais, Cobrança, Agenda, Evolução), cada um dizendo de qual retalho veio; status "em dia" e "atenção"
 - Clique num card abre o módulo no lugar dos cards, com recorte circular a partir do card clicado, tabela completa e abas; depois passa sozinho de um módulo para o outro, em loop, com o mesmo recorte e a barra de progresso de "A marca é sua" (pausa com o mouse em cima); "todos os módulos" ou Esc volta

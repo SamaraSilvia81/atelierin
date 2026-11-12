@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Versões da proposta · Atelierin</title>
+<style>
+  :root { --bg: #100D0D; --line: #2A1E1E; --osso: #F0EDE8; --muted: #8a7b77; --crimson: #C0211C; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--osso); font: 400 14px/1.4 'JetBrains Mono', ui-monospace, monospace; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0; font: 400 22px/1 'Bebas Neue', 'Arial Narrow', sans-serif; letter-spacing: .04em; text-transform: uppercase; }
+  header h1 b { color: var(--crimson); font-weight: 400; }
+  .tools { display: flex; flex-wrap: wrap; gap: 10px; margin-left: auto; align-items: center; }
+  button, select, label { font: inherit; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+  button { cursor: pointer; padding: 8px 12px; border: 1px solid var(--line); background: none; color: var(--osso); border-radius: 2px; }
+  button.on { border-color: var(--crimson); background: rgba(192,33,28,.15); }
+  label { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
+  main { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); height: calc(100vh - 62px); }
+  main.single { grid-template-columns: 1fr; }
+  main.single .pane:nth-child(2) { display: none; }
+  .pane { position: relative; background: var(--bg); display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+  .bar { display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  .bar b { color: var(--crimson); font-weight: 500; }
+  .bar select { flex: 1; padding: 7px 8px; background: #181313; color: var(--osso); border: 1px solid var(--line); border-radius: 2px; text-transform: none; letter-spacing: 0; }
+  .bar a { color: var(--muted); font-size: 12px; }
+  .frame { position: relative; overflow: hidden; }
+  /* o iframe tem 1440px de largura (layout de desktop) e é encolhido para caber */
+  iframe { position: absolute; left: 0; top: 0; width: 1440px; border: 0; transform-origin: 0 0; background: #fff; }
+  .note { padding: 8px 14px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Proposta · <b>versões</b></h1>
+  <div class="tools">
+    <button id="mode" class="on">A / B lado a lado</button>
+    <button id="swap">trocar lados</button>
+    <label><input type="checkbox" id="sync" checked> rolar junto</label>
+  </div>
+</header>
+<main id="main">
+  <section class="pane"><div class="bar"><b>A</b><select id="selA"></select><a id="openA" target="_blank">abrir</a></div><div class="frame"><iframe id="fA" title="Versão A"></iframe></div></section>
+  <section class="pane"><div class="bar"><b>B</b><select id="selB"></select><a id="openB" target="_blank">abrir</a></div><div class="frame"><iframe id="fB" title="Versão B"></iframe></div></section>
+</main>
+<script>
+  // Cada versão é uma cópia congelada do site, em /versoes/vN/.
+  const VERSIONS = [
+    { id: 'v1', label: 'v1 · original (antes de 12/11)' },
+    { id: 'v2', label: 'v2 · 12/11 16:23 · hero novo, diagrama e slides com desenho próprio' },
+    { id: 'v3', label: 'v3 · 12/11 17:12 · prazos, contrato, exemplo de página e tabelas' },
+    { id: 'v4', label: 'v4 · 12/11 17:52 · fundos um a um e exemplo atravessando a divisa' },
+    { id: 'v5', label: 'v5 · 12/11 18:00 · fundos 02/03/04, slide 08 e conversa do 12' },
+  ]
+  const url = (id) => `/versoes/${id}/index.html?p=/proposta`
+  const q = new URLSearchParams(location.search)
+  const state = { a: q.get('a') || 'v1', b: q.get('b') || VERSIONS[VERSIONS.length - 1].id }
+  const $ = (id) => document.getElementById(id)
+  for (const s of ['selA', 'selB']) VERSIONS.forEach((v) => $(s).add(new Option(v.label, v.id)))
+
+  function fit() {
+    for (const id of ['fA', 'fB']) {
+      const f = $(id); const box = f.parentElement
+      const k = box.clientWidth / 1440
+      f.style.transform = `scale(${k})`
+      f.style.height = `${box.clientHeight / k}px`
+    }
+  }
+  function load() {
+    $('selA').value = state.a; $('selB').value = state.b
+    $('fA').src = url(state.a); $('fB').src = url(state.b)
+    $('openA').href = url(state.a); $('openB').href = url(state.b)
+    history.replaceState(null, '', `?a=${state.a}&b=${state.b}`)
+  }
+  $('selA').onchange = (e) => { state.a = e.target.value; load() }
+  $('selB').onchange = (e) => { state.b = e.target.value; load() }
+  $('swap').onclick = () => { [state.a, state.b] = [state.b, state.a]; load() }
+  $('mode').onclick = (e) => {
+    const single = $('main').classList.toggle('single')
+    e.target.textContent = single ? 'só A (clique para A / B)' : 'A / B lado a lado'
+    e.target.classList.toggle('on', !single); requestAnimationFrame(fit)
+  }
+
+  // rolar junto: a rolagem de um lado vai para o outro, em proporção
+  let lock = false
+  function hook(from, to) {
+    $(from).addEventListener('load', () => {
+      const w = $(from).contentWindow
+      w.addEventListener('scroll', () => {
+        if (!$('sync').checked || lock) return
+        const d = w.document.documentElement; const o = $(to).contentWindow
+        const r = w.scrollY / Math.max(1, d.scrollHeight - w.innerHeight)
+        lock = true
+        o.scrollTo(0, r * (o.document.documentElement.scrollHeight - o.innerHeight))
+        requestAnimationFrame(() => { lock = false })
+      })
+      // mostra tudo sem esperar a animação de entrada
+      const st = w.document.createElement('style')
+      st.textContent = '[data-reveal]{opacity:1!important;transform:none!important}'
+      w.document.head.appendChild(st)
+    })
+  }
+  hook('fA', 'fB'); hook('fB', 'fA')
+  addEventListener('resize', fit)
+  load(); fit()
+</script>
+</body>
+</html>
