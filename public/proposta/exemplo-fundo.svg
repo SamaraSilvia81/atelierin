@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#3a2a24"/><stop offset=".55" stop-color="#7c5d4f"/><stop offset="1" stop-color="#c6ab96"/></linearGradient>
+    <radialGradient id="light" cx=".78" cy=".1" r=".7"><stop offset="0" stop-color="#fff3e4" stop-opacity=".55"/><stop offset="1" stop-color="#fff3e4" stop-opacity="0"/></radialGradient>
+    <linearGradient id="floor" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#5a4237"/><stop offset="1" stop-color="#2c201b"/></linearGradient>
+  </defs>
+  <rect width="1200" height="520" fill="url(#wall)"/>
+  <rect y="430" width="1200" height="90" fill="url(#floor)"/>
+  <rect width="1200" height="520" fill="url(#light)"/>
+  <!-- arara -->
+  <g stroke="#2a1d18" stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M610 120 H1150"/><path d="M630 120 V440"/><path d="M1130 120 V440"/><path d="M600 440 H660 M1100 440 H1160"/>
+  </g>
+  <!-- cabides e roupas -->
+  <g stroke="#2a1d18" stroke-width="3" fill="none">
+    <path d="M700 120 q0-14 10-14 M760 120 q0-14 10-14 M825 120 q0-14 10-14 M895 120 q0-14 10-14 M960 120 q0-14 10-14 M1030 120 q0-14 10-14 M1090 120 q0-14 10-14"/>
+  </g>
+  <path d="M672 128 L740 128 L760 170 L748 330 L664 330 L652 170 Z" fill="#e9dccd"/>
+  <path d="M732 128 L800 128 L826 176 L818 360 L726 360 L712 176 Z" fill="#9e1a17"/>
+  <path d="M797 128 L865 128 L880 165 L900 300 L782 300 L790 165 Z" fill="#d4b48f"/>
+  <path d="M867 128 L935 128 L955 175 L948 390 L860 390 L850 175 Z" fill="#1f1a18"/>
+  <path d="M932 128 L1000 128 L1018 170 L1040 340 L912 340 L915 170 Z" fill="#f4efe8"/>
+  <path d="M1002 128 L1070 128 L1088 172 L1080 370 L990 370 L986 172 Z" fill="#6b4a3a"/>
+  <path d="M1062 128 L1120 128 L1132 168 L1126 310 L1056 310 L1052 168 Z" fill="#c9a27e"/>
+  <!-- sombra suave -->
+  <ellipse cx="880" cy="450" rx="300" ry="18" fill="#000" opacity=".25"/>
+  <!-- vaso e planta -->
+  <rect x="470" y="380" width="60" height="60" rx="6" fill="#e9dccd"/>
+  <path d="M500 380 C470 330 440 300 455 260 M500 380 C505 320 520 290 545 270 M500 380 C495 340 480 320 500 290" stroke="#3f5a3a" stroke-width="8" fill="none" stroke-linecap="round"/>
+</svg>

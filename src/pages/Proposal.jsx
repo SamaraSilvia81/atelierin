@@ -151,17 +151,32 @@ function PublicPage({ ex }) {
   return (
     <figure className="s-public" aria-label={ex.label}>
       <div className="mods-bar"><span className="dots"><i /><i /><i /></span><code>{ex.host}</code><span className="mods-count">{ex.label}</span></div>
-      <div className="s-public-banner" style={{ '--bg': `url(${ex.image})` }}>
-        <div className="s-public-nav"><strong>{ex.name}</strong><span>início · serviços · contato</span><em>Entrar</em></div>
-        <div className="s-public-hero">
-          <small>{ex.role}</small>
-          <h4>{ex.name}</h4>
-          <p>{ex.bio}</p>
-          <div className="s-public-actions"><span className="is-wa"><WhatsappLogo size={14} weight="fill" /> Agendar pelo WhatsApp</span><span>Área da cliente</span></div>
+      <div className="ar">
+        <nav className="ar-nav">
+          <span className="ar-logo"><b>{ex.initials}</b>{ex.name}</span>
+          <span className="ar-enter">Área da cliente</span>
+        </nav>
+        <div className="ar-hero">
+          <div className="ar-copy">
+            <small>{ex.eyebrow}</small>
+            <h4>{ex.headline} <em>{ex.headlineAccent}</em></h4>
+            <p>{ex.bio}</p>
+            <div className="ar-cta"><span className="is-main"><WhatsappLogo size={15} weight="fill" /> Agendar conversa</span><span>Ver valores</span></div>
+            <span className="ar-proof"><i /><i /><i />{ex.proof}</span>
+          </div>
+          <div className="ar-photo" style={{ '--bg': `url(${ex.image})` }}>
+            <span className="ar-badge"><i />{ex.badge}</span>
+            <span className="ar-sign">{ex.name}</span>
+          </div>
         </div>
+        <ul className="ar-offers">
+          {ex.offers.map(([n, a, b, c]) => (
+            <li key={a}><span className="ar-n">{n}</span><strong>{a}</strong><p>{c}</p><span className="ar-price">{b}<i>→</i></span></li>
+          ))}
+        </ul>
+        <blockquote className="ar-quote">“{ex.quote}”<cite>{ex.quoteBy}</cite></blockquote>
       </div>
-      <ul className="s-public-offers">{ex.offers.map(([a, b, c]) => <li key={a}><strong>{a}</strong><span>{b}</span><small>{c}</small></li>)}</ul>
-      <small className="s-public-foot">feito com Atelierin</small>
+      <small className="s-public-foot">feito com Atelierin{ex.credit && <span> · {ex.credit}</span>}</small>
     </figure>
   )
 }
@@ -227,15 +242,15 @@ export default function Proposal() {
                 <span className="slide-n">{n}<small>/{total}</small></span>
                 <p className="label"><b aria-hidden="true">&gt;</b> {s.kicker}</p>
               </div>
-              <div className={`slide-main ${s.chat ? 'has-chat' : ''}`}>
+              <div className="slide-main">
                 <div className="slide-copy">
                   <Title text={s.title} accent={s.accent} />
                   <p className="slide-text">{s.text}</p>
                   <Body s={s} />
                 </div>
-                {s.chat && <Chat list={s.chat} />}
               </div>
             </div>
+            {s.chat && <div className="s-chat-anchor" data-reveal><Chat list={s.chat} /></div>}
             {s.example && <div className="wrap s-public-wrap"><PublicPage ex={s.example} /></div>}
           </section>
         )

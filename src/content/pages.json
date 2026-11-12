@@ -340,26 +340,38 @@
           "host": "anaribeiro.atelierin.com.br",
           "name": "Ana Ribeiro",
           "role": "Consultora de imagem e estilo",
-          "bio": "Ajudo mulheres a montar um guarda-roupa que conversa com quem elas são. Atendimento em Recife e online.",
+          "bio": "Ajudo mulheres a montar um guarda-roupa que conversa com quem elas são, sem comprar mais do que precisam. Atendimento em Recife e online.",
           "offers": [
             [
+              "01",
               "Consultoria de estilo",
               "R$ 380",
-              "2 encontros"
+              "Dois encontros para entender seu estilo e montar seus looks."
             ],
             [
+              "02",
               "Análise de coloração",
               "R$ 220",
-              "1 encontro"
+              "As cores que valorizam você, com cartela para levar."
             ],
             [
+              "03",
               "Personal shopper",
               "R$ 150 / hora",
-              "em loja ou online"
+              "Compras guiadas, na loja ou online, sem desperdício."
             ]
           ],
-          "image": "/proposta/exemplo-fundo.jpg",
-          "mockup": "/proposta/exemplo-tablet.png"
+          "image": "https://images.pexels.com/photos/6665063/pexels-photo-6665063.jpeg?auto=compress&cs=tinysrgb&w=1600",
+          "mockup": "/proposta/exemplo-tablet.png",
+          "credit": "foto: Antoni Shkraba · Pexels",
+          "initials": "AR",
+          "eyebrow": "Consultoria de imagem e estilo",
+          "headline": "Seu estilo,",
+          "headlineAccent": "sem esforço.",
+          "proof": "+120 clientes atendidas · Recife e online",
+          "badge": "Agenda aberta · dezembro",
+          "quote": "Pela primeira vez abri o armário e soube\no que vestir. Valeu cada encontro.",
+          "quoteBy": "Carla M., cliente desde 2025"
         },
         "theme": "light"
       },
