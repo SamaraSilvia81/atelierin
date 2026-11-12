@@ -46,7 +46,8 @@ export default function App() {
   useInitialHash()
   useReveal(path)
   // Proposta de cliente só existe rodando local (yarn dev); no site não abre
-  const client = import.meta.env.DEV ? path.match(/^\/proposta\/([a-z0-9-]+)$/)?.[1] : null
+  const m = import.meta.env.DEV ? path.match(/^\/proposta\/([a-z0-9-]+)$/) : null
+  const client = m?.[1]
   const Page = PAGES[path] ?? Home
   return (
     <>
