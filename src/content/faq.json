@@ -7,20 +7,24 @@
       "a": "Não. A implantação é feita por mim: você me passa a sua identidade, o seu conteúdo e o seu jeito de trabalhar, e recebe o ambiente pronto para usar."
     },
     {
+      "q": "Consigo ver como fica antes de fechar?",
+      "a": "Sim. Na nossa conversa eu te mostro uma prévia do ambiente com a sua marca, em cima de um molde pronto. Se fizer sentido, a implantação começa a partir dela."
+    },
+    {
       "q": "Meus alunos ou clientes vão ver a marca Atelierin?",
       "a": "Só no rodapé, pequena, como \"feito com Atelierin\". O nome, as cores e a logo que aparecem são os seus."
     },
     {
       "q": "Se já existe um ambiente parecido com o que eu quero, eu pago o mesmo valor?",
-      "a": "Não. Quando o seu ambiente sai de um molde que já existe, como o de um professor de música que já está no ar, a implantação é menor: você paga pela sua marca, configuração, cadastro e ajustes, não pelo desenvolvimento que já foi feito. Só sobe quando entra alguma funcionalidade nova, que é orçada à parte."
+      "a": "Não. Quem está começando entra pelo Padrão, que sai de um molde pronto: a implantação é a partir de R$ 900 (R$ 1.200 com área dos alunos). O Personalizado, com a sua identidade completa, é R$ 3.000. Funcionalidade que ainda não existe é orçada à parte nos dois."
     },
     {
-      "q": "Posso contratar só a implantação, sem manutenção?",
-      "a": "Pode. Nesse caso o ambiente fica nas suas contas de hospedagem, você paga direto aos serviços e recebe uma entrega técnica com tudo documentado. Há um período de garantia para correções; depois disso, ajustes e atualizações entram por orçamento. Para quem não tem alguém técnico por perto, a manutenção costuma sair mais em conta."
+      "q": "Quero um sistema só meu, no meu servidor. Dá?",
+      "a": "Dá, mas é outro tipo de projeto, com outro valor. O Atelierin é uma plataforma minha: você recebe um ambiente com a sua marca, o seu endereço, os seus alunos e os seus dados, e eu cuido do sistema, da hospedagem e das atualizações. Se você quer o código só para você, no seu servidor, a gente conversa e eu monto uma proposta separada."
     },
     {
-      "q": "Como funciona a manutenção de 8%?",
-      "a": "Todo mês a manutenção é 8% do que você recebeu dos alunos ativos. Se a turma cresce, ela acompanha; se diminui, ela cai junto. Cobre hospedagem, atualizações, cópias de segurança, suporte e pequenos ajustes."
+      "q": "Quanto eu pago por mês?",
+      "a": "Duas coisas. A manutenção é uma porcentagem do que você recebe dos alunos no mês: 5% no Padrão (mínimo R$ 110) e 8% no Personalizado (mínimo R$ 180). A infraestrutura é um valor fixo, revisto uma vez por ano: R$ 45 no Padrão e R$ 65 no Personalizado. Se você quiser vídeo próprio pelo Bunny, ele entra à parte. A calculadora em Planos faz a conta para o seu caso."
     },
     {
       "q": "O dinheiro dos alunos passa pelo Atelierin?",
@@ -33,6 +37,10 @@
     {
       "q": "Posso pedir uma funcionalidade específica?",
       "a": "Pode. Se ela servir para outros profissionais, vira um módulo da plataforma. Se for só para você, entra como módulo exclusivo. Nos dois casos, o orçamento é combinado antes."
+    },
+    {
+      "q": "Comecei pequeno. E se eu crescer?",
+      "a": "Você sobe do Padrão para o Personalizado pagando só a diferença da implantação. Nada do que você já pagou se perde, e o seu ambiente continua no mesmo endereço."
     },
     {
       "q": "E se eu quiser sair?",

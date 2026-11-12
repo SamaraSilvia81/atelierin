@@ -117,13 +117,13 @@
     "slides": [
       {
         "kicker": "o que você recebe",
-        "title": "Um ambiente seu, não uma conta numa plataforma",
-        "text": "Você recebe um ambiente com a sua marca, o seu endereço e só os módulos que fazem sentido para o seu trabalho. Seus alunos ou clientes entram por convite e veem você.",
+        "title": "Feito sob medida pra você. Mantido por mim.",
+        "text": "Você recebe um ambiente com a sua marca, o seu endereço e só os módulos que fazem sentido para o seu trabalho. O que é seu continua seu; o sistema por trás é meu, e por isso você não precisa se preocupar com nada técnico.",
         "points": [
-          "Endereço seunome.atelierin.com.br",
-          "Sua identidade aplicada no ambiente inteiro, do login ao rodapé",
-          "Linha e vocabulário da sua área",
-          "Painel para você acompanhar tudo"
+          "Seus: marca, endereço seunome.atelierin.com.br, conteúdo, alunos e dados",
+          "Meus: o sistema, a hospedagem, as atualizações e a evolução",
+          "Você usa o ambiente por licença, enquanto o contrato estiver ativo",
+          "Seus alunos entram por convite e veem você"
         ]
       },
       {
@@ -131,6 +131,7 @@
         "title": "O que entra na implantação",
         "text": "A implantação é o trabalho de montar o seu ambiente do zero até ele estar no ar, com tudo testado.",
         "points": [
+          "Uma prévia com a sua marca já na primeira conversa",
           "Estudo e análise da infraestrutura de melhor custo-benefício para o seu tamanho",
           "Aplicação da sua identidade: cores, fontes, logo e tela de entrada",
           "Configuração da linha, dos módulos e do vocabulário",
@@ -144,9 +145,9 @@
         "title": "Depois que está no ar",
         "text": "O ambiente não fica abandonado. A manutenção mensal cobre o que mantém tudo funcionando e o trabalho de operação do dia a dia.",
         "points": [
-          "Hospedagem e infraestrutura",
           "Atualizações e correções",
           "Cópias de segurança",
+          "Monitoramento do ambiente",
           "Suporte por mensagem",
           "Pequenos ajustes de texto e configuração"
         ]
@@ -163,24 +164,24 @@
       },
       {
         "kicker": "investimento",
-        "title": "R$ 3.000, em até 10x de R$ 300",
-        "text": "A implantação de um ambiente School personalizado é R$ 3.000, que podem ser parcelados em 10x de R$ 300. Depois que ele vai ao ar, a manutenção é 8% do que você recebe dos alunos ativos no mês: acompanha o seu tamanho, para cima ou para baixo.",
+        "title": "Dois degraus, o mesmo ambiente",
+        "text": "Quem está começando entra pelo Padrão; quem já tem turma formada vai direto para o Personalizado. A implantação é paga uma vez. Todo mês entram a manutenção, que acompanha o que você recebe dos alunos, e uma taxa fixa de infraestrutura.",
         "points": [
-          "Implantação: R$ 3.000 ou 10x de R$ 300",
-          "Manutenção: 8% do recebido dos alunos ativos no mês",
-          "Ambiente a partir de um molde pronto: implantação menor",
-          "Funcionalidade nova: orçamento à parte"
+          "Padrão: implantação a partir de R$ 900 (R$ 1.200 com área dos alunos), manutenção de 5% com mínimo de R$ 110",
+          "Personalizado: implantação de R$ 3.000 ou 10x de R$ 300, manutenção de 8% com mínimo de R$ 180",
+          "Do Padrão para o Personalizado: você paga só a diferença",
+          "Funcionalidade nova: orçamento à parte, combinado antes"
         ]
       },
       {
-        "kicker": "com ou sem manutenção",
-        "title": "Você escolhe quem cuida depois",
-        "text": "Com a manutenção, eu cuido de tudo: hospedagem, atualizações, cópias de segurança e suporte. Sem ela, o ambiente é entregue nas suas contas, com documentação, e você passa a cuidar dele (ou contrata alguém).",
+        "kicker": "infraestrutura e vídeo",
+        "title": "Um valor fixo para o que mantém tudo no ar",
+        "text": "Banco de dados, armazenamento e serviços que o ambiente usa ficam comigo. Você paga uma taxa fixa por mês, revista uma vez por ano. Vídeo pelo YouTube ou Google Drive não tem custo; vídeo próprio pelo Bunny entra à parte, pelo uso.",
         "points": [
-          "Com manutenção: nada técnico fica com você",
-          "Sem manutenção: hospedagem nas suas contas, paga direto aos serviços",
-          "Sem manutenção: entrega técnica e garantia de correções por um período",
-          "Depois da garantia: ajustes e atualizações por orçamento"
+          "Padrão: R$ 45 por mês",
+          "Personalizado: R$ 65 por mês",
+          "Vídeo pelo YouTube ou Google Drive: sem custo",
+          "Vídeo próprio (Bunny): à parte, a partir de ~R$ 49 por mês, só no Personalizado"
         ]
       },
       {
@@ -195,9 +196,20 @@
         ]
       },
       {
+        "kicker": "se quiser sair",
+        "title": "Você sai quando quiser, com os seus dados",
+        "text": "O cancelamento é avisado com 30 dias de antecedência. Antes de encerrar, você exporta os dados da sua operação.",
+        "points": [
+          "Aviso de 30 dias",
+          "Exportação dos dados de alunos e conteúdo",
+          "A licença de uso termina junto com o contrato",
+          "O sistema e o subdomínio continuam da Atelierin"
+        ]
+      },
+      {
         "kicker": "próximo passo",
         "title": "Começa com uma conversa",
-        "text": "Me chama, me conta como você trabalha hoje e eu volto com uma proposta montada para o seu caso.",
+        "text": "Me chama, me conta como você trabalha hoje e eu te mostro uma prévia com a sua marca. Se fizer sentido, volto com a proposta montada para o seu caso.",
         "points": [],
         "cta": {
           "label": "Chamar no WhatsApp",
