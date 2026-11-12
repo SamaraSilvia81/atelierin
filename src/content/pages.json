@@ -112,7 +112,7 @@
   },
   "proposal": {
     "label": "proposta comercial",
-    "title": "Como funciona contratar um ambiente",
+    "title": "Como funciona contratar",
     "lede": "A proposta de cada cliente é montada depois da conversa, mas a estrutura é sempre esta. Aqui está ela, item por item, sem letra miúda.",
     "slides": [
       {
@@ -120,10 +120,31 @@
         "title": "Feito sob medida pra você. Mantido por mim.",
         "text": "Você recebe um ambiente com a sua marca, o seu endereço e só os módulos que fazem sentido para o seu trabalho. O que é seu continua seu; o sistema por trás é meu, e por isso você não precisa se preocupar com nada técnico.",
         "points": [
-          "Seus: marca, endereço seunome.atelierin.com.br, conteúdo, alunos e dados",
-          "Meus: o sistema, a hospedagem, as atualizações e a evolução",
           "Você usa o ambiente por licença, enquanto o contrato estiver ativo",
           "Seus alunos entram por convite e veem você"
+        ],
+        "accent": "Mantido por mim.",
+        "layout": "split",
+        "deco": "band",
+        "split": [
+          {
+            "label": "seu",
+            "items": [
+              "Marca e identidade",
+              "Endereço seunome.atelierin.com.br",
+              "Conteúdo, alunos e dados",
+              "O dinheiro dos alunos"
+            ]
+          },
+          {
+            "label": "meu",
+            "items": [
+              "O sistema por trás",
+              "Hospedagem e infraestrutura",
+              "Atualizações e correções",
+              "Evolução da plataforma"
+            ]
+          }
         ]
       },
       {
@@ -138,7 +159,61 @@
           "Cadastro inicial de alunos ou clientes e do conteúdo que você já tem",
           "Rodadas de ajuste até você aprovar",
           "Uma conversa para te mostrar como usar"
-        ]
+        ],
+        "accent": "implantação",
+        "layout": "layer",
+        "deco": "tape",
+        "fichaTitle": "Ficha da implantação"
+      },
+      {
+        "kicker": "sem marca ainda",
+        "title": "Ainda não tem marca? Eu faço o básico",
+        "accent": "o básico",
+        "layout": "options",
+        "deco": "none",
+        "text": "A implantação aplica a sua identidade; ela não cria uma. Se você ainda não tem marca, faço uma identidade básica antes, como um serviço à parte. São dois trabalhos diferentes, e por isso aparecem separados na proposta.",
+        "options": [
+          {
+            "name": "Monograma",
+            "price": "R$ 450",
+            "for": "Quem quer começar com o próprio nome",
+            "items": [
+              "Seu nome com uma tipografia escolhida",
+              "Paleta de cores",
+              "Um ícone com a sua inicial (não é um logo)",
+              "Uma rodada de ajuste"
+            ],
+            "note": "Não há logo, só o seu nome. Por isso não precisa de registro no INPI."
+          },
+          {
+            "name": "Identidade básica",
+            "price": "R$ 1.200",
+            "for": "Quem quer um logo próprio",
+            "items": [
+              "Logo simples",
+              "Paleta de cores",
+              "Tipografia",
+              "Dois mockups mostrando a marca aplicada",
+              "Duas rodadas de ajuste"
+            ],
+            "note": "Se quiser proteger o logo, o registro é feito no INPI (veja abaixo)."
+          }
+        ],
+        "excluded": [
+          "Mockups além dos dois inclusos",
+          "Manual de marca completo",
+          "Papelaria, posts e peças de redes sociais"
+        ],
+        "inpi": {
+          "title": "Registro no INPI",
+          "text": "O registro protege o nome ou o logo da sua marca. A taxa é paga por você, direto ao INPI, por uma guia (GRU): R$ 880 por classe, ou R$ 440 para MEI, microempresa e pessoa física com desconto. Se quiser, eu cuido do pedido para você, como serviço à parte, sem incluir a taxa.",
+          "link": {
+            "label": "Página de marcas do INPI",
+            "href": "https://www.gov.br/inpi/pt-br/servicos/marcas"
+          }
+        },
+        "points": [],
+        "complete": "Quer uma identidade completa, com manual, aplicações e papelaria? É outro projeto, com orçamento próprio."
       },
       {
         "kicker": "manutenção",
@@ -150,7 +225,9 @@
           "Monitoramento do ambiente",
           "Suporte por mensagem",
           "Pequenos ajustes de texto e configuração"
-        ]
+        ],
+        "accent": "no ar",
+        "deco": "mark"
       },
       {
         "kicker": "cobrança",
@@ -160,29 +237,156 @@
           "Sem intermediário no pagamento",
           "Status por pessoa: em dia, pendente, atrasado",
           "Integração bancária automática pode entrar depois, sob orçamento"
-        ]
+        ],
+        "accent": "direto para você",
+        "deco": "stitch"
       },
       {
         "kicker": "investimento",
         "title": "Dois degraus, o mesmo ambiente",
         "text": "Quem está começando entra pelo Padrão; quem já tem turma formada vai direto para o Personalizado. A implantação é paga uma vez. Todo mês entram a manutenção, que acompanha o que você recebe dos alunos, e uma taxa fixa de infraestrutura.",
         "points": [
-          "Padrão: implantação a partir de R$ 900 (R$ 1.200 com área dos alunos), manutenção de 5% com mínimo de R$ 110",
-          "Personalizado: implantação de R$ 3.000 ou 10x de R$ 300, manutenção de 8% com mínimo de R$ 180",
           "Do Padrão para o Personalizado: você paga só a diferença",
           "Funcionalidade nova: orçamento à parte, combinado antes"
-        ]
+        ],
+        "accent": "Dois degraus",
+        "layout": "table",
+        "deco": "band",
+        "table": {
+          "cols": [
+            "",
+            "Padrão",
+            "Personalizado"
+          ],
+          "rows": [
+            [
+              "Para quem",
+              "está começando",
+              "já tem turma formada"
+            ],
+            [
+              "Implantação",
+              "a partir de R$ 900 · R$ 1.200 com área dos alunos",
+              "R$ 3.000 ou 10x de R$ 300"
+            ],
+            [
+              "Manutenção",
+              "5% do que você recebe, mínimo R$ 110",
+              "8% do que você recebe, mínimo R$ 180"
+            ],
+            [
+              "Infraestrutura",
+              "R$ 45 por mês",
+              "R$ 65 por mês"
+            ],
+            [
+              "Vídeo",
+              "YouTube ou Google Drive",
+              "YouTube, Drive ou Bunny (à parte)"
+            ]
+          ],
+          "highlight": 2
+        }
+      },
+      {
+        "kicker": "página de divulgação",
+        "title": "Quer também uma página para divulgar?",
+        "accent": "divulgar",
+        "layout": "lp",
+        "deco": "stitch",
+        "text": "Todo ambiente já vem com uma página simples no seu endereço: sua foto, o que você oferece, contato e o botão de entrar. Uma landing page completa, com texto, seções e design próprios, é outro serviço, e quem quiser só ela contrata só ela.",
+        "points": [],
+        "cards": [
+          {
+            "name": "Página simples",
+            "price": "inclusa",
+            "for": "vem com todo ambiente",
+            "items": [
+              "Foto, nome e bio curta",
+              "O que você oferece",
+              "WhatsApp e botão de entrar"
+            ]
+          },
+          {
+            "name": "Landing page",
+            "price": "R$ 2.500",
+            "for": "avulsa",
+            "items": [
+              "Texto e seções pensados para você",
+              "Design próprio, com a sua marca",
+              "Pode existir sem o ambiente"
+            ]
+          },
+          {
+            "name": "Combo",
+            "price": "R$ 5.000",
+            "for": "Personalizado + landing page",
+            "items": [
+              "Implantação do Personalizado: R$ 3.000",
+              "Landing page: R$ 2.000 (em vez de R$ 2.500)",
+              "Uma conversa e um projeto só"
+            ],
+            "hl": true
+          }
+        ],
+        "example": {
+          "label": "exemplo de página simples",
+          "host": "maria.atelierin.com.br",
+          "name": "Maria Lima",
+          "role": "Professora de teclado",
+          "bio": "Aulas de teclado para iniciantes e intermediários, presenciais em Recife e online.",
+          "offers": [
+            [
+              "Aula individual",
+              "R$ 150 / mês",
+              "4 aulas"
+            ],
+            [
+              "Turma de sábado",
+              "R$ 120 / mês",
+              "grupo de até 8"
+            ],
+            [
+              "Aula experimental",
+              "sem custo",
+              "30 minutos"
+            ]
+          ]
+        }
       },
       {
         "kicker": "infraestrutura e vídeo",
         "title": "Um valor fixo para o que mantém tudo no ar",
-        "text": "Banco de dados, armazenamento e serviços que o ambiente usa ficam comigo. Você paga uma taxa fixa por mês, revista uma vez por ano. Vídeo pelo YouTube ou Google Drive não tem custo; vídeo próprio pelo Bunny entra à parte, pelo uso.",
-        "points": [
-          "Padrão: R$ 45 por mês",
-          "Personalizado: R$ 65 por mês",
-          "Vídeo pelo YouTube ou Google Drive: sem custo",
-          "Vídeo próprio (Bunny): à parte, a partir de ~R$ 49 por mês, só no Personalizado"
-        ]
+        "text": "Banco de dados, armazenamento e serviços que o ambiente usa ficam comigo. Você paga uma taxa fixa por mês, revista uma vez por ano.",
+        "points": [],
+        "accent": "valor fixo",
+        "deco": "mark",
+        "layout": "table",
+        "table": {
+          "cols": [
+            "",
+            "Padrão",
+            "Personalizado"
+          ],
+          "rows": [
+            [
+              "Infraestrutura",
+              "R$ 45 por mês",
+              "R$ 65 por mês"
+            ],
+            [
+              "Vídeo pelo YouTube ou Drive",
+              "sem custo",
+              "sem custo"
+            ],
+            [
+              "Vídeo próprio (Bunny)",
+              "não disponível",
+              "à parte, a partir de ~R$ 49 por mês"
+            ]
+          ],
+          "highlight": 2
+        }
       },
       {
         "kicker": "fora do escopo",
@@ -190,10 +394,57 @@
         "text": "Para não ter surpresa, o que fica de fora também fica escrito. Tudo isso pode entrar, com orçamento próprio.",
         "points": [
           "Funcionalidades feitas só para você",
-          "Integrações com bancos e outros sistemas",
+          "Integrações com bancos e outros sistemas de sua escolha",
           "Produção de conteúdo (aulas, textos, fotos)",
           "Linhas que ainda não foram lançadas"
-        ]
+        ],
+        "accent": "não",
+        "layout": "strike",
+        "deco": "none"
+      },
+      {
+        "kicker": "prazos e contrato",
+        "title": "Prazo combinado, contrato assinado",
+        "accent": "Prazo combinado",
+        "layout": "terms",
+        "deco": "tape",
+        "text": "Tudo começa com uma conversa e só segue com contrato assinado. Cada etapa tem prazo e reunião marcados, e os dois lados se comprometem com eles.",
+        "terms": [
+          [
+            "Landing page",
+            "3 dias úteis",
+            "pode chegar a 5"
+          ],
+          [
+            "Ambiente Padrão",
+            "1 a 2 dias úteis",
+            "pode chegar a 5"
+          ],
+          [
+            "Ambiente Personalizado",
+            "1 a 4 semanas",
+            "depende do que for personalizado"
+          ],
+          [
+            "Identidade visual",
+            "combinado na proposta",
+            "conforme a opção"
+          ]
+        ],
+        "meetings": [
+          "Conversa inicial",
+          "Aprovação da prévia",
+          "Entrega, com uma conversa para te mostrar como usar"
+        ],
+        "contract": [
+          "Escopo: o que entra e o que fica de fora",
+          "Prazos de cada etapa",
+          "Valores, forma de pagamento e reajuste",
+          "Cancelamento com 30 dias e exportação dos dados",
+          "Seus dados são seus; o sistema e o subdomínio são do Atelierin"
+        ],
+        "notice": "Trabalho com prazo combinado e respeito dos dois lados. Se a ideia é ter tudo pra ontem, eu não sou a pessoa certa, e tudo bem. Pressa costuma sair caro para quem pede e para quem faz.",
+        "points": []
       },
       {
         "kicker": "se quiser sair",
@@ -204,7 +455,9 @@
           "Exportação dos dados de alunos e conteúdo",
           "A licença de uso termina junto com o contrato",
           "O sistema e o subdomínio continuam da Atelierin"
-        ]
+        ],
+        "accent": "com os seus dados",
+        "deco": "tape"
       },
       {
         "kicker": "próximo passo",
@@ -214,9 +467,128 @@
         "cta": {
           "label": "Chamar no WhatsApp",
           "href": "/#contato"
-        }
+        },
+        "accent": "conversa",
+        "layout": "cta",
+        "deco": "band",
+        "chat": [
+          [
+            "eu",
+            "Oi, Samara! Vim pelo site. Dou aula de teclado e tá tudo no WhatsApp e no Drive."
+          ],
+          [
+            "ela",
+            "Oi! Me conta como você cobra hoje?"
+          ],
+          [
+            "eu",
+            "Pix, e confiro no extrato no fim do mês 😅"
+          ],
+          [
+            "ela",
+            "Já dá pra te mostrar uma prévia com a sua marca. Sexta às 15h?"
+          ]
+        ]
       }
-    ]
+    ],
+    "flow": {
+      "kicker": "o caminho todo",
+      "title": "Do primeiro oi ao mês a mês",
+      "lede": "Clique numa etapa ou num bloco para ver só aquela parte acontecer.",
+      "you": "Você",
+      "modules": [
+        "atendimento",
+        "materiais",
+        "cobrança",
+        "agenda"
+      ],
+      "overview": {
+        "title": "Quem faz o quê",
+        "text": "À esquerda, você e eu. No meio, o seu ambiente. À direita, os seus alunos e a sua conta. As linhas mostram o que passa entre cada parte: as vermelhas são trabalho, a verde é o dinheiro dos alunos."
+      },
+      "nodes": {
+        "voce": {
+          "kind": "profissional",
+          "name": "{voce}",
+          "title": "{voce}",
+          "text": "Conversa comigo, aprova a prévia, paga a implantação uma vez e a manutenção todo mês. Usa o ambiente com a própria marca."
+        },
+        "samara": {
+          "kind": "Atelierin",
+          "name": "Samara",
+          "title": "Samara · Atelierin",
+          "text": "Monta, publica e mantém o ambiente: atualizações, cópias de segurança, monitoramento e suporte. Não recebe nada dos seus alunos."
+        },
+        "previa": {
+          "kind": "antes de fechar",
+          "name": "Prévia",
+          "title": "A prévia",
+          "text": "Na primeira conversa você já vê o ambiente com a sua marca, em cima de um molde pronto. Se fizer sentido, a implantação começa a partir dela."
+        },
+        "ambiente": {
+          "kind": "{slug}.atelierin.com.br",
+          "name": "Seu ambiente",
+          "title": "O seu ambiente",
+          "text": "No seu endereço, com a sua marca e só os módulos que fazem sentido para o seu trabalho."
+        },
+        "alunos": {
+          "kind": "quem você atende",
+          "name": "Alunos",
+          "title": "Os seus alunos",
+          "text": "Entram por convite, com login, e veem você, não o Atelierin. Pagam direto para a sua conta."
+        },
+        "conta": {
+          "kind": "de {voce}",
+          "name": "Sua conta",
+          "title": "A sua conta",
+          "text": "O dinheiro dos alunos cai direto aqui, por Pix. Ele nunca passa pelo Atelierin nem por mim."
+        }
+      },
+      "edges": {
+        "conversa": "conversa",
+        "previa-a": "monto a prévia",
+        "previa-b": "com a sua marca",
+        "implanta-pay": "implantação · valor único",
+        "implanta": "monta e publica",
+        "login": "entram com login",
+        "pix": "pagam por Pix",
+        "mensal": "manutenção mensal",
+        "cuida": "atualiza, cuida, dá suporte"
+      },
+      "steps": [
+        {
+          "short": "Conversa",
+          "title": "A gente conversa",
+          "text": "Você me conta como trabalha hoje: quem atende, o que ensina, como cobra e o que mais toma o seu tempo."
+        },
+        {
+          "short": "Prévia",
+          "title": "Eu te mostro a prévia",
+          "text": "Monto uma prévia com a sua marca em cima de um molde pronto, para você ver antes de decidir qualquer coisa."
+        },
+        {
+          "short": "Implantação",
+          "title": "Implantação",
+          "text": "Você paga a implantação uma vez e eu monto o ambiente completo: identidade, módulos, alunos e conteúdo. Rodadas de ajuste até você aprovar."
+        },
+        {
+          "short": "No ar",
+          "title": "O ambiente no ar",
+          "text": "Seu ambiente fica em {slug}.atelierin.com.br. Os alunos entram por convite, com login, e veem a sua marca."
+        },
+        {
+          "short": "Pagamentos",
+          "title": "O dinheiro vai direto para você",
+          "text": "Os alunos pagam por Pix direto na sua conta. O dinheiro não passa por mim nem pelo Atelierin."
+        },
+        {
+          "short": "Mês a mês",
+          "title": "Todo mês",
+          "text": "Você paga a manutenção mensal e eu cuido do resto: atualizações, cópias de segurança, monitoramento, suporte e pequenos ajustes."
+        }
+      ]
+    },
+    "titleAccent": "um ambiente"
   },
   "cases": {
     "label": "estudos de caso",

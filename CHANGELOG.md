@@ -6,6 +6,13 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ## [Não lançado]
 
 ### Adicionado
+- **Proposta: diagrama do caminho** (`FlowMap`): fundo quadriculado, blocos e ligações em ângulo reto; clicar numa etapa ou num bloco acende e anima só aquela parte; `?para=nome` troca "você" pelo nome do cliente
+- **Proposta: hero novo** com faixa carmesim, o símbolo gigante cortado pela borda, alinhavos e botões de costura, textura de papel e tarja no título
+- **Proposta: cada slide com desenho próprio** (seu × meu, ficha da implantação, tabela dos degraus, itens riscados, botão grande) e detalhe gráfico da identidade (faixa, fita métrica, alinhavo, símbolo)
+- **Proposta: "Ainda não tem marca?"** com Monograma e Identidade básica, o que não entra e o registro no INPI (taxa paga pelo cliente, link oficial)
+- **Proposta: "Quer também uma página para divulgar?"** com cards de preço (página simples inclusa, landing page R$ 2.500, combo R$ 5.000) e um exemplo da página simples
+- **Proposta: "Prazo combinado, contrato assinado"** com prazos por serviço, as reuniões, o que o contrato garante e o aviso sobre pressa
+- **Proposta: conversa de exemplo** ao lado de "Começa com uma conversa"
 - **Dois degraus de preço** ([`LP-ADR-005`](docs/decisoes/LP-ADR-005-preco-na-pagina.md)): Padrão (a partir de R$ 900, 5% com mínimo de R$ 110, infraestrutura R$ 45) e Personalizado (10x de R$ 300, 8% com mínimo de R$ 180, infraestrutura R$ 65)
 - **Calculadora** em Planos: alunos, mensalidade, acesso dos alunos e vídeo; mostra o plano indicado, o mês e o 1º ano
 - **Tabela "Uma vez, e todo mês"** comparando os dois planos
@@ -16,6 +23,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- Proposta: diagrama maior, com as etapas embaixo; ficha da implantação em camadas, sem card; identidade com Monograma R$ 450 e Identidade básica R$ 1.200 (com dois mockups), INPI como aviso embaixo; infraestrutura e vídeo em tabela; "de sua escolha" nas integrações
 - Seção 2 (retalhos): os cards viraram módulos prontos do ambiente de exemplo (Atendimento, Materiais, Cobrança, Agenda, Evolução), cada um dizendo de qual retalho veio; status "em dia" e "atenção"
 - Clique num card abre o módulo no lugar dos cards, com recorte circular a partir do card clicado, tabela completa e abas; depois passa sozinho de um módulo para o outro, em loop, com o mesmo recorte e a barra de progresso de "A marca é sua" (pausa com o mouse em cima); "todos os módulos" ou Esc volta
 - Seção 2 com demonstração: um cursor filtra, abre um módulo, rola a lista e volta, em loop (Atenção → Cobrança, Em dia → Agenda, Todos → Atendimento); se a pessoa clicar em algo, o cursor some e ela assume
