@@ -49,8 +49,21 @@ const SOUNDS = {
   on: () => { tone({ freq: 1200, duration: 0.1, volume: 0.08 }); setTimeout(() => tone({ freq: 1600, duration: 0.12, volume: 0.06 }), 90) },
 }
 
+// O navegador só libera áudio depois de um gesto da pessoa (clique, toque ou
+// tecla). Rolar a página não conta. Então, no primeiro gesto em qualquer lugar,
+// o áudio é destravado; antes disso os sons não tocam, mesmo com o alto-falante ligado.
+if (typeof window !== 'undefined') {
+  const unlock = () => {
+    try { ac() } catch { /* sem áudio */ }
+    ;['pointerdown', 'keydown', 'touchstart'].forEach((ev) => window.removeEventListener(ev, unlock, true))
+  }
+  ;['pointerdown', 'keydown', 'touchstart'].forEach((ev) => window.addEventListener(ev, unlock, true))
+}
+
 export function play(name) {
   if (!enabled) return
+  // antes do primeiro gesto o contexto fica suspenso: não insiste, só pula o som
+  if (!ctx || ctx.state !== 'running') { if (!ctx) return; try { ctx.resume() } catch { /* */ } if (ctx.state !== 'running') return }
   try { SOUNDS[name]?.() } catch { /* sem áudio */ }
 }
 

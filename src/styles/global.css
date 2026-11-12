@@ -347,6 +347,18 @@ h1, h2, h3, p { margin: 0; }
 .gview-top code { font: 400 11px/1 var(--font-mono); color: var(--text-muted); }
 .gview-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 2px; border: 1px solid #251818; background: var(--palette-fuligem); color: var(--text-sub); cursor: pointer; font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .gview-back:hover { color: var(--text); border-color: #5a1f1f; }
+.gdemo { position: relative; }
+.gcursor { position: absolute; left: 0; top: 0; z-index: 20; pointer-events: none; opacity: 0; transform: translate(var(--x), var(--y)); transition: transform .8s cubic-bezier(.45,.05,.25,1), opacity .3s; filter: drop-shadow(0 4px 10px rgba(0,0,0,.5)); }
+.gcursor.is-on { opacity: 1; }
+.gcursor svg { display: block; }
+.gcursor i { position: absolute; left: -10px; top: -10px; width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--palette-crimson); opacity: 0; }
+.gcursor i.is-click { animation: g-click .5s ease-out; }
+@keyframes g-click { from { opacity: .9; transform: scale(.3); } to { opacity: 0; transform: scale(1.6); } }
+.gview-scroll { max-height: 300px; overflow-y: auto; margin: 0 24px; scrollbar-width: thin; scrollbar-color: #3a2424 transparent; }
+.gview-scroll .gview-table { width: 100%; margin: 0; }
+.gview-scroll thead th { position: sticky; top: 0; background: #161212; z-index: 1; }
+.gview-sub span { margin-left: 8px; color: #6b5555; }
+@media (min-width: 1081px) { .gcards { grid-template-columns: repeat(4, 1fr); } }
 .gview-stage { position: relative; display: grid; overflow: hidden; background: #161212; }
 .gview-layer { grid-area: 1 / 1; background: #161212; }
 .gview-layer.is-wipe { z-index: 2; animation: lg-wipe 1s cubic-bezier(.7,0,.2,1) both; }
@@ -415,7 +427,7 @@ h1, h2, h3, p { margin: 0; }
 .gcard-add span { font-size: var(--text-sm); }
 
 /* fechamento + seta longa tracejada + brilho claro */
-.problem-end { position: relative; margin-top: clamp(180px, 22vw, 320px); display: flex; flex-direction: column; align-items: center; gap: 36px; text-align: center; }
+.problem-end { position: relative; margin-top: clamp(160px, 19vw, 280px); display: flex; flex-direction: column; align-items: center; gap: 36px; text-align: center; }
 .problem-blob {
   position: absolute; left: 18%; top: 20%; width: min(1100px, 120%); height: 1000px; transform: translate(-50%, 0);
   background: radial-gradient(closest-side, rgba(240,237,232,.13), rgba(196,184,176,.05) 55%, transparent 80%);

@@ -143,62 +143,34 @@
               "Pedro Alves",
               "Esqueci a senha",
               "respondida"
+            ],
+            [
+              "Carla Dias",
+              "Obrigada pela aula!",
+              "lida"
+            ],
+            [
+              "Bruno Reis",
+              "Vou faltar quinta",
+              "respondida"
+            ],
+            [
+              "Turma B",
+              "Material novo publicado",
+              "enviado"
+            ],
+            [
+              "Lívia Costa",
+              "Qual a música do recital?",
+              "aberta"
+            ],
+            [
+              "Marcos Lima",
+              "Posso pagar dia 10?",
+              "respondida"
             ]
           ],
           "note": "Tudo fica registrado por aluno, não some no meio dos grupos."
-        }
-      },
-      {
-        "path": "materiais",
-        "title": "Materiais",
-        "status": "ativo",
-        "count": "48",
-        "desc": "Era o Drive",
-        "log": "Aula 03 · escalas maiores.pdf",
-        "logMeta": "publicada para a Turma A",
-        "group": "pastas",
-        "items": [
-          "aulas",
-          "exercícios",
-          "partituras"
-        ],
-        "source": "materiais",
-        "foot": "ver materiais",
-        "detail": {
-          "title": "Materiais publicados",
-          "cols": [
-            "Arquivo",
-            "Para quem",
-            "Versão"
-          ],
-          "rows": [
-            [
-              "Aula 01 · postura e mãos.pdf",
-              "Todos",
-              "v1"
-            ],
-            [
-              "Aula 02 · leitura de cifra.pdf",
-              "Turma A",
-              "v2"
-            ],
-            [
-              "Aula 03 · escalas maiores.pdf",
-              "Turma A",
-              "v1"
-            ],
-            [
-              "Exercício 04 · arpejos.pdf",
-              "Turma B",
-              "v1"
-            ],
-            [
-              "Partitura · Asa Branca.pdf",
-              "Todos",
-              "v1"
-            ]
-          ],
-          "note": "Uma versão por arquivo. O aluno só vê o que é da turma dele."
         }
       },
       {
@@ -235,6 +207,26 @@
               "paga · 07/11"
             ],
             [
+              "Bruno Reis",
+              "R$ 150,00",
+              "paga · 08/11"
+            ],
+            [
+              "Lívia Costa",
+              "R$ 180,00",
+              "paga · 08/11"
+            ],
+            [
+              "Marcos Lima",
+              "R$ 150,00",
+              "paga · 10/11"
+            ],
+            [
+              "Carla Dias",
+              "R$ 150,00",
+              "paga · 10/11"
+            ],
+            [
               "Júlia Mendes",
               "R$ 180,00",
               "vence 15/11"
@@ -245,9 +237,14 @@
               "vence 15/11"
             ],
             [
-              "Carla Dias",
+              "Sofia Rocha",
               "R$ 150,00",
               "vence 15/11"
+            ],
+            [
+              "Turma B · 6 alunos",
+              "R$ 900,00",
+              "pagas · 03/11"
             ]
           ],
           "note": "A Ana pagou dia 05 e você marcou em um clique. Quem ainda falta aparece aqui, sem abrir planilha nem extrato."
@@ -259,7 +256,7 @@
         "status": "ativo",
         "count": "4",
         "desc": "Era de cabeça",
-        "log": "Próxima: Ana Lima, 14h",
+        "log": "Próxima: Ana Lima, seg 14h",
         "logMeta": "4 aulas hoje",
         "group": "esta semana",
         "items": [
@@ -270,7 +267,7 @@
         "source": "agenda",
         "foot": "ver agenda",
         "detail": {
-          "title": "Aulas de hoje",
+          "title": "Aulas da semana",
           "cols": [
             "Horário",
             "Aluno",
@@ -278,79 +275,57 @@
           ],
           "rows": [
             [
-              "09:00",
+              "seg 09:00",
               "Carla Dias",
               "individual"
             ],
             [
-              "14:00",
+              "seg 14:00",
               "Ana Lima",
               "individual"
             ],
             [
-              "16:00",
+              "seg 16:00",
               "Turma A",
               "grupo · 6 alunos"
             ],
             [
-              "18:30",
+              "ter 10:00",
+              "Bruno Reis",
+              "individual"
+            ],
+            [
+              "qua 15:00",
+              "Lívia Costa",
+              "individual"
+            ],
+            [
+              "qua 18:30",
               "Rafael Souza",
               "reposição"
+            ],
+            [
+              "qui 16:00",
+              "Turma B",
+              "grupo · 6 alunos"
+            ],
+            [
+              "sex 09:00",
+              "Marcos Lima",
+              "individual"
+            ],
+            [
+              "sex 14:00",
+              "Sofia Rocha",
+              "experimental"
+            ],
+            [
+              "sáb 10:00",
+              "Turma de sábado",
+              "grupo · 8 alunos"
             ]
           ],
           "note": "O aluno remarca pelo ambiente, dentro dos horários que você liberou."
-        }
-      },
-      {
-        "path": "evolucao",
-        "title": "Evolução",
-        "status": "ativo",
-        "count": "21",
-        "desc": "Era o caderninho",
-        "log": "Rafael concluiu o módulo 2",
-        "logMeta": "há 2 horas",
-        "group": "módulos",
-        "items": [
-          "iniciante",
-          "intermediário"
-        ],
-        "source": "evolução",
-        "foot": "ver alunos",
-        "detail": {
-          "title": "Andamento dos alunos",
-          "cols": [
-            "Aluno",
-            "Módulo",
-            "Progresso"
-          ],
-          "rows": [
-            [
-              "Ana Lima",
-              "Módulo 3",
-              "80%"
-            ],
-            [
-              "Rafael Souza",
-              "Módulo 2",
-              "100%"
-            ],
-            [
-              "Júlia Mendes",
-              "Módulo 1",
-              "45%"
-            ],
-            [
-              "Pedro Alves",
-              "Módulo 2",
-              "60%"
-            ],
-            [
-              "Carla Dias",
-              "Módulo 1",
-              "20%"
-            ]
-          ],
-          "note": "Cada aluno vê o próprio caminho. Você vê a turma inteira."
         }
       }
     ],

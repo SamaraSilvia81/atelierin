@@ -18,9 +18,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ### Alterado
 - Seção 2 (retalhos): os cards viraram módulos prontos do ambiente de exemplo (Atendimento, Materiais, Cobrança, Agenda, Evolução), cada um dizendo de qual retalho veio; status "em dia" e "atenção"
 - Clique num card abre o módulo no lugar dos cards, com recorte circular a partir do card clicado, tabela completa e abas; depois passa sozinho de um módulo para o outro, em loop, com o mesmo recorte e a barra de progresso de "A marca é sua" (pausa com o mouse em cima); "todos os módulos" ou Esc volta
-- Seção 2 roda sozinha: com os cards na tela, abre um módulo, passa por todos e volta para os cards, começando cada volta por um card diferente; clicar num card assume o controle
+- Seção 2 com demonstração: um cursor filtra, abre um módulo, rola a lista e volta, em loop (Atenção → Cobrança, Em dia → Agenda, Todos → Atendimento); se a pessoa clicar em algo, o cursor some e ela assume
+- Seção 2 com três módulos (Atendimento, Cobrança, Agenda) e listas mais longas, com rolagem
+- Sons: o áudio é liberado no primeiro clique ou tecla da página (regra do navegador; rolar não conta)
 - Mais espaço entre o texto de apoio da seção 2 e os cards, e entre os cards e "O Atelierin junta os retalhos"
-- "O Atelierin junta os retalhos…" se digita sozinho ao entrar na tela, com som de tecla quando os sons estão ligados
+- "O Atelierin junta os retalhos…" se digita sozinho quando a pessoa rola até ela, com som de tecla quando os sons estão ligados
 - Rodapé: "Todos os direitos reservados" e "Desenvolvido com 🤍 por Samara Silvia Sabino"
 - "Tudo começa pela linha certa" centralizado entre o passo a passo e as linhas, com fita métrica, rótulo e destaque em "linha certa"
 - Linha de alinhavo: a segunda laçada ficou mais aberta e a curva final mais longa

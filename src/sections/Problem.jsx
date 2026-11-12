@@ -28,7 +28,7 @@ function tokenize(text) {
 
 // Card no mesmo desenho dos cards de grupo do Atelier.sh
 function ScrapCard({ s, i, onOpen }) {
-  const open = (e) => { play('click'); onOpen(s, e.currentTarget) }
+  const open = (e) => { play('click'); onOpen(s, e?.currentTarget) }
   return (
     <li data-path={s.path} className={`gcard is-${s.status} is-clickable`} style={{ animationDelay: `${i * 50}ms` }} onPointerEnter={() => play('tick')}
       role="button" tabIndex={0} aria-label={`Abrir ${s.title}`} onClick={open}
@@ -63,8 +63,6 @@ function ScrapCard({ s, i, onOpen }) {
   )
 }
 
-const LOOP = 5200 // tempo de cada módulo antes de passar para o próximo
-
 function ModuleBody({ s }) {
   return (
     <div className="gview-body">
@@ -75,63 +73,46 @@ function ModuleBody({ s }) {
         </div>
         <span className="gcard-status"><i />{STATUS[s.status]}</span>
       </div>
-      <p className="gview-sub"><b>›_</b> {s.detail.title}</p>
-      <table className="gview-table">
-        <thead><tr>{s.detail.cols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
-        <tbody>{s.detail.rows.map((r, k) => (
-          <tr key={r.join()} style={{ animationDelay: `${250 + k * 70}ms` }}>
-            {r.map((v, j) => <td key={j} className={j === r.length - 1 ? 'st' : undefined}>{v}</td>)}
-          </tr>
-        ))}</tbody>
-      </table>
+      <p className="gview-sub"><b>›_</b> {s.detail.title} <span>{s.detail.rows.length} itens</span></p>
+      <div className="gview-scroll">
+        <table className="gview-table">
+          <thead><tr>{s.detail.cols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
+          <tbody>{s.detail.rows.map((r, k) => (
+            <tr key={r.join()} style={{ animationDelay: `${250 + Math.min(k, 6) * 70}ms` }}>
+              {r.map((v, j) => <td key={j} className={j === r.length - 1 ? 'st' : undefined}>{v}</td>)}
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
       <p className="gview-note">{s.detail.note}</p>
     </div>
   )
 }
 
 // Módulo aberto: substitui os cards no mesmo lugar, entrando com um recorte
-// circular que nasce do card clicado. Depois passa sozinho de um módulo para
-// o outro, em loop, com o mesmo recorte e a barra de progresso de
-// "A marca é sua". Pausa com o mouse em cima; com "reduzir movimento" não
-// troca sozinho. Voltar faz o caminho inverso até os cards.
-function ModuleView({ start, all, host, origin, closing, onBack, onCycleDone }) {
-  const first = Math.max(0, all.findIndex((m) => m.path === start.path))
-  const [i, setI] = useState(first)
+// circular que nasce do card clicado. As abas trocam de módulo com o mesmo
+// recorte (como as telas de "A marca é sua"). Voltar faz o caminho inverso.
+function ModuleView({ start, all, host, origin, closing, onBack, onUser }) {
+  const [i, setI] = useState(() => Math.max(0, all.findIndex((m) => m.path === start.path)))
   const [prev, setPrev] = useState(null)
-  const [paused, setPaused] = useState(false)
-  const [reduced] = useState(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const go = (k) => { if (k === i) return; setPrev(i); setI(k) }
-
-  useEffect(() => {
-    if (paused || reduced || closing) return undefined
-    const t = setTimeout(() => {
-      const next = (i + 1) % all.length
-      // no modo automático, depois de mostrar todos os módulos volta para os cards
-      if (next === first && onCycleDone) onCycleDone()
-      else go(next)
-    }, LOOP)
-    return () => clearTimeout(t)
-  }, [i, paused, reduced, closing, all.length, onCycleDone])
   useEffect(() => { if (prev === null) return undefined; const t = setTimeout(() => setPrev(null), 1000); return () => clearTimeout(t) }, [prev])
-
   const s = all[i]
   return (
-    <div className={`gview is-${s.status} ${closing ? 'is-closing' : ''}`} style={{ '--cx': origin.x, '--cy': origin.y }}
-      onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)}>
+    <div className={`gview is-${s.status} ${closing ? 'is-closing' : ''}`} style={{ '--cx': origin.x, '--cy': origin.y }}>
       <span className="gcard-bar" aria-hidden="true" />
       <div className="gview-top">
-        <button className="gview-back" onClick={onBack} onPointerEnter={() => play('tick')}><ArrowLeft size={14} weight="bold" aria-hidden="true" /> todos os módulos</button>
+        <button className="gview-back" onClick={(e) => { if (e.isTrusted) onUser(); onBack() }} onPointerEnter={() => play('tick')}><ArrowLeft size={14} weight="bold" aria-hidden="true" /> todos os módulos</button>
         <code key={s.path} className="lgs-url">{host}/{s.path}</code>
       </div>
       <div className="gview-stage">
         {prev !== null && <div className="gview-layer is-out"><ModuleBody s={all[prev]} /></div>}
         <div key={s.path} className={`gview-layer ${prev !== null ? 'is-wipe' : ''}`}><ModuleBody s={s} /></div>
-        {!paused && !reduced && !closing && <span key={`p-${i}`} className="gview-progress" aria-hidden="true" />}
       </div>
       <div className="gview-tabs" role="tablist" aria-label="Módulos">
         {all.map((m, k) => (
           <button key={m.path} role="tab" aria-selected={k === i} className={k === i ? 'on' : ''}
-            onClick={() => { play('click'); go(k) }} onPointerEnter={() => play('tick')}>
+            onClick={() => { onUser(); play('click'); go(k) }} onPointerEnter={() => play('tick')}>
             <i className={`dot-${m.status === 'ativo' ? 'green' : 'amber'}`} />{m.title}
           </button>
         ))}
@@ -139,6 +120,14 @@ function ModuleView({ start, all, host, origin, closing, onBack, onCycleDone }) 
     </div>
   )
 }
+
+// Roteiro do cursor de demonstração: em cada volta ele filtra, abre um
+// módulo, rola a lista e volta. Três voltas, uma por módulo, e recomeça.
+const DEMO = [
+  { filter: 'atencao', card: 'cobranca' },
+  { filter: 'ativo', card: 'agenda' },
+  { filter: 'todos', card: 'atendimento' },
+]
 
 // Frase de fechamento digitada letra por letra quando entra na tela,
 // com o som de tecla (se os sons estiverem ligados). O texto inteiro fica
@@ -149,7 +138,9 @@ function TypedLine({ text }) {
   const [go, setGo] = useState(false)
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setN(text.length); return undefined }
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setGo(true); io.disconnect() } }, { threshold: 0.6 })
+    // só começa quando a frase está inteira na tela e já passou do terço de baixo,
+    // ou seja, quando a pessoa rolou até ela
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setGo(true); io.disconnect() } }, { threshold: 1, rootMargin: '0px 0px -30% 0px' })
     if (ref.current) io.observe(ref.current)
     return () => io.disconnect()
   }, [text])
@@ -180,38 +171,72 @@ export default function Problem() {
   const [closing, setClosing] = useState(false)
   const [origin, setOrigin] = useState({ x: '50%', y: '50%' })
   const stage = useRef(null)
-  const [auto, setAuto] = useState(true)      // roda sozinho até a pessoa clicar
+  // demonstração: um cursor faz o caminho sozinho enquanto a seção está na
+  // tela. Se a pessoa clicar em algo, o cursor some e ela assume.
+  const [user, setUser] = useState(false)
   const [inView, setInView] = useState(false)
-  const nextAuto = useRef(0)
+  const [cursor, setCursor] = useState({ x: 60, y: 40, on: false, click: 0 })
+  const area = useRef(null)
+  const api = useRef({})
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setAuto(false); return undefined }
-    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.35 })
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setUser(true); return undefined }
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.3 })
     if (stage.current) io.observe(stage.current)
     return () => io.disconnect()
   }, [])
-  // com os cards à mostra, depois de um tempo abre o próximo módulo sozinho
+  useEffect(() => { if (!inView) setUser(false) }, [inView]) // saiu e voltou: a demonstração recomeça
   useEffect(() => {
-    if (!auto || !inView || open || filter !== 'todos') return undefined
-    const t = setTimeout(() => {
-      const s = p.scraps[nextAuto.current % p.scraps.length]
-      nextAuto.current += 1
-      openAt(s, stage.current?.querySelector(`[data-path="${s.path}"]`))
-    }, 3200)
-    return () => clearTimeout(t)
-  }, [auto, inView, open, filter])
+    if (user || !inView) { setCursor((c) => ({ ...c, on: false })); return undefined }
+    let dead = false
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+    const el = (sel) => area.current?.querySelector(sel)
+    const moveTo = async (sel, dx = 0.5, dy = 0.5) => {
+      const a = area.current; const t = el(sel); if (!a || !t) return
+      const ar = a.getBoundingClientRect(); const tr = t.getBoundingClientRect()
+      const k = ar.width / a.offsetWidth || 1 // zoom de 80% no desktop
+      setCursor((c) => ({ ...c, on: true, x: (tr.left - ar.left + tr.width * dx) / k, y: (tr.top - ar.top + tr.height * dy) / k }))
+      await sleep(850)
+    }
+    const click = async () => { play('click'); setCursor((c) => ({ ...c, click: c.click + 1 })); await sleep(220) }
+    const run = async () => {
+      let lap = 0
+      await sleep(700)
+      while (!dead) {
+        const step = DEMO[lap % DEMO.length]
+        await moveTo(`[data-f="${step.filter}"]`); if (dead) return
+        await click(); api.current.filter(step.filter); await sleep(900); if (dead) return
+        await moveTo(`[data-path="${step.card}"]`, 0.45, 0.4); if (dead) return
+        await click(); api.current.open(step.card); await sleep(1300); if (dead) return
+        await moveTo('.gview-scroll', 0.6, 0.55); if (dead) return
+        const sc = el('.gview-scroll')
+        sc?.scrollTo({ top: sc.scrollHeight, behavior: 'smooth' }); await sleep(1600); if (dead) return
+        sc?.scrollTo({ top: 0, behavior: 'smooth' }); await sleep(1200); if (dead) return
+        await moveTo('.gview-back'); if (dead) return
+        await click(); api.current.back(); await sleep(1100)
+        lap += 1
+      }
+    }
+    run()
+    return () => { dead = true }
+  }, [user, inView])
+  const takeOver = () => setUser(true)
   const openAt = (s, el) => {
     const st = stage.current?.getBoundingClientRect(); const r = el?.getBoundingClientRect()
     if (st && r) setOrigin({ x: `${((r.left + r.width / 2 - st.left) / st.width) * 100}%`, y: `${((r.top + r.height / 2 - st.top) / st.height) * 100}%` })
     setClosing(false); setOpen(s)
   }
-  const back = (manual = true) => {
-    if (manual) { play('click'); setAuto(true) }
+  const back = () => {
     setClosing(true)
     setTimeout(() => { setOpen(null); setClosing(false) }, 650)
   }
+  api.current = {
+    filter: (f) => setFilter(f),
+    open: (path) => { const s = p.scraps.find((x) => x.path === path); openAt(s, stage.current?.querySelector(`[data-path="${path}"]`)) },
+    back,
+  }
   useEffect(() => {
     if (!open) return
-    const onKey = (e) => { if (e.key === 'Escape') back() }
+    const onKey = (e) => { if (e.key === 'Escape') { takeOver(); back() } }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
@@ -236,14 +261,19 @@ export default function Problem() {
           <p className="problem-aside" data-reveal>{p.aside}</p>
         </div>
 
+        <div className="gdemo" ref={area}>
+        <span className={`gcursor ${cursor.on ? 'is-on' : ''}`} style={{ '--x': `${cursor.x}px`, '--y': `${cursor.y}px` }} aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 2l16 9.5-7 1.6-3.6 6.4z" fill="#F0EDE8" stroke="#1A0F0F" strokeWidth="1.4" strokeLinejoin="round" /></svg>
+          <i key={cursor.click} className={cursor.click ? 'is-click' : ''} />
+        </span>
         {/* barra de filtros igual à do Atelier.sh */}
         <div className="pfilters" data-reveal>
           <p className="pfilters-intro">{p.cardsIntro}</p>
           <div className="pfilters-row">
             <div role="group" aria-label="Filtrar retalhos">
               {p.filters.map((f) => (
-                <button key={f.id} className={`filter-btn ${filter === f.id ? 'active' : ''}`} aria-pressed={filter === f.id}
-                  onClick={() => { play('click'); setFilter(f.id) }} onPointerEnter={() => play('tick')}>
+                <button key={f.id} data-f={f.id} className={`filter-btn ${filter === f.id ? 'active' : ''}`} aria-pressed={filter === f.id}
+                  onClick={() => { takeOver(); play('click'); setFilter(f.id) }} onPointerEnter={() => play('tick')}>
                   // {f.label}
                 </button>
               ))}
@@ -258,8 +288,10 @@ export default function Problem() {
           </div>
         </div>
 
-        <div data-reveal className={`gstage ${open ? 'is-open' : ''} ${closing ? 'is-closing' : ''}`} ref={stage}><ul className="gcards" aria-live="polite" inert={open && !closing ? '' : undefined}>
-          {shown.map((s, i) => <ScrapCard key={s.path} s={s} i={i} onOpen={(s, el) => { setAuto(false); openAt(s, el) }} />)}
+        {/* o data-reveal fica num invólucro próprio: se ficasse no mesmo div do className
+            dinâmico, o React apagaria a classe is-in a cada troca e os cards sumiriam */}
+        <div data-reveal><div className={`gstage ${open ? 'is-open' : ''} ${closing ? 'is-closing' : ''}`} ref={stage}><ul className="gcards" aria-live="polite" inert={open && !closing ? '' : undefined}>
+          {shown.map((s, i) => <ScrapCard key={s.path} s={s} i={i} onOpen={(s, el) => { takeOver(); openAt(s, el) }} />)}
           <li className="gcard-add">
             <a href={p.addCard.href} onClick={() => play('click')} onPointerEnter={() => play('tick')}>
               <Plus size={18} aria-hidden="true" />
@@ -268,7 +300,8 @@ export default function Problem() {
             </a>
           </li>
         </ul>
-        {open && <ModuleView key={open.path} start={open} all={p.scraps} host={p.host} origin={origin} closing={closing} onBack={() => back(true)} onCycleDone={auto ? () => back(false) : undefined} />}
+        {open && <ModuleView key={open.path} start={open} all={p.scraps} host={p.host} origin={origin} closing={closing} onBack={back} onUser={takeOver} />}
+        </div></div>
         </div>
 
         <div className="problem-end">
