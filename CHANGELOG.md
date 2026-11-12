@@ -13,8 +13,10 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **Prévia na conversa** citada em Planos, no FAQ e na Proposta
 - Proposta: slides de licença de uso, infraestrutura e vídeo, e cancelamento com 30 dias
 - **Imagem de compartilhamento** (`og:image`) e metadados para redes sociais
+- **E-mails com a identidade do Atelierin**: confirmação com fundo areia, assinatura da Samara, cartão no formato da ficha e o rodapé do site; aviso interno com contagem da fila por linha e total, e botões para responder e abrir o D1. Imagens em `public/email/`; os dois e-mails têm versão em texto puro
 
 ### Alterado
+- Aviso interno da lista de espera só sai para inscrição nova (antes também saía quando o mesmo e-mail repetia)
 - Planos: Personalizado no centro em destaque, "Disponível" em verde, só o valor centralizado com o "10x de" à esquerda
 - FAQ: "quero um sistema só meu", "quanto eu pago por mês", "consigo ver antes de fechar", "e se eu crescer"
 
