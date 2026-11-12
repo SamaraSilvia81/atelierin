@@ -189,7 +189,7 @@
           },
           {
             "name": "Identidade básica",
-            "price": "R$ 1.200",
+            "price": "R$ 850",
             "for": "Quem quer um logo próprio",
             "items": [
               "Logo simples",
@@ -418,7 +418,7 @@
         "title": "Entre o pronto e o feito só para você",
         "accent": "feito só para você",
         "layout": "table",
-        "deco": "stitch",
+        "deco": "none",
         "theme": "light",
         "text": "Existem três caminhos para organizar alunos, cobrança e agenda. O Atelierin fica no meio: o sistema já existe, então você não paga para construir, e mesmo assim ele tem a sua cara e alguém de verdade cuidando.",
         "table": {

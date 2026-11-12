@@ -17,6 +17,7 @@ import ExitStage from '@/components/ExitStage'
 import About from '@/pages/About'
 import Proposal from '@/pages/Proposal'
 import Cases from '@/pages/Cases'
+import ClientProposal from '@/pages/ClientProposal'
 
 function Home() {
   return (
@@ -44,13 +45,14 @@ export default function App() {
   useLinkInterceptor()
   useInitialHash()
   useReveal(path)
+  const client = path.match(/^\/proposta\/([a-z0-9-]+)$/)?.[1]
   const Page = PAGES[path] ?? Home
   return (
     <>
       <a className="skip" href="#conteudo">{content.a11y.skipLink}</a>
       <Header />
       <main id="conteudo" key={path}>
-        <Page />
+        {client ? <ClientProposal slug={client} /> : <Page />}
       </main>
       <Footer />
       <BackToTop />
