@@ -73,6 +73,8 @@ Cores fora dos tokens, com motivo:
 
 As três vêm do `@fontsource`, servidas pelo próprio site.
 
+**Tamanho mínimo com o zoom de 80%:** no desktop, `--text-xs`, `--text-sm` e `--text-md` sobem para 13, 15,5 e 17 px, e nenhum texto de leitura fica abaixo de 14 px (mono abaixo de 12 px). Só as telinhas de exemplo (passo a passo, login, retalhos) usam tamanhos menores, porque imitam uma tela em miniatura.
+
 Padrão de título de seção: rótulo mono `Nº 0X · Nome` (a "peça"), título Bebas em duas cores e um parágrafo curto de abertura.
 
 ### $ temas por seção
