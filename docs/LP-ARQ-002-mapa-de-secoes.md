@@ -139,18 +139,21 @@ Cada seção abaixo traz: arquivo, bloco de texto, comportamento e o que observa
 
 <img src="../_assets/prints/planos.webp" alt="Planos" width="100%">
 
-<img src="../_assets/prints/com-ou-sem-manutencao.webp" alt="Com ou sem manutenção" width="100%">
+<img src="../_assets/prints/calculadora.webp" alt="Calculadora" width="100%">
 
 | Item | Valor |
 |---|---|
-| Arquivo | `sections/Plans.jsx` |
-| Texto | `content.plans` (`items`, `includes`, `pricingNote`, `modes`, `proposal`) |
+| Arquivo | `sections/Plans.jsx`, `components/PriceCalc.jsx`, `components/Waitlist.jsx` |
+| Texto | `content.plans` (`items`, `rules`, `calc`, `pricing`, `foot`) |
+| Servidor | `functions/api/waitlist.js` + `db/schema.sql` (lista de espera) |
 
-- Três cards: **School Personalizado** (disponível), **Padrão** (assinatura, em breve) e **Outras linhas** (sob proposta).
-- O preço tem três partes: `pricePre` + `price` em destaque ("10x de R$ 300"), `priceSub` em crimson ("ou R$ 3.000 à vista") e `priceExtra` (a manutenção de 8%).
-- Abaixo, o bloco **"Com ou sem manutenção"** compara as duas formas de contratar, linha a linha, e uma nota explica por que o valor muda entre ambientes.
-- A ponte no fim leva para `/proposta`.
-- Daqui para baixo a página **não tem mais** o efeito de cartão. O conteúdo e as decisões de preço estão em aberto no [`LP-ADR-005`](decisoes/LP-ADR-005-preco-na-pagina.md).
+- Três cards: **Padrão** (até ~15 alunos), **Personalizado** no centro, em destaque e um pouco mais alto, e **Sua área** (lista de espera das outras linhas).
+- Só o valor fica centralizado. O "10x de" encosta à esquerda, na linha de base do "R$ 300". No celular ele sobe para cima do valor.
+- "Disponível" é uma etiqueta verde; no Personalizado ela é maior.
+- O mensal **não** fica nos cards: a tabela **"Uma vez, e todo mês"** compara os dois planos e a **calculadora** faz a conta.
+- A calculadora indica o plano pelo número de alunos (`pricing.threshold`), soma manutenção (porcentagem ou mínimo), infraestrutura e Bunny (só no Personalizado), e mostra o mês, o peso na receita, o 1º ano e os seguintes.
+- O formulário da lista de espera envia e-mail e área para `/api/waitlist`. Se a API falhar, ele oferece o WhatsApp com a mensagem pronta.
+- Daqui para baixo a página **não tem** o efeito de cartão. O modelo de preço está no [`LP-ADR-005`](decisoes/LP-ADR-005-preco-na-pagina.md).
 
 ### $ dúvidas
 
@@ -161,7 +164,7 @@ Cada seção abaixo traz: arquivo, bloco de texto, comportamento e o que observa
 | Arquivo | `sections/Faq.jsx` |
 | Texto | `faq.json` (lista de `{ q, a }`) |
 
-Acordeão com `<details>`, em tema escuro, entre Planos e a ficha (ambos claros). Inclui as perguntas sobre preço do molde, implantação sem manutenção, como funcionam os 8% e por que o dinheiro dos alunos não passa pela plataforma.
+Acordeão com `<details>`, em tema escuro, entre Planos e a ficha (ambos claros). Inclui a prévia antes de fechar, o preço do molde, "quero um sistema só meu", quanto se paga por mês, para onde vai o dinheiro dos alunos e como subir de plano.
 
 ### $ ficha
 
@@ -193,7 +196,7 @@ A ilustração é o **fundo** do `.foot-body` (largura total, presa no topo). A 
 | Página | Arquivo | Estrutura |
 |---|---|---|
 | Quem faz | `pages/About.jsx` | Cabeçalho com nome, cargo e foto (`/samara.webp`, preto e branco), fatos, blocos de formação e experiência, ferramentas, projetos e links |
-| Proposta | `pages/Proposal.jsx` | Capa e oito slides de altura quase total: um ambiente seu, o que entra na implantação, depois que está no ar, o dinheiro vai direto para você, investimento (10x de R$ 300 + 8%), quem cuida depois, o que não está incluso e começa com uma conversa |
+| Proposta | `pages/Proposal.jsx` | Capa e nove slides: feito sob medida e mantido por mim (licença de uso), implantação (com a prévia), depois que está no ar, o dinheiro vai direto para você, dois degraus (Padrão e Personalizado), infraestrutura e vídeo, o que não está incluso, se quiser sair (30 dias e exportação) e começa com uma conversa |
 | Casos | `pages/Cases.jsx` | Lista de estudos de caso. O 01 é o Atelier.sh na ETE Cícero Dias |
 
 <table>

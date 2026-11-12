@@ -49,7 +49,7 @@ O visual vem da identidade do Atelierin (noir e crimson, Bebas Neue, Inter e Jet
 | **Passo a passo** | Conversa, molde, prova, ajuste e no ar, numa trilha que se preenche com a rolagem. Cada passo tem uma animação própria |
 | **Linhas** | School, Consult, Fit, Studio e Care, com selo de status |
 | **Sob medida** | "A marca é sua": três estilos de login que se trocam com uma transição em círculo |
-| **Planos** | School Personalizado (10x de R$ 300 + 8%), Padrão e Outras linhas, com o comparativo "com ou sem manutenção" |
+| **Planos** | Padrão (a partir de R$ 900, 5%) e Personalizado (10x de R$ 300, 8%) disponíveis, lista de espera das outras linhas, tabela "Uma vez, e todo mês" e calculadora |
 | **Dúvidas** | Perguntas frequentes, inclusive sobre preço e manutenção |
 | **Ficha** (`#contato`) | "Vamos tirar as suas medidas": a ficha monta uma mensagem e abre o WhatsApp |
 | **Rodapé** | Texto sobre a ilustração carmesim |
@@ -80,11 +80,11 @@ O visual vem da identidade do Atelierin (noir e crimson, Bebas Neue, Inter e Jet
 </tr>
 <tr>
 <td width="50%"><img src="_assets/prints/planos.webp" alt="Planos"></td>
-<td width="50%"><img src="_assets/prints/com-ou-sem-manutencao.webp" alt="Com ou sem manutenção"></td>
+<td width="50%"><img src="_assets/prints/calculadora.webp" alt="Calculadora de planos"></td>
 </tr>
 <tr>
-<td align="center"><sub>Planos: 10x de R$ 300 em destaque</sub></td>
-<td align="center"><sub>Comparativo de manutenção</sub></td>
+<td align="center"><sub>Planos: dois degraus e a lista de espera</sub></td>
+<td align="center"><sub>Calculadora: quanto fica por mês e no ano</sub></td>
 </tr>
 <tr>
 <td width="50%"><img src="_assets/prints/ficha.webp" alt="Ficha de medidas"></td>
@@ -166,7 +166,9 @@ Os detalhes estão no [`LP-DSG-001`](docs/LP-DSG-001-sistema-visual.md). A ident
 │   ├── banners/          banners do README e dos docs (escuro e claro, WebP)
 │   ├── gerador/          presets dos banners para o gerador da marca
 │   └── prints/           capturas usadas no README e nos docs
+├── db/schema.sql         tabela da lista de espera (Cloudflare D1)
 ├── docs/                 documentação da landing (ver docs/README.md)
+├── functions/api/        Pages Functions (waitlist.js: grava no D1 e envia o e-mail)
 ├── public/
 │   ├── brand/            logos SVG (cópias de 03-DESIGN/01-MARCA/logos)
 │   ├── hero-desk.webp    foto do hero
@@ -207,9 +209,10 @@ O `public/_redirects` faz `/proposta`, `/casos` e `/quem-faz` abrirem direto, se
 
 - [x] WhatsApp em `site.whatsapp`
 - [ ] E-mail completo em `site.contactEmail`
-- [ ] Decidir a oferta de Assinatura e a opção sem manutenção ([`LP-ADR-005`](docs/decisoes/LP-ADR-005-preco-na-pagina.md))
+- [ ] Criar o banco D1 e as variáveis da lista de espera ([`LP-OPR-001`](docs/LP-OPR-001-operacao-e-conteudo.md#-lista-de-espera))
+- [ ] Cloudflare ativo, Email Routing do contato@ e domínio verificado no Resend
 - [ ] Imagens reais na trilha do passo a passo (hoje são ilustrações de exemplo)
-- [ ] Imagem de compartilhamento (`og:image`) 1200x630
+- [x] Imagem de compartilhamento (`og:image`) 1200x630
 - [ ] Revisar textos com o caso real do Maxwell, com autorização dele
 - [ ] Remover `src/components/BrandMorph.jsx`, que não é mais usado
 

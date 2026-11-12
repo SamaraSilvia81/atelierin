@@ -32,7 +32,7 @@
 
 ### $ em uma frase
 
-A landing é um site estático em **React 19 + Vite 7**, sem backend. Os textos ficam em **JSON** e passam por um único ponto de leitura (`lib/content.js`). Um **roteador próprio** troca entre quatro páginas. As animações são feitas com **hooks de rolagem** que escrevem variáveis CSS, e o CSS faz o resto.
+A landing é um site estático em **React 19 + Vite 7**. A única parte com servidor é a lista de espera: uma **Pages Function** que grava no **Cloudflare D1** e envia e-mail pelo **Resend**. Os textos ficam em **JSON** e passam por um único ponto de leitura (`lib/content.js`). Um **roteador próprio** troca entre quatro páginas. As animações são feitas com **hooks de rolagem** que escrevem variáveis CSS, e o CSS faz o resto.
 
 ### $ camadas
 
@@ -56,6 +56,8 @@ flowchart TB
   K["lib/ hooks<br/>useReveal · useExitProgress<br/>useStickyProgress · useScrollProgress<br/>useHeroLayout · sounds"]
   CSS["styles/<br/>tokens.css · global.css"]
   WA["WhatsApp<br/>wa.me com a mensagem pronta"]
+  API["functions/api/waitlist.js<br/>Pages Function"]
+  D1[("Cloudflare D1<br/>tabela leads")]
 
   J1 & J2 & J3 --> L --> S & P
   R --> H & P
@@ -63,6 +65,7 @@ flowchart TB
   S & C --> K
   K -- "variáveis CSS (--exit, --p)" --> CSS
   S -- "ficha, hero, CTA" --> WA
+  C -- "lista de espera" --> API --> D1
 ```
 
 | Camada | Responsabilidade | Não faz |
@@ -74,6 +77,7 @@ flowchart TB
 | `components/` | Peças reutilizáveis e animações maiores | Ler conteúdo direto (recebe por props, com exceção do Header) |
 | `lib/` hooks | Medir rolagem e escrever progresso em variáveis CSS | Mudar layout direto (quem desenha é o CSS) |
 | `styles/` | Tokens da marca e todo o layout | Ter valores soltos de cor fora dos tokens |
+| `functions/api/` | Receber o formulário da lista de espera, gravar no D1 e mandar o e-mail | Servir páginas |
 
 A regra que mais importa: **componente não tem texto escrito à mão**. Tudo vem de `content`, então trocar uma frase é editar JSON ([`LP-ADR-001`](decisoes/LP-ADR-001-conteudo-em-json.md)).
 

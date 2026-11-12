@@ -35,7 +35,7 @@
 | [`LP-ADR-002`](decisoes/LP-ADR-002-roteador-proprio.md) | Roteador próprio | Decisão | Aceita |
 | [`LP-ADR-003`](decisoes/LP-ADR-003-escala-de-80.md) | Escala de 80% no desktop | Decisão | Aceita |
 | [`LP-ADR-004`](decisoes/LP-ADR-004-troca-de-tema-em-cartao.md) | Troca de tema em cartão | Decisão | Aceita |
-| [`LP-ADR-005`](decisoes/LP-ADR-005-preco-na-pagina.md) | Preço na página | Decisão | **Proposta** |
+| [`LP-ADR-005`](decisoes/LP-ADR-005-preco-na-pagina.md) | Preço na página: dois degraus | Decisão | Aceita |
 
 ### $ ordem de leitura
 

@@ -5,8 +5,22 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
-### Em aberto
-- **Oferta e manutenção:** a palavra "assinatura" no plano Padrão e a opção "só a implantação" conflitam com o modelo do produto. Decisão pendente no [`LP-ADR-005`](docs/decisoes/LP-ADR-005-preco-na-pagina.md). Não publicar antes de resolver
+### Adicionado
+- **Dois degraus de preço** ([`LP-ADR-005`](docs/decisoes/LP-ADR-005-preco-na-pagina.md)): Padrão (a partir de R$ 900, 5% com mínimo de R$ 110, infraestrutura R$ 45) e Personalizado (10x de R$ 300, 8% com mínimo de R$ 180, infraestrutura R$ 65)
+- **Calculadora** em Planos: alunos, mensalidade, acesso dos alunos e vídeo; mostra o plano indicado, o mês e o 1º ano
+- **Tabela "Uma vez, e todo mês"** comparando os dois planos
+- **Lista de espera funcionando**: `functions/api/waitlist.js` grava no Cloudflare D1 (`db/schema.sql`) e envia confirmação pelo Resend; sem API, oferece o WhatsApp
+- **Prévia na conversa** citada em Planos, no FAQ e na Proposta
+- Proposta: slides de licença de uso, infraestrutura e vídeo, e cancelamento com 30 dias
+- **Imagem de compartilhamento** (`og:image`) e metadados para redes sociais
+
+### Alterado
+- Planos: Personalizado no centro em destaque, "Disponível" em verde, só o valor centralizado com o "10x de" à esquerda
+- FAQ: "quero um sistema só meu", "quanto eu pago por mês", "consigo ver antes de fechar", "e se eu crescer"
+
+### Removido
+- Opção "só a implantação" e a palavra "assinatura"
+- Bloco "Com ou sem manutenção"
 
 ## [0.1.0] · 11/11/2026
 
