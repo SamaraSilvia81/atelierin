@@ -415,12 +415,16 @@ h1, h2, h3, p { margin: 0; }
 .gcard-add span { font-size: var(--text-sm); }
 
 /* fechamento + seta longa tracejada + brilho claro */
-.problem-end { position: relative; margin-top: clamp(96px, 11vw, 150px); display: flex; flex-direction: column; align-items: center; gap: 36px; text-align: center; }
+.problem-end { position: relative; margin-top: clamp(180px, 22vw, 320px); display: flex; flex-direction: column; align-items: center; gap: 36px; text-align: center; }
 .problem-blob {
   position: absolute; left: 18%; top: 20%; width: min(1100px, 120%); height: 1000px; transform: translate(-50%, 0);
   background: radial-gradient(closest-side, rgba(240,237,232,.13), rgba(196,184,176,.05) 55%, transparent 80%);
   filter: blur(20px); pointer-events: none; z-index: 0;
 }
+.typed-rest { visibility: hidden; }
+.typed-caret { display: inline-block; width: .08em; height: .82em; margin: 0 .04em; vertical-align: -.04em; background: var(--palette-crimson); animation: sm-blink .9s steps(1) infinite; }
+.typed-caret.is-done { animation: sm-blink .9s steps(1) 3, typed-off 0s 2.7s forwards; }
+@keyframes typed-off { to { opacity: 0; } }
 .problem-end p { position: relative; max-width: 24ch; font: 400 clamp(36px, 4.4vw, 64px)/.95 var(--font-display); text-transform: uppercase; letter-spacing: .01em; }
 .stitch-host { position: relative; align-self: stretch; height: 0; }
 .stitch { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }

@@ -30,7 +30,7 @@ function tokenize(text) {
 function ScrapCard({ s, i, onOpen }) {
   const open = (e) => { play('click'); onOpen(s, e.currentTarget) }
   return (
-    <li className={`gcard is-${s.status} is-clickable`} style={{ animationDelay: `${i * 50}ms` }} onPointerEnter={() => play('tick')}
+    <li data-path={s.path} className={`gcard is-${s.status} is-clickable`} style={{ animationDelay: `${i * 50}ms` }} onPointerEnter={() => play('tick')}
       role="button" tabIndex={0} aria-label={`Abrir ${s.title}`} onClick={open}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open() } }}>
       <span className="gcard-bar" aria-hidden="true" />
@@ -94,8 +94,9 @@ function ModuleBody({ s }) {
 // o outro, em loop, com o mesmo recorte e a barra de progresso de
 // "A marca é sua". Pausa com o mouse em cima; com "reduzir movimento" não
 // troca sozinho. Voltar faz o caminho inverso até os cards.
-function ModuleView({ start, all, host, origin, closing, onBack }) {
-  const [i, setI] = useState(() => Math.max(0, all.findIndex((m) => m.path === start.path)))
+function ModuleView({ start, all, host, origin, closing, onBack, onCycleDone }) {
+  const first = Math.max(0, all.findIndex((m) => m.path === start.path))
+  const [i, setI] = useState(first)
   const [prev, setPrev] = useState(null)
   const [paused, setPaused] = useState(false)
   const [reduced] = useState(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -103,9 +104,14 @@ function ModuleView({ start, all, host, origin, closing, onBack }) {
 
   useEffect(() => {
     if (paused || reduced || closing) return undefined
-    const t = setTimeout(() => go((i + 1) % all.length), LOOP)
+    const t = setTimeout(() => {
+      const next = (i + 1) % all.length
+      // no modo automático, depois de mostrar todos os módulos volta para os cards
+      if (next === first && onCycleDone) onCycleDone()
+      else go(next)
+    }, LOOP)
     return () => clearTimeout(t)
-  }, [i, paused, reduced, closing, all.length])
+  }, [i, paused, reduced, closing, all.length, onCycleDone])
   useEffect(() => { if (prev === null) return undefined; const t = setTimeout(() => setPrev(null), 1000); return () => clearTimeout(t) }, [prev])
 
   const s = all[i]
@@ -134,6 +140,34 @@ function ModuleView({ start, all, host, origin, closing, onBack }) {
   )
 }
 
+// Frase de fechamento digitada letra por letra quando entra na tela,
+// com o som de tecla (se os sons estiverem ligados). O texto inteiro fica
+// reservado de forma invisível, então nada pula enquanto digita.
+function TypedLine({ text }) {
+  const ref = useRef(null)
+  const [n, setN] = useState(0)
+  const [go, setGo] = useState(false)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setN(text.length); return undefined }
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setGo(true); io.disconnect() } }, { threshold: 0.6 })
+    if (ref.current) io.observe(ref.current)
+    return () => io.disconnect()
+  }, [text])
+  useEffect(() => {
+    if (!go || n >= text.length) return undefined
+    const ch = text[n]
+    const t = setTimeout(() => { if (ch !== ' ') play('key'); setN((x) => x + 1) }, ch === ',' || ch === '.' ? 260 : 55 + Math.random() * 45)
+    return () => clearTimeout(t)
+  }, [go, n, text])
+  return (
+    <p ref={ref} className="typed" aria-label={text}>
+      <span aria-hidden="true">{text.slice(0, n)}</span>
+      <b className={`typed-caret ${n >= text.length ? 'is-done' : ''}`} aria-hidden="true" />
+      <span className="typed-rest" aria-hidden="true">{text.slice(n)}</span>
+    </p>
+  )
+}
+
 export default function Problem() {
   const p = content.problem
   const tokens = tokenize(p.statement)
@@ -146,13 +180,33 @@ export default function Problem() {
   const [closing, setClosing] = useState(false)
   const [origin, setOrigin] = useState({ x: '50%', y: '50%' })
   const stage = useRef(null)
+  const [auto, setAuto] = useState(true)      // roda sozinho até a pessoa clicar
+  const [inView, setInView] = useState(false)
+  const nextAuto = useRef(0)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setAuto(false); return undefined }
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.35 })
+    if (stage.current) io.observe(stage.current)
+    return () => io.disconnect()
+  }, [])
+  // com os cards à mostra, depois de um tempo abre o próximo módulo sozinho
+  useEffect(() => {
+    if (!auto || !inView || open || filter !== 'todos') return undefined
+    const t = setTimeout(() => {
+      const s = p.scraps[nextAuto.current % p.scraps.length]
+      nextAuto.current += 1
+      openAt(s, stage.current?.querySelector(`[data-path="${s.path}"]`))
+    }, 3200)
+    return () => clearTimeout(t)
+  }, [auto, inView, open, filter])
   const openAt = (s, el) => {
     const st = stage.current?.getBoundingClientRect(); const r = el?.getBoundingClientRect()
     if (st && r) setOrigin({ x: `${((r.left + r.width / 2 - st.left) / st.width) * 100}%`, y: `${((r.top + r.height / 2 - st.top) / st.height) * 100}%` })
     setClosing(false); setOpen(s)
   }
-  const back = () => {
-    play('click'); setClosing(true)
+  const back = (manual = true) => {
+    if (manual) { play('click'); setAuto(true) }
+    setClosing(true)
     setTimeout(() => { setOpen(null); setClosing(false) }, 650)
   }
   useEffect(() => {
@@ -205,7 +259,7 @@ export default function Problem() {
         </div>
 
         <div data-reveal className={`gstage ${open ? 'is-open' : ''} ${closing ? 'is-closing' : ''}`} ref={stage}><ul className="gcards" aria-live="polite" inert={open && !closing ? '' : undefined}>
-          {shown.map((s, i) => <ScrapCard key={s.path} s={s} i={i} onOpen={openAt} />)}
+          {shown.map((s, i) => <ScrapCard key={s.path} s={s} i={i} onOpen={(s, el) => { setAuto(false); openAt(s, el) }} />)}
           <li className="gcard-add">
             <a href={p.addCard.href} onClick={() => play('click')} onPointerEnter={() => play('tick')}>
               <Plus size={18} aria-hidden="true" />
@@ -214,12 +268,12 @@ export default function Problem() {
             </a>
           </li>
         </ul>
-        {open && <ModuleView key={open.path} start={open} all={p.scraps} host={p.host} origin={origin} closing={closing} onBack={back} />}
+        {open && <ModuleView key={open.path} start={open} all={p.scraps} host={p.host} origin={origin} closing={closing} onBack={() => back(true)} onCycleDone={auto ? () => back(false) : undefined} />}
         </div>
 
         <div className="problem-end">
           <span className="problem-blob" aria-hidden="true" />
-          <p data-reveal>{p.closing}</p>
+          <TypedLine text={p.closing} />
           <div className="stitch-host">
             <Stitch to="#como-funciona h2" />
           </div>
