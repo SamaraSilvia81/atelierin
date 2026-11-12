@@ -423,156 +423,180 @@
     "piece": "Nº 06 · Etiquetas",
     "title": "Planos",
     "titleAccent": "",
-    "lede": "Hoje a linha disponível é a School, para professores e escolas pequenas. O valor é aberto: implantação única, parcelada, e manutenção mensal proporcional ao seu tamanho.",
+    "lede": "Comece com 5 alunos ou com 50: o Atelierin cresce junto. Hoje a linha disponível é a School, para professores e escolas pequenas.",
     "items": [
+      {
+        "line": "School",
+        "name": "Padrão",
+        "status": "Disponível",
+        "tone": "avail",
+        "for": "Quem está começando, até uns 15 alunos",
+        "text": "O ambiente School com o tema Atelierin, a sua logo e as suas cores principais. Montado por mim a partir de um molde pronto.",
+        "priceLabel": "a partir de",
+        "price": "R$ 900",
+        "priceSub": "R$ 1.200 com área dos alunos",
+        "priceExtra": "Pagamento único da implantação. O mensal está logo abaixo.",
+        "cta": {
+          "label": "Conversar sobre o meu",
+          "href": "/#contato"
+        },
+        "features": [
+          "Módulos padrão da linha School",
+          "Tema Atelierin com a sua logo e cores",
+          "Vídeos pelo YouTube ou Google Drive",
+          "Suporte por mensagem",
+          "Sobe para o Personalizado pagando só a diferença"
+        ]
+      },
       {
         "line": "School",
         "name": "Personalizado",
         "status": "Disponível agora",
         "tone": "on",
-        "for": "Professores particulares e escolas pequenas",
+        "for": "Professores e escolas com turma formada, a partir de 15 alunos",
         "text": "O ambiente School com a sua identidade completa, montado e mantido por mim.",
-        "features": [
-          "Implantação com estudo da infraestrutura de melhor custo-benefício para o seu tamanho",
-          "Sua marca, cores, logo e vocabulário em tudo",
-          "Módulos ligados conforme o seu jeito de dar aula",
-          "Manutenção, atualizações e suporte contínuos",
-          "Funcionalidade específica sob orçamento"
-        ],
         "pricePre": "10x de",
         "price": "R$ 300",
+        "priceSub": "ou R$ 3.000 à vista",
+        "priceExtra": "Pagamento único da implantação. O mensal está logo abaixo.",
         "cta": {
           "label": "Conversar sobre o meu",
           "href": "/#contato"
         },
-        "priceSub": "ou R$ 3.000 à vista",
-        "priceExtra": "+ manutenção de 8% do que você recebe dos alunos ativos no mês"
-      },
-      {
-        "line": "School",
-        "name": "Padrão",
-        "status": "Em breve",
-        "tone": "soon",
-        "for": "Quem quer começar rápido",
-        "text": "A School como ela é, com o seu nome e logo. Você mesmo configura, em poucos passos.",
+        "ctaNote": "Na conversa eu te mostro uma prévia com a sua marca",
         "features": [
-          "Cadastro e configuração guiada",
-          "Módulos padrão da linha School",
-          "Tema Atelierin com a sua logo",
-          "Suporte por mensagem"
-        ],
-        "price": "Assinatura",
-        "cta": {
-          "label": "Avise quando abrir",
-          "href": "/#contato"
-        },
-        "priceSub": "valor no lançamento",
-        "priceExtra": ""
+          "Estudo da infraestrutura de melhor custo-benefício",
+          "Sua marca, cores, logo e vocabulário em tudo",
+          "Módulos ligados conforme o seu jeito de dar aula",
+          "Manutenção, atualizações e suporte contínuos",
+          "Vídeo pelo YouTube, Drive ou Bunny (à parte)",
+          "Funcionalidade nova sob orçamento"
+        ]
       },
       {
-        "line": "Consult · Fit · Studio · Care",
-        "name": "Outras linhas",
+        "line": "Outras linhas",
+        "name": "Sua área",
         "status": "Lista de espera",
         "tone": "wait",
         "for": "Consultores, personal trainers, criativos e terapeutas",
         "text": "Se a sua área ainda não tem linha, a gente conversa. Você pode ser quem abre a linha, com o ambiente desenhado junto comigo.",
+        "priceBig": "Sob proposta",
+        "priceExtra": "Condição especial para quem abre a linha",
+        "waitlist": {
+          "interest": "linha",
+          "emailPlaceholder": "seu@email.com",
+          "areaPlaceholder": "Sua área",
+          "areas": [
+            "Consult · consultoria e mentoria",
+            "Fit · personal e treino",
+            "Studio · criativos e design",
+            "Care · terapia e saúde",
+            "Outra"
+          ],
+          "submit": "Entrar na lista",
+          "consent": "Uso seu e-mail só para avisar quando a sua linha abrir.",
+          "ok": "Pronto, você está na lista. Chegou um e-mail de confirmação.",
+          "fail": "Não consegui salvar agora. Me chama no WhatsApp que eu anoto."
+        },
         "features": [
           "Conversa para entender o seu fluxo",
           "Módulos e vocabulário da sua área",
           "Condição especial para quem abre a linha"
-        ],
-        "price": "Sob proposta",
-        "cta": {
-          "label": "Entrar na lista",
-          "href": "/#contato"
-        },
-        "priceSub": "condição especial para quem abre a linha",
-        "priceExtra": ""
+        ]
       }
     ],
-    "includesTitle": "Em qualquer plano",
-    "includes": [
-      "O pagamento dos alunos vai direto para você",
-      "Nenhuma taxa por transação: o dinheiro não passa pela plataforma",
-      "Seus dados exportáveis em .md, Word e .txt",
-      "Seu endereço seunome.atelierin.com.br"
-    ],
-    "proposal": {
-      "text": "Quer ver como uma proposta é montada, item por item?",
-      "link": "Ver a proposta comercial",
-      "href": "/proposta"
+    "pricing": {
+      "threshold": 15,
+      "padrao": {
+        "name": "Padrão",
+        "setup": 900,
+        "setupStudents": 1200,
+        "pct": 5,
+        "min": 110,
+        "infra": 45
+      },
+      "personalizado": {
+        "name": "Personalizado",
+        "setup": 3000,
+        "installments": 10,
+        "pct": 8,
+        "min": 180,
+        "infra": 65,
+        "bunny": 49
+      }
     },
-    "pricingNote": {
-      "title": "Por que o valor muda",
-      "text": "Os R$ 3.000 valem para um ambiente personalizado, com a School ajustada ao seu jeito de trabalhar. Quando o seu ambiente sai de um molde pronto, sem nada novo, a implantação é menor. Funcionalidade nova entra com orçamento próprio."
-    },
-    "modes": {
-      "title": "Com ou sem manutenção",
-      "lede": "A implantação é a mesma nos dois casos. O que muda é quem cuida do ambiente depois que ele vai ao ar.",
+    "rules": {
+      "label": "Como é cobrado",
+      "title": "Uma vez, e todo mês",
       "cols": [
+        "Padrão",
+        "Personalizado"
+      ],
+      "rows": [
         {
-          "name": "Implantação + manutenção",
-          "tag": "recomendado",
-          "price": "R$ 3.000 + 8% ao mês",
-          "rows": [
-            [
-              "Hospedagem e infraestrutura",
-              "Comigo, já incluída"
-            ],
-            [
-              "Atualizações e correções",
-              "Incluídas"
-            ],
-            [
-              "Cópias de segurança",
-              "Incluídas"
-            ],
-            [
-              "Suporte por mensagem",
-              "Incluído"
-            ],
-            [
-              "Pequenos ajustes",
-              "Incluídos"
-            ],
-            [
-              "Você precisa de alguém técnico?",
-              "Não"
-            ]
+          "mark": "1×",
+          "name": "Implantação",
+          "values": [
+            "R$ 900 · R$ 1.200 com alunos",
+            "10x R$ 300"
+          ],
+          "accent": 1
+        },
+        {
+          "mark": "↻",
+          "name": "Manutenção",
+          "values": [
+            "5% · mín. R$ 110",
+            "8% · mín. R$ 180"
           ]
         },
         {
-          "name": "Só a implantação",
-          "tag": "entrega técnica",
-          "price": "R$ 3.000 + entrega técnica (sob consulta)",
-          "rows": [
-            [
-              "Hospedagem e infraestrutura",
-              "Nas suas contas, você paga direto aos serviços"
-            ],
-            [
-              "Atualizações e correções",
-              "Garantia de correções por um período; depois, por orçamento"
-            ],
-            [
-              "Cópias de segurança",
-              "Por sua conta"
-            ],
-            [
-              "Suporte por mensagem",
-              "Durante a garantia"
-            ],
-            [
-              "Pequenos ajustes",
-              "Por orçamento"
-            ],
-            [
-              "Você precisa de alguém técnico?",
-              "Recomendado"
-            ]
+          "mark": "↻",
+          "name": "Infraestrutura",
+          "values": [
+            "R$ 45 fixo",
+            "R$ 65 fixo"
+          ]
+        },
+        {
+          "mark": "↻",
+          "name": "Vídeo",
+          "values": [
+            "YouTube ou Drive",
+            "+ Bunny, se quiser (à parte)"
           ]
         }
-      ]
+      ],
+      "note": "Manutenção é a porcentagem do que você recebe dos alunos no mês. Infraestrutura é revista uma vez por ano. Funcionalidade nova só entra se você pedir, com orçamento antes."
+    },
+    "calc": {
+      "label": "Simule o seu",
+      "students": "Quantos alunos você tem",
+      "fee": "Quanto cada um paga por mês",
+      "access": "Seus alunos vão acessar o ambiente?",
+      "accessYes": "Sim",
+      "accessNo": "Não, é só para mim",
+      "video": "Vídeo",
+      "videoFree": "YouTube ou Drive",
+      "videoBunny": "Bunny (próprio)",
+      "bunnyHint": "Bunny só no Personalizado",
+      "plan": "Plano indicado",
+      "setup": "Implantação",
+      "once": "uma vez",
+      "maint": "Manutenção",
+      "infra": "Infraestrutura",
+      "bunny": "Vídeo Bunny",
+      "estimated": "estimado",
+      "month": "Por mês",
+      "share": "do que você recebe por mês",
+      "year1": "1º ano, com a implantação",
+      "years": "Anos seguintes",
+      "note": "Valores de referência. A proposta final sai da nossa conversa."
+    },
+    "foot": {
+      "text": "O pagamento dos alunos vai direto para você. Nenhuma taxa por transação.",
+      "link": "Ver a proposta completa",
+      "href": "/proposta"
     }
   },
   "finalCta": {
