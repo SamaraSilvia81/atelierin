@@ -45,7 +45,8 @@ export default function App() {
   useLinkInterceptor()
   useInitialHash()
   useReveal(path)
-  const client = path.match(/^\/proposta\/([a-z0-9-]+)$/)?.[1]
+  // Proposta de cliente só existe rodando local (yarn dev); no site não abre
+  const client = import.meta.env.DEV ? path.match(/^\/proposta\/([a-z0-9-]+)$/)?.[1] : null
   const Page = PAGES[path] ?? Home
   return (
     <>

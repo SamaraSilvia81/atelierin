@@ -8,3 +8,6 @@ dist
 .yarn/*
 !.yarn/releases
 .pnp.*
+
+# propostas de cliente: só rodam local (yarn dev), nunca vão pro site
+public/proposta/*/

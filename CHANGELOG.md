@@ -6,7 +6,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ## [Não lançado]
 
 ### Adicionado
-- **Proposta por cliente** em `/proposta/<cliente>`: os dados ficam em `public/proposta/<cliente>/dados.json` (fora do código), entram como slides extras e trocam o título e o nome no diagrama; página com `noindex` e protegida pelo Cloudflare Access. Primeiro caso: `/proposta/maxwell`, com as duas opções e o Monograma de presente
+- **Proposta por cliente** em `/proposta/<cliente>`: os dados ficam em `public/proposta/<cliente>/dados.json` (fora do código), entram como slides extras e trocam o título e o nome no diagrama; só abre rodando local (`yarn dev`); a pasta do cliente está no `.gitignore` e não vai para o GitHub nem para o site. Primeiro caso: `/proposta/maxwell`, com as duas opções e o Monograma de presente
 - **Versões da proposta** em `/versoes/`: página A/B com duas versões lado a lado (rolagem junto, trocar lados, uma de cada vez) e cópias congeladas v1 a v5 em `public/versoes/vN/`
 - **Proposta: diagrama do caminho** (`FlowMap`): fundo quadriculado, blocos e ligações em ângulo reto; clicar numa etapa ou num bloco acende e anima só aquela parte; `?para=nome` troca "você" pelo nome do cliente
 - **Proposta: hero novo** com faixa carmesim, o símbolo gigante cortado pela borda, alinhavos e botões de costura, textura de papel e tarja no título
