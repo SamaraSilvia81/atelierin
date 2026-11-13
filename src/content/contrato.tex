@@ -1,564 +1,362 @@
-% Atelierin · Contrato de implantação e licença de uso
+% Atelierin · Contrato de prestação de serviços e licença de uso
 % Gerado em <<GERADO_EM>> a partir de /proposta/<<SLUG>> (escolhas da reunião).
-% Compilação: XeLaTeX, duas vezes (sumário e total de páginas).
+% Compilação: XeLaTeX, duas vezes (total de páginas).
 %   xelatex <<ARQUIVO>>
 
 \documentclass[11pt,a4paper]{article}
 
-% ----------------------------------------------------------------
-% Pacotes e configuração de página
-% ----------------------------------------------------------------
-\usepackage[a4paper,left=2.35cm,right=2.35cm,top=2.35cm,bottom=2.5cm,headheight=15pt]{geometry}
+\usepackage[a4paper,left=2.6cm,right=2.6cm,top=2.6cm,bottom=2.6cm,headheight=15pt]{geometry}
 \usepackage{fontspec}
-\setmainfont{Inter}[
-  UprightFont = *,
-  BoldFont = * SemiBold,
-  ItalicFont = * Italic,
-  BoldItalicFont = * SemiBold Italic
-]
-\setsansfont{Inter}
-\IfFontExistsTF{JetBrains Mono}{
-  \setmonofont{JetBrains Mono}[Scale=0.86]
-}{
-  \setmonofont{DejaVu Sans Mono}[Scale=0.86]
-}
-\IfFontExistsTF{Bebas Neue}{
-  \newfontfamily\displayfont{Bebas Neue}
-}{
-  \newfontfamily\displayfont{Inter}[BoldFont=Inter SemiBold]
-}
+\setmainfont{Inter}[UprightFont=*,BoldFont=* SemiBold,ItalicFont=* Italic,BoldItalicFont=* SemiBold Italic]
+\IfFontExistsTF{JetBrains Mono}{\setmonofont{JetBrains Mono}[Scale=0.86]}{\setmonofont{DejaVu Sans Mono}[Scale=0.86]}
+\IfFontExistsTF{Bebas Neue}{\newfontfamily\displayfont{Bebas Neue}}{\newfontfamily\displayfont{Inter}[UprightFont=* SemiBold]}
+\newcommand{\mono}[1]{{\ttfamily\addfontfeatures{LetterSpace=12}#1}}
 
-\usepackage{microtype}
-% No XeLaTeX o espaçamento de letras do microtype pode falhar; o do fontspec funciona sempre
-\ifdefined\XeTeXversion\renewcommand{\textls}[2][100]{{\addfontfeatures{LetterSpace=\the\numexpr#1/10\relax}#2}}\fi
-\usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage[most]{tcolorbox}
+\usepackage{tikz}
 \usepackage{enumitem}
-\usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{array}
-\usepackage{colortbl}
-\usepackage{titlesec}
 \usepackage{fancyhdr}
-\usepackage{caption}
-\usepackage[hidelinks]{hyperref}
-\usepackage{float}
 \usepackage{lastpage}
 \usepackage{needspace}
-\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{colortbl}
 
-\hypersetup{
-  pdftitle={Atelierin · Contrato de implantação e licença de uso · <<CLIENTE>>},
-  pdfauthor={Samara Silvia Sabino},
-  pdfsubject={Contrato do ambiente <<HOST>>}
-}
+\definecolor{papel}{HTML}{FFFEFC}
+\definecolor{tinta}{HTML}{1A1414}
+\definecolor{cinza}{HTML}{6E625D}
+\definecolor{linha}{HTML}{D8CFC7}
+\definecolor{carmim}{HTML}{C0211C}
+\definecolor{carmimEsc}{HTML}{8E1714}
 
-\linespread{1.13}
+\pagecolor{papel}
+\color{tinta}
+
+% Logo Atelierin: quatro quadrados, o de cima à direita cheio com >_
+\newcommand{\ateliersimbolo}[1][0.55]{%
+  \begin{tikzpicture}[scale=#1,baseline=-0.1]
+    \draw[tinta,line width=1.1pt,rounded corners=2.2pt] (0,0) rectangle (0.82,0.82);
+    \draw[tinta,line width=1.1pt,rounded corners=2.2pt] (0,-1.02) rectangle (0.82,-0.2);
+    \draw[tinta,line width=1.1pt,rounded corners=2.2pt] (1.02,-1.02) rectangle (1.84,-0.2);
+    \fill[carmim,rounded corners=2.4pt] (0.98,-0.04) rectangle (1.88,0.86);
+    \draw[papel,line width=1.2pt,line cap=round,line join=round] (1.18,0.62) -- (1.36,0.42) -- (1.18,0.22);
+    \draw[papel,line width=1.2pt,line cap=round] (1.46,0.16) -- (1.68,0.16);
+  \end{tikzpicture}}
+\newcommand{\atelierlogo}[1][20]{\mbox{\ateliersimbolo[\fpeval{#1/34}]\hspace{0.4em}{\displayfont\fontsize{#1}{#1}\selectfont ATELIERIN}}}
+
+\hypersetup{pdftitle={Contrato <<NUMERO>> · <<CLIENTE>>},pdfauthor={<<P_NOME>>},pdfsubject={Contrato do ambiente <<HOST>>}}
+
+\linespread{1.18}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.55em}
-\setlength{\tabcolsep}{7pt}
-\renewcommand{\arraystretch}{1.28}
-\setlist[itemize]{leftmargin=1.35em,itemsep=0.25em,topsep=0.35em}
-\setlist[enumerate]{leftmargin=1.55em,itemsep=0.3em,topsep=0.35em}
+\setlength{\parskip}{0.6em}
+\setlist{itemsep=0.35em,topsep=0.3em}
 \setlength{\emergencystretch}{3em}
-\hyphenpenalty=700
-\exhyphenpenalty=700
+\renewcommand{\arraystretch}{1.35}
 
-% ----------------------------------------------------------------
-% Identidade visual Atelierin — Crimson
-% Capa dark + páginas internas light
-% ----------------------------------------------------------------
-\definecolor{atelierBg}{HTML}{080606}
-\definecolor{atelierBgAlt}{HTML}{0F0D0D}
-\definecolor{atelierCard}{HTML}{111010}
-\definecolor{atelierSurface}{HTML}{1A1414}
-\definecolor{atelierText}{HTML}{1A1414}
-\definecolor{atelierTextSub}{HTML}{C4B8B0}
-\definecolor{atelierMuted}{HTML}{806F69}
-\definecolor{atelierDim}{HTML}{A99A93}
-\definecolor{atelierAcc}{HTML}{C0211C}
-\definecolor{atelierAccGlow}{HTML}{9E1A17}
-\definecolor{atelierAccDim}{HTML}{4A1515}
-\definecolor{atelierBorder}{HTML}{D9CEC7}
-\definecolor{atelierBorderAcc}{HTML}{B65A54}
-\definecolor{atelierPaper}{HTML}{F2EDE6}
-\definecolor{atelierPaperCard}{HTML}{FDFAF7}
-\definecolor{atelierGreen}{HTML}{477A55}
-\definecolor{atelierAmber}{HTML}{A66B24}
-\definecolor{atelierRed}{HTML}{A94444}
-\arrayrulecolor{atelierBorder}
-
-\color{atelierText}
-\pagecolor{atelierPaper}
-
-% Wordmark gráfico: o nome escrito continua sendo Atelierin.
-\newcommand{\atelierwordmark}{%
-  {\displayfont\fontsize{34}{36}\selectfont
-  \textcolor{atelierPaperCard}{ATELIER}\textcolor{atelierAcc}{.IN}}}
-\newcommand{\atelierwordmarklight}{%
-  {\displayfont\fontsize{20}{22}\selectfont
-  \textcolor{atelierText}{ATELIER}\textcolor{atelierAcc}{.IN}}}
-
-% ----------------------------------------------------------------
-% Cabeçalho, rodapé e títulos
-% ----------------------------------------------------------------
+% Cabeçalho e rodapé formais
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{atelierMuted}\textls[70]{ATELIER\textcolor{atelierAcc}{.IN}}}
-\fancyhead[R]{\small\color{atelierMuted}Contrato \textperiodcentered\ <<HOST>>}
-\renewcommand{\headrulewidth}{0pt}
-\fancyfoot[L]{\small\color{atelierMuted}Rubricas: \rule{1.6cm}{0.4pt}\quad\rule{1.6cm}{0.4pt}}
-\fancyfoot[R]{\small\color{atelierMuted}\thepage\ /\ \pageref{LastPage}}
+\fancyhead[L]{\footnotesize\color{cinza}Contrato nº <<NUMERO>>}
+\fancyhead[R]{\footnotesize\color{cinza}<<HOST>>}
+\fancyfoot[L]{\footnotesize\color{cinza}Rubricas:\enspace\rule{1.8cm}{0.4pt}\enspace\rule{1.8cm}{0.4pt}}
+\fancyfoot[R]{\footnotesize\color{cinza}Página \thepage\ de \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\color{linha}\hrule height\headrulewidth}
 
-\titleformat{\section}[display]
-  {\Large\bfseries\color{atelierText}}
-  {\small\color{atelierAcc}\textls[90]{CLÁUSULA \thesection}}{0.15em}{}
-  [\vspace{-0.35em}{\color{atelierBorder}\rule{\linewidth}{0.7pt}}]
-\titleformat{\subsection}
-  {\large\bfseries\color{atelierAcc}}
-  {\thesubsection}{0.65em}{}
-\titleformat{\subsubsection}
-  {\normalsize\bfseries\color{atelierText}}
-  {\thesubsubsection}{0.55em}{}
-
-\titlespacing*{\section}{0pt}{1.7em}{0.8em}
-\titlespacing*{\subsection}{0pt}{1.25em}{0.4em}
-\titlespacing*{\subsubsection}{0pt}{0.9em}{0.25em}
-
-\captionsetup{font={small,color=atelierMuted},labelfont=bf,skip=6pt}
-
-% ----------------------------------------------------------------
-% Componentes visuais — páginas internas em light
-% ----------------------------------------------------------------
-\newtcolorbox{destaque}[1][]{
-  enhanced,
-  breakable,
-  colback=atelierPaperCard,
-  colframe=atelierBorderAcc,
-  boxrule=0.65pt,
-  borderline west={2pt}{0pt}{atelierAcc},
-  arc=1mm,
-  left=3.5mm,right=3.5mm,top=2.8mm,bottom=2.8mm,
-  before skip=0.7em,after skip=0.8em,
-  #1
-}
-
-\newtcolorbox{recomendacao}[1][]{
-  enhanced,
-  breakable,
-  colback=atelierBgAlt,
-  colframe=atelierBgAlt,
-  coltext=atelierPaper,
-  boxrule=0pt,
-  borderline west={2.5pt}{0pt}{atelierAcc},
-  arc=1mm,
-  left=4mm,right=4mm,top=3.2mm,bottom=3.2mm,
-  before skip=0.8em,after skip=0.9em,
-  #1
-}
-
-\newtcolorbox{observacao}[1][]{
-  enhanced,
-  breakable,
-  colback=atelierPaperCard,
-  colframe=atelierBorder,
-  boxrule=0.55pt,
-  arc=1mm,
-  left=3.2mm,right=3.2mm,top=2.5mm,bottom=2.5mm,
-  before skip=0.6em,after skip=0.7em,
-  #1
-}
-
-\newcommand{\rotulo}[1]{{\small\bfseries\color{atelierMuted}#1}\hspace{0.25em}}
-\newcommand{\valor}[1]{{\bfseries\color{atelierAcc}#1}}
-\newcommand{\tagrecomendada}{\tcbox[on line,colback=atelierAcc!9,colframe=atelierAcc!9,coltext=atelierAcc,boxrule=0pt,arc=1pt,left=5pt,right=5pt,top=2pt,bottom=2pt,fontupper=\footnotesize\bfseries]{RECOMENDADA}}
-\newcommand{\tagestimativa}{\tcbox[on line,colback=atelierAmber!10,colframe=atelierAmber!10,coltext=atelierAmber,boxrule=0pt,arc=1pt,left=5pt,right=5pt,top=2pt,bottom=2pt,fontupper=\footnotesize\bfseries]{ESTIMATIVA}}
-\newcommand{\opcao}[2]{\Needspace{4\baselineskip}\subsubsection*{#1\hfill #2}}
-\newcommand{\campo}[1]{\textcolor{atelierMuted}{\textbf{#1}}}
-
-\renewcommand{\contentsname}{Sumário}
-\renewcommand{\figurename}{Figura}
-\renewcommand{\tablename}{Tabela}
-
+% Cláusulas: "CLÁUSULA PRIMEIRA – DO OBJETO", com subitens 1.1, 1.2...
+\newcounter{clau}
+\newcommand{\ordinal}[1]{\ifcase#1\or PRIMEIRA\or SEGUNDA\or TERCEIRA\or QUARTA\or QUINTA\or SEXTA\or SÉTIMA\or OITAVA\or NONA\or DÉCIMA\or DÉCIMA PRIMEIRA\or DÉCIMA SEGUNDA\or DÉCIMA TERCEIRA\or DÉCIMA QUARTA\or DÉCIMA QUINTA\or DÉCIMA SEXTA\or DÉCIMA SÉTIMA\or DÉCIMA OITAVA\or DÉCIMA NONA\or VIGÉSIMA\fi}
+\newcommand{\clausula}[1]{%
+  \stepcounter{clau}\Needspace{5\baselineskip}\vspace{1.1em}%
+  {\bfseries CLÁUSULA \ordinal{\value{clau}} -- #1}\par\vspace{0.2em}}
+\newenvironment{itens}{\begin{enumerate}[label={\bfseries\arabic{clau}.\arabic*.},leftmargin=2.4em,labelsep=0.6em]}{\end{enumerate}}
 \newcommand{\linha}[1]{\rule{#1}{0.4pt}}
+\newcommand{\rotulo}[1]{{\footnotesize\color{cinza}\mono{#1}}}
 
 \begin{document}
 
 % =================================================================
-% CAPA
+% CAPA (como a página da proposta, em creme)
 % =================================================================
 \begin{titlepage}
-  \thispagestyle{empty}
-  \pagecolor{atelierBg}
-  \color{atelierPaper}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+  % faixa carmim à direita
+  \fill[carmim] ([xshift=-6.2cm]current page.north east) rectangle (current page.south east);
+  \shade[top color=carmim,bottom color=carmimEsc,opacity=.55] ([xshift=-6.2cm]current page.north east) rectangle (current page.south east);
+  % alinhavos tracejados
+  \draw[carmim!70,dash pattern=on 3pt off 3pt,line width=.4pt] ([yshift=-4.2cm]current page.north west) -- ([yshift=-4.2cm]current page.north east);
+  \draw[carmim!70,dash pattern=on 3pt off 3pt,line width=.4pt] ([yshift=5.2cm]current page.south west) -- ([yshift=5.2cm]current page.south east);
+  \draw[cinza!60,dash pattern=on 3pt off 3pt,line width=.4pt] ([xshift=1.4cm]current page.north west) -- ([xshift=1.4cm]current page.south west);
+  % botões de costura nos cruzamentos
+  \foreach \y in {-4.2cm} {\filldraw[fill=papel,draw=cinza,line width=.5pt] ([xshift=1.4cm,yshift=\y]current page.north west) circle (2.6mm);}
+  \filldraw[fill=papel,draw=cinza,line width=.5pt] ([xshift=1.4cm,yshift=5.2cm]current page.south west) circle (2.6mm);
+  % símbolo gigante cortado pela borda
+  \begin{scope}[shift={([xshift=-5.3cm,yshift=-7.2cm]current page.north east)},rotate=-8,scale=.62]
+    \draw[papel,line width=8pt,rounded corners=14pt] (0,0) rectangle (4.2,4.2);
+    \draw[papel,line width=8pt,rounded corners=14pt] (0,-5.4) rectangle (4.2,-1.2);
+    \draw[papel,line width=8pt,rounded corners=14pt] (5.4,-5.4) rectangle (9.6,-1.2);
+    \filldraw[fill=tinta,draw=papel,line width=8pt,rounded corners=16pt] (5.2,-0.2) rectangle (9.8,4.4);
+    \draw[carmim,line width=9pt,line cap=round,line join=round] (6.3,3.1) -- (7.3,2.1) -- (6.3,1.1);
+    \draw[papel,line width=9pt,line cap=round] (7.8,0.9) -- (9.0,0.9);
+  \end{scope}
+  \node[rotate=90,anchor=south east,text=papel] at ([xshift=-0.9cm,yshift=1.6cm]current page.south east) {\footnotesize\mono{Nº <<NUMERO>> · CONTRATO}};
+\end{tikzpicture}
 
-  \vspace*{0.55cm}
-  \noindent
-  \begin{minipage}[t]{0.62\linewidth}
-    \atelierwordmark
-  \end{minipage}
-  \begin{minipage}[t]{0.36\linewidth}
-    \raggedleft
-    {\fontspec{DejaVu Sans Mono}\fontsize{7.5}{10}\selectfont
-    \color{atelierDim}\textls[90]{CONTRATO}\\[-1pt]
-    \color{atelierAcc}\textls[90]{<<ANO>> \quad / \quad V. 1.0}}
-  \end{minipage}
+\vspace*{4.6cm}
+\begin{minipage}{0.56\linewidth}
+  {\footnotesize\color{carmim}\mono{>}\enspace\color{cinza}\mono{CONTRATO DE PRESTAÇÃO DE SERVIÇOS}}\par
+  \vspace{0.6cm}
+  {\displayfont\fontsize{44}{44}\selectfont\color{tinta}IMPLANTAÇÃO E\\[2pt] LICENÇA DE USO\\[2pt] PARA}\par
+  \vspace{0.25cm}
+  \colorbox{carmim}{\displayfont\fontsize{44}{44}\selectfont\color{papel}\strut <<CLIENTE_CAPA>>\,}\par
+  \vspace{0.8cm}
+  {\color{cinza}Ambiente digital \texttt{<<HOST>>}, com a marca do contratante, implantado e mantido pela Atelierin.}\par
+  \vspace{1.2cm}
+  \begin{tabular}{@{}l@{\hspace{1.2em}}l@{}}
+    {\footnotesize\color{cinza}\mono{CONTRATANTE}} & <<C_NOME_CAPA>> \\
+    {\footnotesize\color{cinza}\mono{CONTRATADA}} & <<P_NOME>> \\
+    {\footnotesize\color{cinza}\mono{EMISSÃO}} & <<DATA>> \\
+  \end{tabular}
+\end{minipage}
 
-  \vspace{1.0cm}
-  {\color{atelierAcc}\rule{0.19\linewidth}{2pt}}\par
-  \vspace{1.25cm}
-
-  {\fontspec{DejaVu Sans Mono}\fontsize{8}{11}\selectfont
-  \color{atelierAcc}\textls[150]{ATELIERIN SCHOOL \quad / \quad AMBIENTE PERSONALIZADO}}\par
-
-  \vspace{0.65cm}
-  {\displayfont\fontsize{40}{52}\selectfont
-  \color{atelierPaper}CONTRATO DE\\[0pt]
-  \color{atelierPaper}IMPLANTAÇÃO\\[0pt]
-  \color{atelierAcc}E LICENÇA DE USO}\par
-
-  \vspace{0.5cm}
-  {\Large\color{atelierTextSub}Ambiente digital com a sua marca,\\
-  mantido pela Atelierin}\par
-
-  \vspace{1.4cm}
-  \noindent
-  \begin{minipage}{0.94\linewidth}
-    {\fontspec{DejaVu Sans Mono}\fontsize{7.5}{10}\selectfont
-    \color{atelierDim}\textls[110]{AMBIENTE DIGITAL}}
-    \par\vspace{0.2cm}
-    {\Large\bfseries\color{atelierPaper}\texttt{<<HOST>>}}\par
-  \end{minipage}
-
-  \vfill
-  \noindent\color{atelierAcc}\rule{\linewidth}{0.45pt}\par
-  \vspace{0.55cm}
-
-  \begin{tabularx}{\linewidth}{@{}>{\fontspec{DejaVu Sans Mono}\fontsize{7}{9}\selectfont\color{atelierDim}}p{0.22\linewidth} X@{}}
-    CONTRATANTE & {\color{atelierPaper}\bfseries <<C_NOME>>}\\[0.45em]
-    CONTRATADA & {\color{atelierPaper}\bfseries <<P_NOME>>}\\[0.45em]
-    EMISSÃO & {\color{atelierPaper}<<DATA>>}\\
-  \end{tabularx}
-
-  \vspace{0.75cm}
-  {\fontspec{DejaVu Sans Mono}\fontsize{7}{9}\selectfont
-  \color{atelierDim}\textls[70]{ATELIERIN \quad / \quad CONTRATO DE IMPLANTAÇÃO E LICENÇA DE USO}}
+\vfill
+\atelierlogo[22]\par
 \end{titlepage}
 
-\pagecolor{atelierPaper}
-\color{atelierText}
-\pagestyle{fancy}
+% =================================================================
+% QUADRO-RESUMO
+% =================================================================
+{\large\bfseries QUADRO-RESUMO}\par
+\vspace{0.2em}
+{\small\color{cinza}Resumo das condições contratadas. Em caso de dúvida, prevalece o texto das cláusulas.}\par
+\vspace{0.6em}
 
-\tableofcontents
-\newpage
+{\arrayrulecolor{linha}\renewcommand{\arraystretch}{1.6}%
+\begin{tabularx}{\linewidth}{@{}>{\leavevmode}p{0.29\linewidth} >{\raggedright\arraybackslash}X@{}}
+  \arrayrulecolor{carmim}\specialrule{1.4pt}{0pt}{0pt}\arrayrulecolor{linha}
+  \rotulo{CONTRATANTE} & \textbf{<<C_NOME>>} \\ \hline
+  \rotulo{AMBIENTE} & \texttt{<<HOST>>} \\ \hline
+  \rotulo{OPÇÃO} & <<OPCAO>> \\ \hline
+  \rotulo{IDENTIDADE VISUAL} & <<IDENTIDADE>> \\ \hline
+  \rotulo{ENTRADA} & \textbf{<<TOTAL>>} \enspace{\small\color{cinza}<<FORMA_CURTA>>} \\ \hline
+  \rotulo{LICENÇA E MANUTENÇÃO} & \textbf{<<MENSAL>> por mês} \enspace{\small\color{cinza}<<FAIXA>>, todo dia <<VENC>>} \\ \hline
+  \rotulo{REAJUSTE} & <<REAJUSTE>> \\ \hline
+  \rotulo{VÍDEOS} & <<VIDEO_CURTO>> \\ \hline
+  \rotulo{VIGÊNCIA} & indeterminada, com aviso de 30 dias para encerrar \\ \hline
+  \rotulo{FORO} & Recife, Pernambuco \\
+  \arrayrulecolor{tinta}\specialrule{0.8pt}{0pt}{0pt}
+\end{tabularx}}
+
+\vspace{1.2em}
 
 % =================================================================
 % PARTES
 % =================================================================
-{\large\bfseries Partes}\par
-\vspace{0.4em}
+Pelo presente instrumento particular, de um lado, \textbf{<<P_NOME_UP>>}, inscrita no CPF/CNPJ sob o nº <<P_DOC>>, com endereço em <<P_END>>, e-mail <<P_EMAIL>>, doravante denominada simplesmente \textbf{CONTRATADA}; e, de outro lado, \textbf{<<C_NOME_UP>>}, inscrito(a) no CPF/CNPJ sob o nº <<C_DOC>>, com endereço em <<C_END>>, e-mail <<C_EMAIL>>, doravante denominado(a) simplesmente \textbf{CONTRATANTE}; ambos referidos em conjunto como \textbf{PARTES},
 
-\begin{tabularx}{\linewidth}{@{}>{\leavevmode\color{atelierMuted}}p{0.24\linewidth} X@{}}
-  \toprule
-  \multicolumn{2}{@{}l}{\color{atelierAcc}\bfseries CONTRATADA} \\
-  Nome & <<P_NOME>> \\
-  CPF ou CNPJ & <<P_DOC>> \\
-  Endereço & <<P_END>> \\
-  E-mail & <<P_EMAIL>> \\
-  \midrule
-  \multicolumn{2}{@{}l}{\color{atelierAcc}\bfseries CONTRATANTE} \\
-  Nome & <<C_NOME>> \\
-  CPF ou CNPJ & <<C_DOC>> \\
-  Endereço & <<C_END>> \\
-  E-mail & <<C_EMAIL>> \\
-  \bottomrule
-\end{tabularx}
-
-As partes acima identificadas firmam este contrato, que reúne as explicações sobre o funcionamento da plataforma e as condições combinadas para a implantação e o uso do ambiente digital da Contratante, nos termos a seguir.
-
-% =================================================================
-\section{O que é o Atelierin}
-% =================================================================
-
-O Atelierin é uma plataforma digital criada, mantida e administrada pela Contratada, que oferece a profissionais que atendem pessoas (professores, consultores, terapeutas, entre outros) um ambiente próprio para organizar alunos ou clientes, cobranças, agenda, materiais e acompanhamento.
-
-O sistema é o mesmo para todos os ambientes da plataforma. Cada ambiente recebe a identidade visual, o endereço, os módulos e o vocabulário do seu titular, e funciona separado dos demais, com os seus próprios dados.
-
-\begin{destaque}
-  \textbf{Natureza da contratação}\par
-  A Contratante não compra um sistema. Ela contrata a montagem do seu ambiente e o direito de usá-lo enquanto este contrato estiver em vigor, com a parte técnica sob responsabilidade da Contratada.
-\end{destaque}
-
-% =================================================================
-\section{Objeto}
-% =================================================================
-
-Este contrato tem por objeto:
+\textbf{CONSIDERANDO QUE:}
 
 \begin{enumerate}[label=\alph*)]
-  \item a implantação do ambiente da Contratante no endereço \textbf{\texttt{<<HOST>>}};
-  \item a licença de uso desse ambiente durante a vigência do contrato;
-  \item a manutenção técnica, a hospedagem e o suporte do ambiente;
-%<IF:basica>
-  \item a criação de uma identidade básica para a Contratante;
-%</IF:basica>
-%<IFNOT:basica>
-  \item a criação de um monograma para a Contratante, como cortesia;
-%</IFNOT:basica>
-  \item a página simples de apresentação no mesmo endereço<<OBJ_FIM>>
-%<IF:lp>
-  \item a criação de uma landing page completa para a Contratante.
-%</IF:lp>
+  \item a CONTRATADA criou, mantém e administra o Atelierin, plataforma digital que oferece a profissionais que atendem pessoas um ambiente próprio para organizar alunos ou clientes, cobranças, agenda, materiais e acompanhamento;
+  \item o sistema do Atelierin é o mesmo para todos os ambientes da plataforma, e cada ambiente recebe a identidade visual, o endereço, os módulos e o vocabulário do seu titular, funcionando separado dos demais, com os seus próprios dados;
+  \item o CONTRATANTE deseja ter o seu ambiente no Atelierin, sem adquirir o sistema, contratando a sua implantação e o direito de usá-lo, com a parte técnica sob responsabilidade da CONTRATADA;
 \end{enumerate}
 
+resolvem celebrar o presente Contrato de Prestação de Serviços de Implantação e Licença de Uso, que se regerá pelas cláusulas e condições a seguir.
+
 % =================================================================
-\section{O que entra na implantação}
-% =================================================================
-
-A implantação é o trabalho de montar o ambiente até ele estar no ar e testado, e compreende:
-
-\begin{itemize}
-  \item uma prévia com a marca da Contratante, apresentada antes do início;
-  \item a aplicação da identidade visual: cores, fontes, logo ou monograma e tela de entrada;
-  \item a escolha dos módulos que ficam ligados e do vocabulário da área da Contratante;
-  \item o cadastro inicial dos alunos e do conteúdo que a Contratante já tiver, a partir dos materiais que ela fornecer;
-  \item rodadas de ajuste até a aprovação da Contratante;
-  \item uma conversa de entrega para mostrar como usar o ambiente.
-\end{itemize}
-
+\clausula{DO OBJETO}
+\begin{itens}
+  \item Constitui objeto deste contrato a implantação do ambiente do CONTRATANTE no endereço \texttt{<<HOST>>}, a licença de uso desse ambiente durante a vigência do contrato e a sua manutenção técnica, hospedagem e suporte.
 %<IF:basica>
-A identidade básica inclui logo simples, paleta de cores, tipografia, dois mockups com a marca aplicada e duas rodadas de ajuste. Não inclui manual de marca, papelaria ou peças para redes sociais. Se a Contratante quiser proteger o logo, o registro é feito no INPI, com a taxa paga diretamente por ela.
+  \item Integra também o objeto a criação de uma identidade básica para o CONTRATANTE, composta por logo simples, paleta de cores, tipografia, dois mockups com a marca aplicada e duas rodadas de ajuste.
 %</IF:basica>
 %<IFNOT:basica>
-O monograma é oferecido como \textbf{cortesia de primeiro cliente}, sem custo (valor de referência: <<MONOGRAMA>>). Inclui o nome da Contratante com uma tipografia escolhida, paleta de cores, um ícone com a inicial e uma rodada de ajuste. Por não ser um logo, não exige registro no INPI.
+  \item Integra também o objeto, a título de cortesia e sem custo para o CONTRATANTE, a criação de um monograma, composto pelo nome do CONTRATANTE em tipografia escolhida, paleta de cores, ícone com a inicial e uma rodada de ajuste. O valor de referência desse serviço é de <<MONOGRAMA>>.
 %</IFNOT:basica>
-
-A página simples apresenta foto, nome, bio curta, serviços, contato e o botão de entrada no ambiente, a partir de um modelo pronto.
+  \item O ambiente inclui uma página simples de apresentação no mesmo endereço, com foto, nome, bio curta, serviços, contato e botão de entrada, a partir de modelo pronto.
 %<IF:lp>
-A landing page completa tem texto, seções e design próprios, pensados para atrair novos alunos.
+  \item Integra também o objeto a criação de uma landing page completa para o CONTRATANTE, com texto, seções e design próprios.
 %</IF:lp>
+\end{itens}
 
 % =================================================================
-\section{Propriedade intelectual e licença de uso}
+\clausula{DA IMPLANTAÇÃO}
+\begin{itens}
+  \item A implantação é o trabalho de montar o ambiente até que esteja publicado e testado, e compreende: (i) apresentação de uma prévia com a marca do CONTRATANTE; (ii) aplicação da identidade visual; (iii) escolha dos módulos ativos e do vocabulário da área do CONTRATANTE; (iv) cadastro inicial dos alunos e do conteúdo fornecidos pelo CONTRATANTE; (v) rodadas de ajuste até a aprovação; e (vi) uma reunião de entrega para demonstrar o uso do ambiente.
+  \item A implantação será realizada em três etapas: conversa inicial e envio dos materiais; aprovação da prévia; e entrega do ambiente publicado.
+  \item Os prazos de execução são: ambiente Personalizado, de 1 (uma) a 4 (quatro) semanas; <<IDENT_NOME_MIN>>, <<IDENT_PRAZO>><<LP_PRAZO>>.
+  \item Os prazos contam a partir do pagamento da entrada e do recebimento dos materiais. Atrasos no envio de materiais ou nas aprovações do CONTRATANTE estendem os prazos pelo mesmo período.
+\end{itens}
+
 % =================================================================
-
-O Atelierin, incluindo código-fonte, arquitetura, banco de dados, componentes, funcionalidades, identidade da plataforma e todas as melhorias feitas nele, pertence à Contratada. Isso vale também para o que for desenvolvido durante a implantação deste ambiente, que poderá ser usado em outros ambientes da plataforma.
-
-A Contratante recebe uma licença de uso do seu ambiente, pessoal, intransferível e válida enquanto este contrato estiver vigente e os pagamentos estiverem em dia. O domínio \texttt{atelierin.com.br} e o subdomínio \texttt{<<HOST>>} continuam sob titularidade da Contratada.
-
+\clausula{DA PROPRIEDADE INTELECTUAL E DA LICENÇA DE USO}
+\begin{itens}
+  \item O Atelierin, incluindo código-fonte, arquitetura, banco de dados, componentes, funcionalidades, identidade da plataforma e todas as melhorias nele realizadas, é de titularidade exclusiva da CONTRATADA, inclusive o que for desenvolvido durante a implantação deste ambiente, que poderá ser utilizado em outros ambientes da plataforma.
+  \item A CONTRATADA concede ao CONTRATANTE licença de uso do seu ambiente, pessoal, intransferível e não exclusiva quanto ao sistema, válida enquanto este contrato estiver vigente e os pagamentos estiverem em dia.
+  \item O domínio \texttt{atelierin.com.br} e o subdomínio \texttt{<<HOST>>} permanecem sob titularidade da CONTRATADA.
 %<IF:basica>
-São da Contratante a sua marca, o seu conteúdo, os dados dos seus alunos e os valores que ela recebe. Os direitos sobre a identidade básica criada para ela são transferidos à Contratante após a quitação.
+  \item São do CONTRATANTE a sua marca, o seu conteúdo, os dados dos seus alunos e os valores que recebe. Os direitos sobre a identidade básica criada são transferidos ao CONTRATANTE após a quitação da entrada.
 %</IF:basica>
 %<IFNOT:basica>
-São da Contratante a sua marca, o seu conteúdo, os dados dos seus alunos e os valores que ela recebe. O monograma criado para ela é de uso livre da Contratante.
+  \item São do CONTRATANTE a sua marca, o seu conteúdo, os dados dos seus alunos e os valores que recebe. O monograma criado é de uso livre do CONTRATANTE.
 %</IFNOT:basica>
-
-Quem quiser um sistema exclusivo, com o código para si, deve contratar outro projeto, com proposta própria.
+  \item O pagamento da implantação e das mensalidades não implica transferência da propriedade do sistema. A contratação de um sistema exclusivo, com código-fonte próprio, depende de outro contrato.
+\end{itens}
 
 % =================================================================
-\section{Valores e forma de pagamento da entrada}
-% =================================================================
+\clausula{DO PREÇO E DA FORMA DE PAGAMENTO DA ENTRADA}
+\begin{itens}
+  \item Pelos serviços de implantação descritos neste contrato, o CONTRATANTE pagará à CONTRATADA o valor total de \textbf{<<TOTAL>>} (<<TOTAL_EXT>>), assim composto:
 
-\begin{center}
-\begin{tabularx}{0.92\linewidth}{@{}X r@{}}
-  \toprule
-  \textbf{Item} & \textbf{Valor} \\
-  \midrule
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \hline
 <<ITENS>>
-  \midrule
-  \textbf{Total da entrada} & \textbf{<<TOTAL>>} \\
-  \bottomrule
-\end{tabularx}
-\end{center}
+    \hline
+    \textbf{Total} & \textbf{<<TOTAL>>} \\
+    \hline
+  \end{tabularx}
 
-<<PAGAMENTO>>
-
-A implantação só começa após o pagamento da primeira parcela ou do valor à vista. O valor remunera o serviço de implantação e não representa a compra do sistema.
+  \item <<PAGAMENTO>>
+  \item A implantação somente terá início após o pagamento da primeira parcela ou do valor à vista. O valor remunera o serviço de implantação e não representa a compra do sistema.
+\end{itens}
 
 % =================================================================
-\section{Licença e manutenção mensal}
-% =================================================================
-
-Além da entrada, a Contratante paga todo mês a licença e manutenção do ambiente, um valor fixo definido pela faixa de alunos ativos.
-
-\begin{center}
-\begin{tabularx}{0.92\linewidth}{@{}X r@{}}
-  \toprule
-  Faixa atual & <<FAIXA>> \\
-  \textbf{Valor mensal} & \textbf{<<MENSAL>>} \\
-  Vencimento & todo dia <<VENC>>, por Pix \\
-  Primeiro pagamento & no mês seguinte à entrega do ambiente \\
-  \bottomrule
-\end{tabularx}
-\end{center}
-
-O valor inclui: licença de uso, hospedagem, banco de dados, domínio, cópias de segurança, atualizações de segurança, correções, monitoramento, suporte por mensagem e pequenos ajustes de texto e configuração. O valor é o mesmo havendo ou não pedidos de suporte no mês.
-
-Se o número de alunos ativos mudar de faixa, o valor muda a partir do mês seguinte, com aviso prévio. As faixas da plataforma são: até 15 alunos, R\$ 190,00; de 16 a 30, R\$ 290,00; de 31 a 50, R\$ 390,00; acima disso, valor combinado entre as partes.
-
+\clausula{DA LICENÇA E MANUTENÇÃO MENSAL}
+\begin{itens}
+  \item Além da entrada, o CONTRATANTE pagará mensalmente à CONTRATADA o valor fixo de \textbf{<<MENSAL>>} (<<MENSAL_EXT>>), correspondente à faixa de <<FAIXA>>, a título de licença e manutenção do ambiente, com vencimento todo dia <<VENC>>, por Pix, a partir do mês seguinte à entrega do ambiente.
+  \item O valor mensal inclui licença de uso, hospedagem, banco de dados, domínio, cópias de segurança, atualizações de segurança, correções, monitoramento, suporte por mensagem e pequenos ajustes de texto e configuração, e é devido independentemente da existência de pedidos de suporte no mês.
+  \item O valor mensal segue as faixas da plataforma: até 15 alunos, R\$ 190,00; de 16 a 30 alunos, R\$ 290,00; de 31 a 50 alunos, R\$ 390,00; acima de 50 alunos, valor ajustado entre as PARTES. Havendo mudança de faixa, o novo valor vale a partir do mês seguinte, com aviso prévio.
 %<IF:lock>
-O valor mensal fica \textbf{sem reajuste nos primeiros 12 (doze) meses}. Depois disso, pode ser reajustado uma vez por ano pelo IPCA acumulado do período, ou pelo índice que o substituir, com aviso de 30 dias.
+  \item O valor mensal não será reajustado nos primeiros 12 (doze) meses de vigência. Após esse período, poderá ser reajustado uma vez por ano pela variação acumulada do IPCA, ou do índice que o substituir, com aviso de 30 (trinta) dias.
 %</IF:lock>
 %<IFNOT:lock>
-O valor mensal pode ser reajustado uma vez por ano, a contar da assinatura, pelo IPCA acumulado do período, ou pelo índice que o substituir, com aviso de 30 dias.
+  \item O valor mensal poderá ser reajustado uma vez por ano, a contar da assinatura, pela variação acumulada do IPCA, ou do índice que o substituir, com aviso de 30 (trinta) dias.
 %</IFNOT:lock>
+\end{itens}
 
 % =================================================================
-\section{Infraestrutura e vídeos}
-% =================================================================
-
-Os serviços de infraestrutura usados pelo ambiente (banco de dados, armazenamento e hospedagem) são contratados e administrados pela Contratada e já estão incluídos no valor mensal. A Contratante não paga esses serviços à parte.
-
+\clausula{DA INFRAESTRUTURA E DOS VÍDEOS}
+\begin{itens}
+  \item Os serviços de infraestrutura utilizados pelo ambiente, como banco de dados, armazenamento e hospedagem, são contratados e administrados pela CONTRATADA e estão incluídos no valor mensal, não sendo cobrados à parte do CONTRATANTE.
 %<IF:bunny>
-Os vídeos serão hospedados no Bunny Stream, contratado à parte. O custo estimado é de <<BUNNY>> por mês e pode variar conforme o armazenamento e o tráfego. Esse custo é repassado à Contratante pelo valor real da fatura, junto com a mensalidade.
+  \item Os vídeos serão hospedados no serviço Bunny Stream, cujo custo, estimado em <<BUNNY>> por mês e variável conforme armazenamento e tráfego, será repassado ao CONTRATANTE pelo valor real da fatura do fornecedor, junto com a mensalidade.
 %</IF:bunny>
 %<IFNOT:bunny>
-Os vídeos serão hospedados no YouTube ou no Google Drive da Contratante e incorporados ao ambiente, sem custo adicional, sujeitos às regras e configurações de privacidade desses serviços. A troca para hospedagem própria (Bunny Stream) pode ser combinada depois, com custo à parte.
+  \item Os vídeos serão hospedados no YouTube ou no Google Drive do CONTRATANTE e incorporados ao ambiente, sem custo adicional, sujeitos às regras desses serviços. A hospedagem própria (Bunny Stream) poderá ser contratada posteriormente, com custo à parte.
 %</IFNOT:bunny>
+\end{itens}
 
 % =================================================================
-\section{Pagamento dos alunos}
-% =================================================================
-
-Os alunos pagam diretamente à Contratante, pela chave Pix ou conta que ela indicar. O dinheiro não passa pela Contratada nem pela plataforma.
-
-A Contratante confere o recebimento na própria conta e marca o aluno como pago no painel financeiro do ambiente, onde acompanha quem está em dia, pendente ou atrasado. O envio de um comprovante pelo aluno não substitui essa conferência.
-
-Uma integração bancária automática (por exemplo, cobrança por Pix gerada pelo sistema) pode ser contratada depois, com orçamento próprio, e depende das condições e tarifas do banco ou provedor escolhido.
+\clausula{DO PAGAMENTO DOS ALUNOS}
+\begin{itens}
+  \item Os alunos pagam diretamente ao CONTRATANTE, pela chave Pix ou conta por ele indicada. Os valores não transitam pela CONTRATADA nem pela plataforma.
+  \item Cabe ao CONTRATANTE conferir o recebimento em sua própria conta e registrar o pagamento no painel financeiro do ambiente. O comprovante enviado pelo aluno não substitui essa conferência.
+  \item A integração bancária automática poderá ser contratada posteriormente, mediante orçamento próprio, e dependerá das condições e tarifas da instituição escolhida.
+\end{itens}
 
 % =================================================================
-\section{Etapas e prazos}
-% =================================================================
-
-\begin{enumerate}
-  \item \textbf{Conversa inicial} e envio dos materiais pela Contratante (logo ou referências, lista de alunos, conteúdos).
-  \item \textbf{Aprovação da prévia} com a marca aplicada.
-  \item \textbf{Entrega} do ambiente publicado, com uma conversa para mostrar como usar.
-\end{enumerate}
-
-\begin{center}
-\begin{tabularx}{0.92\linewidth}{@{}X r@{}}
-  \toprule
-  Ambiente Personalizado & de 1 a 4 semanas \\
-  <<IDENT_NOME>> & <<IDENT_PRAZO>> \\
-%<IF:lp>
-  Landing page & 3 dias úteis, podendo chegar a 5 \\
-%</IF:lp>
-  \bottomrule
-\end{tabularx}
-\end{center}
-
-Os prazos contam a partir do pagamento da entrada e do recebimento dos materiais. Atrasos no envio de materiais ou nas aprovações da Contratante estendem os prazos pelo mesmo período.
+\clausula{DAS OBRIGAÇÕES DA CONTRATADA}
+\begin{itens}
+  \item Implantar, configurar e manter o ambiente conforme este contrato.
+  \item Administrar a infraestrutura técnica e manter cópias de segurança.
+  \item Corrigir falhas e prestar suporte por mensagem em horário comercial.
+  \item Comunicar com antecedência mudanças relevantes no ambiente, na faixa ou nos valores.
+  \item Tratar os dados do ambiente apenas para o seu funcionamento, com medidas razoáveis de segurança.
+\end{itens}
 
 % =================================================================
-\section{Obrigações da Contratada}
-% =================================================================
-
-\begin{itemize}
-  \item implantar, configurar e manter o ambiente conforme este contrato;
-  \item administrar a infraestrutura técnica e manter cópias de segurança;
-  \item corrigir falhas e prestar suporte por mensagem em horário comercial;
-  \item avisar com antecedência sobre mudanças relevantes no ambiente, na faixa ou nos valores;
-  \item tratar os dados do ambiente apenas para fazê-lo funcionar, com medidas razoáveis de segurança.
-\end{itemize}
-
-% =================================================================
-\section{Obrigações da Contratante}
-% =================================================================
-
-\begin{itemize}
-  \item fornecer os materiais e as informações necessários à implantação, nos prazos combinados;
-  \item pagar a entrada e a mensalidade nas datas combinadas;
-  \item conferir os pagamentos dos alunos e mantê-los atualizados no painel;
-  \item cuidar da relação comercial com os seus alunos, incluindo valores, regras e comunicação;
-  \item informar à Contratada as mudanças de faixa de alunos e os problemas encontrados no ambiente;
-  \item usar o ambiente de acordo com a sua finalidade e com a lei.
-\end{itemize}
+\clausula{DAS OBRIGAÇÕES DO CONTRATANTE}
+\begin{itens}
+  \item Fornecer os materiais e as informações necessários à implantação, nos prazos combinados.
+  \item Efetuar os pagamentos da entrada e da mensalidade nas datas acordadas.
+  \item Conferir os pagamentos dos alunos e mantê-los atualizados no painel.
+  \item Responder pela relação comercial com os seus alunos, incluindo valores, regras e comunicação.
+  \item Informar à CONTRATADA as mudanças de faixa de alunos e os problemas encontrados no ambiente.
+  \item Utilizar o ambiente de acordo com a sua finalidade e com a legislação vigente.
+\end{itens}
 
 % =================================================================
-\section{Suporte, escopo e novas funcionalidades}
-% =================================================================
-
-O suporte mensal cobre o funcionamento do ambiente, correções e pequenos ajustes de texto e configuração. Não acumula de um mês para o outro.
-
-Não estão incluídos e dependem de orçamento aprovado antes:
-
-\begin{itemize}
-  \item funcionalidades novas ou feitas só para a Contratante;
-  \item integrações com bancos e outros sistemas;
-  \item produção de conteúdo (aulas, textos, fotos);
-  \item mudanças estruturais no fluxo de trabalho.
-\end{itemize}
-
-Nada é considerado contratado sem acordo prévio por escrito, inclusive por mensagem.
+\clausula{DO SUPORTE E DOS SERVIÇOS NÃO INCLUÍDOS}
+\begin{itens}
+  \item O suporte mensal cobre o funcionamento do ambiente, correções e pequenos ajustes de texto e configuração, e não é cumulativo de um mês para o outro.
+  \item Não estão incluídos neste contrato e dependem de orçamento prévio aprovado: funcionalidades novas ou exclusivas do CONTRATANTE; integrações com bancos e outros sistemas; produção de conteúdo; e mudanças estruturais no fluxo de trabalho.
+  \item Nenhum serviço adicional será considerado contratado sem acordo prévio por escrito, admitida a troca de mensagens.
+\end{itens}
 
 % =================================================================
-\section{Disponibilidade e serviços de terceiros}
-% =================================================================
-
-O ambiente depende de serviços de terceiros (hospedagem, banco de dados, provedores de e-mail e de vídeo). A Contratada administra esses serviços e age para resolver problemas o quanto antes, mas não responde por interrupções causadas por esses fornecedores, falhas de rede ou eventos fora do seu controle.
-
-% =================================================================
-\section{Proteção de dados e confidencialidade}
-% =================================================================
-
-As partes seguem a Lei nº 13.709/2018, Lei Geral de Proteção de Dados Pessoais (LGPD). A Contratante é a controladora dos dados dos seus alunos e decide como eles são usados. A Contratada atua como operadora e trata esses dados somente para manter o ambiente funcionando, sem vendê-los ou compartilhá-los para outros fins.
-
-A Contratante deve coletar apenas os dados necessários e informar os seus alunos sobre o uso do ambiente. As duas partes mantêm em sigilo as informações comerciais, técnicas e pessoais a que tiverem acesso por causa deste contrato.
+\clausula{DA DISPONIBILIDADE E DOS SERVIÇOS DE TERCEIROS}
+\begin{itens}
+  \item O ambiente depende de serviços de terceiros, como hospedagem, banco de dados e provedores de e-mail e de vídeo. A CONTRATADA administrará esses serviços e agirá para solucionar falhas no menor prazo possível, não respondendo por interrupções causadas por fornecedores, falhas de rede ou eventos de força maior.
+\end{itens}
 
 % =================================================================
-\section{Atraso no pagamento}
-% =================================================================
-
-Pagamentos em atraso têm multa de 2\% e juros de 1\% ao mês, proporcionais aos dias de atraso. Com mais de 15 dias de atraso, e após aviso, o acesso ao ambiente pode ser suspenso até a regularização, sem perda dos dados.
-
-% =================================================================
-\section{Vigência, cancelamento e encerramento}
-% =================================================================
-
-Este contrato vale por prazo indeterminado, a partir da assinatura. Qualquer parte pode encerrá-lo com aviso por escrito de 30 (trinta) dias, inclusive por e-mail ou mensagem.
-
-\begin{itemize}
-  \item valores vencidos e parcelas da entrada já devidas continuam devidos;
-  \item a mensalidade do período de aviso é paga normalmente;
-  \item antes do encerramento, a Contratante pode exportar os dados dos alunos e o conteúdo do ambiente;
-  \item depois do encerramento, a licença de uso termina e os dados são apagados em até 60 dias, salvo obrigação legal de guarda;
-  \item o sistema, o domínio e o subdomínio continuam da Contratada.
-\end{itemize}
+\clausula{DA PROTEÇÃO DE DADOS E DA CONFIDENCIALIDADE}
+\begin{itens}
+  \item As PARTES observarão a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais).
+  \item O CONTRATANTE é o controlador dos dados dos seus alunos. A CONTRATADA atua como operadora, tratando esses dados exclusivamente para o funcionamento do ambiente, sendo vedada a sua venda ou o compartilhamento para outros fins.
+  \item O CONTRATANTE coletará apenas os dados necessários e informará os seus alunos sobre o uso do ambiente.
+  \item As PARTES manterão sigilo sobre as informações comerciais, técnicas e pessoais a que tiverem acesso em razão deste contrato.
+\end{itens}
 
 % =================================================================
-\section{Disposições gerais}
-% =================================================================
+\clausula{DO ATRASO NO PAGAMENTO}
+\begin{itens}
+  \item O atraso no pagamento sujeitará o CONTRATANTE a multa de 2\% (dois por cento) e juros de 1\% (um por cento) ao mês, calculados proporcionalmente aos dias de atraso.
+  \item Após 15 (quinze) dias de atraso e prévio aviso, o acesso ao ambiente poderá ser suspenso até a regularização, sem perda dos dados.
+\end{itens}
 
-Alterações de escopo, valores ou condições só valem se combinadas por escrito entre as partes. As partes aceitam a assinatura eletrônica deste contrato. Fica eleito o foro da comarca de \textbf{Recife, Pernambuco}, para resolver qualquer questão sobre este contrato.
+% =================================================================
+\clausula{DA VIGÊNCIA E DA RESCISÃO}
+\begin{itens}
+  \item Este contrato vigora por prazo indeterminado, a partir da data de sua assinatura.
+  \item Qualquer das PARTES poderá rescindi-lo mediante aviso por escrito com antecedência mínima de 30 (trinta) dias, admitido o envio por e-mail ou mensagem.
+  \item Na rescisão: (i) permanecem devidos os valores vencidos e as parcelas da entrada já exigíveis; (ii) a mensalidade do período de aviso será paga normalmente; (iii) antes do encerramento, o CONTRATANTE poderá exportar os dados dos alunos e o conteúdo do ambiente; (iv) encerrada a licença, os dados serão excluídos em até 60 (sessenta) dias, salvo obrigação legal de guarda; e (v) o sistema, o domínio e o subdomínio permanecem com a CONTRATADA.
+\end{itens}
 
 % =================================================================
-\clearpage
-{\large\bfseries Assinaturas}\par
-% =================================================================
+\clausula{DAS DISPOSIÇÕES GERAIS E DO FORO}
+\begin{itens}
+  \item Qualquer alteração de escopo, valores ou condições somente terá validade se ajustada por escrito entre as PARTES.
+  \item As PARTES reconhecem a validade da assinatura eletrônica deste instrumento.
+  \item Fica eleito o foro da comarca de Recife, Estado de Pernambuco, para dirimir quaisquer questões oriundas deste contrato, com renúncia a qualquer outro, por mais privilegiado que seja.
+\end{itens}
+
+E, por estarem assim justas e contratadas, as PARTES assinam o presente instrumento, juntamente com 2 (duas) testemunhas.
 
 \vspace{0.6em}
-E, por estarem de acordo, as partes assinam este contrato.
-
-\vspace{0.8em}
 Recife, <<DATA>>.
 
-\vspace{2cm}
+% =================================================================
+% ASSINATURAS (o único trecho com a marca)
+% =================================================================
+\Needspace{18\baselineskip}
+\vspace{2.2cm}
 
-\begin{tabularx}{\linewidth}{@{}X X@{}}
-  \rule{0.92\linewidth}{0.5pt} & \rule{0.92\linewidth}{0.5pt} \\
-  \textbf{Contratada} & \textbf{Contratante} \\
-  <<P_NOME>> & <<C_NOME>> \\
-  <<P_DOC>> & <<C_DOC>> \\
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{1.6cm}}X@{}}
+  \rule{\linewidth}{0.5pt} & \rule{\linewidth}{0.5pt} \\[-0.4em]
+  {\footnotesize\color{carmim}\mono{CONTRATADA}} & {\footnotesize\color{carmim}\mono{CONTRATANTE}} \\[-0.3em]
+  <<P_NOME>> & <<C_NOME_ASSINA>> \\[-0.3em]
+  {\small\color{cinza}<<P_DOC_ASSINA>>} & {\small\color{cinza}<<C_DOC_ASSINA>>} \\
+\end{tabularx}
+
+\vspace{1.6cm}
+
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{1.6cm}}X@{}}
+  \rule{\linewidth}{0.5pt} & \rule{\linewidth}{0.5pt} \\[-0.4em]
+  {\footnotesize\color{cinza}\mono{TESTEMUNHA 1}} & {\footnotesize\color{cinza}\mono{TESTEMUNHA 2}} \\[-0.3em]
+  {\small Nome:} & {\small Nome:} \\[-0.3em]
+  {\small CPF:} & {\small CPF:} \\
 \end{tabularx}
 
 \vfill
 \begin{center}
-  {\color{atelierAcc}\rule{0.18\linewidth}{1.5pt}}\par
-  \vspace{0.45em}
-  {\atelierwordmarklight}\par
-  {\small\color{atelierMuted}Um ambiente próprio para cada projeto.}
+  {\color{carmim}\rule{1.8cm}{1.2pt}}\par\vspace{0.4em}
+  \atelierlogo[18]\par\vspace{0.2em}
+  {\footnotesize\color{cinza}atelierin.com.br}
 \end{center}
 
 \end{document}

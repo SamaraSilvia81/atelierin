@@ -2,8 +2,9 @@ import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { Check, FileText, X, DownloadSimple, FilePdf } from '@phosphor-icons/react'
 import { play } from '@/lib/sounds'
 import { brl0, compute, useDeal } from '@/lib/clientDeal'
-import { buildContractTex } from '@/lib/contractTex'
-import tpl from '@/content/contrato.tex?raw'
+import { buildContractTex, buildInvoiceTex } from '@/lib/contractTex'
+import tplContrato from '@/content/contrato.tex?raw'
+import tplFatura from '@/content/fatura.tex?raw'
 
 // Contexto da proposta de cliente (só existe em /proposta/<cliente>, rodando local)
 export const ClientCtx = createContext(null)
@@ -29,6 +30,7 @@ const FIELDS = [
   ['cEmail', 'E-mail da contratante'],
   ['pDoc', 'Seu CPF ou CNPJ'],
   ['pEnd', 'Seu endereço'],
+  ['pPix', 'Sua chave Pix (vai na fatura)'],
 ]
 
 const save = (blob, name) => {
@@ -39,7 +41,7 @@ const save = (blob, name) => {
 }
 
 // Modal "Redigir contrato": todas as escolhas que mexem em dinheiro, os dados
-// das partes e, no fim, o .tex e o PDF (compilado pelo XeLaTeX do computador).
+// das partes e, no fim, contrato e fatura em .tex e PDF (compilados pelo XeLaTeX do computador).
 function ContractModal({ client, slug, picks, set, onClose }) {
   const ref = useRef(null)
   const [fields, setFields] = useState({})
@@ -54,21 +56,27 @@ function ContractModal({ client, slug, picks, set, onClose }) {
     if (!dlg.open) dlg.showModal()
   }, [])
 
-  const tex = () => buildContractTex(tpl, { client, slug, picks, deal: d, fields })
-  const name = `contrato-${slug}`
+  const ctx = { client, slug, picks, deal: d, fields }
+  const docs = () => [
+    [`contrato-${slug}`, buildContractTex(tplContrato, ctx)],
+    [`fatura-${slug}`, buildInvoiceTex(tplFatura, ctx)],
+  ]
+  const texBlob = (src) => new Blob([src], { type: 'application/x-tex;charset=utf-8' })
 
-  const downloadTex = () => save(new Blob([tex()], { type: 'application/x-tex;charset=utf-8' }), `${name}.tex`)
+  const downloadTex = () => docs().forEach(([name, src]) => save(texBlob(src), `${name}.tex`))
   const downloadPdf = async () => {
-    const source = tex()
-    save(new Blob([source], { type: 'application/x-tex;charset=utf-8' }), `${name}.tex`)
-    setStatus({ busy: true, text: 'Compilando o PDF…' })
+    const list = docs()
+    list.forEach(([name, src]) => save(texBlob(src), `${name}.tex`))
+    setStatus({ busy: true, text: 'Compilando contrato e fatura…' })
     try {
-      const r = await fetch('/__contrato/pdf', { method: 'POST', body: source })
-      if (!r.ok) throw new Error(await r.text())
-      save(await r.blob(), `${name}.pdf`)
-      setStatus({ text: 'Pronto: .tex e .pdf baixados.' })
+      for (const [name, src] of list) {
+        const r = await fetch('/__contrato/pdf', { method: 'POST', body: src })
+        if (!r.ok) throw new Error(await r.text())
+        save(await r.blob(), `${name}.pdf`)
+      }
+      setStatus({ text: 'Pronto: contrato e fatura em .tex e .pdf.' })
     } catch (e) {
-      setStatus({ error: true, text: `Não consegui gerar o PDF aqui. O .tex foi baixado; compile com XeLaTeX. ${e.message || ''}` })
+      setStatus({ error: true, text: `Não consegui gerar o PDF aqui. Os .tex foram baixados; compile com XeLaTeX. ${e.message || ''}` })
     }
   }
 
@@ -130,8 +138,8 @@ function ContractModal({ client, slug, picks, set, onClose }) {
         </div>
         {status && <p className={`ct-status ${status.error ? 'is-error' : ''}`}>{status.text}</p>}
         <div className="ct-actions">
-          <button type="button" className="ct-btn" onClick={downloadTex}><DownloadSimple size={16} aria-hidden="true" /> Só o .tex</button>
-          <button type="button" className="ct-btn is-main" onClick={downloadPdf} disabled={status?.busy}><FilePdf size={16} aria-hidden="true" /> Gerar .tex e PDF</button>
+          <button type="button" className="ct-btn" onClick={downloadTex}><DownloadSimple size={16} aria-hidden="true" /> Só os .tex</button>
+          <button type="button" className="ct-btn is-main" onClick={downloadPdf} disabled={status?.busy}><FilePdf size={16} aria-hidden="true" /> Gerar contrato e fatura</button>
         </div>
       </footer>
     </dialog>

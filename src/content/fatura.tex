@@ -1,0 +1,127 @@
+% Atelierin · Fatura da entrada
+% Gerada em <<GERADO_EM>> a partir de /proposta/<<SLUG>>.
+% Compilação: XeLaTeX, uma vez.
+%   xelatex <<ARQUIVO>>
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,left=2.4cm,right=2.4cm,top=2.2cm,bottom=2.2cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Inter}[UprightFont=*,BoldFont=* SemiBold,ItalicFont=* Italic,BoldItalicFont=* SemiBold Italic]
+\IfFontExistsTF{JetBrains Mono}{\setmonofont{JetBrains Mono}[Scale=0.86]}{\setmonofont{DejaVu Sans Mono}[Scale=0.86]}
+\IfFontExistsTF{Bebas Neue}{\newfontfamily\displayfont{Bebas Neue}}{\newfontfamily\displayfont{Inter}[UprightFont=* SemiBold]}
+\newcommand{\mono}[1]{{\ttfamily\addfontfeatures{LetterSpace=12}#1}}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{papel}{HTML}{FFFEFC}
+\definecolor{tinta}{HTML}{1A1414}
+\definecolor{cinza}{HTML}{6E625D}
+\definecolor{linha}{HTML}{D8CFC7}
+\definecolor{carmim}{HTML}{C0211C}
+
+\pagecolor{papel}
+\color{tinta}
+
+% Logo Atelierin: quatro quadrados, o de cima à direita cheio com >_
+\newcommand{\ateliersimbolo}[1][0.55]{%
+  \begin{tikzpicture}[scale=#1,baseline=-0.1]
+    \draw[tinta,line width=1.1pt,rounded corners=2.2pt] (0,0) rectangle (0.82,0.82);
+    \draw[tinta,line width=1.1pt,rounded corners=2.2pt] (0,-1.02) rectangle (0.82,-0.2);
+    \draw[tinta,line width=1.1pt,rounded corners=2.2pt] (1.02,-1.02) rectangle (1.84,-0.2);
+    \fill[carmim,rounded corners=2.4pt] (0.98,-0.04) rectangle (1.88,0.86);
+    \draw[papel,line width=1.2pt,line cap=round,line join=round] (1.18,0.62) -- (1.36,0.42) -- (1.18,0.22);
+    \draw[papel,line width=1.2pt,line cap=round] (1.46,0.16) -- (1.68,0.16);
+  \end{tikzpicture}}
+\newcommand{\atelierlogo}[1][20]{\mbox{\ateliersimbolo[\fpeval{#1/34}]\hspace{0.4em}{\displayfont\fontsize{#1}{#1}\selectfont ATELIERIN}}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\arraystretch}{1.3}
+\newcommand{\rotulo}[1]{{\footnotesize\color{cinza}\mono{#1}}}
+\newcommand{\linha}[1]{\rule{#1}{0.4pt}}
+
+\hypersetup{pdftitle={Fatura <<FATURA_NUM>> · <<CLIENTE>>},pdfauthor={<<P_NOME>>}}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[carmim] ([xshift=-1.1cm]current page.north east) rectangle (current page.south east);
+\end{tikzpicture}
+
+% Cabeçalho
+\begin{minipage}[t]{0.5\linewidth}
+  \atelierlogo[24]\par
+  \vspace{0.5em}
+  {\small\color{cinza}<<P_NOME>>\\ <<P_DOC_LINHA>>\\ <<P_EMAIL>>}
+\end{minipage}%
+\begin{minipage}[t]{0.5\linewidth}
+  \raggedleft
+  {\displayfont\fontsize{48}{44}\selectfont FATURA}\par
+  \vspace{0.2em}
+  \colorbox{carmim}{\color{papel}\small\mono{Nº <<FATURA_NUM>>}}
+\end{minipage}
+
+\vspace{0.9cm}
+
+\begin{minipage}[t]{0.48\linewidth}
+  \rotulo{FATURADO PARA}\par
+  \textbf{<<C_NOME>>}\par
+  {\small <<C_DOC_LINHA>>\\ <<C_END_LINHA>>\\ <<C_EMAIL_LINHA>>}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\linewidth}
+  \small
+  \begin{tabular*}{\linewidth}{@{}>{\color{cinza}}l@{\extracolsep{\fill}}r@{}}
+    Emissão & <<DATA_CURTA>> \\
+    Primeiro vencimento & <<DATA_CURTA>> \\
+    Contrato & <<NUMERO>> \\
+    Ambiente & <<HOST>> \\
+  \end{tabular*}
+\end{minipage}
+
+\vspace{0.8cm}
+
+\rotulo{DESCRIÇÃO}\par
+\vspace{-0.3em}
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+  \hline
+<<ITENS>>
+  \hline
+  \textbf{Total da entrada} & {\displayfont\fontsize{24}{24}\selectfont <<TOTAL>>} \\
+  \hline
+\end{tabularx}
+
+\vspace{1em}
+
+\rotulo{CONDIÇÕES DE PAGAMENTO}\par
+<<FORMA_FRASE>>
+
+\begin{tabularx}{\linewidth}{@{}l >{\leavevmode}X r@{}}
+  \hline
+  {\small\color{cinza}Parcela} & {\small\color{cinza}Vencimento} & {\small\color{cinza}Valor} \\
+  \hline
+<<PARCELAS>>
+  \hline
+\end{tabularx}
+
+\vspace{1em}
+
+\begin{minipage}[t]{0.48\linewidth}
+  \rotulo{PAGAMENTO POR PIX}\par
+  Chave: \textbf{<<P_PIX>>}\par
+  {\small\color{cinza}Favorecida: <<P_NOME>>}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}
+  \rotulo{MENSALIDADE}\par
+  {\small A licença e manutenção de <<MENSAL>> por mês (<<FAIXA>>) é cobrada à parte, todo dia <<VENC>>, a partir do mês seguinte à entrega do ambiente.}
+\end{minipage}
+
+\vspace{1.2em}
+{\color{linha}\rule{\linewidth}{0.4pt}}\par
+{\footnotesize\color{cinza}Fatura referente à entrada do Contrato nº <<NUMERO>>. Em caso de atraso, aplicam-se multa de 2\% e juros de 1\% ao mês, conforme o contrato.\hfill atelierin.com.br}
+
+\end{document}
