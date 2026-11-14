@@ -14,10 +14,12 @@ import FinalCta from '@/sections/FinalCta'
 import Footer from '@/sections/Footer'
 import BackToTop from '@/components/BackToTop'
 import ExitStage from '@/components/ExitStage'
+import { PromoBar, PromoModal } from '@/components/Promo'
 import About from '@/pages/About'
 import Proposal from '@/pages/Proposal'
 import Cases from '@/pages/Cases'
 import ClientProposal from '@/pages/ClientProposal'
+import FounderPage from '@/pages/Founder'
 
 function Home() {
   return (
@@ -38,7 +40,7 @@ function Home() {
   )
 }
 
-const PAGES = { '/': Home, '/quem-faz': About, '/proposta': Proposal, '/casos': Cases }
+const PAGES = { '/': Home, '/quem-faz': About, '/proposta': Proposal, '/casos': Cases, '/fundador': FounderPage }
 
 export default function App() {
   const path = usePath()
@@ -52,12 +54,14 @@ export default function App() {
   return (
     <>
       <a className="skip" href="#conteudo">{content.a11y.skipLink}</a>
+      <PromoBar hidden={!!client} />
       <Header />
       <main id="conteudo" key={path}>
         {client ? <ClientProposal slug={client} /> : <Page />}
       </main>
       <Footer />
       <BackToTop />
+      <PromoModal hidden={!!client || path === '/fundador'} />
     </>
   )
 }

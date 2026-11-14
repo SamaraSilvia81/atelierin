@@ -7,7 +7,8 @@ import { play } from '@/lib/sounds'
 // em functions/api/waitlist.js, que grava no D1 e manda o e-mail de
 // confirmação). Se a API não responder, oferece o WhatsApp no lugar.
 // O campo "site" é uma armadilha para robôs: fica escondido e deve vir vazio.
-export default function Waitlist({ cfg }) {
+// extra: elemento opcional ao lado do botão de enviar (ex.: "Ver as regras").
+export default function Waitlist({ cfg, extra }) {
   const [email, setEmail] = useState('')
   const [area, setArea] = useState('')
   const [state, setState] = useState('idle') // idle | sending | ok | fail
@@ -43,13 +44,18 @@ export default function Waitlist({ cfg }) {
         {cfg.areas.map((a) => <option key={a} value={a}>{a}</option>)}
       </select>
       <input className="wl-trap" type="text" name="site" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-      <button type="submit" className="plan-cta" disabled={state === 'sending'}>
-        {state === 'sending' ? '...' : cfg.submit} <ArrowRight size={14} weight="bold" aria-hidden="true" />
-      </button>
+      {(() => {
+        const btn = (
+          <button type="submit" className="plan-cta" disabled={state === 'sending'}>
+            {state === 'sending' ? '...' : cfg.submit} <ArrowRight size={14} weight="bold" aria-hidden="true" />
+          </button>
+        )
+        return extra ? <div className="wl-actions">{btn}{extra}</div> : btn
+      })()}
       <p className="wl-consent">{cfg.consent}</p>
       {state === 'fail' && (
         <p className="wl-msg is-fail" role="alert">
-          {cfg.fail} <a href={whatsappWith(`Oi, Samara! Quero entrar na lista de espera da linha ${area || 'da minha área'}. Meu e-mail é ${email}.`)} target="_blank" rel="noreferrer">WhatsApp</a>
+          {cfg.fail} <a href={whatsappWith(`Oi, Samara! ${cfg.interest === 'fundador' ? `Quero ser cliente fundador da linha ${area || 'da minha área'}` : `Quero entrar na lista de espera da linha ${area || 'da minha área'}`}. Meu e-mail é ${email}.`)} target="_blank" rel="noreferrer">WhatsApp</a>
         </p>
       )}
     </form>

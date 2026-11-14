@@ -29,6 +29,10 @@
       "href": "/#planos"
     },
     {
+      "label": "Dúvidas",
+      "href": "/#duvidas"
+    },
+    {
       "label": "Casos",
       "href": "/casos"
     },
@@ -81,7 +85,8 @@
         "s": 1
       }
     },
-    "addressPrompt": "›_"
+    "addressPrompt": "›_",
+    "prefill": "Quero o endereço {endereco}"
   },
   "problem": {
     "label": "Nº 02 · retalhos",
@@ -773,6 +778,88 @@
       "href": "/proposta"
     }
   },
+  "founder": {
+    "enabled": true,
+    "open": true,
+    "discount": 0.2,
+    "seatsPerLine": 5,
+    "piece": "cliente fundador",
+    "title": "Quer ser cliente",
+    "titleAccent": "fundador?",
+    "lede": "Até 5 clientes de cada linha, no plano Personalizado, pagam menos no mensal para sempre. Em troca, ajudam a construir o Atelierin com o uso real do dia a dia.",
+    "badge": "−20%",
+    "badgeSub": "no mensal do Personalizado, enquanto o contrato durar",
+    "statusOpen": "Vagas abertas · até 5 por linha",
+    "statusClosed": "Vagas encerradas",
+    "closedNote": "As vagas de fundador acabaram. O programa continua valendo para quem já entrou.",
+    "get": {
+      "title": "Você recebe",
+      "items": [
+        "20% a menos no mensal, sobre a tabela vigente",
+        "Até 2 funcionalidades do catálogo nos 6 primeiros meses",
+        "Prioridade quando sair novidade na sua linha",
+        "Seu nome na página de casos"
+      ]
+    },
+    "give": {
+      "title": "Você entrega",
+      "items": [
+        "Um depoimento nos primeiros 60 dias",
+        "Autorização para mostrar o seu ambiente como caso",
+        "Uma conversa curta de feedback por mês, nos 3 primeiros meses"
+      ]
+    },
+    "link": {
+      "label": "Ver as regras",
+      "href": "/fundador"
+    },
+    "planBadge": "Fundador · −20% no mensal",
+    "tableCol": "Personalizado fundador",
+    "tableSame": "igual",
+    "tableNote": "A coluna Personalizado fundador já tem os 20% aplicados. Vale só para o Personalizado, no máximo 5 clientes por linha, em troca de depoimento, caso e feedback.",
+    "calcLabel": "Como fundador",
+    "calcSub": "−20%, só no Personalizado",
+    "plan": "Personalizado",
+    "planBadgeSub": "até 5 vagas por linha",
+    "waitlist": {
+      "interest": "fundador",
+      "emailPlaceholder": "seu@email.com",
+      "areaPlaceholder": "Sua linha",
+      "areas": [
+        "School · professores e escolas",
+        "Consult · consultoria e mentoria",
+        "Fit · personal e treino",
+        "Studio · criativos e design",
+        "Care · terapia e saúde",
+        "Outra"
+      ],
+      "submit": "Quero uma vaga",
+      "consent": "Seu e-mail entra na lista de fundadores. Eu respondo para combinar uma conversa.",
+      "ok": "Pronto, você está na lista de fundadores. Chegou um e-mail de confirmação e eu te chamo para conversar.",
+      "fail": "Não consegui salvar agora. Me chama no WhatsApp que eu anoto."
+    },
+    "whatsappLabel": "ou fale comigo no WhatsApp",
+    "announce": {
+      "enabled": true,
+      "text": "Cliente fundador: 20% a menos no mensal do Personalizado, para sempre",
+      "sub": "até 5 vagas por linha",
+      "link": "Quero saber",
+      "style": "fixa"
+    },
+    "modal": {
+      "enabled": true,
+      "image": "/hero-desk.webp",
+      "imageAlt": "Mesa de trabalho com o ambiente Atelierin aberto no monitor",
+      "label": "vagas de fundador abertas",
+      "title": "Seja um dos primeiros",
+      "titleAccent": "do Atelierin",
+      "text": "Até 5 clientes de cada linha, no plano Personalizado, pagam 20% a menos no mensal para sempre. Em troca, você me ajuda com um depoimento, autoriza mostrar o seu ambiente como caso e me conta o que achou nos primeiros meses.",
+      "close": "Fechar"
+    },
+    "cta": {
+      "message": "Oi, Samara! Vim pelo site do Atelierin e quero ser cliente fundador."
+    }
+  },
   "finalCta": {
     "piece": "Nº 08 · Prova",
     "title": "Vamos tirar",
@@ -877,6 +964,10 @@
       {
         "title": "Conheça",
         "links": [
+          {
+            "label": "Cliente fundador",
+            "href": "/fundador"
+          },
           {
             "label": "Estudos de caso",
             "href": "/casos"
