@@ -143,8 +143,8 @@ Cada seção abaixo traz: arquivo, bloco de texto, comportamento e o que observa
 
 | Item | Valor |
 |---|---|
-| Arquivo | `sections/Plans.jsx`, `components/PriceCalc.jsx`, `components/Waitlist.jsx` |
-| Texto | `content.plans` (`items`, `rules`, `calc`, `pricing`, `foot`) |
+| Arquivo | `sections/Plans.jsx`, `sections/Founder.jsx`, `components/PriceCalc.jsx`, `components/Waitlist.jsx` |
+| Texto | `content.plans` (`items`, `rules`, `calc`, `pricing`, `foot`) e `content.founder` |
 | Servidor | `functions/api/waitlist.js` + `db/schema.sql` (lista de espera) |
 
 - Três cards: **Padrão** (até ~15 alunos), **Personalizado** no centro, em destaque e um pouco mais alto, e **Sua área** (lista de espera das outras linhas).
@@ -152,6 +152,7 @@ Cada seção abaixo traz: arquivo, bloco de texto, comportamento e o que observa
 - "Disponível" é uma etiqueta verde; no Personalizado ela é maior.
 - O mensal **não** fica nos cards: a tabela **"Uma vez, e todo mês"** compara os dois planos e a **calculadora** faz a conta.
 - A calculadora indica o plano pelo número de alunos (`pricing.threshold`), soma manutenção (porcentagem ou mínimo), infraestrutura e Bunny (só no Personalizado), e mostra o mês, o peso na receita, o 1º ano e os seguintes.
+- Entre os cards e a tabela fica o card horizontal **Cliente fundador** (`#fundador`, tema escuro): −20% no mensal, o que recebe × o que entrega, WhatsApp e link para `/fundador`. Com vagas abertas, os cards Padrão e Personalizado ganham o selo, a tabela ganha a coluna Fundador e a calculadora a linha "Como fundador". Regras no [`PRD-008`](../../../00-DOCS/01-PRODUTO/PRD-008-cliente-fundador-R00.md); para encerrar, `content.founder.open: false`.
 - O formulário da lista de espera envia e-mail e área para `/api/waitlist`. Se a API falhar, ele oferece o WhatsApp com a mensagem pronta.
 - Daqui para baixo a página **não tem** o efeito de cartão. O modelo de preço está no [`LP-ADR-005`](decisoes/LP-ADR-005-preco-na-pagina.md).
 
