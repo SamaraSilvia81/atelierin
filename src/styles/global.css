@@ -1734,3 +1734,129 @@ h1, h2, h3, p { margin: 0; }
 .ct-btn:disabled { opacity: .6; cursor: wait; }
 @media (max-width: 760px) { .ct-modal-grid { grid-template-columns: 1fr; } }
 .ct-modal-grid { align-items: start; }
+
+/* ==========================================================================
+   Cliente fundador (PRD-008): card claro em Planos, selo no Personalizado,
+   faixa fixa acima do topo, modal ao abrir o site e página /fundador.
+   Visual do cartão de conversa da proposta: branco, borda tinta, sombra carmim.
+   ========================================================================== */
+.founder {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 32px 48px; align-items: start;
+  margin: 36px 10px 10px 0; scroll-margin-top: 140px;
+  background: #fff; color: var(--palette-tinta); border: 1.5px solid var(--palette-tinta); border-radius: 14px;
+  box-shadow: 10px 10px 0 var(--palette-crimson); padding: clamp(24px, 3.2vw, 44px);
+}
+.founder .label { color: var(--palette-poeira-clara); }
+.founder .label b, .founder .display em { color: var(--palette-crimson); }
+.founder-main { display: grid; gap: 14px; align-content: start; }
+.founder-main .display { font-size: clamp(38px, 4vw, 60px); line-height: .92; }
+.founder-lede { color: var(--palette-tinta-2); font-size: var(--text-md); max-width: 46ch; }
+.founder-status { display: inline-flex; align-items: center; gap: 8px; width: fit-content; font: 600 11.5px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: #1F5434; background: #E2F0E6; border: 1px solid #9CCBAC; border-radius: 999px; padding: 6px 11px 6px 9px; }
+.founder-status i { width: 7px; height: 7px; border-radius: 50%; background: #2E9E5B; box-shadow: 0 0 0 3px rgba(46,158,91,.2); }
+.founder-status.is-closed { color: var(--palette-poeira-clara); border-color: var(--palette-borda-clara); background: transparent; }
+.founder-status.is-closed i { background: var(--palette-poeira-clara); box-shadow: none; }
+.founder .wl { margin-top: 6px; }
+.founder .wl input, .founder .wl select, .promo-modal .wl input, .promo-modal .wl select { border-color: var(--palette-borda-clara); color: var(--palette-tinta); }
+.wl-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.wl-actions .plan-cta { background: var(--palette-crimson); border-color: var(--palette-crimson); color: #fff; height: 46px; }
+.wl-actions .plan-cta:hover { background: var(--palette-crimson-escuro); border-color: var(--palette-crimson-escuro); }
+.founder-rules { justify-content: center; height: 46px; background: transparent; color: var(--palette-tinta); border-color: var(--palette-tinta); }
+.founder-rules:hover { background: var(--palette-tinta); border-color: var(--palette-tinta); color: #fff; }
+.founder-wa { display: inline-flex; align-items: center; gap: 7px; width: fit-content; font-size: var(--text-sm); color: var(--palette-tinta-2); }
+.founder-wa svg { color: #1F9D55; }
+.founder-wa:hover { color: var(--palette-crimson); }
+.founder-closed-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.founder-closed { color: var(--palette-tinta-2); font-size: var(--text-sm); max-width: 52ch; }
+.founder-side { display: grid; gap: 26px; }
+.founder-badge { display: grid; justify-items: end; text-align: right; gap: 8px; padding-bottom: 22px; border-bottom: 1px dashed var(--palette-borda-clara); }
+.founder-badge strong { font: 400 clamp(96px, 10vw, 156px)/.8 var(--font-display); color: var(--palette-crimson); }
+.founder-badge span { font: 500 11.5px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--palette-tinta-2); max-width: 26ch; }
+.founder-trade { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; }
+.founder-trade h4 { font: 500 11.5px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--palette-crimson); margin-bottom: 14px; }
+.founder-trade ul { display: grid; gap: 10px; }
+.founder-trade li { display: flex; gap: 9px; align-items: flex-start; color: var(--palette-tinta-2); font-size: var(--text-sm); line-height: 1.45; }
+.founder-trade li svg { flex: none; margin-top: 4px; color: var(--palette-crimson); }
+@media (max-width: 900px) {
+  .founder { grid-template-columns: 1fr; }
+  .founder-side { grid-row: 1; }
+  .founder-badge { justify-items: start; text-align: left; }
+}
+@media (max-width: 520px) {
+  .founder-trade, .wl-actions { grid-template-columns: 1fr; }
+}
+
+/* selo no card do Personalizado */
+.plan.has-founder { padding-top: 0; overflow: hidden; }
+.plan-founder {
+  display: flex; align-items: center; gap: 10px; margin: 0 -32px 18px; padding: 12px 32px;
+  background: var(--palette-crimson); color: #fff; text-decoration: none; transition: background .15s;
+}
+.plan-founder:hover { background: var(--palette-crimson-escuro); }
+.plan-founder span { display: grid; gap: 3px; flex: 1; }
+.plan-founder b { font: 600 12.5px/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.plan-founder small { font: 400 12px/1.2 var(--font-mono); letter-spacing: .06em; opacity: .85; }
+
+/* faixa fixa acima do topo */
+:root { --promo-h: 0px; }
+:root.has-promo { --promo-h: 38px; }
+.promo-bar { position: fixed; inset: 0 0 auto; z-index: 60; height: var(--promo-h); background: #fff; color: var(--palette-tinta); border-bottom: 1px solid var(--palette-borda-clara); }
+.promo-bar svg { color: var(--palette-crimson); }
+.promo-bar a { display: block; height: 100%; color: inherit; text-decoration: none; overflow: hidden; }
+/* versão A: frase parada */
+.promo-bar.is-static a { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; font-size: 13.5px; white-space: nowrap; }
+.promo-bar.is-static b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; }
+.promo-bar.is-static .promo-go { margin-left: 6px; font: 600 11.5px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+/* versão B: letreiro mono */
+.promo-track { display: flex; width: max-content; height: 100%; animation: promo-roll 38s linear infinite; }
+.promo-bar a:hover .promo-track, .promo-bar a:focus-visible .promo-track { animation-play-state: paused; }
+.promo-half { display: flex; }
+.promo-item { display: inline-flex; align-items: center; gap: 10px; height: 100%; padding-right: 56px; white-space: nowrap; font: 500 12px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.promo-item b { font-weight: 600; }
+.promo-sub { color: var(--palette-tinta-2); }
+.promo-sub::before { content: "·"; margin-right: 8px; color: var(--palette-poeira-clara); }
+.promo-go { display: inline-flex; align-items: center; gap: 5px; color: var(--palette-crimson); border-bottom: 1px solid currentColor; padding-bottom: 2px; font-weight: 600; }
+@keyframes promo-roll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .promo-track { animation: none; }
+  .promo-half[aria-hidden] { display: none; }
+}
+.has-promo .top { top: calc(14px + var(--promo-h)); }
+.has-promo .page .section:first-child { padding-top: calc(clamp(150px, 16vw, 210px) + var(--promo-h)); }
+@media (max-width: 760px) { .promo-item { font-size: 11px; padding-right: 40px; } .promo-track { animation-duration: 26s; } .promo-bar.is-static .promo-sub { display: none; } .promo-bar.is-static a { font-size: 12.5px; justify-content: flex-start; } }
+
+/* modal ao abrir o site */
+.promo-modal { padding: 0; border: 0; background: transparent; max-width: min(920px, calc(100% - 32px)); width: 100%; overflow: visible; color: var(--palette-tinta); }
+.promo-modal::backdrop { background: rgba(8,6,6,.62); backdrop-filter: blur(3px); }
+.promo-card { position: relative; display: grid; grid-template-columns: 0.95fr 1.05fr; background: #fff; border: 1.5px solid var(--palette-tinta); border-radius: 14px; box-shadow: 10px 10px 0 var(--palette-crimson); overflow: hidden; max-height: calc(100dvh - 48px); }
+.promo-x { position: absolute; top: 12px; right: 12px; z-index: 2; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--palette-tinta); background: #fff; color: var(--palette-tinta); cursor: pointer; }
+.promo-x:hover { background: var(--palette-tinta); color: #fff; }
+.promo-img { position: relative; margin: 0; min-height: 100%; background: var(--palette-noir); }
+.promo-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.promo-img-badge { position: absolute; left: 18px; bottom: 18px; display: grid; gap: 6px; background: var(--palette-crimson); color: #fff; padding: 14px 16px 12px; border-radius: 6px; }
+.promo-img-badge strong { font: 400 64px/.85 var(--font-display); }
+.promo-img-badge span { font: 500 10.5px/1.35 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; max-width: 22ch; }
+.promo-body { display: grid; gap: 14px; align-content: start; padding: clamp(24px, 3vw, 40px); overflow-y: auto; }
+.promo-body .display { font-size: clamp(36px, 4vw, 54px); line-height: .92; padding-right: 36px; }
+.promo-body .display em { color: var(--palette-crimson); font-style: normal; }
+.promo-text { color: var(--palette-tinta-2); font-size: 15px; }
+@media (max-width: 760px) {
+  .promo-card { grid-template-columns: 1fr; overflow-y: auto; }
+  .promo-img { min-height: 170px; }
+  .promo-body { overflow: visible; }
+}
+
+.founder-hero { padding-bottom: clamp(56px, 7vw, 96px); }
+.founder-facts { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-top: 8px; }
+.founder-facts div { display: grid; gap: 6px; }
+.founder-facts dt { font: 500 12px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+.founder-facts dd { margin: 0; font: 400 clamp(28px, 3vw, 40px)/1 var(--font-display); text-transform: uppercase; color: var(--text); }
+.founder-table { max-width: 640px; }
+.founder-table s { color: var(--text-muted); }
+
+.rules th.is-founder, .rules td.is-founder { background: color-mix(in srgb, var(--acc) 7%, transparent); padding-left: 10px; }
+.rules thead th.is-founder { color: var(--acc); border-radius: 3px 3px 0 0; padding-top: 6px; }
+.rules-founder { display: flex; gap: 9px; align-items: flex-start; margin-top: 10px; font-size: 14px; color: var(--text-sub); }
+.rules-founder svg { flex: none; margin-top: 3px; color: var(--acc); }
+.rules-founder a { color: var(--acc); font-weight: 600; }
+.calc-founder b, .calc-founder span { color: var(--acc); }
+.s-offer-was, .ct-sum b s { font-size: .7em; color: var(--text-muted); margin-right: 8px; }

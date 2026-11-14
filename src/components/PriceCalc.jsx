@@ -23,6 +23,8 @@ function Seg({ label, options, value, onChange }) {
 
 export default function PriceCalc() {
   const { pricing: P, calc: t } = content.plans
+  const f = content.founder
+  const fOn = f && f.enabled !== false && f.open
   const [students, setStudents] = useState(8)
   const [pers, setPers] = useState(false)
   const [access, setAccess] = useState(true)
@@ -59,6 +61,9 @@ export default function PriceCalc() {
         <div className="calc-total">
           <span>{t.month}</span><strong>{month != null ? brl(month) : t.over}</strong>
         </div>
+        {fOn && pers && tier && (
+          <div className="calc-row calc-founder"><span>{f.calcLabel} <em>{f.calcSub}</em></span><b>{brl(tier.price * (1 - f.discount) + video)}</b></div>
+        )}
         {month != null ? (
           <div className="calc-years">
             <div><span>{t.year1}</span><b>{brl(setup + 12 * month)}</b></div>

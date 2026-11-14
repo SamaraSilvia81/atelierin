@@ -743,5 +743,105 @@
       "label": "Quero meu ambiente",
       "href": "/#contato"
     }
+  },
+  "founder": {
+    "label": "cliente fundador",
+    "title": "Cliente",
+    "titleAccent": "fundador",
+    "lede": "No plano Personalizado, até 5 clientes de cada linha pagam 20% a menos no mensal, para sempre. Não é um presente: é a troca por algo que eu ainda não tenho e que vale muito, o seu uso real, a sua opinião e a sua história.",
+    "facts": [
+      [
+        "desconto",
+        "20% no mensal"
+      ],
+      [
+        "plano",
+        "Personalizado"
+      ],
+      [
+        "vagas",
+        "até 5 por linha"
+      ]
+    ],
+    "blocks": [
+      {
+        "title": "Quem pode ser",
+        "items": [
+          {
+            "h": "No máximo 5 por linha",
+            "p": "School, Consult, Fit, Studio ou Care, sempre no plano Personalizado. São até 5 vagas por linha e posso fechar antes. Não tem data limite: vale até as vagas acabarem."
+          },
+          {
+            "h": "Quem abre uma linha nova",
+            "p": "Se a sua área ainda não tem linha e a gente desenha a sua juntos, você entra como fundador dela."
+          },
+          {
+            "h": "Por que só no Personalizado",
+            "p": "O fundador ajuda a desenhar o ambiente da linha, e isso só acontece no Personalizado. O Padrão já é o modelo pronto que nasce desse trabalho."
+          }
+        ]
+      },
+      {
+        "title": "O que você recebe",
+        "items": [
+          {
+            "h": "20% a menos no mensal, para sempre",
+            "p": "O desconto é sobre a tabela vigente e vale enquanto o contrato estiver ativo. Se a sua turma crescer e mudar de faixa, os 20% continuam sobre o valor novo."
+          },
+          {
+            "h": "Até 2 funcionalidades do catálogo",
+            "p": "Nos 6 primeiros meses, sem custo. Valem as funcionalidades que vão entrar no Atelierin para todo mundo. O que for só seu continua sendo orçamento à parte."
+          },
+          {
+            "h": "Prioridade nas novidades",
+            "p": "O que sair de novo na sua linha chega primeiro para você."
+          },
+          {
+            "h": "Seu nome na página de casos",
+            "p": "Com a sua autorização, o seu ambiente vira um dos casos do Atelierin."
+          }
+        ]
+      },
+      {
+        "title": "O que você entrega",
+        "items": [
+          {
+            "h": "Um depoimento",
+            "p": "Nos primeiros 60 dias depois da entrega, por escrito, áudio ou vídeo. Do jeito que for mais fácil para você."
+          },
+          {
+            "h": "Autorização para virar caso",
+            "p": "Posso mostrar o seu nome, a sua marca, prints do ambiente e os resultados. Os dados dos seus alunos nunca aparecem."
+          },
+          {
+            "h": "Feedback nos primeiros meses",
+            "p": "Uma conversa curta por mês, nos 3 primeiros meses, por mensagem ou chamada. É ela que diz o que o Atelierin precisa melhorar."
+          }
+        ]
+      },
+      {
+        "title": "Quando acaba",
+        "items": [
+          {
+            "h": "Se o contrato terminar",
+            "p": "O benefício termina junto. Quem voltar depois entra pela tabela."
+          },
+          {
+            "h": "Se a contrapartida não for cumprida",
+            "p": "Eu aviso e você tem 15 dias para regularizar. Depois disso, o mensal volta para a tabela a partir do mês seguinte."
+          },
+          {
+            "h": "Não passa para outra pessoa",
+            "p": "O benefício é do contrato, não pode ser transferido para outro ambiente."
+          }
+        ]
+      }
+    ],
+    "tableTitle": "Quanto fica",
+    "tableNote": "O desconto vale só para o mensal. A implantação, a identidade visual e a landing page seguem a tabela.",
+    "cta": {
+      "text": "Quer uma das vagas?",
+      "label": "Falar comigo no WhatsApp"
+    }
   }
 }

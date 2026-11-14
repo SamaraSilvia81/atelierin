@@ -1,8 +1,9 @@
-import { Check, ArrowRight } from '@phosphor-icons/react'
+import { Check, ArrowRight, Seal } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 import PriceCalc from '@/components/PriceCalc'
 import Waitlist from '@/components/Waitlist'
+import FounderCard from '@/sections/Founder'
 
 // Planos: Padrão e Personalizado (School) disponíveis; outras linhas por lista
 // de espera. O card do meio é o destaque. O mensal fica fora dos cards, na
@@ -29,9 +30,16 @@ function Price({ it }) {
   )
 }
 
+const brl = (v) => 'R$ ' + Math.round(v).toLocaleString('pt-BR')
+
 export default function Plans() {
   const p = content.plans
   const r = p.rules
+  // Cliente fundador (PRD-008): com vagas abertas, os cards ganham o selo e a
+  // tabela ganha a coluna com os 20% já aplicados. Tudo sai de content.founder.
+  const f = content.founder
+  const fOn = f && f.enabled !== false && f.open
+  const fTier = (name) => p.pricing.tiers.find((t) => t.label.toLowerCase() === name.toLowerCase())
   return (
     <section id="planos" data-theme="light" className="section plans-sec" aria-labelledby="planos-t">
       <div className="wrap">
@@ -45,7 +53,14 @@ export default function Plans() {
 
         <ul className="plans">
           {p.items.map((it) => (
-            <li key={it.name} className={`plan tone-${it.tone}`} data-reveal>
+            <li key={it.name} className={`plan tone-${it.tone} ${fOn && it.name === f.plan ? 'has-founder' : ''}`} data-reveal>
+              {fOn && it.name === f.plan && (
+                <a href="#fundador" className="plan-founder" onClick={() => play('click')}>
+                  <Seal size={18} weight="fill" aria-hidden="true" />
+                  <span><b>{f.planBadge}</b><small>{f.planBadgeSub}</small></span>
+                  <ArrowRight size={14} weight="bold" aria-hidden="true" />
+                </a>
+              )}
               <div className="plan-top">
                 <span className="plan-line">{it.line}</span>
                 <span className="plan-status"><i />{it.status}</span>
@@ -74,22 +89,34 @@ export default function Plans() {
           ))}
         </ul>
 
+        {f && f.enabled !== false && <FounderCard />}
+
         <div className="pricing">
           <div className="rules" data-reveal>
             <p className="label">{r.label}</p>
             <h3 className="display">{r.title}</h3>
             <table>
-              <thead><tr><th><span className="sr-only">Item</span></th>{r.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
+              <thead><tr><th><span className="sr-only">Item</span></th>{r.cols.map((c) => <th key={c} scope="col">{c}</th>)}{fOn && <th scope="col" className="is-founder">{f.tableCol}</th>}</tr></thead>
               <tbody>
                 {r.rows.map((row) => (
                   <tr key={row.name}>
                     <th scope="row"><b aria-hidden="true">{row.mark}</b>{row.name}</th>
                     {row.values.map((v, i) => <td key={i} className={row.accent === i ? 'is-acc' : ''}>{v}</td>)}
+                    {fOn && (() => {
+                      const t = fTier(row.name)
+                      return <td className={`is-founder ${t ? 'is-acc' : ''}`}>{t ? brl(t.price * (1 - f.discount)) : f.tableSame}</td>
+                    })()}
                   </tr>
                 ))}
               </tbody>
             </table>
             <p className="rules-note">{r.note}</p>
+            {fOn && (
+              <p className="rules-founder">
+                <Seal size={15} weight="fill" aria-hidden="true" />
+                <span>{f.tableNote} <a href={f.link.href}>{f.link.label}</a></span>
+              </p>
+            )}
           </div>
           <PriceCalc />
         </div>
