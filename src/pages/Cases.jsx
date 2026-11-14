@@ -6,8 +6,24 @@ export default function Cases() {
   const c = content.pages.cases
   return (
     <div className="page page-cases">
+      {/* hero: o primeiro sistema já aparece aberto, numa janela de navegador */}
       <section data-theme="dark" className="section cases-hero">
-        <div className="wrap"><PageHead label={c.label} title={c.title} lede={c.lede} /></div>
+        <div className="wrap cases-hero-grid">
+          <PageHead label={c.label} title={c.title} lede={c.lede}>
+            <ol className="cases-index">
+              {c.items.map((it, i) => (
+                <li key={it.id}><a href={`#${it.id}`}><b>{String(i + 1).padStart(2, '0')}</b><span>{it.name}<small>{it.tag}</small></span></a></li>
+              ))}
+            </ol>
+          </PageHead>
+          {c.items[0] && (
+            <a href={`#${c.items[0].id}`} className="cases-window" data-reveal aria-label={`Ver o caso ${c.items[0].name}`}>
+              <span className="cases-window-bar" aria-hidden="true"><i /><i /><i /><em>{c.items[0].host ?? 'atelier.sh'}</em></span>
+              <img src={c.items[0].image} alt={c.items[0].imageAlt} />
+              <span className="cases-window-tag">em uso · {c.items[0].meta?.[0]?.[1]}</span>
+            </a>
+          )}
+        </div>
       </section>
       {c.items.map((it) => (
         <article key={it.id} id={it.id} className="case">

@@ -861,7 +861,8 @@
         "noir": "/topo-noir.webp",
         "carmim": "/topo-carmim.webp",
         "areia": "/topo-areia.webp"
-      }
+      },
+      "badgeStyle": "retro"
     },
     "cta": {
       "message": "Oi, Samara! Vim pelo site do Atelierin e quero ser cliente fundador."

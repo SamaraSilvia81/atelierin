@@ -4,8 +4,10 @@ import { setAb, useAb } from '@/lib/ab'
 
 // Painel flutuante para trocar as versões do teste A/B. Só no `yarn dev`.
 const TESTS = [
-  { key: 'faixa', label: 'Faixa do topo', def: () => content.founder?.announce?.style || 'fixa', options: [['fixa', 'A · fixa'], ['letreiro', 'B · letreiro']] },
+  { key: 'faixa', label: 'Faixa do topo', def: () => content.founder?.announce?.style || 'fixa', options: [['fixa', 'Fixa'], ['fixa-mono', 'Fixa mono'], ['letreiro', 'Letreiro'], ['letreiro-mono', 'Letreiro mono']] },
   { key: 'fundador', label: 'Fundador em Planos', def: () => content.founder?.planStyle || 'card', options: [['card', 'A · card'], ['dentro', 'B · dentro']] },
+  { key: 'selo', label: 'Selo do −20% no modal', def: () => content.founder?.modal?.badgeStyle || 'retro', options: [['retro', 'Retrô'], ['branco', 'Branco'], ['vidro', 'Vidro carmim']] },
+  { key: 'modal', label: 'Imagem do modal', def: () => content.founder?.modal?.imageStyle || 'foto', options: [['foto', 'Foto'], ['noir', 'Topo noir'], ['carmim', 'Topo carmim'], ['areia', 'Topo areia']] },
 ]
 
 function Row({ t }) {
