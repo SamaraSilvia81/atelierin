@@ -11,7 +11,9 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - **Painel "Teste A/B"** (só no `yarn dev`, canto inferior esquerdo) para trocar as versões da faixa, do fundador e da imagem do modal (foto ou textura topográfica em noir, carmim ou areia, em `public/topo-*.webp`); a escolha fica na URL (`?faixa=letreiro&fundador=dentro`) para mandar o link de uma versão
 - **Menu** na ordem Como funciona, Linhas, Casos, Quem faz, Planos, Proposta e Dúvidas (sempre por último)
 - **Modal**: textura topográfica carmim como padrão (`modal.imageStyle`), selo −20% creme e horizontal; noir e areia ficam salvas no painel
-- **Faixa**: letreiro como padrão, com a tipografia da versão fixa
+- **Faixa**: letreiro como padrão, com a tipografia da versão fixa; no painel, quatro versões (fixa, fixa mono, letreiro, letreiro mono)
+- **Selo do −20% no modal** no teste A/B: retrô (borda e sombra), branco (cartão liso) e vidro carmim (translúcido, sem borda)
+- **Página `/casos`**: hero com o primeiro sistema aberto numa janela de navegador (sombra carmim, selo "em uso") e índice dos casos ao lado do título
 - **Página `/fundador`**: lado direito com a textura topográfica (como a faixa da proposta) e o bloco "Como o seu depoimento aparece", com um cartão de exemplo marcado como exemplo
 - **Faixa fixa acima do topo** (`components/Promo.jsx`, `PromoBar`): "Cliente fundador: 20% a menos no mensal do Personalizado", com link para `/fundador`; a barra do topo desce junto (`--promo-h`). Duas versões para teste A/B: **fixa** (frase parada) e **letreiro** (mono, andando em loop, pausa no hover e fica parada com "reduzir movimento"); a padrão vem de `founder.announce.style`
 - **Modal de fundador ao abrir o site** (`PromoModal`): imagem, −20%, texto da troca, formulário e WhatsApp; abre a cada carregamento e fecha no X, no Esc ou clicando fora; não abre em `/fundador` nem nas propostas de cliente

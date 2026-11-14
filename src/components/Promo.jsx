@@ -17,10 +17,11 @@ export function PromoBar({ hidden }) {
   const f = content.founder
   const a = f?.announce
   const show = live(f) && a?.enabled !== false && !hidden
-  // Duas versões para comparar (A/B): "fixa" (frase parada, centralizada) e
-  // "letreiro" (mono, andando em loop). Padrão em announce.style; o painel
-  // "Teste A/B" (yarn dev) ou ?faixa=letreiro na URL troca na hora.
+  // Versões para comparar (A/B): parada ou em letreiro, cada uma com texto
+  // normal (Inter) ou mono em caixa alta: fixa, fixa-mono, letreiro, letreiro-mono.
+  // Padrão em announce.style; o painel "Teste A/B" (yarn dev) troca na hora.
   const style = useAb('faixa', a?.style || 'fixa')
+  const mono = style.endsWith('-mono') ? ' is-mono' : ''
   useEffect(() => {
     const root = document.documentElement
     if (show) root.classList.add('has-promo')
@@ -29,9 +30,9 @@ export function PromoBar({ hidden }) {
   }, [show])
   if (!show) return null
 
-  if (style === 'fixa') {
+  if (style.startsWith('fixa')) {
     return (
-      <div className="promo-bar is-static" role="region" aria-label={f.piece}>
+      <div className={`promo-bar is-static${mono}`} role="region" aria-label={f.piece}>
         <a href={f.link.href} onClick={() => play('click')}>
           <Seal size={15} weight="fill" aria-hidden="true" />
           <b>{a.text}</b>
@@ -53,7 +54,7 @@ export function PromoBar({ hidden }) {
   )
   const half = (h) => <span className="promo-half" aria-hidden={h ? 'true' : undefined}>{[0, 1, 2, 3].map((i) => item(`${h}-${i}`))}</span>
   return (
-    <div className="promo-bar is-marquee" role="region" aria-label={f.piece}>
+    <div className={`promo-bar is-marquee${mono}`} role="region" aria-label={f.piece}>
       <a href={f.link.href} onClick={() => play('click')} aria-label={`${a.text}, ${a.sub}. ${a.link}`}>
         <span className="promo-track">{half(0)}{half(1)}</span>
       </a>
@@ -67,6 +68,11 @@ export function PromoModal({ hidden }) {
   const f = content.founder
   const m = f?.modal
   const show = live(f) && m?.enabled !== false && !hidden
+  // imagem do modal também entra no teste A/B (painel "Teste A/B" no yarn dev)
+  const imgKey = useAb('modal', m?.imageStyle || 'foto')
+  const img = m?.images?.[imgKey] ?? m?.image
+  // selo do −20%: retro (borda e sombra), branco (cartão liso) ou vidro (carmim translúcido)
+  const selo = useAb('selo', m?.badgeStyle || 'retro')
   const ref = useRef(null)
   const [open, setOpen] = useState(false)
 
@@ -98,8 +104,8 @@ export function PromoModal({ hidden }) {
       <div className="promo-card">
         <button type="button" className="promo-x" onClick={() => { play('click'); close() }} aria-label={m.close}><X size={18} /></button>
         <figure className="promo-img">
-          <img src={m.image} alt={m.imageAlt} />
-          <div className="promo-img-badge"><strong>{f.badge}</strong><span>{f.badgeSub}</span></div>
+          <img src={img} alt={imgKey === 'foto' ? m.imageAlt : ''} />
+          <div className={`promo-img-badge is-${selo}`}><strong>{f.badge}</strong><span>{f.badgeSub}</span></div>
         </figure>
         <div className="promo-body">
           <p className="founder-status"><i aria-hidden="true" />{m.label}</p>
