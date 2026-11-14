@@ -112,6 +112,11 @@ function ContractModal({ client, slug, picks, set, onClose }) {
               options={[5, 10, 15, 20].map((n) => ({ value: n, label: `dia ${n}` }))} />
             <Seg label="Vídeos" value={picks.video} onChange={set('video')}
               options={[{ value: 'youtube', label: 'YouTube ou Drive' }, { value: 'bunny', label: `Bunny · ~${brl0(P.bunny)}/mês` }]} />
+            <div>
+              <Seg label="Cliente fundador" value={picks.founder} onChange={set('founder')}
+                options={[{ value: true, label: `Sim · −${Math.round((d.discount || 0.2) * 100)}% no mensal` }, { value: false, label: 'Não' }]} />
+              <small className="s-adjust-hint">{d.founder && d.monthlyTable != null ? `${brl0(d.monthlyTable)} na tabela, ${brl0(d.monthly)} como fundador` : 'Mensal pela tabela'}</small>
+            </div>
             <Seg label="Reajuste do mensal" value={picks.lockPrice} onChange={set('lockPrice')}
               options={[{ value: false, label: 'Anual' }, { value: true, label: 'Travado 12 meses' }]} />
           </div>
@@ -133,7 +138,7 @@ function ContractModal({ client, slug, picks, set, onClose }) {
       <footer className="ct-modal-foot">
         <div className="ct-sum">
           <span>Entrada <b>{brl0(d.total)}{d.n > 1 ? ` · ${d.n}x ${brl0(d.installment)}` : ' à vista'}</b></span>
-          <span>Por mês <b>{d.monthly != null ? brl0(d.monthly) : 'a combinar'}</b></span>
+          <span>Por mês <b>{d.founder && d.monthlyTable != null && <s>{brl0(d.monthlyTable)}</s>} {d.monthly != null ? brl0(d.monthly) : 'a combinar'}</b></span>
           {d.year1 != null && <span>1º ano <b>{brl0(d.year1)}</b></span>}
         </div>
         {status && <p className={`ct-status ${status.error ? 'is-error' : ''}`}>{status.text}</p>}
@@ -169,7 +174,7 @@ export default function OfferPicker({ s }) {
         </ul>
         <div className="s-offer-tot">
           <div><span>Entrada</span><strong>{brl0(d.total)}{d.n > 1 && <small> · {d.n}x {brl0(d.installment)}</small>}</strong></div>
-          <div><span>Por mês</span><strong>{d.monthly != null ? brl0(d.monthly) : 'sob consulta'}</strong></div>
+          <div><span>{d.founder ? 'Por mês · fundador' : 'Por mês'}</span><strong>{d.founder && d.monthlyTable != null && <s className="s-offer-was">{brl0(d.monthlyTable)}</s>}{d.monthly != null ? brl0(d.monthly) : 'sob consulta'}</strong></div>
           {d.year1 != null && <div><span>1º ano</span><strong>{brl0(d.year1)}</strong></div>}
         </div>
       </button>

@@ -143,6 +143,9 @@
   \rotulo{IDENTIDADE VISUAL} & <<IDENTIDADE>> \\ \hline
   \rotulo{ENTRADA} & \textbf{<<TOTAL>>} \enspace{\small\color{cinza}<<FORMA_CURTA>>} \\ \hline
   \rotulo{LICENÇA E MANUTENÇÃO} & \textbf{<<MENSAL>> por mês} \enspace{\small\color{cinza}<<FAIXA>>, todo dia <<VENC>>} \\ \hline
+%<IF:fundador>
+  \rotulo{CLIENTE FUNDADOR} & sim, <<DESCONTO>>\% no mensal \enspace{\small\color{cinza}tabela: <<MENSAL_TABELA>>} \\ \hline
+%</IF:fundador>
   \rotulo{REAJUSTE} & <<REAJUSTE>> \\ \hline
   \rotulo{VÍDEOS} & <<VIDEO_CURTO>> \\ \hline
   \rotulo{VIGÊNCIA} & indeterminada, com aviso de 30 dias para encerrar \\ \hline
@@ -230,6 +233,9 @@ resolvem celebrar o presente Contrato de Prestação de Serviços de Implantaç�
   \item Além da entrada, o CONTRATANTE pagará mensalmente à CONTRATADA o valor fixo de \textbf{<<MENSAL>>} (<<MENSAL_EXT>>), correspondente à faixa de <<FAIXA>>, a título de licença e manutenção do ambiente, com vencimento todo dia <<VENC>>, por Pix, a partir do mês seguinte à entrega do ambiente.
   \item O valor mensal inclui licença de uso, hospedagem, banco de dados, domínio, cópias de segurança, atualizações de segurança, correções, monitoramento, suporte por mensagem e pequenos ajustes de texto e configuração, e é devido independentemente da existência de pedidos de suporte no mês.
   \item O valor mensal segue as faixas da plataforma: até 15 alunos, R\$ 190,00; de 16 a 30 alunos, R\$ 290,00; de 31 a 50 alunos, R\$ 390,00; acima de 50 alunos, valor ajustado entre as PARTES. Havendo mudança de faixa, o novo valor vale a partir do mês seguinte, com aviso prévio.
+%<IF:fundador>
+  \item Por ser cliente fundador, o CONTRATANTE paga o valor da sua faixa com desconto de <<DESCONTO>>\% (<<DESCONTO_EXT>> por cento), nos termos da cláusula \textit{Do programa cliente fundador}. O valor indicado acima já tem o desconto aplicado; o valor de tabela correspondente é de <<MENSAL_TABELA>>.
+%</IF:fundador>
 %<IF:lock>
   \item O valor mensal não será reajustado nos primeiros 12 (doze) meses de vigência. Após esse período, poderá ser reajustado uma vez por ano pela variação acumulada do IPCA, ou do índice que o substituir, com aviso de 30 (trinta) dias.
 %</IF:lock>
@@ -238,6 +244,19 @@ resolvem celebrar o presente Contrato de Prestação de Serviços de Implantaç�
 %</IFNOT:lock>
 \end{itens}
 
+% =================================================================
+%<IF:fundador>
+\clausula{DO PROGRAMA CLIENTE FUNDADOR}
+\begin{itens}
+  \item O CONTRATANTE integra o programa cliente fundador da Atelierin, cujas regras são as mesmas para todos os participantes.
+  \item Enquanto este contrato estiver vigente, o CONTRATANTE terá desconto de <<DESCONTO>>\% (<<DESCONTO_EXT>> por cento) sobre o valor mensal da sua faixa na tabela vigente. Havendo reajuste da tabela ou mudança de faixa, o desconto incidirá sobre o novo valor.
+  \item O CONTRATANTE terá ainda: (i) até 2 (duas) funcionalidades do catálogo da plataforma, sem custo, nos 6 (seis) primeiros meses de vigência, entendidas como funcionalidades que passarão a integrar a plataforma para todos os clientes, permanecendo as funcionalidades exclusivas sujeitas a orçamento próprio; e (ii) prioridade no acesso às novidades da sua linha.
+  \item Em contrapartida, o CONTRATANTE se compromete a: (i) fornecer um depoimento sobre o uso do ambiente, por escrito, áudio ou vídeo, em até 60 (sessenta) dias contados da entrega; (ii) participar de uma conversa de feedback por mês, por mensagem ou chamada, nos 3 (três) primeiros meses de vigência; e (iii) autorizar, como de fato autoriza, o uso do seu nome, da sua marca, de imagens do ambiente e dos resultados obtidos como estudo de caso nos materiais de divulgação da CONTRATADA, vedada a divulgação de dados pessoais dos seus alunos.
+  \item Descumprida a contrapartida, a CONTRATADA notificará o CONTRATANTE, que terá 15 (quinze) dias para regularizá-la. Não havendo regularização, o desconto deixará de ser aplicado a partir do mês seguinte, passando o valor mensal a seguir a tabela vigente, sem prejuízo dos demais termos deste contrato.
+  \item Os benefícios desta cláusula são pessoais e intransferíveis e se encerram com a rescisão deste contrato, não sendo restabelecidos em contratação posterior.
+\end{itens}
+
+%</IF:fundador>
 % =================================================================
 \clausula{DA INFRAESTRUTURA E DOS VÍDEOS}
 \begin{itens}

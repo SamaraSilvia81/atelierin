@@ -17,6 +17,7 @@ export function defaults(client) {
     dueDay: 10,
     video: 'youtube',
     lockPrice: false,
+    founder: d.founder ?? false,
   }
 }
 
@@ -36,10 +37,15 @@ export function compute(client, picks) {
   if (lp) items.push({ label: 'Landing page completa (combo)', value: P.lpCombo, was: P.lpAlone })
   const total = P.setup + identityPrice + (lp ? P.lpCombo : 0)
   const n = Math.max(1, Math.min(P.maxInstallments, picks.installments))
-  const monthly = tier ? tier.price : null
+  // Cliente fundador (PRD-008): desconto sobre a tabela vigente, regra em content.founder
+  const founder = !!picks.founder
+  const discount = founder ? (content.founder?.discount ?? 0) : 0
+  const monthlyTable = tier ? tier.price : null
+  const monthly = tier ? Math.round(tier.price * (1 - discount) * 100) / 100 : null
   return {
     tier, lp, items, total, n,
     installment: total / n,
+    founder, discount, monthlyTable,
     monthly,
     bunny: picks.video === 'bunny' ? P.bunny : 0,
     year1: monthly != null ? total + 12 * monthly : null,
