@@ -102,6 +102,9 @@ export function buildContractTex(tpl, ctx) {
     FORMA_CURTA: d.n === 1 ? 'à vista, no Pix' : `${d.n}x de ${money(d.installment)}, sem juros`,
     VIDEO_CURTO: picks.video === 'bunny' ? `Bunny Stream, ~${money(client.pricing.bunny)}/mês à parte` : 'YouTube ou Google Drive',
     MENSAL_EXT: d.monthly != null ? extenso(d.monthly) : 'a combinar',
+    MENSAL_TABELA: d.monthlyTable != null ? money(d.monthlyTable) : 'valor a combinar',
+    DESCONTO: String(Math.round((d.discount || 0) * 100)),
+    DESCONTO_EXT: ate999(Math.round((d.discount || 0) * 100)),
     REAJUSTE: picks.lockPrice ? 'travado por 12 meses; depois, anual pelo IPCA' : 'anual, pelo IPCA',
     VIDEO: picks.video === 'bunny' ? `Bunny Stream, custo repassado (estimado em ${money(client.pricing.bunny)} por mês)` : 'YouTube ou Google Drive, sem custo',
     MONOGRAMA: money(client.pricing.monogram),
@@ -114,7 +117,7 @@ export function buildContractTex(tpl, ctx) {
       : `O valor total será pago em ${d.n} (${NUM[d.n] ?? d.n}) parcelas mensais e sucessivas de ${money(d.installment)} (${extenso(d.installment)}), sem juros, por Pix, vencendo a primeira na data de assinatura deste contrato e as demais no mesmo dia dos meses subsequentes.`,
   }
   delete map._f
-  return fill(applyFlags(tpl, { basica, lp: d.lp, lock: !!picks.lockPrice, bunny: picks.video === 'bunny' }), map)
+  return fill(applyFlags(tpl, { basica, lp: d.lp, lock: !!picks.lockPrice, bunny: picks.video === 'bunny', fundador: !!d.founder }), map)
 }
 
 export function buildInvoiceTex(tpl, ctx) {
