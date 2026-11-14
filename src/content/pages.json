@@ -741,7 +741,11 @@
     "next": {
       "text": "O próximo caso pode ser o seu.",
       "label": "Quero meu ambiente",
-      "href": "/#contato"
+      "href": "/#contato",
+      "second": {
+        "label": "Ser cliente fundador",
+        "href": "/fundador"
+      }
     }
   },
   "founder": {
