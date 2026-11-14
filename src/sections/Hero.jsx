@@ -32,10 +32,10 @@ export default function Hero() {
     e.preventDefault()
     if (editing) return
     play('click')
-    const digits = String(content.site.whatsapp).replace(/\D/g, '')
-    if (!digits) { document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }); return }
-    const text = h.ctaMessage.replace('{endereco}', address)
-    window.open(`https://wa.me/${digits}?text=${encodeURIComponent(text)}`, '_blank', 'noopener')
+    // "Quero o meu" leva até a ficha ("tirar medidas") no fim da página,
+    // já com o endereço escolhido anotado no campo de observação
+    if (slug(name)) window.dispatchEvent(new CustomEvent('ficha:prefill', { detail: h.prefill.replace('{endereco}', address) }))
+    document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (

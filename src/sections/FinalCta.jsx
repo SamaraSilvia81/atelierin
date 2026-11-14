@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { WhatsappLogo, EnvelopeSimple, Check } from '@phosphor-icons/react'
 import { content, whatsappWith, mailHref } from '@/lib/content'
 import { play } from '@/lib/sounds'
@@ -11,6 +11,13 @@ export default function FinalCta() {
   const [name, setName] = useState('')
   const [note, setNote] = useState('')
   const [pick, setPick] = useState({})
+
+  // o "Quero o meu" do topo manda o endereço escolhido para cá
+  useEffect(() => {
+    const onPrefill = (e) => setNote((n) => (n.includes(e.detail) ? n : [e.detail, n].filter(Boolean).join('\n')))
+    window.addEventListener('ficha:prefill', onPrefill)
+    return () => window.removeEventListener('ficha:prefill', onPrefill)
+  }, [])
 
   const toggle = (g, opt) => {
     play('tick')
