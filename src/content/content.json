@@ -29,10 +29,6 @@
       "href": "/#planos"
     },
     {
-      "label": "Dúvidas",
-      "href": "/#duvidas"
-    },
-    {
       "label": "Casos",
       "href": "/casos"
     },
@@ -43,6 +39,10 @@
     {
       "label": "Quem faz",
       "href": "/quem-faz"
+    },
+    {
+      "label": "Dúvidas",
+      "href": "/#duvidas"
     }
   ],
   "navCta": {
@@ -858,6 +858,13 @@
     },
     "cta": {
       "message": "Oi, Samara! Vim pelo site do Atelierin e quero ser cliente fundador."
+    },
+    "planStyle": "card",
+    "inline": {
+      "label": "Cliente fundador:",
+      "seats": "Até 5 vagas por linha",
+      "price": "no mensal",
+      "text": "Para sempre, em troca de um depoimento, autorização para mostrar o seu ambiente como caso e feedback nos primeiros meses."
     }
   },
   "finalCta": {

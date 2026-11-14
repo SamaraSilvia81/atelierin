@@ -3,6 +3,7 @@ import { ArrowRight, Seal, WhatsappLogo, X } from '@phosphor-icons/react'
 import { content, whatsappWith } from '@/lib/content'
 import { play } from '@/lib/sounds'
 import Waitlist from '@/components/Waitlist'
+import { useAb } from '@/lib/ab'
 import { FounderLink } from '@/sections/Founder'
 
 // Promoção de cliente fundador (PRD-008): faixa fixa acima do topo e modal ao
@@ -16,6 +17,10 @@ export function PromoBar({ hidden }) {
   const f = content.founder
   const a = f?.announce
   const show = live(f) && a?.enabled !== false && !hidden
+  // Duas versões para comparar (A/B): "fixa" (frase parada, centralizada) e
+  // "letreiro" (mono, andando em loop). Padrão em announce.style; o painel
+  // "Teste A/B" (yarn dev) ou ?faixa=letreiro na URL troca na hora.
+  const style = useAb('faixa', a?.style || 'fixa')
   useEffect(() => {
     const root = document.documentElement
     if (show) root.classList.add('has-promo')
@@ -23,11 +28,6 @@ export function PromoBar({ hidden }) {
     return () => root.classList.remove('has-promo')
   }, [show])
   if (!show) return null
-  // Duas versões para comparar (A/B): "fixa" (frase parada, centralizada) e
-  // "letreiro" (mono, andando em loop). A padrão vem de announce.style;
-  // ?faixa=a ou ?faixa=b na URL troca na hora, para testar lado a lado.
-  const q = new URLSearchParams(window.location.search).get('faixa')
-  const style = q === 'a' ? 'fixa' : q === 'b' ? 'letreiro' : (a.style || 'fixa')
 
   if (style === 'fixa') {
     return (
@@ -76,12 +76,19 @@ export function PromoModal({ hidden }) {
     return () => clearTimeout(t)
   }, [show])
 
+  // botões da página podem abrir o modal de novo (ex.: "Quero uma vaga" da versão B)
+  useEffect(() => {
+    const onOpen = () => setOpen(true)
+    window.addEventListener('promo:open', onOpen)
+    return () => window.removeEventListener('promo:open', onOpen)
+  }, [])
+
   useEffect(() => {
     const dlg = ref.current
     if (open && dlg && !dlg.open) dlg.showModal()
   }, [open])
 
-  if (!show || !open) return null
+  if (!live(f) || m?.enabled === false || !open) return null
   const close = () => { ref.current?.close(); setOpen(false) }
 
   return (

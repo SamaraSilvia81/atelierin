@@ -3,7 +3,8 @@ import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 import PriceCalc from '@/components/PriceCalc'
 import Waitlist from '@/components/Waitlist'
-import FounderCard from '@/sections/Founder'
+import FounderCard, { FounderInline } from '@/sections/Founder'
+import { useAb } from '@/lib/ab'
 
 // Planos: Padrão e Personalizado (School) disponíveis; outras linhas por lista
 // de espera. O card do meio é o destaque. O mensal fica fora dos cards, na
@@ -39,6 +40,10 @@ export default function Plans() {
   // tabela ganha a coluna com os 20% já aplicados. Tudo sai de content.founder.
   const f = content.founder
   const fOn = f && f.enabled !== false && f.open
+  // Teste A/B de como o fundador aparece: "card" (card horizontal abaixo dos
+  // planos) ou "dentro" (bloco retrátil dentro do card Personalizado). Padrão
+  // em founder.planStyle; o painel "Teste A/B" (yarn dev) troca na hora.
+  const fStyle = useAb('fundador', f?.planStyle || 'card')
   const fTier = (name) => p.pricing.tiers.find((t) => t.label.toLowerCase() === name.toLowerCase())
   return (
     <section id="planos" data-theme="light" className="section plans-sec" aria-labelledby="planos-t">
@@ -71,6 +76,8 @@ export default function Plans() {
 
               <Price it={it} />
 
+              {f && f.enabled !== false && fStyle === 'dentro' && it.name === f.plan && <FounderInline />}
+
               {it.waitlist ? (
                 <Waitlist cfg={it.waitlist} />
               ) : (
@@ -89,7 +96,7 @@ export default function Plans() {
           ))}
         </ul>
 
-        {f && f.enabled !== false && <FounderCard />}
+        {f && f.enabled !== false && fStyle === 'card' && <FounderCard />}
 
         <div className="pricing">
           <div className="rules" data-reveal>

@@ -1743,7 +1743,7 @@ h1, h2, h3, p { margin: 0; }
 .founder {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 32px 48px; align-items: start;
   margin: 36px 10px 10px 0; scroll-margin-top: 140px;
-  background: #fff; color: var(--palette-tinta); border: 1.5px solid var(--palette-tinta); border-radius: 14px;
+  background: var(--palette-linho); color: var(--palette-tinta); border: 1.5px solid var(--palette-tinta); border-radius: 14px;
   box-shadow: 10px 10px 0 var(--palette-crimson); padding: clamp(24px, 3.2vw, 44px);
 }
 .founder .label { color: var(--palette-poeira-clara); }
@@ -1799,7 +1799,7 @@ h1, h2, h3, p { margin: 0; }
 /* faixa fixa acima do topo */
 :root { --promo-h: 0px; }
 :root.has-promo { --promo-h: 38px; }
-.promo-bar { position: fixed; inset: 0 0 auto; z-index: 60; height: var(--promo-h); background: #fff; color: var(--palette-tinta); border-bottom: 1px solid var(--palette-borda-clara); }
+.promo-bar { position: fixed; inset: 0 0 auto; z-index: 60; height: var(--promo-h); background: var(--palette-linho); color: var(--palette-tinta); border-bottom: 1px solid var(--palette-borda-clara); }
 .promo-bar svg { color: var(--palette-crimson); }
 .promo-bar a { display: block; height: 100%; color: inherit; text-decoration: none; overflow: hidden; }
 /* versão A: frase parada */
@@ -1827,8 +1827,8 @@ h1, h2, h3, p { margin: 0; }
 /* modal ao abrir o site */
 .promo-modal { padding: 0; border: 0; background: transparent; max-width: min(920px, calc(100% - 32px)); width: 100%; overflow: visible; color: var(--palette-tinta); }
 .promo-modal::backdrop { background: rgba(8,6,6,.62); backdrop-filter: blur(3px); }
-.promo-card { position: relative; display: grid; grid-template-columns: 0.95fr 1.05fr; background: #fff; border: 1.5px solid var(--palette-tinta); border-radius: 14px; box-shadow: 10px 10px 0 var(--palette-crimson); overflow: hidden; max-height: calc(100dvh - 48px); }
-.promo-x { position: absolute; top: 12px; right: 12px; z-index: 2; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--palette-tinta); background: #fff; color: var(--palette-tinta); cursor: pointer; }
+.promo-card { position: relative; display: grid; grid-template-columns: 0.95fr 1.05fr; background: var(--palette-linho); border: 1.5px solid var(--palette-tinta); border-radius: 14px; box-shadow: 10px 10px 0 var(--palette-crimson); overflow: hidden; max-height: calc(100dvh - 48px); }
+.promo-x { position: absolute; top: 12px; right: 12px; z-index: 2; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--palette-tinta); background: var(--palette-linho); color: var(--palette-tinta); cursor: pointer; }
 .promo-x:hover { background: var(--palette-tinta); color: #fff; }
 .promo-img { position: relative; margin: 0; min-height: 100%; background: var(--palette-noir); }
 .promo-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -1860,3 +1860,34 @@ h1, h2, h3, p { margin: 0; }
 .rules-founder a { color: var(--acc); font-weight: 600; }
 .calc-founder b, .calc-founder span { color: var(--acc); }
 .s-offer-was, .ct-sum b s { font-size: .7em; color: var(--text-muted); margin-right: 8px; }
+
+/* Fundador, versão B: linha retrátil dentro do card Personalizado */
+.plan-fdr { border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); margin: 4px 0; scroll-margin-top: 140px; }
+.plan-fdr summary { display: flex; align-items: center; gap: 9px; padding: 12px 0; cursor: pointer; list-style: none; color: var(--palette-crimson); }
+.plan-fdr summary::-webkit-details-marker { display: none; }
+.plan-fdr-sum { flex: 1; font: 500 12px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.plan-fdr-sum b { font-weight: 700; }
+.plan-fdr-caret { transition: transform .2s; }
+.plan-fdr[open] .plan-fdr-caret { transform: rotate(180deg); }
+.plan-fdr summary:hover .plan-fdr-sum { text-decoration: underline; text-underline-offset: 3px; }
+.plan-fdr-body { display: grid; gap: 10px; padding: 0 0 14px 24px; }
+.plan-fdr-body p { font-size: 13.5px; color: var(--text-sub); }
+.plan-fdr-body em { font-style: normal; color: var(--text); font-weight: 600; }
+.plan-fdr-act { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.plan-fdr-cta { height: 36px; padding: 0 14px; border-radius: 3px; border: 1px solid var(--palette-crimson); background: var(--palette-crimson); color: #fff; font: 500 12px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+.plan-fdr-cta:hover { background: var(--palette-crimson-escuro); border-color: var(--palette-crimson-escuro); }
+.plan-fdr-link { display: inline-flex; align-items: center; gap: 5px; font: 600 12px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--text); }
+.plan-fdr-link:hover { color: var(--palette-crimson); }
+
+/* painel do teste A/B (só no yarn dev) */
+.ab-panel { position: fixed; left: 16px; bottom: 60px; z-index: 70; display: grid; justify-items: start; gap: 8px; }
+.ab-fab { cursor: pointer; padding: 10px 14px; border-radius: var(--radius-md); border: 1px dashed rgba(240,237,232,.4); background: rgba(8,6,6,.85); color: var(--palette-osso); font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.ab-panel.is-open .ab-fab { border-style: solid; border-color: var(--palette-crimson); }
+.ab-box { display: grid; gap: 12px; width: 280px; padding: 14px; border-radius: var(--radius-md); background: var(--palette-linho); color: var(--palette-tinta); border: 1.5px solid var(--palette-tinta); box-shadow: 6px 6px 0 var(--palette-crimson); }
+.ab-row { display: grid; gap: 6px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.ab-row legend { font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--palette-poeira-clara); margin-bottom: 6px; }
+.ab-row div { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--palette-tinta); border-radius: 3px; overflow: hidden; }
+.ab-row button { height: 34px; border: 0; background: transparent; color: var(--palette-tinta); font: 500 11.5px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.ab-row button + button { border-left: 1px solid var(--palette-tinta); }
+.ab-row button[aria-pressed="true"] { background: var(--palette-tinta); color: var(--palette-linho); }
+.ab-reset { justify-self: start; background: none; border: 0; padding: 0; font: 500 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--palette-crimson); cursor: pointer; text-decoration: underline; }

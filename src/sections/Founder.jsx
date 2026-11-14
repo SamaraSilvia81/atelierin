@@ -1,6 +1,7 @@
-import { ArrowRight, Check, WhatsappLogo } from '@phosphor-icons/react'
+import { ArrowRight, CaretDown, Check, Seal, WhatsappLogo } from '@phosphor-icons/react'
 import { content, whatsappWith } from '@/lib/content'
 import Waitlist from '@/components/Waitlist'
+import { play } from '@/lib/sounds'
 
 // Card horizontal "Quer ser cliente fundador?", dentro de Planos, entre os
 // três cards e a tabela/calculadora. Vale só para o Personalizado (PRD-008).
@@ -48,5 +49,33 @@ export default function FounderCard() {
         </div>
       </div>
     </div>
+  )
+}
+
+// Versão B do teste A/B (?fundador=b): o fundador como um bloco DENTRO do
+// card Personalizado, para ficar claro que é uma condição desse plano.
+// "Quero uma vaga" abre o modal de fundador (que tem o formulário da lista).
+export function FounderInline() {
+  const f = content.founder
+  const i = f.inline
+  return (
+    <details id="fundador" className={`plan-fdr ${f.open ? '' : 'is-closed'}`}>
+      <summary>
+        <Seal size={15} weight="fill" aria-hidden="true" />
+        <span className="plan-fdr-sum"><b>{i.label}</b> {f.badge} {i.price}</span>
+        <CaretDown size={14} weight="bold" className="plan-fdr-caret" aria-hidden="true" />
+      </summary>
+      <div className="plan-fdr-body">
+        <p>{i.text} <em>{f.open ? i.seats : f.statusClosed}.</em></p>
+        <div className="plan-fdr-act">
+          {f.open && (
+            <button type="button" className="plan-fdr-cta" onClick={() => { play('click'); window.dispatchEvent(new Event('promo:open')) }}>
+              {f.waitlist.submit}
+            </button>
+          )}
+          <a href={f.link.href} className="plan-fdr-link">{f.link.label} <ArrowRight size={13} weight="bold" aria-hidden="true" /></a>
+        </div>
+      </div>
+    </details>
   )
 }

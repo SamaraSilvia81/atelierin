@@ -15,6 +15,7 @@ import Footer from '@/sections/Footer'
 import BackToTop from '@/components/BackToTop'
 import ExitStage from '@/components/ExitStage'
 import { PromoBar, PromoModal } from '@/components/Promo'
+import AbPanel from '@/components/AbPanel'
 import About from '@/pages/About'
 import Proposal from '@/pages/Proposal'
 import Cases from '@/pages/Cases'
@@ -62,6 +63,7 @@ export default function App() {
       <Footer />
       <BackToTop />
       <PromoModal hidden={!!client || path === '/fundador'} />
+      {!client && <AbPanel />}
     </>
   )
 }
