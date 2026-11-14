@@ -1,4 +1,4 @@
-import { WhatsappLogo } from '@phosphor-icons/react'
+import { Quotes, WhatsappLogo } from '@phosphor-icons/react'
 import { content, whatsappWith } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
 
@@ -14,6 +14,11 @@ export default function Founder() {
   return (
     <div className="page page-founder">
       <section data-theme="dark" className="section founder-hero">
+        {/* lado direito com a textura topográfica, como a faixa da proposta */}
+        <div className="founder-art" aria-hidden="true">
+          <span className="founder-art-band" style={{ backgroundImage: `url(${f.modal?.images?.carmim ?? '/topo-carmim.webp'})` }} />
+          <span className="cover-tag">{a.coverTag}</span>
+        </div>
         <div className="wrap">
           <PageHead label={a.label} title={a.title} titleAccent={a.titleAccent} lede={a.lede}>
             <dl className="founder-facts">
@@ -34,6 +39,23 @@ export default function Founder() {
               </ol>
             </div>
           ))}
+
+          <div className="cv-block" data-reveal>
+            <h2 className="display">{a.testimonial.title}</h2>
+            <div className="fdr-quote-wrap">
+              <p className="fdr-quote-lede">{a.testimonial.lede}</p>
+              <figure className="fdr-quote">
+                <span className="fdr-quote-tag">{a.testimonial.tag}</span>
+                <Quotes size={30} weight="fill" aria-hidden="true" />
+                <blockquote>{a.testimonial.quote}</blockquote>
+                <figcaption>
+                  <span className="fdr-quote-avatar" aria-hidden="true">{a.testimonial.name[0]}</span>
+                  <span><b>{a.testimonial.name}</b><small>{a.testimonial.role}</small></span>
+                  <em>{a.testimonial.link} →</em>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
 
           <div className="cv-block" data-reveal>
             <h2 className="display">{a.tableTitle}</h2>

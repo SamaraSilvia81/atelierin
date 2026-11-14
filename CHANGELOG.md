@@ -7,9 +7,12 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Adicionado
 - **Cliente fundador** ([`PRD-008`](../../00-DOCS/01-PRODUTO/PRD-008-cliente-fundador-R00.md)), só no plano Personalizado: faixa carmim no topo do card Personalizado; card claro (branco, borda tinta e sombra carmim, como o cartão de conversa da proposta) entre os três cards e a tabela, com o status de vagas em cima, o −20% no canto direito, o que recebe × o que entrega e o formulário **Quero uma vaga** + **Ver as regras** lado a lado; coluna **Personalizado fundador** com os 20% aplicados na tabela e linha "Como fundador" na calculadora quando o Personalizado está escolhido. Regras num lugar só, `content.founder`
-- **Teste A/B de onde o fundador aparece** em Planos: **card** (card horizontal creme abaixo dos planos) ou **dentro** (linha retrátil dentro do card Personalizado, com "Quero uma vaga" abrindo o modal). Padrão em `founder.planStyle`
-- **Painel "Teste A/B"** (só no `yarn dev`, canto inferior esquerdo) para trocar as versões da faixa e do fundador; a escolha fica na URL (`?faixa=letreiro&fundador=dentro`) para mandar o link de uma versão
-- **Menu**: "Dúvidas" no fim
+- **Teste A/B de onde o fundador aparece** em Planos: **card** (card horizontal creme abaixo dos planos) ou **dentro** (linha retrátil dentro do card Personalizado, com "Quero uma vaga" abrindo o modal). Padrão em `founder.planStyle`: **dentro**
+- **Painel "Teste A/B"** (só no `yarn dev`, canto inferior esquerdo) para trocar as versões da faixa, do fundador e da imagem do modal (foto ou textura topográfica em noir, carmim ou areia, em `public/topo-*.webp`); a escolha fica na URL (`?faixa=letreiro&fundador=dentro`) para mandar o link de uma versão
+- **Menu** na ordem Como funciona, Linhas, Casos, Quem faz, Planos, Proposta e Dúvidas (sempre por último)
+- **Modal**: textura topográfica carmim como padrão (`modal.imageStyle`), selo −20% creme e horizontal; noir e areia ficam salvas no painel
+- **Faixa**: letreiro como padrão, com a tipografia da versão fixa
+- **Página `/fundador`**: lado direito com a textura topográfica (como a faixa da proposta) e o bloco "Como o seu depoimento aparece", com um cartão de exemplo marcado como exemplo
 - **Faixa fixa acima do topo** (`components/Promo.jsx`, `PromoBar`): "Cliente fundador: 20% a menos no mensal do Personalizado", com link para `/fundador`; a barra do topo desce junto (`--promo-h`). Duas versões para teste A/B: **fixa** (frase parada) e **letreiro** (mono, andando em loop, pausa no hover e fica parada com "reduzir movimento"); a padrão vem de `founder.announce.style`
 - **Modal de fundador ao abrir o site** (`PromoModal`): imagem, −20%, texto da troca, formulário e WhatsApp; abre a cada carregamento e fecha no X, no Esc ou clicando fora; não abre em `/fundador` nem nas propostas de cliente
 - **Lista de fundadores**: `functions/api/waitlist.js` aceita `interest: "fundador"` (grava em `leads` com `kind = 'fundador'`) e manda confirmação e aviso interno com textos de fundador

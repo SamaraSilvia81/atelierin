@@ -25,20 +25,20 @@
       "href": "/#linhas"
     },
     {
-      "label": "Planos",
-      "href": "/#planos"
-    },
-    {
       "label": "Casos",
       "href": "/casos"
     },
     {
-      "label": "Proposta",
-      "href": "/proposta"
-    },
-    {
       "label": "Quem faz",
       "href": "/quem-faz"
+    },
+    {
+      "label": "Planos",
+      "href": "/#planos"
+    },
+    {
+      "label": "Proposta",
+      "href": "/proposta"
     },
     {
       "label": "Dúvidas",
@@ -844,7 +844,7 @@
       "text": "Cliente fundador: 20% a menos no mensal do Personalizado, para sempre",
       "sub": "até 5 vagas por linha",
       "link": "Quero saber",
-      "style": "fixa"
+      "style": "letreiro"
     },
     "modal": {
       "enabled": true,
@@ -854,12 +854,19 @@
       "title": "Seja um dos primeiros",
       "titleAccent": "do Atelierin",
       "text": "Até 5 clientes de cada linha, no plano Personalizado, pagam 20% a menos no mensal para sempre. Em troca, você me ajuda com um depoimento, autoriza mostrar o seu ambiente como caso e me conta o que achou nos primeiros meses.",
-      "close": "Fechar"
+      "close": "Fechar",
+      "imageStyle": "carmim",
+      "images": {
+        "foto": "/hero-desk.webp",
+        "noir": "/topo-noir.webp",
+        "carmim": "/topo-carmim.webp",
+        "areia": "/topo-areia.webp"
+      }
     },
     "cta": {
       "message": "Oi, Samara! Vim pelo site do Atelierin e quero ser cliente fundador."
     },
-    "planStyle": "card",
+    "planStyle": "dentro",
     "inline": {
       "label": "Cliente fundador:",
       "seats": "Até 5 vagas por linha",
