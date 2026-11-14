@@ -27,7 +27,7 @@ export default function Cases() {
       </section>
       {c.items.map((it) => (
         <article key={it.id} id={it.id} className="case">
-          <section data-theme="light" className="section case-top">
+          <section data-theme="dark" className="section case-top">
             <div className="wrap">
               <div className="case-title" data-reveal>
                 <span className="case-tag">{it.tag}</span>
