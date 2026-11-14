@@ -842,6 +842,16 @@
     "cta": {
       "text": "Quer uma das vagas?",
       "label": "Falar comigo no WhatsApp"
+    },
+    "coverTag": "nº 00 · cliente fundador",
+    "testimonial": {
+      "title": "Como o seu depoimento aparece",
+      "lede": "É assim que ele entra na página de casos e na landing, com o seu nome, a sua linha e um print do seu ambiente. Você aprova o texto antes de publicar.",
+      "tag": "exemplo",
+      "quote": "[Aqui entra o seu depoimento: o que mudou no seu dia a dia depois do ambiente. Duas ou três frases, do seu jeito.]",
+      "name": "Seu nome",
+      "role": "Sua profissão · linha School",
+      "link": "ver o caso completo"
     }
   }
 }
