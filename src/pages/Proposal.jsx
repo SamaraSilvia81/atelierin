@@ -199,6 +199,23 @@ function Chat({ list }) {
 }
 
 
+// Cliente fundador: a tabela do mensal ganha a coluna com o desconto aplicado.
+function withFounder(s) {
+  const f = content.founder
+  if (s.kicker !== 'licença e manutenção' || !s.table || !f?.discount) return s
+  const pct = Math.round(f.discount * 100)
+  const brl = (n) => 'R$ ' + n.toLocaleString('pt-BR', { maximumFractionDigits: 2 })
+  const rows = s.table.rows.map((r) => {
+    const m = /^R\$\s*([\d.]+)$/.exec(r[1])
+    return [...r, m ? brl(Math.round(Number(m[1].replace(/\./g, '')) * (1 - f.discount) * 100) / 100) : r[1]]
+  })
+  return {
+    ...s,
+    text: `${s.text} Como cliente fundador, o seu mensal tem ${pct}% a menos, para sempre.`,
+    table: { ...s.table, cols: [...s.table.cols, `Fundador · −${pct}%`], rows, highlight: s.table.cols.length },
+  }
+}
+
 // Monta os slides: os gerais e, se houver cliente, os dele no lugar marcado (insertAfter = kicker).
 // hide: kickers que somem; patch: { kicker: campos que trocam }, com
 // "cards": { nome: campos } para ajustar um card (options ou cards) pelo nome.
@@ -215,6 +232,7 @@ function withClient(slides, client) {
     }
     return next
   })
+  if (client.deal?.founder) out = out.map(withFounder)
   if (client.slides?.length) {
     const i = out.findIndex((s) => s.kicker === client.insertAfter)
     const at = i < 0 ? out.length - 1 : i + 1
