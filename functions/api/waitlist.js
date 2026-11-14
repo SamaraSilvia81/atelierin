@@ -9,7 +9,32 @@
 // Sem RESEND_API_KEY o pedido é gravado e nenhum e-mail sai.
 // As imagens dos e-mails ficam em public/email/ (servidas pelo próprio site).
 
-const KINDS = new Set(['linha'])
+const KINDS = new Set(['linha', 'fundador'])
+
+// Textos que mudam por tipo de inscrição: lista de espera de linha nova ou
+// vaga de cliente fundador (PRD-008, só no plano Personalizado).
+const COPY = {
+  linha: {
+    label: (short) => `Lista de espera · ${short}`,
+    lines: (linha) => [`Oi! Anotei o seu e-mail na lista de espera da linha <b>${linha}</b>.`, 'Quando ela abrir, você fica sabendo primeiro, com a condição especial de quem abre a linha.'],
+    plain: (area) => `Oi! Anotei o seu e-mail na lista de espera da linha ${area}.\n\nQuando ela abrir, você fica sabendo primeiro, com a condição especial de quem abre a linha.`,
+    pre: (linha) => `Anotei o seu e-mail na lista da linha ${linha}.`,
+    subject: 'Você está na lista do Atelierin',
+    noticeLabel: 'Lista de espera · novo inscrito',
+    wants: 'quer a linha',
+    noticeSubject: (area) => `Lista de espera: ${area}`,
+  },
+  fundador: {
+    label: (short) => `Cliente fundador · ${short}`,
+    lines: (linha) => [`Oi! Anotei o seu interesse em ser cliente fundador da linha <b>${linha}</b>.`, 'No plano Personalizado, quem entra como fundador paga 20% a menos no mensal, para sempre. Vou te chamar para a gente conversar e eu te mostrar uma prévia com a sua marca.'],
+    plain: (area) => `Oi! Anotei o seu interesse em ser cliente fundador da linha ${area}.\n\nNo plano Personalizado, quem entra como fundador paga 20% a menos no mensal, para sempre. Vou te chamar para a gente conversar e eu te mostrar uma prévia com a sua marca.`,
+    pre: (linha) => `Anotei o seu interesse em ser fundador da linha ${linha}.`,
+    subject: 'Sua vaga de cliente fundador do Atelierin',
+    noticeLabel: 'Cliente fundador · novo interessado',
+    wants: 'quer ser fundador da linha',
+    noticeSubject: (area) => `Cliente fundador: ${area}`,
+  },
+}
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 const SITE = 'https://atelierin.com.br'
 const IMG = `${SITE}/email`
@@ -65,7 +90,8 @@ const shell = (inner, preheader) => `<!DOCTYPE html><html lang="pt-BR"><head><me
 
 // ---------- e-mail 1: confirmação para quem se inscreveu ----------
 
-function confirmation(area) {
+function confirmation(area, kind = 'linha') {
+  const T = COPY[kind] || COPY.linha
   const short = esc(area.split(' · ')[0])
   const linha = esc(area)
   const businessCard = card(`
@@ -81,11 +107,10 @@ function confirmation(area) {
   const html = shell(`
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;border-top:4px solid ${C.crimson}">
 <tr><td style="padding:28px 32px 0"><img src="${IMG}/logo.png" width="126" alt="Atelierin" style="display:block;border:0"></td></tr>
-<tr><td style="padding:26px 32px 0">${label(`Lista de espera · ${short}`)}</td></tr>
+<tr><td style="padding:26px 32px 0">${label(T.label(short))}</td></tr>
 <tr><td style="padding:8px 32px 0;font-size:28px;line-height:1.15;font-weight:bold;color:${C.tinta}">Você está na lista.</td></tr>
 <tr><td style="padding:18px 32px 0;color:${C.tinta};font-size:16px;line-height:1.6">
-<p style="margin:0 0 14px">Oi! Anotei o seu e-mail na lista de espera da linha <b>${linha}</b>.</p>
-<p style="margin:0 0 14px">Quando ela abrir, você fica sabendo primeiro, com a condição especial de quem abre a linha.</p>
+${T.lines(linha).map((l) => `<p style="margin:0 0 14px">${l}</p>`).join('\n')}
 <p style="margin:0">Se quiser conversar antes, é só responder este e-mail.</p></td></tr>
 <tr><td style="padding:22px 32px 0"><a href="${SITE}" style="display:inline-block;background:${C.crimson};color:#fff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 22px;border-radius:999px">Conhecer o Atelierin</a></td></tr>
 <tr><td style="padding:28px 32px 0;color:${C.tinta};font-size:16px">Um abraço,</td></tr>
@@ -94,11 +119,9 @@ function confirmation(area) {
 </table>
 <img src="${IMG}/rodape.png" width="520" alt="" style="display:block;border:0;max-width:520px;width:100%;margin-top:20px">
 <p style="max-width:480px;margin:18px auto 0;color:${C.poeira};font-size:12px;line-height:1.5;text-align:center">Atelierin · Recife, PE · <a href="${SITE}" style="color:${C.poeira}">atelierin.com.br</a><br>Você recebeu porque entrou na lista de espera no site. Não quer mais receber? Responda com "sair".</p>`,
-    `Anotei o seu e-mail na lista da linha ${linha}.`)
+    T.pre(linha))
 
-  const text = `Oi! Anotei o seu e-mail na lista de espera da linha ${area}.
-
-Quando ela abrir, você fica sabendo primeiro, com a condição especial de quem abre a linha.
+  const text = `${T.plain(area)}
 Se quiser conversar antes, é só responder este e-mail.
 
 Um abraço,
@@ -109,13 +132,14 @@ ${SITE}
 
 Não quer mais receber? Responda com "sair".`
 
-  return { subject: 'Você está na lista do Atelierin', html, text }
+  return { subject: T.subject, html, text }
 }
 
 // ---------- e-mail 2: aviso interno de inscrição nova ----------
 
-function notice({ email, area, page, when, inLine, total }) {
-  const pages = { '/': 'Página inicial' }
+function notice({ email, area, page, when, inLine, total, kind = 'linha' }) {
+  const T = COPY[kind] || COPY.linha
+  const pages = { '/': 'Página inicial', '/fundador': 'Página Cliente fundador' }
   const from = pages[page] || page || 'Site'
   const people = (n) => `${n} ${n === 1 ? 'pessoa' : 'pessoas'}`
   const row = (k, v) => `<tr><td width="38%" style="padding:9px 0;border-top:1px dashed ${C.borda};font-family:${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:${C.poeira}">${k}</td><td style="padding:9px 0;border-top:1px dashed ${C.borda};font-size:14px;color:${C.tinta}">${v}</td></tr>`
@@ -127,9 +151,9 @@ function notice({ email, area, page, when, inLine, total }) {
  <td><img src="${IMG}/logo.png" width="104" alt="Atelierin" style="display:block;border:0"></td>
  <td align="right">${label('Aviso interno', C.poeira)}</td></tr></table></td></tr>
 <tr><td>${card(`
-  ${label('Lista de espera · novo inscrito')}
+  ${label(T.noticeLabel)}
   <div style="font-size:24px;font-weight:bold;color:${C.tinta};margin:10px 0 4px;word-break:break-all">${esc(email)}</div>
-  <div style="font-size:14px;color:${C.tinta2};margin-bottom:18px">quer a linha <b>${esc(area)}</b></div>
+  <div style="font-size:14px;color:${C.tinta2};margin-bottom:18px">${T.wants} <b>${esc(area)}</b></div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
    ${row('Entrou em', esc(when))}
    ${row('Veio de', esc(from))}
@@ -140,14 +164,14 @@ function notice({ email, area, page, when, inLine, total }) {
    <a href="${esc(mailto)}" style="display:inline-block;background:${C.crimson};color:#fff;text-decoration:none;font-size:13px;font-weight:bold;padding:11px 18px;border-radius:999px;margin:0 6px 6px 0">Escrever pra essa pessoa</a>
    <a href="https://dash.cloudflare.com/?to=/:account/workers/d1" style="display:inline-block;border:1px solid ${C.tinta};color:${C.tinta};text-decoration:none;font-size:13px;font-weight:bold;padding:10px 18px;border-radius:999px;margin:0 0 6px">Ver a lista no D1</a>
   </div>`, '24px 24px 20px')}</td></tr>
-</table>`, `${email} quer a linha ${area}`)
+</table>`, `${email} ${T.wants} ${area}`)
 
-  const text = `Novo inscrito na lista de espera
-${email} quer a linha ${area}
+  const text = `${T.noticeLabel}
+${email} ${T.wants} ${area}
 Entrou em: ${when}
 Veio de: ${from}${inLine != null ? `\nNa fila dessa linha: ${people(inLine)}` : ''}${total != null ? `\nTotal na lista: ${people(total)}` : ''}`
 
-  return { subject: `Lista de espera: ${area}`, html, text }
+  return { subject: T.noticeSubject(area), html, text }
 }
 
 // ---------- rota ----------
@@ -175,7 +199,7 @@ export async function onRequestPost({ request, env }) {
   const isNew = !before
 
   try {
-    const mail = confirmation(area)
+    const mail = confirmation(area, kind)
     await sendMail(env, { to: email, ...mail })
 
     if (env.NOTIFY_TO && isNew) {
@@ -188,7 +212,7 @@ export async function onRequestPost({ request, env }) {
         total = r?.total ?? null
       } catch { /* contagem é extra */ }
       const when = new Date().toLocaleString('pt-BR', { timeZone: 'America/Recife', dateStyle: 'short', timeStyle: 'short' })
-      await sendMail(env, { to: env.NOTIFY_TO, replyTo: email, ...notice({ email, area, page, when, inLine, total }) })
+      await sendMail(env, { to: env.NOTIFY_TO, replyTo: email, ...notice({ email, area, page, when, inLine, total, kind }) })
     }
   } catch { /* o pedido já foi gravado; e-mail é bônus */ }
 
