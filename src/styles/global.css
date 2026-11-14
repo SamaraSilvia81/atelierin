@@ -1224,10 +1224,10 @@ h1, h2, h3, p { margin: 0; }
 .case-title { display: grid; gap: 16px; max-width: 900px; margin-bottom: 40px; }
 .case-tag { font: 500 12.5px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--palette-brasa); }
 .case-title .display { font-size: clamp(48px, 6.4vw, 96px); }
-.case-shot { margin: 0; border-radius: 8px; overflow: hidden; border: 1px solid #2A1E1E; box-shadow: 0 60px 120px -50px rgba(0,0,0,.9); }
+.case-shot { margin: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 40px 80px -40px rgba(26,15,15,.45); }
 .case-shot img { display: block; width: 100%; }
-.case-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 24px 0 0; background: #2A1E1E; border: 1px solid #2A1E1E; border-radius: 4px; overflow: hidden; }
-.case-meta div { padding: 16px 18px; background: #161212; }
+.case-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 24px 0 0; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.case-meta div { padding: 16px 18px; background: var(--bg-card); }
 .case-meta dt { font: 400 11.5px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
 .case-meta dd { margin: 0; font-size: var(--text-sm); color: var(--text); }
 .case-cols { display: grid; grid-template-columns: 1fr 320px; gap: clamp(40px, 6vw, 96px); align-items: start; }
@@ -1952,3 +1952,22 @@ h1, h2, h3, p { margin: 0; }
   .cases-hero-grid { grid-template-columns: 1fr; }
   .cases-window { rotate: 0deg; margin-right: 14px; }
 }
+
+/* casos: tudo claro depois do hero; recursos em lista larga, sem caixa apertada */
+.case-top { padding-bottom: clamp(32px, 4vw, 56px); }
+.case-tag { color: var(--acc-text); }
+.case-feats { margin-top: clamp(48px, 6vw, 80px); padding-top: 28px; border-top: 1px solid var(--border); }
+.case-feats strong { display: block; margin-bottom: 18px; font: 500 12.5px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--acc); }
+.case-feats ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px 32px; }
+.case-feats li { position: relative; padding-left: 20px; color: var(--text-sub); }
+.case-feats li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 2px; background: var(--acc); }
+.case-story { max-width: 860px; }
+.cases-next { padding-top: clamp(40px, 5vw, 72px); }
+.page-cta-acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.bridge-link.is-outline { background: transparent; color: var(--text); }
+.bridge-link.is-outline:hover { background: var(--acc); border-color: var(--acc); color: #fff; }
+/* índice do hero de casos: linhas leves, sem caixa */
+.cases-index { gap: 0; margin-top: 18px; border-top: 1px dashed var(--border); }
+.cases-index a { padding: 16px 2px; border: 0; border-bottom: 1px dashed var(--border); border-radius: 0; background: none; gap: 18px; }
+.cases-index a:hover { background: none; }
+.cases-index a:hover span { color: var(--acc-text); }

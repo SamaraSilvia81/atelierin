@@ -27,7 +27,7 @@ export default function Cases() {
       </section>
       {c.items.map((it) => (
         <article key={it.id} id={it.id} className="case">
-          <section data-theme="dark" className="section case-top">
+          <section data-theme="light" className="section case-top">
             <div className="wrap">
               <div className="case-title" data-reveal>
                 <span className="case-tag">{it.tag}</span>
@@ -41,7 +41,7 @@ export default function Cases() {
             </div>
           </section>
           <section data-theme="light" className="section case-body">
-            <div className="wrap case-cols">
+            <div className="wrap">
               <div className="case-story">
                 {it.sections.map((s, i) => (
                   <div key={s.h} className="case-part" data-reveal>
@@ -51,18 +51,21 @@ export default function Cases() {
                   </div>
                 ))}
               </div>
-              <aside className="case-aside" data-reveal>
+              <div className="case-feats" data-reveal>
                 <strong>O que o sistema faz</strong>
                 <ul>{it.features.map((f) => <li key={f}>{f}</li>)}</ul>
-              </aside>
+              </div>
             </div>
           </section>
         </article>
       ))}
-      <section data-theme="dark" className="section cases-next">
+      <section data-theme="light" className="section cases-next">
         <div className="wrap page-cta" data-reveal>
           <p>{c.next.text}</p>
-          <a href={c.next.href} className="bridge-link">{c.next.label}</a>
+          <div className="page-cta-acts">
+            <a href={c.next.href} className="bridge-link">{c.next.label}</a>
+            {c.next.second && <a href={c.next.second.href} className="bridge-link is-outline">{c.next.second.label}</a>}
+          </div>
         </div>
       </section>
     </div>
