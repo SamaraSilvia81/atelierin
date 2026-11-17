@@ -19,7 +19,7 @@
 ![Phosphor](https://img.shields.io/badge/Phosphor%20Icons-1A1414?style=flat-square)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-1A1414?style=flat-square&logo=cloudflarepages&logoColor=F38020)
 
-[Sobre](#-sobre-o-projeto) · [Seções](#-seções-e-páginas) · [Como rodar](#-como-rodar) · [Editar textos](#-editar-textos) · [Visual](#-visual) · [Estrutura](#-estrutura) · [Publicar](#-publicar) · [Documentação](#-documentação)
+[Sobre](#-sobre-o-projeto) · [Seções](#-seções-e-páginas) · [Como rodar](#-como-rodar) · [Editar textos](#-editar-textos) · [Visual](#-visual) · [Estrutura](#-estrutura) · [Publicar](#-publicar) · [Documentação](#-documentação) · [Licença](#-licença)
 
 </div>
 
@@ -231,6 +231,10 @@ O `public/_redirects` faz `/proposta`, `/casos` e `/quem-faz` abrirem direto, se
 | [`LP-ADR-005`](docs/decisoes/LP-ADR-005-preco-na-pagina.md) | Preço na página |
 
 A documentação do produto (visão, linhas, planos, roadmap) fica em `PRD-ATELIERIN/00-DOCS`. O histórico de versões da landing está no [`CHANGELOG.md`](CHANGELOG.md).
+
+### $ licença
+
+Todos os direitos reservados a Samara Silvia Sabino. O código pode estar visível para leitura, mas não pode ser copiado, modificado, distribuído ou usado sem autorização por escrito. Detalhes no [`LICENSE`](LICENSE).
 
 <div align="center">
 
