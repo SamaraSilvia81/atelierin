@@ -49,7 +49,7 @@ O visual vem da identidade do Atelierin (noir e crimson, Bebas Neue, Inter e Jet
 | **Passo a passo** | Conversa, molde, prova, ajuste e no ar, numa trilha que se preenche com a rolagem. Cada passo tem uma animação própria |
 | **Linhas** | School, Consult, Fit, Studio e Care, com selo de status |
 | **Sob medida** | "A marca é sua": três estilos de login que se trocam com uma transição em círculo |
-| **Planos** | Padrão (a partir de R$ 900, 5%) e Personalizado (10x de R$ 300, 8%) disponíveis, lista de espera das outras linhas, tabela "Uma vez, e todo mês" e calculadora |
+| **Planos** | Sob medida (Casual, Social, Gala e Alta-costura; implantação 10x de R$ 300) disponível, Modelo pronto (Grátis a Ilimitado) e outras linhas por lista de espera, tabela "Uma vez, e todo mês" e calculadora |
 | **Dúvidas** | Perguntas frequentes, inclusive sobre preço e manutenção |
 | **Ficha** (`#contato`) | "Vamos tirar as suas medidas": a ficha monta uma mensagem e abre o WhatsApp |
 | **Rodapé** | Texto sobre a ilustração carmesim |

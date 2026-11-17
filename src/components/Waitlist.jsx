@@ -12,6 +12,7 @@ export default function Waitlist({ cfg, extra }) {
   const [email, setEmail] = useState('')
   const [area, setArea] = useState('')
   const [state, setState] = useState('idle') // idle | sending | ok | fail
+  const key = cfg.id ?? cfg.interest // ids dos campos (dois formulários da mesma lista não repetem id)
 
   async function submit(e) {
     e.preventDefault()
@@ -35,11 +36,11 @@ export default function Waitlist({ cfg, extra }) {
 
   return (
     <form className="wl" onSubmit={submit}>
-      <label className="sr-only" htmlFor={`wl-email-${cfg.interest}`}>E-mail</label>
-      <input id={`wl-email-${cfg.interest}`} type="email" required autoComplete="email" placeholder={cfg.emailPlaceholder}
+      <label className="sr-only" htmlFor={`wl-email-${key}`}>E-mail</label>
+      <input id={`wl-email-${key}`} type="email" required autoComplete="email" placeholder={cfg.emailPlaceholder}
         value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label className="sr-only" htmlFor={`wl-area-${cfg.interest}`}>{cfg.areaPlaceholder}</label>
-      <select id={`wl-area-${cfg.interest}`} required value={area} onChange={(e) => setArea(e.target.value)}>
+      <label className="sr-only" htmlFor={`wl-area-${key}`}>{cfg.areaPlaceholder}</label>
+      <select id={`wl-area-${key}`} required value={area} onChange={(e) => setArea(e.target.value)}>
         <option value="" disabled>{cfg.areaPlaceholder}</option>
         {cfg.areas.map((a) => <option key={a} value={a}>{a}</option>)}
       </select>

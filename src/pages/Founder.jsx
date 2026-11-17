@@ -9,7 +9,7 @@ const brl = (v) => 'R$ ' + Math.round(v).toLocaleString('pt-BR')
 export default function Founder() {
   const a = content.pages.founder
   const f = content.founder
-  const { tiers, overLabel } = content.plans.pricing
+  const { tiers, overLabel, overName } = content.plans.pricing
   const off = 1 - f.discount
   return (
     <div className="page page-founder">
@@ -65,13 +65,13 @@ export default function Founder() {
                 <tbody>
                   {tiers.map((t) => (
                     <tr key={t.max}>
-                      <th scope="row">{t.label}</th>
+                      <th scope="row">{t.name} <small>{t.label}</small></th>
                       <td><s>{brl(t.price)}</s></td>
                       <td className="is-acc">{brl(t.price * off)} por mês</td>
                     </tr>
                   ))}
                   <tr>
-                    <th scope="row">{overLabel}</th>
+                    <th scope="row">{overName} <small>{overLabel}</small></th>
                     <td>sob consulta</td>
                     <td className="is-acc">{Math.round(f.discount * 100)}% sobre o combinado</td>
                   </tr>

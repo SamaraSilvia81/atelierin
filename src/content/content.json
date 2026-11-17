@@ -579,58 +579,10 @@
   },
   "plans": {
     "piece": "Nº 06 · Etiquetas",
-    "title": "Planos",
+    "title": "Do primeiro cliente à alta-costura",
     "titleAccent": "",
-    "lede": "Comece com 5 alunos ou com 50: o sistema é o mesmo e o mensal acompanha o tamanho da turma. Hoje a linha disponível é a School, para professores e escolas pequenas.",
+    "lede": "Comece sozinho com um modelo pronto, por assinatura, ou tenha um sistema com a sua marca, no sob medida. O mensal acompanha o tamanho da turma. Hoje a linha disponível é a School, para professores e escolas pequenas.",
     "items": [
-      {
-        "line": "School",
-        "name": "Padrão",
-        "status": "Disponível",
-        "tone": "avail",
-        "for": "Quem quer o ambiente como ele é, com a sua marca",
-        "text": "O ambiente School com o tema Atelierin, a sua logo e as suas cores principais. Montado por mim a partir de um molde pronto.",
-        "priceLabel": "a partir de",
-        "price": "R$ 900",
-        "priceSub": "R$ 1.200 com área dos alunos",
-        "priceExtra": "Pagamento único da implantação. O mensal está logo abaixo.",
-        "cta": {
-          "label": "Conversar sobre o meu",
-          "href": "/#contato"
-        },
-        "features": [
-          "Módulos padrão da linha School",
-          "Tema Atelierin com a sua logo e cores",
-          "Vídeos pelo YouTube ou Google Drive",
-          "Suporte por mensagem",
-          "Sobe para o Personalizado pagando só a diferença"
-        ]
-      },
-      {
-        "line": "School",
-        "name": "Personalizado",
-        "status": "Disponível agora",
-        "tone": "on",
-        "for": "Quem quer o ambiente ajustado ao seu jeito de trabalhar",
-        "text": "O ambiente School com a sua identidade completa, montado e mantido por mim.",
-        "pricePre": "10x de",
-        "price": "R$ 300",
-        "priceSub": "ou R$ 3.000 à vista",
-        "priceExtra": "Pagamento único da implantação. O mensal está logo abaixo.",
-        "cta": {
-          "label": "Conversar sobre o meu",
-          "href": "/#contato"
-        },
-        "ctaNote": "Na conversa eu te mostro uma prévia com a sua marca",
-        "features": [
-          "Estudo da infraestrutura de melhor custo-benefício",
-          "Sua marca, cores, logo e vocabulário em tudo",
-          "Módulos ligados conforme o seu jeito de dar aula",
-          "Licença, manutenção, atualizações e suporte no mensal",
-          "Vídeo pelo YouTube, Drive ou Bunny (à parte)",
-          "Funcionalidade nova sob orçamento"
-        ]
-      },
       {
         "line": "Outras linhas",
         "name": "Sua área",
@@ -664,13 +616,8 @@
       }
     ],
     "pricing": {
-      "padrao": {
-        "name": "Padrão",
-        "setup": 900,
-        "setupStudents": 1200
-      },
-      "personalizado": {
-        "name": "Personalizado",
+      "sobMedida": {
+        "name": "Sob medida",
         "setup": 3000,
         "installments": 10,
         "bunny": 49
@@ -678,73 +625,78 @@
       "tiers": [
         {
           "max": 15,
+          "name": "Casual",
           "price": 190,
           "label": "até 15 alunos"
         },
         {
           "max": 30,
+          "name": "Social",
           "price": 290,
           "label": "16 a 30 alunos"
         },
         {
           "max": 50,
+          "name": "Gala",
           "price": 390,
           "label": "31 a 50 alunos"
         }
       ],
-      "overLabel": "mais de 50 alunos"
+      "overLabel": "mais de 50 alunos",
+      "overName": "Alta-costura"
     },
     "rules": {
       "label": "Como é cobrado",
       "title": "Uma vez, e todo mês",
       "cols": [
-        "Padrão",
-        "Personalizado"
+        "Alunos",
+        "Mensal"
       ],
       "rows": [
         {
           "mark": "1×",
           "name": "Implantação",
           "values": [
-            "R$ 900 · R$ 1.200 com alunos",
+            "todos os planos",
             "10x R$ 300"
           ],
           "accent": 1
         },
         {
           "mark": "↻",
-          "name": "Até 15 alunos",
+          "name": "Casual",
           "values": [
-            "R$ 190",
+            "até 15 alunos",
             "R$ 190"
           ]
         },
         {
           "mark": "↻",
-          "name": "16 a 30 alunos",
+          "name": "Social",
           "values": [
-            "R$ 290",
+            "16 a 30 alunos",
             "R$ 290"
           ]
         },
         {
           "mark": "↻",
-          "name": "31 a 50 alunos",
+          "name": "Gala",
           "values": [
-            "R$ 390",
+            "31 a 50 alunos",
             "R$ 390"
           ]
         },
         {
           "mark": "↻",
-          "name": "Vídeo",
+          "name": "Alta-costura",
           "values": [
-            "YouTube ou Drive",
-            "+ Bunny, se quiser (à parte)"
-          ]
+            "mais de 50 alunos",
+            "sob consulta"
+          ],
+          "founder": "−20% sobre o combinado"
         }
       ],
-      "note": "O mensal é a licença e manutenção: um valor fixo pela faixa de alunos, com hospedagem, backup, atualizações e suporte incluídos. É revisto uma vez por ano. Mais de 50 alunos, sob consulta. Funcionalidade nova só entra se você pedir, com orçamento antes."
+      "note": "O mensal é a licença e manutenção: um valor fixo pelo plano, com hospedagem, backup, atualizações e suporte incluídos. É revisto uma vez por ano. A implantação de R$ 3.000 é a mesma nos quatro planos e já inclui cadastrar os seus alunos. Vídeo próprio pelo Bunny entra à parte. Funcionalidade nova só entra se você pedir, com orçamento antes."
     },
     "calc": {
       "label": "Simule o seu",
@@ -755,8 +707,8 @@
       "video": "Vídeo",
       "videoFree": "YouTube ou Drive",
       "videoBunny": "Bunny (próprio)",
-      "bunnyHint": "Bunny só no Personalizado",
-      "plan": "Plano indicado",
+      "bunnyHint": "Bunny entra à parte",
+      "plan": "Plano",
       "setup": "Implantação",
       "once": "uma vez",
       "bunny": "Vídeo Bunny",
@@ -776,6 +728,203 @@
       "text": "O pagamento dos alunos vai direto para você. Nenhuma taxa por transação.",
       "link": "Ver a proposta completa",
       "href": "/proposta"
+    },
+    "tabs": [
+      {
+        "id": "pronto",
+        "label": "Modelo pronto",
+        "sub": "por assinatura · em breve"
+      },
+      {
+        "id": "medida",
+        "label": "Sob medida",
+        "sub": "com a sua marca · disponível"
+      }
+    ],
+    "sets": {
+      "pronto": {
+        "note": "Sem taxa de entrada. Teste de 7 dias nos planos pagos. O app Atelierin no celular é incluído no Ilimitado e à parte nos outros.",
+        "items": [
+          {
+            "line": "Modelo pronto",
+            "name": "Grátis",
+            "status": "Em breve",
+            "tone": "wait",
+            "for": "até 5 alunos",
+            "price": "R$ 0",
+            "priceSub": "por mês",
+            "features": [
+              "Cadastro de alunos, aulas e agenda",
+              "Turmas e grupos",
+              "Pagamento manual com status",
+              "Banner de divulgação, com a marca Atelierin",
+              "500 MB de armazenamento",
+              "Exporta os seus dados em CSV"
+            ]
+          },
+          {
+            "line": "Modelo pronto",
+            "name": "Essencial",
+            "status": "Em breve",
+            "tone": "wait",
+            "for": "até 20 alunos",
+            "price": "R$ 39",
+            "priceSub": "por mês",
+            "features": [
+              "Tudo do Grátis",
+              "Portal do aluno",
+              "Materiais e vídeos (YouTube ou Drive)",
+              "Contratos e lembretes por e-mail",
+              "Logo e nome seus no ambiente",
+              "2 GB · suporte por e-mail"
+            ]
+          },
+          {
+            "line": "Modelo pronto",
+            "name": "Completo",
+            "status": "Em breve",
+            "tone": "wait",
+            "for": "até 50 alunos",
+            "price": "R$ 79",
+            "priceSub": "por mês",
+            "features": [
+              "Tudo do Essencial",
+              "Pix com confirmação automática",
+              "Previsão de recebimentos",
+              "Importa extrato (OFX ou CSV)",
+              "2 acessos da equipe · 10 GB",
+              "Suporte por e-mail prioritário"
+            ]
+          },
+          {
+            "line": "Modelo pronto",
+            "name": "Ilimitado",
+            "status": "Em breve",
+            "tone": "wait",
+            "for": "sem limite de alunos (uso justo)",
+            "price": "R$ 139",
+            "priceSub": "por mês",
+            "features": [
+              "Tudo do Completo",
+              "3 acessos da equipe · 30 GB",
+              "App Atelierin incluído",
+              "Relatórios completos"
+            ]
+          }
+        ],
+        "waitlistTitle": "Quer ser avisado quando abrir?",
+        "waitlist": {
+          "interest": "linha",
+          "id": "modelo",
+          "emailPlaceholder": "seu@email.com",
+          "areaPlaceholder": "Qual modelo",
+          "areas": [
+            "School · Particular",
+            "Fit · Personal",
+            "Gestão · Negócio"
+          ],
+          "submit": "Avise quando abrir",
+          "consent": "Uso seu e-mail só para avisar quando o modelo pronto abrir.",
+          "ok": "Pronto, você está na lista. Chegou um e-mail de confirmação.",
+          "fail": "Não consegui salvar agora. Me chama no WhatsApp que eu anoto."
+        }
+      },
+      "medida": {
+        "note": "A implantação é de R$ 3.000 (10x de R$ 300), igual nos quatro planos: monta o ambiente, aplica a sua identidade, cadastra os seus alunos e ensina a usar. O mensal é fixo pelo plano.",
+        "items": [
+          {
+            "line": "Sob medida",
+            "name": "Casual",
+            "status": "até 15 alunos",
+            "tone": "plain",
+            "for": "Para quem está começando",
+            "price": "R$ 190",
+            "priceSub": "por mês",
+            "priceExtra": "mais a implantação de R$ 3.000",
+            "monthly": 190,
+            "cta": {
+              "label": "Conversar sobre este plano",
+              "href": "/#contato"
+            },
+            "features": [
+              "Todos os recursos do plano Ilimitado",
+              "2 acessos da equipe · 10 GB",
+              "Sua marca, seu endereço e seus e-mails",
+              "Cadastro dos seus alunos e treinamento",
+              "Página pública simples",
+              "App Atelierin incluído"
+            ]
+          },
+          {
+            "line": "Sob medida",
+            "name": "Social",
+            "status": "16 a 30 alunos",
+            "tone": "plain",
+            "for": "Para quem já tem a turma formada",
+            "price": "R$ 290",
+            "priceSub": "por mês",
+            "priceExtra": "mais a implantação de R$ 3.000",
+            "monthly": 290,
+            "cta": {
+              "label": "Conversar sobre este plano",
+              "href": "/#contato"
+            },
+            "features": [
+              "Todos os recursos do plano Ilimitado",
+              "3 acessos da equipe · 20 GB",
+              "Sua marca, seu endereço e seus e-mails",
+              "Cadastro dos seus alunos e treinamento",
+              "Página pública simples",
+              "App Atelierin incluído"
+            ]
+          },
+          {
+            "line": "Sob medida",
+            "name": "Gala",
+            "status": "31 a 50 alunos",
+            "tone": "plain",
+            "for": "Para quem tem uma turma grande",
+            "price": "R$ 390",
+            "priceSub": "por mês",
+            "priceExtra": "mais a implantação de R$ 3.000",
+            "monthly": 390,
+            "cta": {
+              "label": "Conversar sobre este plano",
+              "href": "/#contato"
+            },
+            "features": [
+              "Todos os recursos do plano Ilimitado",
+              "5 acessos da equipe · 40 GB",
+              "Sua marca, seu endereço e seus e-mails",
+              "Cadastro dos seus alunos e treinamento",
+              "Página pública simples",
+              "App Atelierin incluído"
+            ]
+          },
+          {
+            "line": "Sob medida",
+            "name": "Alta-costura",
+            "status": "acima de 50 alunos",
+            "tone": "plain",
+            "for": "Para quem passa de 50 alunos",
+            "priceBig": "Sob consulta",
+            "priceExtra": "implantação de R$ 3.000 ou orçamento",
+            "founderNote": "−20% sobre o valor combinado",
+            "cta": {
+              "label": "Conversar sobre este plano",
+              "href": "/#contato"
+            },
+            "features": [
+              "Todos os recursos do plano Ilimitado",
+              "Projeto próprio, só seu",
+              "Acessos e armazenamento a combinar",
+              "Vídeo próprio (Bunny) como extra",
+              "Suporte direto comigo",
+              "App Atelierin incluído"
+            ]
+          }
+        ]
+      }
     }
   },
   "founder": {
@@ -786,9 +935,9 @@
     "piece": "cliente fundador",
     "title": "Quer ser cliente",
     "titleAccent": "fundador?",
-    "lede": "Até 5 clientes de cada linha, no plano Personalizado, pagam menos no mensal para sempre. Em troca, ajudam a construir o Atelierin com o uso real do dia a dia.",
+    "lede": "Até 5 clientes de cada linha, no sob medida, pagam menos no mensal para sempre. Em troca, ajudam a construir o Atelierin com o uso real do dia a dia.",
     "badge": "−20%",
-    "badgeSub": "no mensal do Personalizado, enquanto o contrato durar",
+    "badgeSub": "no mensal do sob medida, enquanto o contrato durar",
     "statusOpen": "Vagas abertas · até 5 por linha",
     "statusClosed": "Vagas encerradas",
     "closedNote": "As vagas de fundador acabaram. O programa continua valendo para quem já entrou.",
@@ -814,12 +963,12 @@
       "href": "/fundador"
     },
     "planBadge": "Fundador · −20% no mensal",
-    "tableCol": "Personalizado fundador",
+    "tableCol": "Fundador",
     "tableSame": "igual",
-    "tableNote": "A coluna Personalizado fundador já tem os 20% aplicados. Vale só para o Personalizado, no máximo 5 clientes por linha, em troca de depoimento, caso e feedback.",
+    "tableNote": "A coluna Fundador já tem os 20% aplicados no mensal. Vale só para o sob medida, no máximo 5 clientes por linha, em troca de depoimento, caso e feedback.",
     "calcLabel": "Como fundador",
-    "calcSub": "−20%, só no Personalizado",
-    "plan": "Personalizado",
+    "calcSub": "−20%, só no sob medida",
+    "plan": "Sob medida",
     "planBadgeSub": "até 5 vagas por linha",
     "waitlist": {
       "interest": "fundador",
@@ -841,7 +990,7 @@
     "whatsappLabel": "ou fale comigo no WhatsApp",
     "announce": {
       "enabled": true,
-      "text": "Cliente fundador: 20% a menos no mensal do Personalizado, para sempre",
+      "text": "Cliente fundador: 20% a menos no mensal do sob medida, para sempre",
       "sub": "até 5 vagas por linha",
       "link": "Quero saber",
       "style": "letreiro"
@@ -853,7 +1002,7 @@
       "label": "vagas de fundador abertas",
       "title": "Seja um dos primeiros",
       "titleAccent": "do Atelierin",
-      "text": "Até 5 clientes de cada linha, no plano Personalizado, pagam 20% a menos no mensal para sempre. Em troca, você me ajuda com um depoimento, autoriza mostrar o seu ambiente como caso e me conta o que achou nos primeiros meses.",
+      "text": "Até 5 clientes de cada linha, no plano sob medida, pagam 20% a menos no mensal para sempre. Em troca, você me ajuda com um depoimento, autoriza mostrar o seu ambiente como caso e me conta o que achou nos primeiros meses.",
       "close": "Fechar",
       "imageStyle": "carmim",
       "images": {

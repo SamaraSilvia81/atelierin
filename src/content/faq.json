@@ -16,7 +16,7 @@
     },
     {
       "q": "Se já existe um ambiente parecido com o que eu quero, eu pago o mesmo valor?",
-      "a": "Não. O sistema é o mesmo para todos, então você não paga para construir, só para montar. No Padrão, o ambiente fica como ele é, com a sua marca: a implantação é a partir de R$ 900 (R$ 1.200 com área dos alunos). No Personalizado eu ajusto o ambiente ao seu jeito de trabalhar, por R$ 3.000. Funcionalidade que ainda não existe é orçada à parte nos dois."
+      "a": "Não. O sistema é o mesmo para todos, então você não paga para construir, só para montar. No sob medida a implantação é R$ 3.000, igual em qualquer plano, e já inclui cadastrar os seus alunos e te ensinar a usar. Se você prefere começar sozinho, o modelo pronto, por assinatura e sem entrada, está chegando. Funcionalidade que ainda não existe é orçada à parte."
     },
     {
       "q": "Quero um sistema só meu, no meu servidor. Dá?",
@@ -24,7 +24,7 @@
     },
     {
       "q": "Quanto eu pago por mês?",
-      "a": "Um valor fixo, pela faixa de alunos: R$ 190 até 15, R$ 290 de 16 a 30 e R$ 390 de 31 a 50. Acima disso, a gente combina. Ele cobre a licença de uso, a hospedagem, as cópias de segurança, as atualizações e o suporte, e é revisto uma vez por ano. Vídeo próprio pelo Bunny entra à parte. A calculadora em Planos mostra o seu caso."
+      "a": "Um valor fixo, pelo plano: Casual R$ 190 (até 15 alunos), Social R$ 290 (16 a 30) e Gala R$ 390 (31 a 50). Acima disso, no Alta-costura, a gente combina. Ele cobre a licença de uso, a hospedagem, as cópias de segurança, as atualizações e o suporte, e é revisto uma vez por ano. Vídeo próprio pelo Bunny entra à parte. A calculadora em Planos mostra o seu caso."
     },
     {
       "q": "O dinheiro dos alunos passa pelo Atelierin?",
@@ -40,7 +40,7 @@
     },
     {
       "q": "Comecei pequeno. E se eu crescer?",
-      "a": "O sistema continua o mesmo. Se a turma muda de faixa, o mensal muda junto. E se quiser o ambiente mais ajustado ao seu jeito, você sobe do Padrão para o Personalizado pagando só a diferença da implantação, no mesmo endereço."
+      "a": "O sistema continua o mesmo. Se a turma passa para outra faixa de alunos, você sobe de plano no mês seguinte, sem nova implantação, e o mensal muda junto."
     },
     {
       "q": "E se eu quiser sair?",

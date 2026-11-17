@@ -4,7 +4,7 @@ import Waitlist from '@/components/Waitlist'
 import { play } from '@/lib/sounds'
 
 // Card horizontal "Quer ser cliente fundador?", dentro de Planos, entre os
-// três cards e a tabela/calculadora. Vale só para o Personalizado (PRD-008).
+// três cards e a tabela/calculadora. Vale só para o sob medida (PRD-008).
 // Regras em content.json (bloco founder). Para fechar as vagas, "open": false.
 export function FounderLink({ f }) {
   return <a href={f.link.href} className="bridge-link founder-rules">{f.link.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></a>
@@ -53,7 +53,7 @@ export default function FounderCard() {
 }
 
 // Versão B do teste A/B (?fundador=b): o fundador como um bloco DENTRO do
-// card Personalizado, para ficar claro que é uma condição desse plano.
+// card Sob medida, para ficar claro que é uma condição desse plano.
 // "Quero uma vaga" abre o modal de fundador (que tem o formulário da lista).
 export function FounderInline() {
   const f = content.founder

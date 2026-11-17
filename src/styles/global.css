@@ -1027,10 +1027,34 @@ h1, h2, h3, p { margin: 0; }
 .calc-years b { font: 400 26px/1 var(--font-display); }
 .calc-note { font-size: 14px; color: var(--text-muted); }
 
+/* abas Modelo pronto / Sob medida e os quatro planos de cada uma */
+.plans-tabs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.plans-tab { display: grid; gap: 4px; text-align: left; padding: 14px 22px; min-width: 240px; background: transparent; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; color: var(--text-sub); transition: background .15s, color .15s, border-color .15s; }
+.plans-tab b { font: 400 30px/1 var(--font-display); letter-spacing: .02em; text-transform: uppercase; color: inherit; }
+.plans-tab small { font: 500 12px/1.2 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.plans-tab:hover { border-color: var(--text); }
+.plans-tab[aria-selected="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.plans-tabnote { max-width: 78ch; margin-bottom: 28px; color: var(--text-sub); font-size: var(--text-sm); }
+.plans.is-4 { grid-template-columns: repeat(4, 1fr); }
+.plans.is-4 .plan { padding: 26px 22px; }
+.plans.is-4 .plan h3 { font-size: clamp(34px, 2.8vw, 42px); }
+.plans.is-4 .plan-amount strong { font-size: clamp(48px, 4.2vw, 62px); }
+.plans.is-4 .plan-cta { font-size: 12px; letter-spacing: .08em; }
+.plan.tone-plain .plan-status { color: var(--text-muted); }
+.plan-fdr-price { display: flex; align-items: center; gap: 8px; margin: 2px 0 4px; padding: 9px 12px; background: #F6E4E1; border-radius: 3px; color: var(--acc); font-size: 14px; }
+.plan-fdr-price svg { flex: none; }
+.plans-wait { margin-top: 28px; padding: 26px 28px; display: grid; gap: 14px; max-width: 520px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; }
+.plans-wait h3 { font-size: 34px; }
+.plans.is-area { grid-template-columns: minmax(0, 520px); margin-top: 48px; }
+
 .plans-foot { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; font-size: var(--text-sm); color: var(--text-sub); }
 
+@media (max-width: 1180px) {
+  .plans.is-4 { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 1000px) {
   .plans, .pricing { grid-template-columns: 1fr; }
+  .plans.is-4 { grid-template-columns: 1fr; }
   .plan.tone-on { translate: none; box-shadow: 6px 6px 0 -1px var(--text); order: -1; }
   .plans-head { grid-template-columns: 1fr; } .plans-head .lede { justify-self: start; }
 }

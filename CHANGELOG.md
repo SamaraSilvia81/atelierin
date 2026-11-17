@@ -5,6 +5,10 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Alterado
+- **Modelo do catálogo** (NOT-003, PRD-005 R01): o "Personalizado" virou **sob medida**, com os planos Casual (até 15 alunos, R$ 190), Social (16 a 30, R$ 290), Gala (31 a 50, R$ 390) e Alta-costura (acima de 50, sob consulta), implantação de R$ 3.000 nos quatro. O "Padrão" (R$ 900) saiu: no lugar entra o card **Modelo pronto** (Grátis, Essencial R$ 39, Completo R$ 79, Ilimitado R$ 139), marcado como "Em breve" com lista de espera. Título de Planos: "Do primeiro cliente à alta-costura". Planos com **abas** Modelo pronto / Sob medida, cada uma com os quatro planos e os valores nos cards (fundador calculado em cada card do sob medida)
+- Planos: tabela "Uma vez, e todo mês" por plano (com a coluna Fundador), calculadora só do sob medida (mostra o nome do plano), FAQ, página `/fundador`, slide de investimento da `/proposta`, contrato e fatura com o nome do plano (`<<PLANO>>`); proposta do Maxwell como sob medida · Gala
+
 ### Adicionado
 - **Cliente fundador** ([`PRD-008`](../../00-DOCS/01-PRODUTO/PRD-008-cliente-fundador-R00.md)), só no plano Personalizado: faixa carmim no topo do card Personalizado; card claro (branco, borda tinta e sombra carmim, como o cartão de conversa da proposta) entre os três cards e a tabela, com o status de vagas em cima, o −20% no canto direito, o que recebe × o que entrega e o formulário **Quero uma vaga** + **Ver as regras** lado a lado; coluna **Personalizado fundador** com os 20% aplicados na tabela e linha "Como fundador" na calculadora quando o Personalizado está escolhido. Regras num lugar só, `content.founder`
 - **Teste A/B de onde o fundador aparece** em Planos: **card** (card horizontal creme abaixo dos planos) ou **dentro** (linha retrátil dentro do card Personalizado, com "Quero uma vaga" abrindo o modal). Padrão em `founder.planStyle`: **dentro**
