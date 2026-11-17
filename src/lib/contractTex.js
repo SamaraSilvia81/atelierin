@@ -70,6 +70,7 @@ function common({ client, slug, picks, deal: d, fields }, file) {
     TOTAL: money(d.total),
     MENSAL: d.monthly != null ? money(d.monthly) : 'valor a combinar',
     FAIXA: d.tier ? esc(d.tier.label) : 'acima de 50 alunos',
+    PLANO: d.tier ? esc(d.tier.name) : 'Alta-costura',
     VENC: String(picks.dueDay),
     _f: f,
   }
@@ -95,7 +96,8 @@ export function buildContractTex(tpl, ctx) {
     C_NOME_ASSINA: f('cNome') ?? '',
     P_DOC_ASSINA: f('pDoc') ? `CPF/CNPJ ${f('pDoc')}` : 'CPF/CNPJ:',
     C_DOC_ASSINA: f('cDoc') ? `CPF/CNPJ ${f('cDoc')}` : 'CPF/CNPJ:',
-    OPCAO: d.lp ? 'Completo: ambiente Personalizado e landing page' : 'Para começar: ambiente Personalizado',
+    // OPCAO: d.lp ? 'Completo: ambiente Personalizado e landing page' : 'Para começar: ambiente Personalizado',
+    OPCAO: d.lp ? `Completo: ambiente sob medida, plano ${base.PLANO}, e landing page` : `Para começar: ambiente sob medida, plano ${base.PLANO}`,
     IDENTIDADE: basica ? `Identidade básica (${money(client.pricing.identityBasic)})` : 'Monograma, como cortesia',
     TOTAL_EXT: extenso(d.total),
     FORMA: d.n === 1 ? 'à vista, por Pix, na assinatura' : `${d.n} parcelas mensais de ${money(d.installment)}, sem juros, por Pix`,

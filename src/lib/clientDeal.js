@@ -28,7 +28,8 @@ export function compute(client, picks) {
   const lp = picks.offer === 'completo'
   const identityPrice = picks.identity === 'basica' ? P.identityBasic : 0
   const items = [
-    { label: 'Implantação do ambiente Personalizado', value: P.setup },
+    // { label: 'Implantação do ambiente Personalizado', value: P.setup },
+    { label: `Implantação do ambiente sob medida (plano ${tier ? tier.name : content.plans.pricing.overName})`, value: P.setup },
     picks.identity === 'basica'
       ? { label: 'Identidade básica (logo, paleta, tipografia e dois mockups)', value: P.identityBasic }
       : { label: 'Monograma (nome, paleta e ícone com a inicial)', value: 0, was: P.monogram, note: 'cortesia' },
