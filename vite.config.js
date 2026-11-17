@@ -42,5 +42,7 @@ function contractPdf() {
 
 export default defineConfig({
   plugins: [react(), contractPdf()],
+  // yarn dev já abre o navegador na landing
+  server: { open: true },
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
 });
