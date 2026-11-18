@@ -1542,19 +1542,24 @@ h1, h2, h3, p { margin: 0; }
   .poster-body { width: 100%; }
 }
 
-/* 06 · sob medida: preço num bloco carmesim, o que inclui num card claro, o que fica de fora riscado */
+/* sob medida: faixa carmesim horizontal com o preço, o que inclui logo abaixo, o que fica de fora riscado */
 .slide-sobmedida .slide-grid.wrap { width: min(1480px, 100% - 48px); }
-.slide-sobmedida .slide-main h2 { max-width: none; }
-.sm-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; margin-top: 8px; align-items: stretch; }
-.sm-price { display: grid; align-content: space-between; gap: 22px; padding: 30px 34px; border-radius: 4px; background: var(--palette-crimson); color: var(--palette-osso); box-shadow: 12px 12px 0 rgba(0, 0, 0, .55); }
-.sm-price-k { font: 500 13px/1.4 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: rgba(240, 237, 232, .85); }
-.sm-price strong { white-space: nowrap; font: 400 clamp(64px, 6vw, 104px)/.9 var(--font-display); letter-spacing: .01em; }
-.sm-price-sub { padding-top: 16px; border-top: 1px solid rgba(240, 237, 232, .35); font: 500 16px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
-.sm-in { display: grid; gap: 14px; align-content: start; padding: 26px 30px; border: 1px solid var(--palette-tinta); border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); }
+.sm-price { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 8px; padding: 18px 26px; border-radius: 4px; background: var(--palette-crimson); color: var(--palette-osso); }
+.sm-price-k { font: 500 14px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: rgba(240, 237, 232, .9); }
+.sm-price strong { white-space: nowrap; font: 400 clamp(48px, 4.2vw, 68px)/1 var(--font-display); letter-spacing: .01em; }
+.sm-price-sub { margin-left: auto; font: 500 15px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.sm-in { display: grid; gap: 14px; align-content: start; padding: 26px 30px; border: 1px solid var(--palette-tinta); border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); box-shadow: 12px 12px 0 rgba(0, 0, 0, .55); }
+.slide[data-theme="light"] .sm-in { box-shadow: 12px 12px 0 var(--palette-tinta); }
 .sm-in h3 { font: 400 clamp(30px, 2.8vw, 42px)/1 var(--font-display); text-transform: uppercase; }
-.sm-in ul { display: grid; }
+.sm-in ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
 .sm-in li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px dashed var(--palette-borda-clara); font-size: 18px; line-height: 1.45; }
 .sm-in li svg { flex: none; margin-top: 3px; color: var(--palette-sangue); }
+.sm-up { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 28px; margin-top: 6px; padding: 16px 18px; border: 1.5px dashed var(--palette-sangue); border-radius: 4px; }
+.sm-up b { font: 500 13px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--palette-sangue); }
+.sm-up p { margin-top: 6px; font-size: 17px; line-height: 1.5; color: var(--palette-tinta-2); max-width: 62ch; }
+.sm-up-v { display: grid; justify-items: end; }
+.sm-up-v strong { font: 400 40px/1 var(--font-display); white-space: nowrap; }
+.sm-up-v small { font: 500 12px/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--palette-poeira-clara); }
 .sm-out { display: grid; gap: 12px; margin-top: 10px; }
 .sm-out-k { font: 500 13px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--acc-text); }
 .sm-out-list { margin-top: 0; }
@@ -1562,7 +1567,27 @@ h1, h2, h3, p { margin: 0; }
 .sm-out p { font-size: 16px; color: var(--text-muted); }
 .sm-close { margin-top: 8px; padding: 18px 22px; border-left: 3px solid var(--acc-text); background: rgba(240, 237, 232, .04); font-size: clamp(18px, 1.6vw, 21px); line-height: 1.6; color: var(--text); max-width: 80ch; }
 .slide[data-theme="light"] .sm-close { background: rgba(26, 15, 15, .04); }
-@media (max-width: 900px) { .sm-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .sm-in ul { grid-template-columns: 1fr; } .sm-price-sub { margin-left: 0; } }
+
+/* cobrança: passos numerados ligados por um alinhavo, painel ao lado e a frase em tarjas */
+.slide-pagamentos .slide-grid.wrap { width: min(1480px, 100% - 48px); }
+.slide-pagamentos .slide-main h2 { max-width: none; }
+.pg-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); margin-top: 8px; }
+.pg-how, .pg-panel { display: grid; gap: 14px; align-content: start; }
+.pg-how ol { position: relative; display: grid; gap: 18px; }
+.pg-how ol::before { content: ""; position: absolute; left: 27px; top: 20px; bottom: 20px; border-left: 2px dashed var(--acc); }
+.pg-how li { position: relative; display: flex; gap: 18px; align-items: center; }
+.pg-how li b { flex: none; display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg); font: 400 28px/1 var(--font-display); }
+.pg-how li:last-child b { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
+.pg-how li span { font-size: 19px; line-height: 1.45; color: var(--text); }
+.pg-panel ul { display: grid; padding: 6px 22px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg-card); }
+.pg-panel li { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px dashed var(--border); font-size: 18px; line-height: 1.45; color: var(--text-sub); }
+.pg-panel li:last-child { border-bottom: 0; }
+.pg-panel li svg { flex: none; margin-top: 3px; color: var(--acc); }
+.pg-lines { margin-top: 14px; }
+.pg-note { display: flex; gap: 10px; align-items: flex-start; padding-top: 16px; border-top: 1px dashed var(--border); font-size: 16px; line-height: 1.55; color: var(--text-muted); max-width: 90ch; }
+.pg-note svg { flex: none; margin-top: 2px; }
+@media (max-width: 900px) { .pg-grid { grid-template-columns: 1fr; } }
 
 /* texto de abertura mais largo em alguns slides */
 .slide.is-wide-text .slide-text { max-width: 70ch; }

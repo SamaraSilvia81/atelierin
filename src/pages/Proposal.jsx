@@ -252,16 +252,20 @@ function Body({ s }) {
   )
   if (s.layout === 'sobmedida') return (
     <>
-      <div className="sm-grid">
-        <div className="sm-price">
-          <span className="sm-price-k">{s.price.label}</span>
-          <strong>{s.price.value}</strong>
-          <span className="sm-price-sub">{s.price.sub}</span>
-        </div>
-        <div className="sm-in" data-theme="light">
-          <h3>{s.includes.title}</h3>
-          <ul>{s.includes.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
-        </div>
+      <div className="sm-price">
+        <span className="sm-price-k">{s.price.label}</span>
+        <strong>{s.price.value}</strong>
+        <span className="sm-price-sub">{s.price.sub}</span>
+      </div>
+      <div className="sm-in" data-theme="light">
+        <h3>{s.includes.title}</h3>
+        <ul>{s.includes.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
+        {s.upgrade && (
+          <div className="sm-up">
+            <div><b>{s.upgrade.label}</b><p>{s.upgrade.text}</p></div>
+            <span className="sm-up-v"><strong>{s.upgrade.value}</strong><small>{s.upgrade.total}</small></span>
+          </div>
+        )}
       </div>
       <div className="sm-out">
         <span className="sm-out-k">{s.excludes.title}</span>
@@ -269,6 +273,22 @@ function Body({ s }) {
         {s.excludes.note && <p>{s.excludes.note}</p>}
       </div>
       {s.closing && <p className="sm-close">{s.closing}</p>}
+    </>
+  )
+  if (s.layout === 'pagamentos') return (
+    <>
+      <div className="pg-grid">
+        <div className="pg-how">
+          <span className="as-get-k">{s.how.title}</span>
+          <ol>{s.how.items.map((it, i) => <li key={it}><b>{String(i + 1).padStart(2, '0')}</b><span>{it}</span></li>)}</ol>
+        </div>
+        <div className="pg-panel">
+          <span className="as-get-k">{s.panel.title}</span>
+          <ul>{s.panel.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
+        </div>
+      </div>
+      <p className="poster-lines pg-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</p>
+      {s.note && <p className="pg-note"><Info size={18} aria-hidden="true" />{s.note}</p>}
     </>
   )
   if (s.layout === 'families') return (

@@ -427,9 +427,47 @@
         "closing": "É um serviço de apoio para começar. Não altera sua família, seu plano ou os recursos disponíveis no Atelierin."
       },
       {
+        "kicker": "cobrança",
+        "layout": "pagamentos",
+        "theme": "light",
+        "deco": "band",
+        "title": "Seus clientes pagam direto a você.",
+        "accent": "direto a você.",
+        "accentMode": "text",
+        "textWide": true,
+        "text": [
+          "O Atelierin organiza o acompanhamento dos pagamentos, mas não recebe nem retém o dinheiro dos seus clientes. Eles pagam diretamente a você, pelo Pix ou pelo meio que você já utiliza."
+        ],
+        "how": {
+          "title": "Como funciona",
+          "items": [
+            "Você informa os dados de pagamento que utiliza.",
+            "Seu cliente realiza o pagamento diretamente para você.",
+            "Você confere o recebimento e atualiza o status no Atelierin.",
+            "O painel reúne quem está em dia, quem está pendente e quem está atrasado."
+          ]
+        },
+        "panel": {
+          "title": "No seu painel financeiro",
+          "items": [
+            "Situação de cada cliente.",
+            "Vencimentos e histórico de pagamentos.",
+            "Registro de valores recebidos.",
+            "Anexos de comprovantes.",
+            "Visão geral dos valores do período."
+          ]
+        },
+        "lines": [
+          "O dinheiro não passa pelo Atelierin.",
+          "A relação financeira continua",
+          "entre você e seu cliente."
+        ],
+        "note": "Recursos de confirmação automática ou integração bancária dependem do plano e da disponibilidade da integração. Taxas cobradas por provedores externos, quando houver, são informadas separadamente."
+      },
+      {
         "kicker": "sob medida",
         "layout": "sobmedida",
-        "theme": "light",
+        "theme": "dark",
         "deco": "band",
         "title": "Sua marca no seu ambiente.",
         "accent": "no seu ambiente.",
@@ -445,7 +483,7 @@
         "includes": {
           "title": "Inclui",
           "items": [
-            "Aplicação da identidade visual que você já possui: logo, cores e tipografia.",
+            "Aplicação da sua identidade visual (logo, cores e tipografia) ou criação de um monograma, se você ainda não tiver.",
             "Subdomínio personalizado: nome.atelierin.com.br.",
             "Configuração de e-mails com a identidade do negócio.",
             "Configuração das funcionalidades já disponíveis no modelo contratado.",
@@ -455,7 +493,7 @@
         "excludes": {
           "title": "O que não está incluído",
           "items": [
-            "Criação de uma identidade visual do zero",
+            "Logotipo e identidade completa (à parte)",
             "Desenvolvimento de funcionalidades novas ou exclusivas",
             "Landing page completa",
             "Domínio próprio fora do subdomínio Atelierin",
@@ -465,7 +503,13 @@
         },
         "closing": "A personalização muda a apresentação do seu ambiente, não o plano contratado. Se você estiver na Estrutura, continua na Estrutura; o portal externo continua sendo exclusivo da família Relacionamento.",
         "tag": "sob medida",
-        "textWide": true
+        "textWide": true,
+        "upgrade": {
+          "label": "Quer um logo?",
+          "text": "Troque o monograma por uma identidade básica: logotipo simples, paleta, tipografia, dois mockups e duas rodadas de ajustes.",
+          "value": "+ R$ 400",
+          "total": "total R$ 1.900"
+        }
       },
       {
         "kicker": "sem marca ainda",
@@ -516,7 +560,7 @@
         },
         "points": [],
         "complete": "Quer uma identidade completa, com manual, aplicações e papelaria? É outro projeto, com orçamento próprio.",
-        "theme": "dark"
+        "theme": "light"
       },
       {
         "kicker": "manutenção",
@@ -532,19 +576,6 @@
         "accent": "no ar",
         "deco": "mark",
         "theme": "dark"
-      },
-      {
-        "kicker": "cobrança",
-        "title": "O dinheiro vai direto para você",
-        "text": "Seus alunos pagam para você, pelo Pix que você já usa. No painel financeiro você marca quem pagou e vê de uma vez quem está em dia, pendente ou atrasado. O dinheiro não passa pela plataforma.",
-        "points": [
-          "Sem intermediário no pagamento",
-          "Status por pessoa: em dia, pendente, atrasado",
-          "Integração bancária automática pode entrar depois, sob orçamento"
-        ],
-        "accent": "direto para você",
-        "deco": "stitch",
-        "theme": "light"
       },
       {
         "kicker": "investimento",
