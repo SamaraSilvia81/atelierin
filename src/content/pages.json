@@ -675,24 +675,24 @@
         "kicker": "prazos e contrato",
         "title": "Prazo combinado, contrato assinado",
         "accent": "Prazo combinado",
-        "layout": "terms",
+        "layout": "contrato",
         "deco": "tape",
         "text": "Tudo começa com uma conversa e só segue com contrato assinado. Cada etapa tem prazo e reunião marcados, e os dois lados se comprometem com eles.",
         "terms": [
+          [
+            "Sob medida",
+            "1 a 4 semanas",
+            "depende do que for personalizado"
+          ],
           [
             "Landing page",
             "3 dias úteis",
             "pode chegar a 5"
           ],
           [
-            "Ambiente sob medida",
-            "1 a 4 semanas",
-            "depende do que for personalizado"
-          ],
-          [
-            "Identidade visual",
-            "combinado na proposta",
-            "conforme a opção"
+            "Logo",
+            "na proposta",
+            "combinado conforme a opção"
           ]
         ],
         "meetings": [
@@ -709,7 +709,15 @@
         ],
         "notice": "Trabalho com prazo combinado e respeito dos dois lados. Se a ideia é ter tudo pra ontem, eu não sou a pessoa certa, e tudo bem. Pressa costuma sair caro para quem pede e para quem faz.",
         "points": [],
-        "theme": "dark"
+        "theme": "dark",
+        "lead": "como a gente trabalha",
+        "titleAccentLine": "Prazo combinado,",
+        "titleLines": [
+          "contrato assinado."
+        ],
+        "meetingsTitle": "reuniões",
+        "contractTitle": "O que ele garante",
+        "noticeTitle": "Sem pressa"
       },
       {
         "kicker": "se quiser sair",
@@ -741,7 +749,21 @@
             ]
           }
         ],
-        "highlight": "Seus dados são seus. O acesso ao sistema depende da licença ativa."
+        "highlight": "Seus dados são seus. O acesso ao sistema depende da licença ativa.",
+        "layout": "sair",
+        "lead": "sem amarras",
+        "titleLines": [
+          "Se um dia"
+        ],
+        "titleAccentLine": "quiser encerrar.",
+        "giant": [
+          "30",
+          "dias de aviso"
+        ],
+        "lines": [
+          "Seus dados são seus.",
+          "O acesso ao sistema depende da licença ativa."
+        ]
       },
       {
         "kicker": "próximo passo",

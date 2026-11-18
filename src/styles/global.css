@@ -1808,6 +1808,66 @@ h1, h2, h3, p { margin: 0; }
   .sd-grid { grid-template-columns: 1fr; }
 }
 
+/* slides escuros do fim (11 prazos e contrato, 12 se quiser sair) */
+.slide.slide-dk { display: block; padding: clamp(40px, 6vh, 64px) clamp(24px, 5vw, 96px) clamp(56px, 8vh, 88px); background: #100D0D; color: var(--palette-osso); }
+.slide-dk > * { position: relative; z-index: 1; }
+.slide-dk .pn-top { color: rgba(240, 237, 232, .6); }
+.slide-dk .pn-top b { color: var(--palette-crimson); }
+.slide-dk .pn-rule { border-top-color: rgba(240, 237, 232, .8); }
+.slide-dk .pn-rule i { background: var(--palette-osso); }
+.slide-dk .pn-kick { color: var(--palette-crimson); }
+.dk-title { display: grid; margin-top: 14px; font-size: clamp(64px, 6.2vw, 112px); line-height: .86; color: var(--palette-osso); }
+.dk-title em { font-style: normal; color: var(--palette-crimson); }
+.dk-p { margin-top: 20px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: rgba(240, 237, 232, .82); max-width: 60ch; }
+/* 11 */
+.ct-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(40px, 6vw, 110px); align-items: start; margin-top: clamp(36px, 5vh, 56px); }
+.ct-terms { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 30px; border-top: 1px solid rgba(240, 237, 232, .35); }
+.ct-terms div { padding: 18px 18px 0 0; }
+.ct-terms div + div { padding-left: 18px; border-left: 1px dashed rgba(240, 237, 232, .2); }
+.ct-terms strong { display: block; font: 400 clamp(36px, 3.2vw, 52px)/.9 var(--font-display); color: var(--palette-osso); }
+.ct-terms span { display: block; margin-top: 10px; font: 500 11px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: rgba(240, 237, 232, .6); }
+.ct-terms small { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: rgba(240, 237, 232, .6); }
+.ct-meet { margin-top: 30px; }
+.ct-meet ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 14px; }
+.ct-meet li { font-size: clamp(15px, 1.15vw, 17px); line-height: 1.45; color: rgba(240, 237, 232, .9); }
+.ct-meet li b { display: block; margin-bottom: 6px; font: 400 34px/1 var(--font-display); color: var(--palette-crimson); }
+.ct-paper { padding: 30px 34px 28px; border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); box-shadow: 12px 12px 0 var(--palette-crimson); rotate: 1.2deg; }
+.ct-paper-k { display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1.5px solid var(--palette-tinta); font: 500 11.5px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--palette-tinta-2); }
+.ct-paper h3 { margin-top: 18px; font: 400 clamp(36px, 3vw, 48px)/.9 var(--font-display); text-transform: uppercase; }
+.ct-paper ul { margin-top: 14px; }
+.ct-paper li { display: grid; grid-template-columns: 26px 1fr; padding: 11px 0; border-bottom: 1px dashed var(--palette-borda-clara); font-size: clamp(15px, 1.15vw, 17px); line-height: 1.45; }
+.ct-paper li::before { content: "✓"; font-weight: 700; color: var(--palette-crimson); }
+.ct-sig { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.ct-sig i { display: block; height: 38px; font: italic 400 28px/38px Georgia, serif; color: var(--palette-sangue); }
+.ct-sig span { display: block; padding-top: 8px; border-top: 1px solid var(--palette-tinta); font: 500 10.5px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--palette-tinta-2); }
+.ct-notice { display: flex; gap: 22px; align-items: center; margin-top: clamp(40px, 6vh, 64px); padding-top: 20px; border-top: 1px solid rgba(240, 237, 232, .25); }
+.ct-notice b { flex: none; font: 400 clamp(30px, 2.6vw, 40px)/1 var(--font-display); text-transform: uppercase; color: var(--palette-crimson); }
+.ct-notice p { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.55; font-style: italic; color: rgba(240, 237, 232, .85); }
+/* 12 */
+.sr-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(40px, 5vw, 96px); align-items: start; margin-top: clamp(28px, 4vh, 44px); }
+.sr-giant { display: grid; font-family: var(--font-display); text-transform: uppercase; line-height: .8; }
+.sr-giant span { font-size: clamp(220px, 21vw, 380px); color: var(--palette-crimson); margin-left: -.03em; }
+.sr-giant small { margin-top: 10px; font-size: clamp(64px, 6.6vw, 120px); color: var(--palette-osso); }
+.sr-lines { margin-top: clamp(36px, 6vh, 64px); }
+.slide-sair .poster-lines span { background: var(--palette-osso); color: var(--palette-tinta); }
+.slide-sair .poster-lines span.is-acc { background: var(--palette-crimson); color: var(--palette-osso); }
+.sr-pts { margin-top: 22px; border-top: 1px solid rgba(240, 237, 232, .35); }
+.sr-pts li { display: grid; grid-template-columns: 38px 1fr; padding: 12px 0; border-bottom: 1px dashed rgba(240, 237, 232, .18); font-size: clamp(15px, 1.2vw, 17px); line-height: 1.45; }
+.sr-pts b { font: 400 24px/1.05 var(--font-display); color: var(--palette-crimson); }
+.sr-cols { display: grid; grid-template-columns: 1fr 1fr; margin-top: clamp(40px, 6vh, 64px); border-top: 1px solid rgba(240, 237, 232, .25); }
+.sr-col { padding: 22px 36px 0 0; }
+.sr-col + .sr-col { padding-left: 36px; border-left: 1px dashed rgba(240, 237, 232, .2); }
+.sr-col h3 { font: 400 clamp(30px, 2.4vw, 38px)/1 var(--font-display); text-transform: uppercase; color: var(--palette-osso); }
+.sr-col p { margin-top: 10px; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.6; color: rgba(240, 237, 232, .78); }
+@media (max-width: 1000px) {
+  .ct-grid, .sr-grid, .sr-cols { grid-template-columns: 1fr; }
+  .ct-paper { rotate: none; }
+  .ct-meet ol, .ct-terms { grid-template-columns: 1fr; }
+  .ct-terms div + div { padding-left: 0; border-left: 0; }
+  .sr-col + .sr-col { padding-left: 0; border-left: 0; }
+  .ct-notice { flex-direction: column; align-items: flex-start; }
+}
+
 /* texto de abertura mais largo em alguns slides */
 .slide.is-wide-text .slide-text { max-width: 70ch; }
 .slide-assistida .slide-grid.wrap { width: min(1480px, 100% - 48px); }

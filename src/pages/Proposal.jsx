@@ -354,6 +354,76 @@ function SobDetalhe({ s, n, total }) {
   )
 }
 
+// Moldura simples (número + fita métrica) para os slides escuros do fim
+function Frame({ n, total, kicker }) {
+  return (
+    <div className="dk-frame">
+      <div className="pn-top"><span><b>{n}</b> / {total} — {kicker}</span><span>proposta comercial</span></div>
+      <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
+    </div>
+  )
+}
+
+// Prazos e contrato: prazos em números grandes, reuniões, e o contrato como uma folha
+function ContratoSlide({ s, n, total }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme="dark" className="section slide slide-dk slide-contrato">
+      <Frame n={n} total={total} kicker={s.kicker} />
+      <div className="ct-grid">
+        <div className="ct-left" data-reveal>
+          {s.lead && <p className="pn-kick">› {s.lead}</p>}
+          <h2 className="display dk-title"><em>{s.titleAccentLine}</em>{s.titleLines.map((l) => <span key={l}>{l}</span>)}</h2>
+          <p className="dk-p">{s.text}</p>
+          <div className="ct-terms">{s.terms.map(([a, b, c]) => (
+            <div key={a}><strong>{b}</strong><span>{a}</span><small>{c}</small></div>
+          ))}</div>
+          <div className="ct-meet">
+            <span className="pn-kick">{s.meetingsTitle}</span>
+            <ol>{s.meetings.map((m, i) => <li key={m}><b>{String(i + 1).padStart(2, '0')}</b>{m}</li>)}</ol>
+          </div>
+        </div>
+        <div className="ct-paper" data-theme="light" data-reveal aria-label="Exemplo do que o contrato garante">
+          <div className="ct-paper-k"><span>contrato</span><span>atelierin · 2026</span></div>
+          <h3>{s.contractTitle}</h3>
+          <ul>{s.contract.map((c) => <li key={c}>{c}</li>)}</ul>
+          <div className="ct-sig"><div><i>Atelierin</i><span>contratada</span></div><div><i /><span>você</span></div></div>
+        </div>
+      </div>
+      {s.notice && <div className="ct-notice" data-reveal><b>{s.noticeTitle}</b><p>{s.notice}</p></div>}
+    </section>
+  )
+}
+
+// Se quiser sair: número gigante (30 dias), pontos à direita, tarjas e duas colunas de condições
+function SairSlide({ s, n, total }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme="dark" className="section slide slide-dk slide-sair">
+      <Frame n={n} total={total} kicker={s.kicker} />
+      <div className="sr-grid">
+        <div className="sr-left" data-reveal>
+          <p className="sr-giant" aria-hidden="true"><span>{s.giant[0]}</span><small>{s.giant[1]}</small></p>
+          <p className="poster-lines sr-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</p>
+        </div>
+        <div className="sr-right" data-reveal>
+          {s.lead && <p className="pn-kick">› {s.lead}</p>}
+          <h2 className="display dk-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}<em>{s.titleAccentLine}</em></h2>
+          <p className="dk-p">{s.text}</p>
+          <ol className="sr-pts">{s.points.map((pt, i) => <li key={pt}><b>{String(i + 1).padStart(2, '0')}</b>{pt}</li>)}</ol>
+        </div>
+      </div>
+      <div className="sr-cols" data-reveal>
+        {s.blocks.map((b) => (
+          <div key={b.title} className="sr-col">
+            <h3>{b.title}</h3>
+            {b.text && b.text.map((x) => <p key={x}>{x}</p>)}
+            {b.items && b.items.map((x) => <p key={x}>{x}</p>)}
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -757,6 +827,8 @@ export default function Proposal({ client, slug }) {
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'contrato') return <ContratoSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'sair') return <SairSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'sobdetalhe') return <SobDetalhe key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'escada') return <EscadaSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'menu') return <MenuSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
