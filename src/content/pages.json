@@ -444,9 +444,9 @@
       },
       {
         "kicker": "cobrança",
-        "layout": "pagamentos",
+        "layout": "cobranca",
         "theme": "light",
-        "deco": "band",
+        "deco": "none",
         "title": "Seus clientes pagam direto a você.",
         "accent": "direto a você.",
         "accentMode": "text",
@@ -478,7 +478,77 @@
           "entre você e seu cliente."
         ],
         "note": "Nesta versão do Atelierin, o acompanhamento é manual: você confere o recebimento e atualiza o status. A integração bancária, com confirmação automática dos pagamentos, ainda não está disponível. Quando estiver, ela fará parte dos planos que já incluem esse recurso, sem custo adicional na assinatura. Taxas cobradas por provedores externos, quando houver, são informadas separadamente.",
-        "accentBreak": true
+        "accentBreak": true,
+        "lead": "o dinheiro é seu",
+        "titleLines": [
+          "Seus clientes pagam"
+        ],
+        "titleAccentLine": "direto a você.",
+        "dash": {
+          "title": "painel financeiro · novembro",
+          "count": "5 clientes",
+          "summary": [
+            [
+              "ok",
+              "em dia",
+              "3"
+            ],
+            [
+              "pe",
+              "pendente",
+              "1"
+            ],
+            [
+              "at",
+              "atrasado",
+              "1"
+            ]
+          ],
+          "cols": [
+            "Cliente",
+            "Vencimento",
+            "Valor",
+            "Situação",
+            ""
+          ],
+          "rows": [
+            [
+              "Ana Ribeiro",
+              "05/11",
+              "R$ 180",
+              "ok"
+            ],
+            [
+              "Bruno Lima",
+              "05/11",
+              "R$ 180",
+              "ok"
+            ],
+            [
+              "Carla Souza",
+              "10/11",
+              "R$ 240",
+              "ok"
+            ],
+            [
+              "Diego Alves",
+              "20/11",
+              "R$ 180",
+              "pe"
+            ],
+            [
+              "Elisa Costa",
+              "01/11",
+              "R$ 240",
+              "at"
+            ]
+          ],
+          "total": [
+            "Recebido no período",
+            "R$ 600 de R$ 1.020"
+          ],
+          "caption": "ilustração · nomes e valores fictícios"
+        }
       },
       {
         "kicker": "sob medida",
