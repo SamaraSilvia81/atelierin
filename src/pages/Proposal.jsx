@@ -286,7 +286,7 @@ function MenuSlide({ s, n, total }) {
 // Cobrança em carmim cheio: texto e tarjas à esquerda, passos em escada subindo da base à direita
 function EscadaSlide({ s, n, total }) {
   return (
-    <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-escada">
+    <section id={`slide-${Number(n)}`} data-theme="dark" className="section slide slide-escada">
       <div className="es-frame">
         <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
         <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
