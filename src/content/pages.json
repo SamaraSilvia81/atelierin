@@ -558,20 +558,34 @@
       },
       {
         "kicker": "sob medida",
-        "layout": "sobmedida2",
-        "theme": "dark",
-        "deco": "none",
-        "title": "Sua marca no seu ambiente.",
-        "accent": "no seu ambiente.",
-        "accentMode": "text",
-        "text": [
-          "O Atelierin pode ser utilizado com a apresentação padrão da plataforma ou receber uma personalização visual com a identidade do seu negócio. O serviço Sob medida é opcional: ele adapta a aparência e configura o ambiente, sem criar um sistema separado."
+        "poster": true,
+        "theme": "light",
+        "giant": [
+          "SOB",
+          "MEDIDA"
+        ],
+        "giantAccent": 1,
+        "lines": [
+          "Sua marca",
+          "no seu ambiente."
         ],
         "price": {
-          "label": "Serviço opcional · pagamento único",
-          "value": "R$ 1.500",
-          "sub": "em até 5x de R$ 300"
+          "label": "pagamento único",
+          "value": "R$ 950",
+          "sub": "em até 5x de R$ 190"
         },
+        "text": "O Atelierin pode ser utilizado com a apresentação padrão da plataforma ou receber uma personalização visual com a identidade do seu negócio. Ele adapta a aparência e configura o ambiente, sem criar um sistema separado."
+      },
+      {
+        "kicker": "sob medida · detalhes",
+        "layout": "sobdetalhe",
+        "theme": "light",
+        "lead": "sob medida",
+        "titleLines": [
+          "O que entra"
+        ],
+        "titleAccentLine": "nos R$ 950.",
+        "aside": "A personalização muda a apresentação do seu ambiente, não o plano contratado. Se você estiver na Estrutura, continua na Estrutura; o portal externo continua sendo exclusivo da família Relacionamento.",
         "includes": {
           "title": "Inclui",
           "items": [
@@ -592,14 +606,12 @@
           ],
           "note": "Esses itens podem ser avaliados e contratados separadamente, quando disponíveis."
         },
-        "closing": "A personalização muda a apresentação do seu ambiente, não o plano contratado. Se você estiver na Estrutura, continua na Estrutura; o portal externo continua sendo exclusivo da família Relacionamento.",
-        "tag": "sob medida",
-        "textWide": true,
         "upgrade": {
           "label": "Quer um logo?",
           "text": "Troque o monograma por uma identidade básica: logotipo simples, paleta, tipografia, dois mockups e duas rodadas de ajustes.",
-          "value": "+ R$ 400",
-          "total": "total R$ 1.900"
+          "value": "+ R$ 100",
+          "total": "total R$ 1.050",
+          "kicker": "opcional"
         },
         "inpi": "Registro no INPI não incluso: a taxa oficial é paga por você, diretamente ao INPI. Se quiser, eu acompanho o pedido como serviço à parte.",
         "inpiLink": {

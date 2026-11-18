@@ -80,13 +80,19 @@ function EnvDiagram({ e }) {
 function Poster({ s, n, total }) {
   return (
     <section id={`slide-${Number(n)}`} data-theme={s.theme || 'light'} className="section slide slide-poster" aria-label={s.kicker}>
-      <div className="poster-giant" aria-hidden="true">
-        {s.giant.map((g) => <span key={g}>{g.endsWith('?') ? <>{g.slice(0, -1)}<em>?</em></> : g}</span>)}
+      <div className="poster-giant" aria-hidden="true" style={{ '--gl': Math.max(...s.giant.map((g) => g.length)) }}>
+        {s.giant.map((g, i) => <span key={g}>{i === s.giantAccent ? <em>{g}</em> : g.endsWith('?') ? <>{g.slice(0, -1)}<em>?</em></> : g}</span>)}
       </div>
       <div className="wrap poster" data-reveal>
         <span className="interlude-k"><b>{n}</b>/{total} · {s.kicker}</span>
         <div className="poster-body">
           <h2 className="poster-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</h2>
+          {s.price && (
+            <div className="poster-price">
+              <strong>{s.price.value}</strong>
+              <span><small>{s.price.label}</small>{s.price.sub}</span>
+            </div>
+          )}
           {s.text && <p className="poster-text">{s.text}</p>}
         </div>
       </div>
@@ -312,6 +318,47 @@ function EscadaSlide({ s, n, total }) {
             </li>
           ))}
         </ol>
+      </div>
+    </section>
+  )
+}
+
+// Detalhes do Sob medida: título largo, frase ao lado e três colunas (inclui, não inclui, logo)
+function SobDetalhe({ s, n, total }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-sobdet">
+      <div className="sd-wrap">
+        <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
+        <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
+        <div className="sd-head" data-reveal>
+          <div>
+            {s.lead && <p className="pn-kick">› {s.lead}</p>}
+            <h2 className="display pn-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}<em>{s.titleAccentLine}</em></h2>
+          </div>
+          {s.aside && <p className="sd-aside">{s.aside}</p>}
+        </div>
+        <div className="sd-cols" data-reveal>
+          <div className="sd-col">
+            <h3>{s.includes.title}</h3>
+            <ol className="sd-in">{s.includes.items.map((it, i) => <li key={it}><b>{String(i + 1).padStart(2, '0')}</b><span>{it}</span></li>)}</ol>
+          </div>
+          <div className="sd-col">
+            <h3>Não inclui</h3>
+            <ul className="sd-out">{s.excludes.items.map((it) => <li key={it}>{it}</li>)}</ul>
+            {s.excludes.note && <p className="sd-sm">{s.excludes.note}</p>}
+            {s.inpi && <p className="sd-sm sd-inpi">{s.inpi}{s.inpiLink && <> <a href={s.inpiLink.href} target="_blank" rel="noreferrer">{s.inpiLink.label} ↗</a></>}</p>}
+          </div>
+          {s.upgrade && (
+            <div className="sd-col sd-logo">
+              {s.upgrade.kicker && <span className="sd-k">{s.upgrade.kicker}</span>}
+              <h3>{s.upgrade.label}</h3>
+              <p>{s.upgrade.text}</p>
+              <strong>{s.upgrade.value}</strong>
+              <span className="sd-k">{s.upgrade.total}</span>
+            </div>
+          )}
+        </div>
+        <div className="pn-foot sd-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
       </div>
     </section>
   )
@@ -720,6 +767,7 @@ export default function Proposal({ client, slug }) {
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'sobdetalhe') return <SobDetalhe key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'escada') return <EscadaSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'menu') return <MenuSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'panels') return <PanelsSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
