@@ -2726,7 +2726,7 @@ h1, h2, h3, p { margin: 0; }
 .db-agree button.is-on { background: var(--palette-crimson); border-color: var(--palette-crimson); }
 .db-agree button.is-off { background: var(--palette-osso); color: var(--palette-tinta); }
 .db-contract { display: inline-flex; justify-content: center; align-items: center; gap: 10px; width: 100%; margin-top: 6px; padding: 14px; border: 0; border-radius: 4px; background: var(--palette-osso); color: var(--palette-tinta); font: 500 12.5px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
-.db-modal { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px; background: rgba(8, 6, 6, .72); backdrop-filter: blur(3px); }
+.db-modal { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; padding: 24px; background: rgba(8, 6, 6, .72); backdrop-filter: blur(3px); }
 .db-modal-box { width: min(760px, 100%); max-height: calc(100vh - 48px); overflow: auto; padding: 26px 28px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg); color: var(--text); box-shadow: 14px 14px 0 var(--acc); }
 .db-modal-box header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .db-modal-box header h3 { margin-top: 8px; font-size: 44px; line-height: .9; }
@@ -2749,15 +2749,19 @@ h1, h2, h3, p { margin: 0; }
 .db-client { display: grid; gap: 6px; max-width: 420px; margin-top: 18px; font: 500 12px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
 .db-client input { padding: 11px 13px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card, #fff); color: var(--text); font: 16px var(--font-body); letter-spacing: 0; text-transform: none; }
 .s-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-.s-cta.s-cta-dev { border: 1.5px dashed currentColor; background: transparent; cursor: pointer; }
+.page-proposal .s-cta.s-cta-dev, .s-cta.s-cta-dev { border: 1.5px dashed var(--palette-tinta); background: var(--palette-osso); color: var(--palette-tinta); cursor: pointer; }
+.page-proposal .s-cta.s-cta-dev svg { color: var(--palette-tinta); }
 
 /* canetinha (só local) */
 .devpen-cv { position: absolute; top: 0; left: 0; z-index: 900; width: 100%; pointer-events: none; touch-action: none; }
 .devpen-cv.is-on { pointer-events: auto; cursor: crosshair; }
-.devpen-bar { position: fixed; left: 16px; bottom: 16px; z-index: 950; display: flex; align-items: center; gap: 6px; padding: 6px; border: 1px solid #1A0F0F; border-radius: 6px; background: #FDFAF7; box-shadow: 4px 4px 0 #1A0F0F; }
+.devpen-bar { position: fixed; top: 84px; left: 50%; translate: -50% 0; z-index: 950; display: flex; align-items: center; gap: 6px; padding: 6px; border: 1px solid #1A0F0F; border-radius: 6px; background: #FDFAF7; box-shadow: 4px 4px 0 #1A0F0F; }
 .devpen-bar button { display: inline-grid; place-items: center; min-width: 34px; height: 34px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: #1A0F0F; cursor: pointer; }
 .devpen-toggle { display: inline-flex !important; gap: 6px; padding: 0 10px; font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .devpen-toggle.is-on { background: #1A0F0F !important; color: #F0EDE8 !important; }
 .devpen-dot::after { content: ""; width: 18px; height: 18px; border-radius: 50%; background: var(--c); }
 .devpen-bar button.is-on { border-color: #1A0F0F; }
 .devpen-size i { display: block; border-radius: 50%; background: #1A0F0F; }
+
+.devpen-k { padding: 0 8px; font: 500 10.5px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: #7A5A5A; }
+.db-party { margin-top: 18px; }

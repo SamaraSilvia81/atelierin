@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
-import { Check, FileText, Printer, X } from '@phosphor-icons/react'
+import { createPortal } from 'react-dom'
+import { Check, FileText, X } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 
@@ -53,6 +54,7 @@ function useCatalog() {
 
 export default function DealBuilder({ onClose }) {
   const [clientName, setClientName] = useState('')
+  const [party, setParty] = useState({})
   const client = { name: clientName || 'cliente', contract: { number: `AT-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`, provider: { name: 'Samara Silvia Sabino', email: 'contato@atelierin.com.br' } } }
   const C = useCatalog()
   const [famId, setFam] = useState('relacionamento')
@@ -67,7 +69,6 @@ export default function DealBuilder({ onClose }) {
   const [logo, setLogo] = useState(false)
   const [lp, setLp] = useState(false)
   const [agree, setAgree] = useState(null)
-  const [open, setOpen] = useState(false)
 
   const pickFam = (id) => { setFam(id); const nf = C.fams.find((f) => f.id === id); setPlan(nf.plans[0].name); setExtra(0) }
 
@@ -88,18 +89,23 @@ export default function DealBuilder({ onClose }) {
     extra > 0 && { label: `${extra} conta${extra > 1 ? 's' : ''} externa${extra > 1 ? 's' : ''} adicional${extra > 1 ? 'is' : ''} × ${brl(extraUnit)}`, value: extra * extraUnit, per: 'por mês' },
   ].filter(Boolean)
 
-  const summary = { client, F, plan, b, lines, monthly, period, once, onceTotal, year1, agree }
+  const summary = { client, F, plan, b, lines, monthly, period, once, onceTotal, year1, agree, party: { ...party, cNome: clientName } }
 
-  return (
+  return createPortal(
     <div className="db-modal" role="dialog" aria-modal="true" aria-label="Montar contrato" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="db-modal-box db-big-box" data-theme="light">
         <header>
           <div><p className="pn-kick">› só no localhost</p><h3 className="display">Montar contrato</h3></div>
           <button type="button" onClick={onClose} aria-label="Fechar"><X size={22} /></button>
         </header>
-        <label className="db-client"><span>Cliente</span><input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder="Nome do cliente" /></label>
+        <div className="db-modal-grid db-party">
+          <label><span>Nome do cliente</span><input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder="Ex.: Maxwell Souza" /></label>
+          {FIELDS.slice(1).map(([k, label]) => (
+            <label key={k}><span>{label}</span><input value={party[k] ?? ''} onChange={(e) => setParty((o) => ({ ...o, [k]: e.target.value }))} placeholder="em branco vira linha para preencher à mão" /></label>
+          ))}
+        </div>
         <div className="db-grid">
-          <div className="db-form" data-reveal>
+          <div className="db-form">
             <Seg label="Família" value={famId} onChange={pickFam} options={C.fams.map((f) => ({ value: f.id, label: f.label, sub: f.id === 'estrutura' ? 'sem portal' : 'com portal' }))} />
             <Seg label="Plano" value={plan.name} onChange={setPlan} options={F.plans.map((p) => ({ value: p.name, label: p.name, sub: `${brl(p.price)}/mês · ${p.cap}` }))} />
             <Seg label="Cobrança" value={bid} onChange={setBid} options={F.billing.map((x) => ({ value: x.id, label: x.label }))} />
@@ -121,7 +127,7 @@ export default function DealBuilder({ onClose }) {
             </div>
           </div>
 
-          <aside className="db-sum" data-reveal aria-live="polite">
+          <aside className="db-sum" aria-live="polite">
             <p className="db-sum-k">resumo</p>
             <div className="db-sum-plan"><span>{F.label}</span><strong>{plan.name}</strong></div>
             <ul>
@@ -143,26 +149,25 @@ export default function DealBuilder({ onClose }) {
               <button type="button" className={agree === false ? 'is-off' : ''} onClick={() => { play('click'); setAgree(false) }}><X size={16} aria-hidden="true" /> Ainda não</button>
             </div>
             {agree === false && <p className="db-note">Sem problema. Me diz o que você mudaria e a gente ajusta.</p>}
-            <button type="button" className="db-contract" onClick={() => { play('click'); setOpen(true) }}><FileText size={20} aria-hidden="true" /> Ver contrato</button>
+            <button type="button" className="db-contract" onClick={() => { play('click'); printContract(summary) }}><FileText size={20} aria-hidden="true" /> Gerar contrato</button>
           </aside>
         </div>
       </div>
-      {open && <Term s={summary} onClose={() => setOpen(false)} />}
-    </div>
+    </div>,
+    document.body,
   )
 }
 
 const FIELDS = [['cNome', 'Nome completo da contratante'], ['cDoc', 'CPF ou CNPJ da contratante'], ['cEnd', 'Endereço da contratante'], ['cEmail', 'E-mail da contratante']]
 
-function Term({ s, onClose }) {
-  const [f, setF] = useState(() => (s.client.name && s.client.name !== 'cliente' ? { cNome: s.client.name } : {}))
+function printContract(s) {
+  const f = s.party ?? {}
   const C = s.client.contract ?? {}
   const today = new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })
   const esc = (t) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
   const blank = (v, w = 260) => (v && v.trim() ? esc(v.trim()) : `<span style="display:inline-block;width:${w}px;border-bottom:1px solid #1A0F0F"></span>`)
   const row = (l) => `<tr><td>${esc(l.label)}</td><td style="text-align:right;white-space:nowrap">${brl(l.value)}</td></tr>`
 
-  const print = () => {
     const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Contrato ${esc(C.number || '')} · ${esc(s.client.name)}</title>
 <style>body{font:15px/1.6 Georgia,serif;color:#1A0F0F;max-width:760px;margin:40px auto;padding:0 24px}h1{font:600 26px/1.2 Georgia,serif;margin:0 0 4px}h2{font:600 15px/1.3 Georgia;text-transform:uppercase;letter-spacing:.08em;margin:28px 0 8px;color:#8B1410}
 .k{font:12px/1 monospace;letter-spacing:.14em;text-transform:uppercase;color:#7A5A5A}table{width:100%;border-collapse:collapse}td{padding:7px 0;border-bottom:1px dashed #C8B8B0}tfoot td{font-weight:700;border-bottom:0;border-top:1.5px solid #1A0F0F}
@@ -182,25 +187,3 @@ ${s.agree ? `<p class="ok">A contratante declarou estar de acordo com os valores
     if (!w) return
     w.document.write(html); w.document.close()
   }
-
-  return (
-    <div className="db-modal" role="dialog" aria-modal="true" aria-label="Contrato">
-      <div className="db-modal-box" data-theme="light">
-        <header><div><p className="pn-kick">contrato {C.number}</p><h3 className="display">Dados para o contrato</h3></div><button type="button" onClick={onClose} aria-label="Fechar"><X size={20} /></button></header>
-        <div className="db-modal-grid">
-          {FIELDS.map(([k, label]) => (
-            <label key={k}><span>{label}</span><input value={f[k] ?? ''} onChange={(e) => setF((o) => ({ ...o, [k]: e.target.value }))} placeholder="em branco vira linha para preencher à mão" /></label>
-          ))}
-        </div>
-        <div className="db-modal-sum">
-          <span>{s.F.label} · {s.plan.name} · {s.b.label}</span>
-          <span>por mês <b>{brl(s.monthly)}</b></span>
-          {s.onceTotal > 0 && <span>único <b>{brl(s.onceTotal)}</b></span>}
-          <span>1º ano <b>{brl(s.year1)}</b></span>
-          <span>{s.agree === true ? 'de acordo ✓' : s.agree === false ? 'ainda não de acordo' : 'sem resposta ainda'}</span>
-        </div>
-        <footer><button type="button" className="db-contract" onClick={print}><Printer size={18} aria-hidden="true" /> Gerar contrato (imprimir ou salvar PDF)</button></footer>
-      </div>
-    </div>
-  )
-}

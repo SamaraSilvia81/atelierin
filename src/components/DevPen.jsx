@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { PencilSimple, Eraser, ArrowCounterClockwise, Trash, X } from '@phosphor-icons/react'
+import { Eraser, ArrowCounterClockwise, Trash, X } from '@phosphor-icons/react'
 
-// Canetinha: só existe rodando local (yarn dev). Desenha por cima da página
+// Canetinha: só existe rodando local (yarn dev). Tecla H abre e fecha. Desenha por cima da página
 // inteira (os traços ficam presos ao conteúdo quando rola), para apontar e riscar
 // durante a revisão ou a reunião. Nada é salvo: recarregou, limpou.
 const COLORS = [['#C0211C', 'carmim'], ['#1A0F0F', 'preto'], ['#F2C230', 'amarelo'], ['#2F7DE1', 'azul']]
@@ -53,6 +53,8 @@ export default function DevPen() {
     ro.observe(document.body)
     const key = (e) => {
       if (e.key === 'Escape') setOn(false)
+      const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable
+      if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && (e.key === 'h' || e.key === 'H')) { fit(); setOn((v) => !v) }
       if ((e.ctrlKey || e.metaKey) && e.key === 'z' && strokes.current.length) { strokes.current.pop(); draw(); tick((n) => n + 1) }
     }
     window.addEventListener('keydown', key)
@@ -66,24 +68,21 @@ export default function DevPen() {
   return (
     <>
       <canvas ref={cv} className={`devpen-cv ${on ? 'is-on' : ''}`} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} />
-      <div className="devpen-bar" data-theme="light">
-        <button type="button" className={`devpen-toggle ${on ? 'is-on' : ''}`} onClick={() => { fit(); setOn((v) => !v) }} title="Canetinha (Esc sai)">
-          {on ? <X size={18} /> : <PencilSimple size={18} weight="bold" />} {on ? 'sair' : 'canetinha'}
-        </button>
-        {on && (
-          <>
-            {COLORS.map(([c, n]) => (
-              <button key={c} type="button" className={`devpen-dot ${!erase && color === c ? 'is-on' : ''}`} style={{ '--c': c }} title={n} aria-label={n} onClick={() => { setErase(false); setColor(c) }} />
-            ))}
-            {[3, 6, 10].map((s) => (
-              <button key={s} type="button" className={`devpen-size ${size === s ? 'is-on' : ''}`} onClick={() => setSize(s)} aria-label={`espessura ${s}`}><i style={{ width: s + 2, height: s + 2 }} /></button>
-            ))}
-            <button type="button" className={`devpen-ic ${erase ? 'is-on' : ''}`} onClick={() => setErase((v) => !v)} title="Borracha"><Eraser size={18} /></button>
-            <button type="button" className="devpen-ic" onClick={() => { strokes.current.pop(); draw(); tick((n) => n + 1) }} title="Desfazer (Ctrl+Z)"><ArrowCounterClockwise size={18} /></button>
-            <button type="button" className="devpen-ic" onClick={() => { strokes.current = []; draw(); tick((n) => n + 1) }} title="Apagar tudo"><Trash size={18} /></button>
-          </>
-        )}
-      </div>
+      {on && (
+        <div className="devpen-bar" data-theme="light">
+          <span className="devpen-k">canetinha · H fecha</span>
+          {COLORS.map(([c, n]) => (
+            <button key={c} type="button" className={`devpen-dot ${!erase && color === c ? 'is-on' : ''}`} style={{ '--c': c }} title={n} aria-label={n} onClick={() => { setErase(false); setColor(c) }} />
+          ))}
+          {[3, 6, 10].map((s) => (
+            <button key={s} type="button" className={`devpen-size ${size === s ? 'is-on' : ''}`} onClick={() => setSize(s)} aria-label={`espessura ${s}`}><i style={{ width: s + 2, height: s + 2 }} /></button>
+          ))}
+          <button type="button" className={`devpen-ic ${erase ? 'is-on' : ''}`} onClick={() => setErase((v) => !v)} title="Borracha"><Eraser size={18} /></button>
+          <button type="button" className="devpen-ic" onClick={() => { strokes.current.pop(); draw(); tick((n) => n + 1) }} title="Desfazer (Ctrl+Z)"><ArrowCounterClockwise size={18} /></button>
+          <button type="button" className="devpen-ic" onClick={() => { strokes.current = []; draw(); tick((n) => n + 1) }} title="Apagar tudo"><Trash size={18} /></button>
+          <button type="button" className="devpen-ic" onClick={() => setOn(false)} title="Fechar (H)"><X size={18} /></button>
+        </div>
+      )}
     </>
   )
 }
