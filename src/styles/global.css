@@ -1672,7 +1672,9 @@ h1, h2, h3, p { margin: 0; }
 .slide-plans2 .fp-grid { padding-block: clamp(120px, 14vh, 160px) clamp(100px, 12vh, 140px); }
 .slide-plans2 .pn-kick { margin-bottom: -4px; }
 .slide-plans2 .fp-title { flex-direction: column; align-items: flex-start; gap: 20px; }
-.slide-plans2 .fp-title h2 { font-size: clamp(96px, 10vw, 180px); line-height: .84; }
+.slide-plans2 .fp-text { container-type: inline-size; }
+/* título cabe na coluna: palavras longas (RELACIONAMENTO) diminuem, curtas ficam no tamanho cheio */
+.slide-plans2 .fp-title h2 { font-size: min(clamp(96px, 10vw, 180px), calc(100cqi / (var(--len, 9) * .42))); line-height: .84; }
 .slide-plans2 .fp-p { font-size: clamp(17px, 1.35vw, 19px); line-height: 1.62; }
 .fp-stub { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; padding: 20px 26px 22px 22px; border-top: 2px dashed var(--palette-tinta); background: var(--palette-areia, #F2EDE6); color: var(--palette-tinta); }
 .fp-stub::before, .fp-stub::after { content: ''; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--palette-tinta); background: var(--bg); }

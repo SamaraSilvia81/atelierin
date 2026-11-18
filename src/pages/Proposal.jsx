@@ -123,7 +123,7 @@ function PlansSlide({ s, n, total, theme }) {
       <div className="wrap fp-grid" data-reveal>
         <div className="fp-text">
           {s.lead && <p className="pn-kick">› {s.lead}</p>}
-          <div className="fp-title"><h2 className="display">{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
+          <div className="fp-title"><h2 className="display" style={{ '--len': s.title.length }}>{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
           {s.subtitle && <p className="fp-sub">{s.subtitle}</p>}
           {[].concat(s.text ?? []).map((t) => <p key={t} className="fp-p">{t}</p>)}
           {s.sample && (
