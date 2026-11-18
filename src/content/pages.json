@@ -434,7 +434,6 @@
         "title": "Seus clientes pagam direto a você.",
         "accent": "direto a você.",
         "accentMode": "text",
-        "textWide": true,
         "text": [
           "O Atelierin organiza o acompanhamento dos pagamentos, mas não recebe nem retém o dinheiro dos seus clientes. Eles pagam diretamente a você, pelo Pix ou pelo meio que você já utiliza."
         ],
@@ -467,9 +466,9 @@
       },
       {
         "kicker": "sob medida",
-        "layout": "sobmedida",
+        "layout": "sobmedida2",
         "theme": "dark",
-        "deco": "band",
+        "deco": "none",
         "title": "Sua marca no seu ambiente.",
         "accent": "no seu ambiente.",
         "accentMode": "text",
@@ -477,9 +476,9 @@
           "O Atelierin pode ser utilizado com a apresentação padrão da plataforma ou receber uma personalização visual com a identidade do seu negócio. O serviço Sob medida é opcional: ele adapta a aparência e configura o ambiente, sem criar um sistema separado."
         ],
         "price": {
-          "label": "Serviço opcional · personalização do ambiente",
+          "label": "Serviço opcional · pagamento único",
           "value": "R$ 1.500",
-          "sub": "pagamento único · em até 5x de R$ 300"
+          "sub": "em até 5x de R$ 300"
         },
         "includes": {
           "title": "Inclui",

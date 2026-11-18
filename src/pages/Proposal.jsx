@@ -165,6 +165,42 @@ function PlansSlide({ s, n, total, theme }) {
   )
 }
 
+// Sob medida em duas áreas: texto e preço à esquerda, coluna carmesim com o que está incluído
+function SobMedida({ s, n, total, theme }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme={theme} className="section slide slide-sobmedida2">
+      <div className="sm2-left" data-reveal>
+        <div className="sm2-num"><span className="slide-n">{n}<small>/{total}</small></span><p className="label"><b aria-hidden="true">&gt;</b> {s.kicker}</p></div>
+        <Title text={s.title} accent={s.accent} accentMode={s.accentMode} accentBreak tag={s.tag} />
+        {[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
+        <div className="sm2-price">
+          <span className="sm2-price-k">{s.price.label}</span>
+          <strong>{s.price.value}</strong>
+          <span className="sm2-price-sub">{s.price.sub}</span>
+        </div>
+        <div className="sm-out">
+          <span className="sm-out-k">{s.excludes.title}</span>
+          <div className="s-out sm-out-list">{s.excludes.items.map((x) => <i key={x}>{x}</i>)}</div>
+          {s.excludes.note && <p>{s.excludes.note}</p>}
+        </div>
+        {s.closing && <p className="sm-close">{s.closing}</p>}
+      </div>
+      <div className="sm2-col" data-reveal>
+        <h3>{s.includes.title}</h3>
+        <ul>{s.includes.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
+        {s.upgrade && (
+          <div className="sm2-up">
+            <b>{s.upgrade.label}</b>
+            <p>{s.upgrade.text}</p>
+            <span className="sm2-up-v"><strong>{s.upgrade.value}</strong><small>{s.upgrade.total}</small></span>
+          </div>
+        )}
+      </div>
+      <span className="sm2-rest" aria-hidden="true" />
+    </section>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -536,6 +572,7 @@ export default function Proposal({ client, slug }) {
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'sobmedida2') return <SobMedida key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'dark'} />
         if (s.layout === 'plans') return <PlansSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'light'} />
         const n = numOf.get(s.kicker)
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
