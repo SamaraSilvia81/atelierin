@@ -4,6 +4,8 @@ import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
 import FlowMap from '@/components/FlowMap'
 import OfferPicker, { ClientCtx } from '@/components/OfferPicker'
+import DealBuilder from '@/components/DealBuilder'
+import { useState as useLocalState } from 'react'
 
 // Proposta comercial em "slides" que se lê rolando. Cada slide tem um
 // desenho próprio (layout) e um detalhe gráfico (deco), sempre com as peças
@@ -108,7 +110,7 @@ function periodPrice(v, b) {
   const n = Number(m[1].replace(/\./g, '').replace(',', '.'))
   if (!n) return v
   const total = n * b.months * (1 - (b.discount || 0))
-  return `R$ ${total.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}${b.suffix}${v.includes('*') ? '*' : ''}`
+  return `R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: total % 1 ? 2 : 0, maximumFractionDigits: 2 })}${b.suffix}${v.includes('*') ? '*' : ''}`
 }
 
 // Slide de planos de uma família: texto ocupando um lado, uma faixa carmesim
@@ -424,6 +426,17 @@ function SairSlide({ s, n, total }) {
   )
 }
 
+// Só rodando local: abre o modal de montar contrato (DealBuilder)
+function ContractButton() {
+  const [open, setOpen] = useLocalState(false)
+  return (
+    <>
+      <button type="button" className="s-cta s-cta-dev" onClick={() => setOpen(true)}><FileText size={24} aria-hidden="true" /> Montar contrato</button>
+      {open && <DealBuilder onClose={() => setOpen(false)} />}
+    </>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -665,7 +678,10 @@ function Body({ s }) {
     </>
   )
   if (s.layout === 'cta') return (
-    <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="s-cta"><WhatsappLogo size={26} weight="fill" aria-hidden="true" /> {s.cta.label}</a>
+    <div className="s-cta-row">
+      <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="s-cta"><WhatsappLogo size={26} weight="fill" aria-hidden="true" /> {s.cta.label}</a>
+      {import.meta.env.DEV && <ContractButton />}
+    </div>
   )
   return (
     <>

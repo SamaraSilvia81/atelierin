@@ -185,6 +185,7 @@ export default function Plans() {
           </div>
         </div>
 
+        {/* "Sua área ainda não tem linha": escondido por enquanto, a UI vai ser refeita
         {p.items.map((it) => (
           <div key={it.name} className="plans-band plans-area" data-reveal>
             <div>
@@ -196,6 +197,7 @@ export default function Plans() {
             <Waitlist cfg={it.waitlist} />
           </div>
         ))}
+        */}
 
         <div className="plans-foot" data-reveal>
           <p>{p.foot.text}</p>

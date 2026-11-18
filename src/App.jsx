@@ -15,7 +15,8 @@ import Footer from '@/sections/Footer'
 import BackToTop from '@/components/BackToTop'
 import ExitStage from '@/components/ExitStage'
 import { PromoBar, PromoModal } from '@/components/Promo'
-import AbPanel from '@/components/AbPanel'
+// import AbPanel from '@/components/AbPanel' // teste A/B escondido por enquanto
+import DevPen from '@/components/DevPen'
 import About from '@/pages/About'
 import Proposal from '@/pages/Proposal'
 import Cases from '@/pages/Cases'
@@ -48,9 +49,10 @@ export default function App() {
   useLinkInterceptor()
   useInitialHash()
   useReveal(path)
-  // Proposta de cliente só existe rodando local (yarn dev); no site não abre
-  const m = import.meta.env.DEV ? path.match(/^\/proposta\/([a-z0-9-]+)$/) : null
-  const client = m?.[1]
+  // Proposta de cliente (/proposta/<cliente>) desativada: agora é só /proposta,
+  // com o botão "Montar contrato" aparecendo apenas rodando local.
+  // const m = import.meta.env.DEV ? path.match(/^\/proposta\/([a-z0-9-]+)$/) : null
+  const client = null
   const Page = PAGES[path] ?? Home
   return (
     <>
@@ -63,7 +65,8 @@ export default function App() {
       <Footer />
       <BackToTop />
       <PromoModal hidden={!!client || path === '/fundador'} />
-      {!client && <AbPanel />}
+      {/* {!client && <AbPanel />} */}
+      {import.meta.env.DEV && <DevPen />}
     </>
   )
 }
