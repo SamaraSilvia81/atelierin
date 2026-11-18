@@ -195,7 +195,7 @@ function SobMedida({ s, n, total, theme }) {
             <span className="sm2-up-v"><strong>{s.upgrade.value}</strong><small>{s.upgrade.total}</small></span>
           </div>
         )}
-        {s.inpi && <p className="sm2-inpi"><Info size={16} aria-hidden="true" />{s.inpi}</p>}
+        {s.inpi && <p className="sm2-inpi"><Info size={16} aria-hidden="true" /><span>{s.inpi}{s.inpiLink && <> <a href={s.inpiLink.href} target="_blank" rel="noopener noreferrer">{s.inpiLink.label} <ArrowUpRight size={12} aria-hidden="true" /></a></>}</span></p>}
       </div>
       <span className="sm2-rest" aria-hidden="true" />
     </section>
@@ -606,7 +606,7 @@ export default function Proposal({ client, slug }) {
                     </div>
                   ) : [].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
                   <Body s={s} />
-                  {s.footnote && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.footnote}</span></p>}
+                  {s.footnote && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.footnote}{s.footnoteLink && <> <a className="slide-foot-link" href={s.footnoteLink.href} target="_blank" rel="noopener noreferrer">{s.footnoteLink.label} <ArrowUpRight size={13} aria-hidden="true" /></a></>}</span></p>}
                 </div>
               </div>
             </div>

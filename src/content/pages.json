@@ -510,7 +510,11 @@
           "value": "+ R$ 400",
           "total": "total R$ 1.900"
         },
-        "inpi": "Registro no INPI não incluso: a taxa oficial é paga por você, diretamente ao INPI. Se quiser, eu acompanho o pedido como serviço à parte."
+        "inpi": "Registro no INPI não incluso: a taxa oficial é paga por você, diretamente ao INPI. Se quiser, eu acompanho o pedido como serviço à parte.",
+        "inpiLink": {
+          "label": "Página de marcas do INPI",
+          "href": "https://www.gov.br/inpi/pt-br/servicos/marcas"
+        }
       },
       {
         "kicker": "página de divulgação",
@@ -518,7 +522,7 @@
         "theme": "light",
         "deco": "none",
         "title": "Quer uma página completa para divulgar?",
-        "accent": "página completa",
+        "accent": "completa para divulgar?",
         "accentMode": "text",
         "text": "Todos os planos já vêm com um banner de divulgação no seu endereço: sua foto, o que você oferece, contato e o botão de entrar. Se você quiser uma landing page completa, com texto, seções e design próprios, ela é um serviço à parte, feito pelo Atelierin para você.",
         "cards": [
@@ -592,6 +596,12 @@
           "badge": "Agenda aberta · dezembro",
           "quote": "Pela primeira vez abri o armário e soube\no que vestir. Valeu cada encontro.",
           "quoteBy": "Carla M., cliente desde 2025"
+        },
+        "accentBreak": true,
+        "textWide": true,
+        "footnoteLink": {
+          "label": "Página de marcas do INPI",
+          "href": "https://www.gov.br/inpi/pt-br/servicos/marcas"
         }
       },
       {
