@@ -1744,7 +1744,7 @@ h1, h2, h3, p { margin: 0; }
 .es-note { display: flex; gap: 10px; align-items: flex-start; max-width: 64ch; padding-left: 14px; border-left: 2px solid var(--palette-crimson); font-size: clamp(15px, 1.1vw, 16.5px); line-height: 1.6; color: rgba(240, 237, 232, .72); }
 .es-note svg { flex: none; margin-top: 3px; color: var(--palette-crimson); }
 .slide-escada .es-left > .pn-kick { margin-top: clamp(16px, 3vh, 36px); }
-.es-foot { margin-top: clamp(36px, 5vh, 60px); padding-bottom: 16px; }
+.es-foot { margin-top: clamp(36px, 5vh, 60px); padding-bottom: 4px; }
 .es-right { position: relative; min-height: 560px; }
 .es-head { position: relative; z-index: 1; padding: clamp(32px, 5vh, 56px) clamp(24px, 3vw, 48px) 0 0; }
 .es-head h3 { margin-top: 12px; font-size: clamp(56px, 5vw, 96px); line-height: .86; color: var(--palette-osso); }
