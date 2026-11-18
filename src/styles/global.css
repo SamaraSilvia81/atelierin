@@ -1816,7 +1816,7 @@ h1, h2, h3, p { margin: 0; }
 .slide-dk .pn-rule { border-top-color: rgba(240, 237, 232, .8); }
 .slide-dk .pn-rule i { background: var(--palette-osso); }
 .slide-dk .pn-kick { color: var(--palette-crimson); }
-.slide-dk .dk-frame { margin-bottom: clamp(64px, 9vh, 104px); }
+.slide-dk .dk-frame { margin-bottom: clamp(128px, 18vh, 208px); }
 .dk-title { display: grid; margin-top: 14px; font-size: clamp(64px, 6.2vw, 112px); line-height: .86; color: var(--palette-osso); }
 .dk-title em { font-style: normal; color: var(--palette-crimson); }
 .dk-p { margin-top: 20px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: rgba(240, 237, 232, .82); max-width: 60ch; }
