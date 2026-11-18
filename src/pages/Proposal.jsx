@@ -1,5 +1,5 @@
 import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning, CaretDoubleDown } from '@phosphor-icons/react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
 import FlowMap from '@/components/FlowMap'
@@ -32,6 +32,68 @@ function Interlude({ s, n, total }) {
         {s.text && <aside className="bilhete is-hanging interlude-note"><i className="bilhete-linha" aria-hidden="true" /><p>{s.text}</p></aside>}
       </div>
     </section>
+  )
+}
+
+// Demonstração das duas famílias, no visual dos ambientes da landing: o mesmo
+// painel nas duas, e o portal do cliente que só acende no Relacionamento.
+// Alterna sozinho enquanto está na tela; se a pessoa clicar, ela assume.
+const ST = { ativo: 'em dia', atencao: 'atenção' }
+function MiniCard({ c, i = 0 }) {
+  return (
+    <li className={`gcard fcard is-${c.status}`} style={{ animationDelay: `${i * 90}ms` }}>
+      <span className="gcard-bar" aria-hidden="true" />
+      <div className="fcard-head"><h3>{c.title}</h3><span className="gcard-status"><i />{ST[c.status]}</span></div>
+      <div className="gcard-log"><p><b>›_</b> <span>{c.log}</span></p><small>{c.meta}</small></div>
+      <div className="gcard-foot"><span>{c.foot}</span></div>
+    </li>
+  )
+}
+function FamiliesDemo({ d }) {
+  const [mode, setMode] = useState(d.modes[0].id)
+  const [user, setUser] = useState(false)
+  const [inView, setInView] = useState(false)
+  const ref = useRef(null)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setUser(true); return undefined }
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.4 })
+    if (ref.current) io.observe(ref.current)
+    return () => io.disconnect()
+  }, [])
+  useEffect(() => {
+    if (user || !inView) return undefined
+    const t = setInterval(() => setMode((m) => (m === d.modes[0].id ? d.modes[1].id : d.modes[0].id)), 4200)
+    return () => clearInterval(t)
+  }, [user, inView, d.modes])
+  const on = mode === d.modes[1].id
+  const cur = d.modes.find((m) => m.id === mode)
+  return (
+    <div className="fdemo" data-theme="dark" ref={ref}>
+      <div className="mods-bar"><span className="dots"><i /><i /><i /></span><code>{d.host}</code></div>
+      <div className="fdemo-in">
+        <div className="fdemo-top">
+          <div role="group" aria-label="Família">
+            {d.modes.map((m) => (
+              <button key={m.id} className={`filter-btn ${mode === m.id ? 'active' : ''}`} aria-pressed={mode === m.id}
+                onClick={() => { setUser(true); setMode(m.id) }}>// {m.label}</button>
+            ))}
+          </div>
+          <p key={mode} className="fdemo-cap" aria-live="polite">{cur.caption}</p>
+        </div>
+        <div className={`fdemo-cols ${on ? 'is-on' : ''}`}>
+          <div className="fdemo-col">
+            <span className="fdemo-k"><i className="dot-green" />{d.panelLabel}</span>
+            <ul className="fdemo-panel">{d.panel.map((c) => <MiniCard key={c.title} c={c} />)}</ul>
+          </div>
+          <div className="fdemo-col">
+            <span className="fdemo-k"><i className={on ? 'dot-green' : 'dot-dim'} />{d.portalLabel}</span>
+            {on
+              ? <ul key="on" className="fdemo-portal">{d.portal.map((c, i) => <MiniCard key={c.title} c={c} i={i} />)}</ul>
+              : <div key="off" className="fdemo-off"><span>{d.portalOff}</span></div>}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -103,23 +165,8 @@ function Body({ s }) {
   )
   if (s.layout === 'families') return (
     <>
-      <div className="s-fam">
-        {s.families.map((f, i) => (
-          <article key={f.name} className={`s-fam-part is-${i === 0 ? 'a' : 'b'}`}>
-            <header className="s-fam-head">
-              <div className="s-fam-title"><h3>{f.name}</h3>{f.badge && <span className="s-fam-badge">{f.badge}</span>}</div>
-              <span className="s-fam-for">{f.for}</span>
-            </header>
-            {f.text.map((t) => <p key={t}>{t}</p>)}
-          </article>
-        ))}
-      </div>
-      {(s.closing || s.highlight) && (
-        <div className="s-fam-close">
-          {s.closing && <p className="s-fam-close-text">{s.closing}</p>}
-          {s.highlight && <p className="s-highlight">{s.highlight}</p>}
-        </div>
-      )}
+      {s.demo && <FamiliesDemo d={s.demo} />}
+      {s.highlight && <p className="s-highlight s-fam-hl">{s.highlight}</p>}
     </>
   )
   if (s.layout === 'layer') return (

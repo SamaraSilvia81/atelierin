@@ -180,30 +180,66 @@
         },
         "layout": "families",
         "deco": "band",
-        "families": [
-          {
-            "name": "Estrutura",
-            "for": "para organizar o seu negócio",
-            "badge": "sem portal",
-            "text": [
-              "Você administra seus clientes, agenda, pagamentos e atividades em um ambiente interno. Nos planos maiores, também pode incluir pessoas da sua equipe na gestão.",
-              "Seus clientes ficam cadastrados, mas não recebem login nem acesso a um portal próprio. Você cria sua conta e começa a usar, inclusive pelo plano gratuito."
-            ]
-          },
-          {
-            "name": "Relacionamento",
-            "for": "para atender seus clientes pelo sistema",
-            "badge": "com portal",
-            "text": [
-              "Reúne a gestão administrativa e acrescenta um portal externo. Cada cliente recebe seu próprio acesso para consultar as informações, os materiais, a agenda e os serviços disponibilizados pelo negócio.",
-              "O portal funciona como uma experiência separada do ambiente administrativo. Nessa família, eu preparo e configuro o ambiente para você, sem taxa de entrada."
-            ]
-          }
-        ],
-        "closing": "Você pode começar pela Estrutura e escolher o Relacionamento quando fizer sentido oferecer um portal aos seus clientes. A personalização visual é opcional e não muda a família do plano: o portal faz parte do Relacionamento.",
         "highlight": "Você não precisa contratar um portal se não pretende utilizá-lo.",
         "theme": "light",
-        "accentBreak": true
+        "accentBreak": true,
+        "demo": {
+          "host": "seunome.atelierin.com.br",
+          "modes": [
+            {
+              "id": "estrutura",
+              "label": "Estrutura",
+              "caption": "Tudo acontece no seu painel. Seus clientes ficam cadastrados, mas não acessam o sistema."
+            },
+            {
+              "id": "relacionamento",
+              "label": "Relacionamento",
+              "caption": "Seu painel e mais um portal: cada cliente entra com login próprio."
+            }
+          ],
+          "panelLabel": "seu painel",
+          "panel": [
+            {
+              "title": "Clientes",
+              "status": "ativo",
+              "log": "33 cadastrados",
+              "meta": "2 novos este mês",
+              "foot": "clientes"
+            },
+            {
+              "title": "Agenda",
+              "status": "ativo",
+              "log": "Próxima: Ana, seg 14h",
+              "meta": "4 atendimentos hoje",
+              "foot": "agenda"
+            },
+            {
+              "title": "Cobrança",
+              "status": "atencao",
+              "log": "18 de 21 pagas",
+              "meta": "3 vencem na sexta",
+              "foot": "cobrança"
+            }
+          ],
+          "portalLabel": "portal do cliente",
+          "portalOff": "Não incluso na Estrutura",
+          "portal": [
+            {
+              "title": "Meus horários",
+              "status": "ativo",
+              "log": "Próximo: seg 14h",
+              "meta": "material novo disponível",
+              "foot": "login da Ana"
+            },
+            {
+              "title": "Mensalidade",
+              "status": "ativo",
+              "log": "Novembro · paga",
+              "meta": "Pix direto na sua chave",
+              "foot": "login da Ana"
+            }
+          ]
+        }
       },
       {
         "kicker": "planos · estrutura",
