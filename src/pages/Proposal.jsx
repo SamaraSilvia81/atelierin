@@ -19,12 +19,13 @@ function Title({ text, accent, accentMode, tag }) {
   return <h2 className="display">{a}{t ? <span className="s-title-pair">{m}{t}</span> : m}{b}</h2>
 }
 
-// pergunta dentro de um círculo "feito à mão", ao lado do título
+// pergunta num balão escuro "feito à mão", afastado do título
 function Bubble({ text }) {
   return (
     <aside className="s-bubble">
       <svg viewBox="0 0 320 240" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M214 26 C 160 10, 78 16, 40 54 C 6 90, 10 164, 54 198 C 100 232, 222 230, 276 194 C 316 166, 318 92, 288 58 C 266 32, 232 20, 196 22 M 208 16 C 214 20, 220 24, 226 30" />
+        <path className="fill" d="M200 18 C 140 4, 64 14, 30 56 C 2 92, 8 166, 52 200 C 98 236, 224 234, 280 196 C 318 168, 320 90, 290 54 C 268 28, 236 22, 200 18 Z" />
+        <path className="line" d="M214 26 C 160 10, 78 16, 40 54 C 6 90, 10 164, 54 198 C 100 232, 222 230, 276 194 C 316 166, 318 92, 288 58 C 266 32, 232 20, 196 22 M 208 16 C 214 20, 220 24, 226 30" />
       </svg>
       <p>{text}</p>
     </aside>
@@ -81,8 +82,12 @@ function Body({ s }) {
           </article>
         ))}
       </div>
-      {s.closing && <p className="slide-text">{s.closing}</p>}
-      {s.highlight && <p className="s-highlight">{s.highlight}</p>}
+      {(s.closing || s.highlight) && (
+        <div className="s-fam-close">
+          {s.closing && <p className="s-fam-close-text">{s.closing}</p>}
+          {s.highlight && <p className="s-highlight">{s.highlight}</p>}
+        </div>
+      )}
     </>
   )
   if (s.layout === 'layer') return (
@@ -322,8 +327,8 @@ export default function Proposal({ client, slug }) {
         const n = String(i + 1).padStart(2, '0')
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (
-          <section key={s.kicker} id={`slide-${i + 1}`} data-theme={theme} className={`section slide slide-${s.layout || 'default'} has-${s.deco || 'none'}`}>
-            <Deco kind={s.deco} n={n} />
+          <section key={s.kicker} id={`slide-${i + 1}`} data-theme={theme} className={`section slide slide-${s.layout || 'default'} ${[].concat(s.deco || 'none').map((k) => `has-${k}`).join(' ')}`}>
+            {[].concat(s.deco || []).map((k) => <Deco key={k} kind={k} n={n} />)}
             <div className="wrap slide-grid" data-reveal>
               <div className="slide-side">
                 <span className="slide-n">{n}<small>/{total}</small></span>
