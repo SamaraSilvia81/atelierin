@@ -1460,12 +1460,12 @@ h1, h2, h3, p { margin: 0; }
 .slide-families .slide-main { position: relative; }
 .s-intro-row { display: block; }
 .s-intro-text { display: grid; gap: 16px; max-width: 60ch; }
-.s-intro-text .slide-text { max-width: none; text-align: justify; hyphens: auto; }
+.s-intro-text .slide-text { max-width: none; text-align: left; hyphens: manual; }
 .s-ask { position: absolute; top: -8px; right: calc(-1 * clamp(40px, 6vw, 90px) + 28px); width: min(400px, 36%); overflow: visible; display: grid; gap: 18px; padding: 36px 32px 34px; border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); rotate: 2deg; box-shadow: 0 14px 28px -18px rgba(26, 15, 15, .45); }
 /* fita adesiva transparente prendendo a ficha no topo, com as pontas rasgadas */
 .s-ask-tape { position: absolute; top: -16px; left: 50%; width: 132px; height: 34px; translate: -50% 0; rotate: -5deg; z-index: 2;
-  background: linear-gradient(180deg, rgba(255, 255, 255, .62), rgba(240, 232, 222, .48));
-  box-shadow: 0 1px 2px rgba(26, 15, 15, .14), inset 0 0 0 1px rgba(255, 255, 255, .25);
+  background: linear-gradient(180deg, rgba(214, 200, 178, .78), rgba(196, 180, 156, .7));
+  box-shadow: 0 2px 4px rgba(26, 15, 15, .22), inset 0 0 0 1px rgba(255, 255, 255, .35), inset 0 6px 8px -6px rgba(255, 255, 255, .6);
   -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px);
   clip-path: polygon(0 4%, 4% 0, 7% 6%, 10% 0, 90% 0, 93% 7%, 96% 0, 100% 5%, 98% 22%, 100% 40%, 97% 58%, 100% 76%, 97% 94%, 100% 100%, 92% 96%, 88% 100%, 12% 100%, 8% 95%, 4% 100%, 0 96%, 3% 78%, 0 60%, 3% 42%, 0 24%); }
 .s-ask > :not(.s-ask-tape):not(.s-ask-mark) { position: relative; }
