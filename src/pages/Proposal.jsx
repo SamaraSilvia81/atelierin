@@ -94,6 +94,52 @@ function Poster({ s, n, total }) {
   )
 }
 
+// Slide de planos de uma família: texto ocupando um lado, uma faixa carmesim
+// vertical afastada da borda e o card da tabela por cima dela. mirror inverte os lados.
+function PlansSlide({ s, n, total, theme }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-plans2 ${s.mirror ? 'is-mirror' : ''}`}>
+      <span className="pl-band" aria-hidden="true" />
+      <div className="wrap pl-grid" data-reveal>
+        <div className="pl-text">
+          <div className="pl-num"><span className="slide-n">{n}<small>/{total}</small></span><p className="label"><b aria-hidden="true">&gt;</b> {s.kicker}</p></div>
+          <div className="pl-title"><h2 className="display">{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
+          {s.subtitle && <p className="pl-sub">{s.subtitle}</p>}
+          {[].concat(s.text ?? []).map((t) => <p key={t} className="pl-p">{t}</p>)}
+          {s.addons && (
+            <div className="pl-addons">
+              <h3>{s.addons.title}</h3>
+              <p>{s.addons.text}</p>
+              <ul>{s.addons.rows.map(([a, b]) => <li key={a}><span>{a}</span><strong>{b}</strong></li>)}</ul>
+            </div>
+          )}
+        </div>
+        <div className="pl-side">
+          <div className="pl-card" data-theme="light">
+            <div className="pl-card-head"><span>planos · {s.title}</span><span>mensal</span></div>
+            <table className="s-plans">
+              <thead><tr>{s.plans.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
+              <tbody>{s.plans.rows.map((r) => (
+                <tr key={r[0]} className={/consulta/i.test(r[1]) ? 'is-quote' : undefined}>
+                  {r.map((v, i) => i === 0 ? <th key={i} scope="row">{v}</th> : <td key={i} className={i === 1 ? 's-plans-price' : undefined}>{v}</td>)}
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+          {s.sample && (
+            <aside className="bilhete pl-sample">
+              <i className="bilhete-fita" aria-hidden="true" />
+              <span className="s-ask-k"><b aria-hidden="true">»</b> {s.sample.label}</span>
+              {s.sample.text.map((t) => <p key={t}>{t}</p>)}
+            </aside>
+          )}
+          {s.note && <p className="pl-note">{s.note}</p>}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -405,6 +451,7 @@ export default function Proposal({ client, slug }) {
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'plans') return <PlansSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'light'} />
         const n = numOf.get(s.kicker)
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (

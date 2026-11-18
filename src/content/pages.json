@@ -169,7 +169,7 @@
         "kicker": "planos · estrutura",
         "layout": "plans",
         "theme": "light",
-        "deco": "band",
+        "deco": "none",
         "title": "Estrutura",
         "tag": "sem portal",
         "text": [
@@ -230,13 +230,14 @@
             ]
           ]
         },
-        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato."
+        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
+        "subtitle": "Gestão interna, sem portal para clientes."
       },
       {
         "kicker": "planos · relacionamento",
         "layout": "plans",
         "theme": "dark",
-        "deco": "band",
+        "deco": "none",
         "title": "Relacionamento",
         "tag": "com portal",
         "text": [
@@ -310,7 +311,9 @@
             "Com 40 contas, o Social com 10 adicionais fica em R$ 379/mês. Nesse ponto, vale comparar com o Gala, que custa R$ 390/mês, comporta até 50 contas e inclui capacidade para equipe e recursos financeiros avançados."
           ]
         },
-        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato."
+        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
+        "subtitle": "Gestão interna + portal individual para clientes.",
+        "mirror": true
       },
       {
         "kicker": "antes de escolher",

@@ -1542,6 +1542,47 @@ h1, h2, h3, p { margin: 0; }
   .poster-body { width: 100%; }
 }
 
+/* 03-04 · planos por família: texto de um lado, faixa carmesim vertical afastada da borda
+   e o card da tabela por cima dela (no espelhado, os lados se invertem) */
+.slide-plans2 { position: relative; overflow: hidden; display: grid; align-items: center; min-height: min(100vh, 980px); }
+.pl-band { position: absolute; top: 0; bottom: 0; left: 62%; width: 19%; background: linear-gradient(180deg, #A31C18, #7E1311) fixed; }
+.slide-plans2.is-mirror .pl-band { left: 19%; }
+.pl-grid { position: relative; z-index: 1; width: min(1480px, 100% - 48px); display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 110px); align-items: center; padding-block: clamp(72px, 10vh, 120px); }
+.slide-plans2.is-mirror .pl-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+.slide-plans2.is-mirror .pl-text { order: 2; }
+.pl-text { display: grid; gap: 18px; align-content: center; }
+.pl-num { display: flex; align-items: baseline; gap: 16px; margin-bottom: 6px; }
+.pl-num .slide-n { font-size: 56px; }
+.pl-num .slide-n small { font-size: 22px; }
+.pl-title { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.pl-title h2 { font-size: clamp(64px, 7vw, 120px); line-height: .9; }
+.pl-title .s-title-tag { margin-left: 0; vertical-align: baseline; }
+.pl-sub { font: 500 13px/1.4 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--acc-text); }
+.pl-p { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.6; color: var(--text-sub); max-width: 48ch; }
+.pl-addons { display: grid; gap: 10px; margin-top: 10px; padding-top: 20px; border-top: 1px solid var(--text); max-width: 48ch; }
+.pl-addons h3 { font: 400 clamp(26px, 2.2vw, 34px)/1 var(--font-display); text-transform: uppercase; }
+.pl-addons p { font-size: 16.5px; line-height: 1.55; color: var(--text-sub); }
+.pl-addons ul { display: grid; }
+.pl-addons li { display: flex; justify-content: space-between; gap: 18px; padding: 12px 0; border-bottom: 1px dashed var(--border); font-size: 17px; }
+.pl-addons li strong { white-space: nowrap; font-weight: 600; }
+.pl-side { display: grid; gap: 22px; justify-items: stretch; }
+.pl-card { border: 1px solid var(--palette-tinta); border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); box-shadow: 12px 12px 0 var(--palette-tinta); overflow-x: auto; }
+.slide[data-theme="dark"] .pl-card { box-shadow: 12px 12px 0 rgba(0, 0, 0, .55); }
+.pl-card-head { display: flex; justify-content: space-between; gap: 12px; padding: 14px 22px; border-bottom: 1px solid var(--palette-tinta); font: 500 11.5px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--palette-tinta-2); }
+.pl-card .s-plans { min-width: 600px; }
+.pl-card .s-plans tbody th { font-size: 32px; }
+.pl-sample { justify-self: end; width: min(440px, 92%); margin-top: 10px; }
+.pl-sample p { font-size: 17px; line-height: 1.55; }
+.pl-note { font-size: 13.5px; line-height: 1.55; color: var(--text-muted); max-width: 80ch; }
+.slide-plans2 .pl-side > .pl-note { padding: 10px 14px; background: var(--bg); }
+@media (max-width: 1000px) {
+  .pl-band { left: auto; right: 0; width: 34px; }
+  .slide-plans2.is-mirror .pl-band { left: 0; }
+  .pl-grid, .slide-plans2.is-mirror .pl-grid { grid-template-columns: 1fr; }
+  .slide-plans2.is-mirror .pl-text { order: 0; }
+  .pl-sample { justify-self: start; }
+}
+
 /* 03-04 · tabelas de planos por família */
 .slide-plans .slide-grid.wrap { width: min(1480px, 100% - 48px); }
 .slide-plans .slide-main h2 { max-width: none; }
