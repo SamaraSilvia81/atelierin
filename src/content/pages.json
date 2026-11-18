@@ -121,11 +121,11 @@
         "tag": "parte técnica comigo",
         "accent": "Mantido por mim.",
         "accentMode": "text",
-        "text": "Você recebe um ambiente pronto para o seu trabalho, com o seu nome e o seu logo, e só os módulos que fazem sentido para você. O sistema é o mesmo para todos; o que muda é o que fica ligado e, se você quiser a personalização, a identidade inteira e o seu próprio endereço. O que é seu continua seu, e a parte técnica fica comigo.",
-        "points": [
-          "Você usa o ambiente por licença, enquanto a assinatura estiver ativa",
-          "Nos planos com portal, seus clientes entram com login próprio e veem você"
+        "text": [
+          "Você recebe um ambiente para organizar o seu trabalho, configurado a partir do modelo contratado. A plataforma é mantida por mim: cuido da parte técnica, enquanto você administra o seu negócio e mantém o controle sobre seus clientes, conteúdos e dados.",
+          "O sistema parte de uma mesma base. O que muda é o modelo escolhido, os recursos disponíveis no plano e, se você contratar o Sob medida, a aplicação da sua identidade visual."
         ],
+        "footnote": "Você utiliza o Atelierin por licença de uso enquanto sua assinatura estiver ativa. O código-fonte e a plataforma continuam pertencendo ao Atelierin.",
         "layout": "split",
         "deco": "band",
         "split": [
@@ -133,20 +133,22 @@
             "label": "seu",
             "note": "fica com você",
             "items": [
-              "Seu nome, logo e identidade",
-              "Conteúdo, clientes e dados",
-              "O dinheiro dos seus clientes",
-              "Exportar tudo quando quiser"
+              "Seu nome, sua marca e sua identidade visual.",
+              "Seus clientes e os dados da sua operação.",
+              "Seus conteúdos, materiais e informações.",
+              "Os pagamentos que seus clientes fazem diretamente a você.",
+              "A possibilidade de exportar seus dados."
             ]
           },
           {
             "label": "meu",
             "note": "eu cuido",
             "items": [
-              "O sistema por trás",
-              "Hospedagem, infraestrutura e endereço",
-              "Atualizações e correções",
-              "Evolução da plataforma"
+              "O sistema e sua estrutura técnica.",
+              "Hospedagem e infraestrutura do ambiente.",
+              "Atualizações, correções e manutenção da plataforma.",
+              "Segurança e evolução do produto.",
+              "Configuração e suporte conforme o plano contratado."
             ]
           }
         ],

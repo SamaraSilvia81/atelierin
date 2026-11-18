@@ -1444,6 +1444,8 @@ h1, h2, h3, p { margin: 0; }
 .s-title-tag { display: inline-block; margin-left: 18px; vertical-align: .55em; padding: 9px 14px 8px; border-radius: 999px; background: var(--acc); color: var(--on-acc); font: 500 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
 [data-theme="dark"] .s-title-tag { background: var(--palette-crimson); color: var(--palette-osso); }
 @media (max-width: 760px) { .s-title-pair { white-space: normal; } .s-title-tag { margin: 12px 0 0; display: table; } }
+/* nota de rodapé do slide (ex.: licença de uso) */
+.slide-foot { padding-top: 18px; border-top: 1px dashed var(--border); font-size: 15px; line-height: 1.55; color: var(--text-muted); max-width: 70ch; }
 /* destaque só na cor, sem tarja */
 .slide-main .hl.hl-text, [data-theme="dark"] .slide-main .hl.hl-text { background: none; padding: 0; color: var(--acc); }
 [data-theme="dark"] .slide-main .hl.hl-text { color: var(--acc-text); }

@@ -302,8 +302,9 @@ export default function Proposal({ client, slug }) {
               <div className="slide-main">
                 <div className="slide-copy">
                   <Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} />
-                  <p className="slide-text">{s.text}</p>
+                  {[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
                   <Body s={s} />
+                  {s.footnote && <p className="slide-foot">{s.footnote}</p>}
                 </div>
               </div>
             </div>
