@@ -261,7 +261,7 @@
       {
         "kicker": "planos · relacionamento",
         "layout": "plans",
-        "theme": "dark",
+        "theme": "light",
         "deco": "none",
         "title": "Relacionamento",
         "tag": "com portal",
@@ -362,7 +362,8 @@
             "discount": 0,
             "suffix": "/ano"
           }
-        ]
+        ],
+        "dark": true
       },
       {
         "kicker": "antes de escolher",

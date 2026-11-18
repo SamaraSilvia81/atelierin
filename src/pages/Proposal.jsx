@@ -113,32 +113,38 @@ function PlansSlide({ s, n, total, theme }) {
   const b = s.billing?.find((x) => x.id === bid)
   return (
     <section id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-plans2 ${s.mirror ? 'is-mirror' : ''} ${s.dark ? 'has-dark' : ''}`}>
-      {s.dark && <span className="pl-dark" aria-hidden="true" />}
-      <span className="pl-band" aria-hidden="true" />
-      <div className="wrap pl-grid" data-reveal>
-        <div className="pl-text">
-          <div className="pl-num"><span className="slide-n">{n}<small>/{total}</small></span><p className="label"><b aria-hidden="true">&gt;</b> {s.kicker}</p></div>
-          <div className="pl-title"><h2 className="display">{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
-          {s.subtitle && <p className="pl-sub">{s.subtitle}</p>}
-          {[].concat(s.text ?? []).map((t) => <p key={t} className="pl-p">{t}</p>)}
+      {s.dark && <span className="fp-dark" aria-hidden="true" />}
+      <span className="fp-band" aria-hidden="true" />
+      <div className="wrap fp-grid" data-reveal>
+        <div className="fp-text">
+          <div className="fp-num"><span className="slide-n">{n}<small>/{total}</small></span><p className="label"><b aria-hidden="true">&gt;</b> {s.kicker}</p></div>
+          <div className="fp-title"><h2 className="display">{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
+          {s.subtitle && <p className="fp-sub">{s.subtitle}</p>}
+          {[].concat(s.text ?? []).map((t) => <p key={t} className="fp-p">{t}</p>)}
+          {s.sample && (
+            <div className="fp-sample">
+              <span className="fp-sample-k">{s.sample.label}</span>
+              {s.sample.text.map((t) => <p key={t}>{t}</p>)}
+            </div>
+          )}
           {s.addons && (
-            <div className="pl-addons">
+            <div className="fp-addons">
               <h3>{s.addons.title}</h3>
               <p>{s.addons.text}</p>
               <ul>{s.addons.rows.map(([a, v]) => (
-                <li key={a}><span>{a}</span><strong className={s.addons.circle ? 'pl-circled' : undefined}>{v}{s.addons.circle && (
+                <li key={a}><span>{a}</span><strong className={s.addons.circle ? 'fp-circled' : undefined}>{v}{s.addons.circle && (
                   <svg viewBox="0 0 120 50" preserveAspectRatio="none" aria-hidden="true"><path d="M86 6 C 60 0, 18 4, 8 20 C 0 34, 22 46, 60 45 C 98 44, 118 34, 112 18 C 107 7, 84 3, 64 6" /></svg>
                 )}</strong></li>
               ))}</ul>
             </div>
           )}
         </div>
-        <div className="pl-side">
-          <div className="pl-card" data-theme="light">
-            <div className="pl-card-head">
+        <div className="fp-side">
+          <div className="fp-card" data-theme="light">
+            <div className="fp-card-head">
               <span>planos · {s.title}</span>
               {s.billing && (
-                <div className="pl-billing" role="group" aria-label="Período de cobrança">
+                <div className="fp-billing" role="group" aria-label="Período de cobrança">
                   {s.billing.map((x) => <button key={x.id} className={x.id === bid ? 'on' : ''} aria-pressed={x.id === bid} onClick={() => setBid(x.id)}>{x.label}</button>)}
                 </div>
               )}
@@ -152,14 +158,7 @@ function PlansSlide({ s, n, total, theme }) {
               ))}</tbody>
             </table>
           </div>
-          {s.sample && (
-            <aside className="bilhete pl-sample">
-              <i className="bilhete-fita" aria-hidden="true" />
-              <span className="s-ask-k"><b aria-hidden="true">»</b> {s.sample.label}</span>
-              {s.sample.text.map((t) => <p key={t}>{t}</p>)}
-            </aside>
-          )}
-          {s.note && <p className="pl-note">{s.note}</p>}
+          {s.note && <p className="fp-note">{s.note}</p>}
         </div>
       </div>
     </section>
