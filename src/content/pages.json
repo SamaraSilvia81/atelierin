@@ -241,7 +241,22 @@
             "discount": 0,
             "suffix": "/ano"
           }
-        ]
+        ],
+        "addons": {
+          "title": "Quando precisar de um pouco mais",
+          "text": "Você não precisa mudar de plano por ultrapassar o limite em poucos clientes. É possível contratar adicionais, respeitando o limite de até 10 por plano.",
+          "cols": [
+            "Adicional",
+            "Valor mensal"
+          ],
+          "rows": [
+            [
+              "Conta externa extra, com acesso ao portal",
+              "R$ 8,90*"
+            ]
+          ],
+          "circle": true
+        }
       },
       {
         "kicker": "planos · relacionamento",
