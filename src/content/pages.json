@@ -779,8 +779,8 @@
     ],
     "flow": {
       "kicker": "o caminho todo",
-      "title": "Do primeiro oi ao mês a mês",
-      "lede": "Clique numa etapa ou num bloco para ver só aquela parte acontecer.",
+      "title": "Do primeiro contato ao seu ambiente no ar",
+      "lede": "Você não precisa entender a parte técnica para começar. Primeiro conversamos sobre sua rotina e o que precisa organizar. Depois, definimos o modelo e o plano mais adequados e seguimos com a configuração do ambiente.",
       "you": "Você",
       "modules": [
         "atendimento",
@@ -790,87 +790,87 @@
       ],
       "overview": {
         "title": "Quem faz o quê",
-        "text": "À esquerda, você e eu. No meio, o seu ambiente. À direita, os seus alunos e a sua conta. As linhas mostram o que passa entre cada parte: as vermelhas são trabalho, a verde é o dinheiro dos alunos."
+        "text": "À esquerda, você e eu. No meio, o seu ambiente. À direita, os seus clientes e a sua conta. Clique numa etapa ou num bloco para ver só aquela parte acontecer. As linhas vermelhas são trabalho; a verde é o dinheiro dos clientes."
       },
       "nodes": {
         "voce": {
           "kind": "profissional",
           "name": "{voce}",
           "title": "{voce}",
-          "text": "Conversa comigo, aprova a prévia, paga a implantação uma vez e a manutenção todo mês. Usa o ambiente com a própria marca."
+          "text": "Conversa comigo, escolhe a família e o plano e paga só a assinatura, sem taxa de entrada. Usa o ambiente com o seu nome."
         },
         "samara": {
           "kind": "Atelierin",
           "name": "Samara",
           "title": "Samara · Atelierin",
-          "text": "Monta, publica e mantém o ambiente: atualizações, cópias de segurança, monitoramento e suporte. Não recebe nada dos seus alunos."
+          "text": "Configura, publica e mantém o ambiente: atualizações, cópias de segurança, monitoramento e suporte. Não recebe nada dos seus clientes."
         },
         "previa": {
-          "kind": "antes de fechar",
-          "name": "Prévia",
-          "title": "A prévia",
-          "text": "Na primeira conversa você já vê o ambiente com a sua marca, em cima de um molde pronto. Se fizer sentido, a implantação começa a partir dela."
+          "kind": "família · modelo · plano",
+          "name": "Seu plano",
+          "title": "A escolha",
+          "text": "Juntos, identificamos a família (Estrutura ou Relacionamento), o modelo e o plano que fazem sentido para a sua operação."
         },
         "ambiente": {
           "kind": "{slug}.atelierin.com.br",
           "name": "Seu ambiente",
           "title": "O seu ambiente",
-          "text": "No seu endereço, com a sua marca e só os módulos que fazem sentido para o seu trabalho."
+          "text": "No seu endereço, com o seu nome e só os módulos que fazem sentido para o seu trabalho."
         },
         "alunos": {
           "kind": "quem você atende",
-          "name": "Alunos",
-          "title": "Os seus alunos",
-          "text": "Entram por convite, com login, e veem você, não o Atelierin. Pagam direto para a sua conta."
+          "name": "Clientes",
+          "title": "Os seus clientes",
+          "text": "Ficam cadastrados no seu ambiente. Nos planos de Relacionamento, também entram no portal com login próprio. Pagam direto para a sua conta."
         },
         "conta": {
           "kind": "de {voce}",
           "name": "Sua conta",
           "title": "A sua conta",
-          "text": "O dinheiro dos alunos cai direto aqui, por Pix. Ele nunca passa pelo Atelierin nem por mim."
+          "text": "O dinheiro dos clientes cai direto aqui, por Pix. Ele nunca passa pelo Atelierin nem por mim."
         }
       },
       "edges": {
         "conversa": "conversa",
-        "previa-a": "monto a prévia",
-        "previa-b": "com a sua marca",
-        "implanta-pay": "implantação · valor único",
-        "implanta": "monta e publica",
-        "login": "entram com login",
+        "previa-a": "família e modelo",
+        "previa-b": "o plano certo",
+        "implanta-pay": "sem taxa de entrada",
+        "implanta": "configura o ambiente",
+        "login": "cadastro · portal",
         "pix": "pagam por Pix",
-        "mensal": "manutenção mensal",
-        "cuida": "atualiza, cuida, dá suporte"
+        "mensal": "assinatura mensal",
+        "cuida": "manutenção e suporte"
       },
       "steps": [
         {
           "short": "Conversa",
-          "title": "A gente conversa",
-          "text": "Você me conta como trabalha hoje: quem atende, o que ensina, como cobra e o que mais toma o seu tempo."
+          "title": "Conversa",
+          "text": "Você me conta como trabalha hoje, quem atende e o que gostaria de organizar."
         },
         {
-          "short": "Prévia",
-          "title": "Eu te mostro a prévia",
-          "text": "Monto uma prévia com a sua marca em cima de um molde pronto, para você ver antes de decidir qualquer coisa."
+          "short": "Escolha",
+          "title": "Escolha",
+          "text": "Identificamos a família, o modelo e o plano que fazem sentido para sua operação."
         },
         {
-          "short": "Implantação",
-          "title": "Implantação",
-          "text": "Você paga a implantação uma vez e eu monto o ambiente completo: identidade, módulos, alunos e conteúdo. Rodadas de ajuste até você aprovar."
+          "short": "Configuração",
+          "title": "Configuração",
+          "text": "Na Estrutura, você cria sua conta e começa a configurar o ambiente. No Relacionamento, eu preparo o ambiente a partir do modelo escolhido, sem taxa de entrada."
         },
         {
-          "short": "No ar",
-          "title": "O ambiente no ar",
-          "text": "Seu ambiente fica em {slug}.atelierin.com.br. Os alunos entram por convite, com login, e veem a sua marca."
+          "short": "Primeiros dados",
+          "title": "Seus primeiros dados",
+          "text": "Você cadastra seus clientes ou, se preferir, contrata a implantação assistida para fazer isso comigo."
         },
         {
-          "short": "Pagamentos",
-          "title": "O dinheiro vai direto para você",
-          "text": "Os alunos pagam por Pix direto na sua conta. O dinheiro não passa por mim nem pelo Atelierin."
+          "short": "Dia a dia",
+          "title": "Uso no dia a dia",
+          "text": "Com o ambiente pronto, você organiza sua operação. Nos planos de Relacionamento, seus clientes também podem receber acesso ao portal."
         },
         {
-          "short": "Mês a mês",
-          "title": "Todo mês",
-          "text": "Você paga a manutenção mensal e eu cuido do resto: atualizações, cópias de segurança, monitoramento, suporte e pequenos ajustes."
+          "short": "Acompanhamento",
+          "title": "Acompanhamento",
+          "text": "A assinatura reúne o uso do sistema e a manutenção técnica conforme o plano contratado."
         }
       ]
     },

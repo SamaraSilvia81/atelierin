@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { User, Scissors, Eye, Browsers, Users, Bank, ArrowCounterClockwise } from '@phosphor-icons/react'
+import { User, Scissors, ListChecks, Browsers, Users, Bank, ArrowCounterClockwise } from '@phosphor-icons/react'
 import { play } from '@/lib/sounds'
 
 // Diagrama de como funciona contratar, no estilo de arquitetura de software:
@@ -7,12 +7,12 @@ import { play } from '@/lib/sounds'
 // numa etapa (ou num bloco) e só aquela parte acende e anima.
 // Com ?para=nome no endereço, "você" vira o nome do cliente.
 
-const ICONS = { User, Scissors, Eye, Browsers, Users, Bank }
+const ICONS = { User, Scissors, ListChecks, Browsers, Users, Bank }
 
 // posições (centro do bloco) em % do palco
 const NODES = [
   { id: 'voce', icon: 'User', x: 14, y: 18 },
-  { id: 'previa', icon: 'Eye', x: 34, y: 18 },
+  { id: 'previa', icon: 'ListChecks', x: 34, y: 18 },
   { id: 'alunos', icon: 'Users', x: 85, y: 18 },
   { id: 'ambiente', icon: 'Browsers', x: 58, y: 56, big: true },
   { id: 'samara', icon: 'Scissors', x: 14, y: 84 },
@@ -21,7 +21,7 @@ const NODES = [
 
 // ligações em ângulo reto, como num diagrama de arquitetura.
 // a/b: lado de saída e de chegada (t, b, l, r); oa/ob: deslocamento no lado, em px;
-// at: em que fração do caminho fica a etiqueta
+// at: em que fração do caminho fica a etiqueta; steps: quando a ligação acende em mais de uma etapa
 const EDGES = [
   { id: 'conversa', from: 'voce', a: 'b', oa: -34, to: 'samara', b: 't', ob: -34, step: 1, at: 0.3 },
   { id: 'implanta-pay', from: 'voce', a: 'b', oa: 0, to: 'samara', b: 't', ob: 0, step: 3, at: 0.5 },
@@ -30,7 +30,7 @@ const EDGES = [
   { id: 'previa-b', from: 'previa', a: 'l', oa: 0, to: 'voce', b: 'r', ob: 0, step: 2, at: 0.5 },
   { id: 'implanta', from: 'samara', a: 'r', oa: 0, to: 'ambiente', b: 'b', ob: -40, step: 3, at: 0.22 },
   { id: 'cuida', from: 'samara', a: 'r', oa: 14, to: 'ambiente', b: 'b', ob: 40, step: 6, at: 0.5 },
-  { id: 'login', from: 'alunos', a: 'b', oa: -24, to: 'ambiente', b: 'r', ob: 0, step: 4, at: 0.6 },
+  { id: 'login', from: 'alunos', a: 'b', oa: -24, to: 'ambiente', b: 'r', ob: 0, step: 4, steps: [4, 5], at: 0.6 },
   { id: 'pix', from: 'alunos', a: 'b', oa: 24, to: 'conta', b: 't', ob: 24, step: 5, money: true, at: 0.5 },
 ]
 
@@ -139,9 +139,10 @@ export default function FlowMap({ data, name }) {
     return () => el?.removeEventListener('keydown', onKey)
   }, [data.steps.length])
 
-  const active = (e) => (step ? e.step === step : node ? e.from === node || e.to === node : false)
+  const inStep = (e, n) => e.step === n || e.steps?.includes(n)
+  const active = (e) => (step ? inStep(e, step) : node ? e.from === node || e.to === node : false)
   const nodeOn = (id) => {
-    if (step) return EDGES.some((e) => e.step === step && (e.from === id || e.to === id))
+    if (step) return EDGES.some((e) => inStep(e, step) && (e.from === id || e.to === id))
     if (node) return id === node || EDGES.some((e) => (e.from === node && e.to === id) || (e.to === node && e.from === id))
     return true
   }
@@ -195,7 +196,7 @@ export default function FlowMap({ data, name }) {
           )
         })}
         <span className="flow-crop c1" /><span className="flow-crop c2" /><span className="flow-crop c3" /><span className="flow-crop c4" />
-        <span className="flow-legend" aria-hidden="true"><i className="l-work" /> trabalho <i className="l-money" /> dinheiro dos alunos</span>
+        <span className="flow-legend" aria-hidden="true"><i className="l-work" /> trabalho <i className="l-money" /> dinheiro dos clientes</span>
       </div>
 
       <div className="flow-side">
