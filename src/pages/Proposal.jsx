@@ -19,17 +19,17 @@ function Title({ text, accent, accentMode, accentBreak, tag }) {
   return <h2 className="display">{a}{accentBreak && <br />}{t ? <span className="s-title-pair">{m}{t}</span> : m}{b}</h2>
 }
 
-// tela de abertura de capítulo: frase grande no centro, sem número
-function Interlude({ s }) {
+// tela de abertura de capítulo: frase grande no centro e um bilhete pendurado embaixo
+function Interlude({ s, n, total }) {
   const [a, b] = s.accent && s.title.includes(s.accent) ? s.title.split(s.accent) : [s.title, '']
   return (
-    <section data-theme={s.theme || 'dark'} className={`section slide slide-interlude ${[].concat(s.deco || []).map((k) => `has-${k}`).join(' ')}`} aria-label={s.kicker}>
+    <section id={`slide-${Number(n)}`} data-theme={s.theme || 'dark'} className={`section slide slide-interlude ${[].concat(s.deco || []).map((k) => `has-${k}`).join(' ')}`} aria-label={s.kicker}>
       {[].concat(s.deco || []).map((k) => <Deco key={k} kind={k} n="" />)}
       <div className="wrap interlude" data-reveal>
-        <span className="interlude-k">{s.kicker}</span>
+        <span className="interlude-k"><b>{n}</b>/{total} · {s.kicker}</span>
         <h2 className="interlude-t">{a}{s.accent && <em>{s.accent}</em>}{b}</h2>
-        {s.text && <aside className="bilhete is-left interlude-note"><i className="bilhete-fita" aria-hidden="true" /><p>{s.text}</p></aside>}
         <CaretDoubleDown className="interlude-down" size={22} aria-hidden="true" />
+        {s.text && <aside className="bilhete is-hanging interlude-note"><i className="bilhete-linha" aria-hidden="true" /><p>{s.text}</p></aside>}
       </div>
     </section>
   )
@@ -316,8 +316,8 @@ export default function Proposal({ client, slug }) {
   const base = content.pages.proposal
   const p = client ? { ...base, title: client.title ?? base.title, titleAccent: client.titleAccent ?? base.titleAccent, lede: client.lede ?? base.lede } : base
   const slides = withClient(base.slides, client)
-  // telas de abertura (interlude) não entram na numeração nem no índice
-  const numbered = slides.filter((s) => !s.interlude)
+  // as telas de abertura (interlude) também contam na numeração
+  const numbered = slides
   const total = String(numbered.length).padStart(2, '0')
   const numOf = new Map(numbered.map((s, i) => [s.kicker, String(i + 1).padStart(2, '0')]))
   return (
@@ -359,7 +359,7 @@ export default function Proposal({ client, slug }) {
         </div>
       </section>
       {slides.map((s, i) => {
-        if (s.interlude) return <Interlude key={s.kicker} s={s} />
+        if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         const n = numOf.get(s.kicker)
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (
