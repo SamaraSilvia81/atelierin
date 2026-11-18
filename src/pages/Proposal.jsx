@@ -55,6 +55,25 @@ function Body({ s }) {
       <Points list={s.points} />
     </>
   )
+  if (s.layout === 'families') return (
+    <>
+      {s.question && <p className="s-question">{s.question}</p>}
+      <div className="s-fam">
+        {s.families.map((f, i) => (
+          <article key={f.name} className={`s-fam-part is-${i === 0 ? 'a' : 'b'}`}>
+            <header className="s-fam-head">
+              <h3>{f.name}</h3>
+              <span className="s-fam-for">{f.for}</span>
+              {f.badge && <span className="s-fam-badge">{f.badge}</span>}
+            </header>
+            {f.text.map((t) => <p key={t}>{t}</p>)}
+          </article>
+        ))}
+      </div>
+      {s.closing && <p className="slide-text">{s.closing}</p>}
+      {s.highlight && <p className="s-highlight">{s.highlight}</p>}
+    </>
+  )
   if (s.layout === 'layer') return (
     <div className="s-layer">
       <div className="s-layer-head"><span>{s.fichaTitle}</span><i className="s-layer-tape" aria-hidden="true">{Array.from({ length: 41 }, (_, i) => <b key={i} />)}</i></div>

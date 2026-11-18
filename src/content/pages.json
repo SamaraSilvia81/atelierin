@@ -155,23 +155,39 @@
         "theme": "light"
       },
       {
-        "kicker": "implantação",
-        "title": "O que entra na implantação",
-        "text": "O sistema já existe. A implantação é o trabalho de montar o seu ambiente, aplicar a sua marca, cadastrar o que você já tem e te ensinar a usar, até tudo estar no ar e testado.",
-        "points": [
-          "Uma prévia com a sua marca já na primeira conversa",
-          "Estudo da infraestrutura de melhor custo-benefício para o seu tamanho",
-          "Aplicação da sua identidade: cores, fontes, logo e tela de entrada",
-          "Escolha dos módulos que ficam ligados e do vocabulário da sua área",
-          "Cadastro inicial de alunos ou clientes e do conteúdo que você já tem",
-          "Rodadas de ajuste até você aprovar",
-          "Uma conversa para te mostrar como usar"
+        "kicker": "duas famílias",
+        "title": "Duas formas de atender. Uma gestão organizada.",
+        "accent": "Uma gestão organizada.",
+        "accentMode": "text",
+        "text": [
+          "O Atelierin tem duas famílias de planos, pensadas para diferentes formas de trabalhar. Nas duas, você organiza seu negócio e administra seus clientes. A diferença é que, em uma delas, o atendimento acontece somente pelo seu ambiente administrativo; na outra, seus clientes também recebem um espaço próprio para acessar as informações e os serviços que você disponibiliza."
         ],
-        "accent": "implantação",
-        "layout": "layer",
-        "deco": "tape",
-        "fichaTitle": "Ficha da implantação",
-        "theme": "dark"
+        "question": "Para escolher, pense em uma coisa: seus clientes precisam apenas ser gerenciados por você ou também precisam entrar no sistema?",
+        "layout": "families",
+        "deco": "none",
+        "families": [
+          {
+            "name": "Estrutura",
+            "for": "para organizar o seu negócio",
+            "badge": "sem portal",
+            "text": [
+              "Você administra seus clientes, agenda, pagamentos e atividades em um ambiente interno. Nos planos maiores, também pode incluir pessoas da sua equipe na gestão.",
+              "Seus clientes ficam cadastrados, mas não recebem login nem acesso a um portal próprio. Você cria sua conta e começa a usar, inclusive pelo plano gratuito."
+            ]
+          },
+          {
+            "name": "Relacionamento",
+            "for": "para atender seus clientes pelo sistema",
+            "badge": "com portal",
+            "text": [
+              "Reúne a gestão administrativa e acrescenta um portal externo. Cada cliente recebe seu próprio acesso para consultar as informações, os materiais, a agenda e os serviços disponibilizados pelo negócio.",
+              "O portal funciona como uma experiência separada do ambiente administrativo. Nessa família, eu preparo e configuro o ambiente para você, sem taxa de entrada."
+            ]
+          }
+        ],
+        "closing": "Você pode começar pela Estrutura e escolher o Relacionamento quando fizer sentido oferecer um portal aos seus clientes. A personalização visual é opcional e não muda a família do plano: o portal faz parte do Relacionamento.",
+        "highlight": "Você não precisa contratar um portal se não pretende utilizá-lo.",
+        "theme": "light"
       },
       {
         "kicker": "sem marca ainda",
