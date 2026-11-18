@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Check, Minus, ArrowRight } from '@phosphor-icons/react'
+import { createPortal } from 'react-dom'
+import { Check, Minus, ArrowRight, X } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 import PriceCalc from '@/components/PriceCalc'
@@ -54,7 +55,7 @@ function Cell({ v }) {
   return v
 }
 
-function PCard({ it, b, fam, pick }) {
+function PCard({ it, b, fam, pick, onWait }) {
   const avail = it.tone === 'plain'
   const month = it.amount * (1 - b.disc)
   const off = Math.round(b.disc * 100)
@@ -82,7 +83,7 @@ function PCard({ it, b, fam, pick }) {
       <ul className="plan-feat">{it.features.slice(0, 5).map((x) => <li key={x}><Check size={14} weight="bold" aria-hidden="true" />{x}</li>)}</ul>
       {it.cta && (
         <div className="plan-act">
-          <a href={it.cta.href} className="plan-cta" onClick={() => play('click')}>{it.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></a>
+          <a href={it.cta.href} className="plan-cta" onClick={(e) => { play('click'); if (onWait && it.cta.href === '#lista-espera') { e.preventDefault(); onWait() } }}>{it.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></a>
         </div>
       )}
     </li>
@@ -109,9 +110,31 @@ function Compare({ cm, pick }) {
   )
 }
 
+// Lista de espera em modal: abre pelo "Entrar na lista" dos cards que ainda não estão disponíveis
+function WaitModal({ set, onClose }) {
+  useEffect(() => {
+    const k = (e) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', k)
+    return () => window.removeEventListener('keydown', k)
+  }, [onClose])
+  return createPortal(
+    <div className="wl-modal" role="dialog" aria-modal="true" aria-labelledby="wl-modal-t" onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="wl-modal-box" data-theme="light">
+        <button type="button" className="wl-modal-x" onClick={onClose} aria-label="Fechar"><X size={20} /></button>
+        <p className="label"><b aria-hidden="true">&gt;</b> lista de espera</p>
+        <h3 id="wl-modal-t" className="display">{set.waitlistTitle}</h3>
+        <p className="wl-modal-sub">Deixe seu e-mail e escolha o modelo. Eu aviso quando abrir.</p>
+        <Waitlist cfg={set.waitlist} />
+      </div>
+    </div>,
+    document.body,
+  )
+}
+
 // Um painel por família: cards com preço, faixa do plano sob consulta, comparar e simulador
 function Panel({ t, set, b, hidden }) {
   const [pick, setPick] = useState(null)
+  const [wait, setWait] = useState(false)
   const priced = set.items.filter((x) => x.amount != null)
   const custom = set.items.find((x) => x.amount == null)
   const cols = priced.length === 4 ? 4 : 3
@@ -120,7 +143,7 @@ function Panel({ t, set, b, hidden }) {
   return (
     <div hidden={hidden} role="tabpanel">
       <ul className={`plans-grid cols-${cols}`} data-reveal>
-        {priced.map((it) => <PCard key={it.name} it={it} b={b} fam={t.label} pick={it.name === pick} />)}
+        {priced.map((it) => <PCard key={it.name} it={it} b={b} fam={t.label} pick={it.name === pick} onWait={set.waitlist ? () => setWait(true) : undefined} />)}
         {custom && inGrid && (
           <li className="plan plan-custom-card">
             <div className="plan-top"><span className="plan-line">{t.label}</span><span className="plan-status"><i />{custom.status}</span></div>
@@ -153,12 +176,8 @@ function Panel({ t, set, b, hidden }) {
 
       <Compare cm={set.compare} pick={pick} />
 
-      {set.waitlist && (
-        <div id="lista-espera" className="plans-band" data-reveal>
-          <div><h3 className="display">{set.waitlistTitle}</h3></div>
-          <Waitlist cfg={set.waitlist} />
-        </div>
-      )}
+      {/* faixa "Quer ser avisado quando abrir?" escondida: a lista abre em modal pelo botão do card */}
+      {wait && <WaitModal set={set} onClose={() => setWait(false)} />}
 
       <PriceCalc fam={t.id} onPick={setPick} />
     </div>

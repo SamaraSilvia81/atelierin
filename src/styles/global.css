@@ -2837,3 +2837,10 @@ h1, h2, h3, p { margin: 0; }
 .plan-custom-card .plan-feat svg { color: var(--palette-brasa, #E5564B); }
 .plan-custom-card .plan-cta { border-color: var(--palette-osso); color: var(--palette-osso); background: transparent; }
 .plan-custom-card .plan-cta:hover { background: var(--palette-crimson); border-color: var(--palette-crimson); color: #fff; }
+.wl-modal { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; padding: 24px; background: rgba(8, 6, 6, .72); backdrop-filter: blur(3px); }
+.wl-modal-box { position: relative; width: min(560px, 100%); padding: 30px 30px 26px; border: 1px solid var(--text); border-radius: 6px; background: var(--bg); color: var(--text); box-shadow: 12px 12px 0 var(--acc); }
+.wl-modal-box h3 { margin-top: 12px; font-size: clamp(36px, 3.4vw, 48px); line-height: .92; }
+.wl-modal-sub { margin: 10px 0 20px; font-size: var(--text-sm); color: var(--text-sub); }
+.wl-modal-x { position: absolute; top: 14px; right: 14px; border: 0; background: transparent; color: var(--text); cursor: pointer; }
+.wl-modal .wl { display: grid; gap: 10px; }
+.wl-modal .wl input, .wl-modal .wl select { width: 100%; }
