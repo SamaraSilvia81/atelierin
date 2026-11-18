@@ -461,7 +461,7 @@
           "A relação financeira continua",
           "entre você e seu cliente."
         ],
-        "note": "Nesta versão do Atelierin, o acompanhamento é manual: você confere o recebimento e atualiza o status. A integração bancária, com confirmação automática dos pagamentos, ainda não está disponível. Quando estiver, ela será opcional, terá um custo adicional e ficará disponível nos planos indicados para isso. Taxas cobradas por provedores externos, quando houver, são informadas separadamente.",
+        "note": "Nesta versão do Atelierin, o acompanhamento é manual: você confere o recebimento e atualiza o status. A integração bancária, com confirmação automática dos pagamentos, ainda não está disponível. Quando estiver, ela fará parte dos planos que já incluem esse recurso, sem custo adicional na assinatura. Taxas cobradas por provedores externos, quando houver, são informadas separadamente.",
         "accentBreak": true
       },
       {
