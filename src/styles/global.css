@@ -2765,3 +2765,8 @@ h1, h2, h3, p { margin: 0; }
 
 .devpen-k { padding: 0 8px; font: 500 10.5px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: #7A5A5A; }
 .db-party { margin-top: 18px; }
+
+.db-pay { display: grid; gap: 18px; padding-top: 18px; border-top: 1px dashed var(--border); }
+.db-pay-k { font: 500 12px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--acc-text); }
+.db-pay label.db-field > span { font: 500 12px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+.db-pay input[type=date] { padding: 10px 12px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card, #fff); color: var(--text); font: 15px var(--font-body); }

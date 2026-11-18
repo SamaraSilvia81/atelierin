@@ -69,6 +69,12 @@ export default function DealBuilder({ onClose }) {
   const [logo, setLogo] = useState(false)
   const [lp, setLp] = useState(false)
   const [agree, setAgree] = useState(null)
+  const iso = (d) => d.toISOString().slice(0, 10)
+  const [start, setStart] = useState(() => { const d = new Date(); d.setMonth(d.getMonth() + 1, 1); return iso(d) })
+  const [dueDay, setDueDay] = useState(10)
+  const [firstPay, setFirstPay] = useState(() => iso(new Date()))
+  const [parts, setParts] = useState(5)
+  const [video, setVideo] = useState('youtube')
 
   const pickFam = (id) => { setFam(id); const nf = C.fams.find((f) => f.id === id); setPlan(nf.plans[0].name); setExtra(0) }
 
@@ -89,7 +95,14 @@ export default function DealBuilder({ onClose }) {
     extra > 0 && { label: `${extra} conta${extra > 1 ? 's' : ''} externa${extra > 1 ? 's' : ''} adicional${extra > 1 ? 'is' : ''} × ${brl(extraUnit)}`, value: extra * extraUnit, per: 'por mês' },
   ].filter(Boolean)
 
-  const summary = { client, F, plan, b, lines, monthly, period, once, onceTotal, year1, agree, party: { ...party, cNome: clientName } }
+  const fmt = (s) => new Date(`${s}T12:00:00`).toLocaleDateString('pt-BR')
+  const onceN = onceTotal > 0 ? parts : 0
+  const schedule = Array.from({ length: onceN }, (_, i) => {
+    const d = new Date(`${firstPay}T12:00:00`); d.setMonth(d.getMonth() + i)
+    return { n: i + 1, date: d.toLocaleDateString('pt-BR'), value: Math.round((onceTotal / onceN) * 100) / 100 }
+  })
+  const pay = { start: fmt(start), dueDay, schedule, video, periodLabel: b.months === 1 ? 'todo mês' : b.months === 3 ? 'a cada 3 meses' : 'uma vez por ano' }
+  const summary = { pay, client, F, plan, b, lines, monthly, period, once, onceTotal, year1, agree, party: { ...party, cNome: clientName } }
 
   return createPortal(
     <div className="db-modal" role="dialog" aria-modal="true" aria-label="Montar contrato" onClick={(e) => e.target === e.currentTarget && onClose()}>
@@ -125,6 +138,20 @@ export default function DealBuilder({ onClose }) {
               <Seg label={`+ ${C.extras[1].name}`} value={lp} onChange={setLp}
                 options={[{ value: false, label: 'Não' }, { value: true, label: `+ ${brl(C.extras[1].price)}`, disabled: !sob }]} />
             </div>
+            <div className="db-pay">
+              <p className="db-pay-k">pagamento</p>
+              <div className="db-row2">
+                <label className="db-field"><span>Início da assinatura</span><input type="date" value={start} onChange={(e) => setStart(e.target.value)} /></label>
+                <Seg label="Vencimento" value={dueDay} onChange={setDueDay} options={[5, 10, 15, 20].map((n) => ({ value: n, label: `dia ${n}` }))} />
+              </div>
+              {onceTotal > 0 && (
+                <div className="db-row2">
+                  <Seg label="Pagamento único em" value={parts} onChange={setParts} options={[1, 2, 3, 4, 5].map((n) => ({ value: n, label: n === 1 ? 'à vista' : `${n}x`, sub: brl(Math.round((onceTotal / n) * 100) / 100) }))} />
+                  <label className="db-field"><span>1ª parcela em</span><input type="date" value={firstPay} onChange={(e) => setFirstPay(e.target.value)} /></label>
+                </div>
+              )}
+              <Seg label="Vídeos das aulas" value={video} onChange={setVideo} options={[{ value: 'youtube', label: 'YouTube ou Drive', sub: 'sem custo' }, { value: 'bunny', label: 'Hospedagem de vídeo', sub: 'ex.: Bunny, pago pela contratante' }]} />
+            </div>
           </div>
 
           <aside className="db-sum" aria-live="polite">
@@ -142,6 +169,8 @@ export default function DealBuilder({ onClose }) {
                 <div className="db-mid"><span>total único</span><strong>{brl(onceTotal)}</strong></div>
               </>
             )}
+            {schedule.length > 0 && <p className="db-note">{schedule.length === 1 ? `à vista em ${schedule[0].date}` : `${schedule.length}x de ${brl(schedule[0].value)}, a 1ª em ${schedule[0].date}`}</p>}
+            <p className="db-note">mensalidade a partir de {pay.start}, vencimento dia {dueDay}, cobrada {pay.periodLabel}</p>
             <div className="db-mid"><span>1º ano, tudo somado</span><strong>{brl(year1)}</strong></div>
 
             <div className="db-agree">
@@ -178,6 +207,10 @@ function printContract(s) {
 <table>${s.lines.map(row).join('')}<tfoot><tr><td>Por mês</td><td style="text-align:right">${brl(s.monthly)}</td></tr></tfoot></table>
 ${s.b.months > 1 ? `<p>Cobrado ${brl(s.period)} ${s.b.months === 3 ? 'a cada 3 meses' : 'por ano'}.</p>` : ''}
 ${s.once.length ? `<h2>Serviços de pagamento único</h2><table>${s.once.map(row).join('')}<tfoot><tr><td>Total</td><td style="text-align:right">${brl(s.onceTotal)}</td></tr></tfoot></table>` : ''}
+<h2>Forma de pagamento</h2><p>Todos os pagamentos são feitos por Pix.</p>
+<p><b>Assinatura:</b> início em ${esc(s.pay.start)}, com vencimento todo dia ${s.pay.dueDay}, cobrada ${esc(s.pay.periodLabel)} (${brl(s.b.months > 1 ? s.period : s.monthly)} por cobrança). A primeira cobrança ocorre na data de início.</p>
+${s.pay.schedule.length ? `<p><b>Serviços de pagamento único:</b> ${s.pay.schedule.length === 1 ? 'à vista' : `${s.pay.schedule.length} parcelas, sem juros`}. O trabalho começa após a confirmação da 1ª parcela.</p><table>${s.pay.schedule.map((p) => `<tr><td>Parcela ${p.n}</td><td>${p.date}</td><td style="text-align:right">${brl(p.value)}</td></tr>`).join('')}</table>` : ''}
+<h2>Vídeos</h2><p>${s.pay.video === 'bunny' ? 'Os vídeos das aulas serão hospedados em serviço de vídeo escolhido pela contratante (ex.: Bunny Stream), contratado e pago por ela diretamente ao provedor. O Atelierin faz a integração com o ambiente, sem custo adicional, mas não arca com os valores de hospedagem, armazenamento ou transmissão.' : 'Os vídeos das aulas serão publicados no YouTube ou no Google Drive da contratante, sem custo, e incorporados ao ambiente. Se no futuro a contratante optar por um serviço pago de hospedagem de vídeo, o custo dele será dela, pago diretamente ao provedor.'}</p>
 <h2>Condições</h2><p>O Atelierin é utilizado por licença de uso enquanto a assinatura estiver ativa; o código-fonte e a plataforma continuam pertencendo ao Atelierin. Os dados da operação são da contratante e podem ser exportados antes do encerramento. Os pagamentos dos clientes da contratante são feitos diretamente a ela. O cancelamento deve ser comunicado com 30 dias de antecedência; nos três primeiros meses após a ativação, aplica-se uma taxa equivalente a uma mensalidade do plano vigente. Contratações online por pessoa física mantêm o direito de arrependimento de 7 dias (CDC).</p>
 <p><b>Total estimado no 1º ano:</b> ${brl(s.year1)}.</p>
 ${s.agree ? `<p class="ok">A contratante declarou estar de acordo com os valores acima em ${today}.</p>` : ''}
