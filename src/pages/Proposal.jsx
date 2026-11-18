@@ -19,6 +19,18 @@ function Title({ text, accent, accentMode, tag }) {
   return <h2 className="display">{a}{t ? <span className="s-title-pair">{m}{t}</span> : m}{b}</h2>
 }
 
+// pergunta dentro de um círculo "feito à mão", ao lado do título
+function Bubble({ text }) {
+  return (
+    <aside className="s-bubble">
+      <svg viewBox="0 0 320 240" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M214 26 C 160 10, 78 16, 40 54 C 6 90, 10 164, 54 198 C 100 232, 222 230, 276 194 C 316 166, 318 92, 288 58 C 266 32, 232 20, 196 22 M 208 16 C 214 20, 220 24, 226 30" />
+      </svg>
+      <p>{text}</p>
+    </aside>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -57,7 +69,6 @@ function Body({ s }) {
   )
   if (s.layout === 'families') return (
     <>
-      {s.question && <p className="s-question">{s.question}</p>}
       <div className="s-fam">
         {s.families.map((f, i) => (
           <article key={f.name} className={`s-fam-part is-${i === 0 ? 'a' : 'b'}`}>
@@ -320,7 +331,9 @@ export default function Proposal({ client, slug }) {
               </div>
               <div className="slide-main">
                 <div className="slide-copy">
-                  <Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} />
+                  {s.question
+                    ? <div className="slide-head-row"><Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} /><Bubble text={s.question} /></div>
+                    : <Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} />}
                   {[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
                   <Body s={s} />
                   {s.footnote && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.footnote}</span></p>}

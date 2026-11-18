@@ -164,7 +164,7 @@
         ],
         "question": "Para escolher, pense em uma coisa: seus clientes precisam apenas ser gerenciados por você ou também precisam entrar no sistema?",
         "layout": "families",
-        "deco": "none",
+        "deco": "tape",
         "families": [
           {
             "name": "Estrutura",
