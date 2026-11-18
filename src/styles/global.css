@@ -1524,6 +1524,24 @@ h1, h2, h3, p { margin: 0; }
 
 .interlude-down { margin-top: 12px; color: var(--text-muted); }
 
+/* cartaz (poster): palavra gigante à esquerda cortada pela borda, frase em tarjas pretas à direita */
+.slide-poster { min-height: min(92vh, 900px); display: grid; align-items: center; }
+.poster-giant { position: absolute; left: -1.5vw; top: 50%; translate: 0 -50%; display: grid; font: 400 clamp(220px, 30vw, 520px)/.8 var(--font-display); text-transform: uppercase; color: var(--text); pointer-events: none; user-select: none; }
+.poster-giant em { font-style: normal; color: var(--acc); }
+.poster { position: relative; z-index: 1; display: grid; gap: 28px; justify-items: end; padding-block: clamp(64px, 9vh, 110px); }
+.poster .interlude-k { justify-self: end; }
+.poster-body { display: grid; gap: 26px; width: min(560px, 46%); }
+.poster-lines { display: grid; justify-items: start; gap: 6px; font: 600 clamp(26px, 2.6vw, 40px)/1.15 var(--font-body); letter-spacing: -.02em; text-transform: none; }
+.poster-lines span { padding: 4px 12px 6px; background: var(--palette-tinta); color: var(--palette-osso); }
+.poster-lines span.is-acc { background: var(--palette-crimson); }
+.poster-text { padding-left: 14px; border-left: 3px solid var(--acc); font-size: clamp(17px, 1.5vw, 20px); line-height: 1.6; color: var(--text-sub); max-width: 44ch; }
+@media (max-width: 900px) {
+  .poster-giant { font-size: 58vw; opacity: .08; }
+  .poster { justify-items: start; }
+  .poster .interlude-k { justify-self: start; }
+  .poster-body { width: 100%; }
+}
+
 /* 03-04 · tabelas de planos por família */
 .slide-plans .slide-grid.wrap { width: min(1480px, 100% - 48px); }
 .slide-plans .slide-main h2 { max-width: none; }

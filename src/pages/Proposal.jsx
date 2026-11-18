@@ -76,6 +76,24 @@ function EnvDiagram({ e }) {
   )
 }
 
+// Cartaz entre slides: palavra gigante cortada pela borda e a frase em tarjas
+function Poster({ s, n, total }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme={s.theme || 'light'} className="section slide slide-poster" aria-label={s.kicker}>
+      <div className="poster-giant" aria-hidden="true">
+        {s.giant.map((g) => <span key={g}>{g.endsWith('?') ? <>{g.slice(0, -1)}<em>?</em></> : g}</span>)}
+      </div>
+      <div className="wrap poster" data-reveal>
+        <span className="interlude-k"><b>{n}</b>/{total} · {s.kicker}</span>
+        <div className="poster-body">
+          <h2 className="poster-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</h2>
+          {s.text && <p className="poster-text">{s.text}</p>}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -386,6 +404,7 @@ export default function Proposal({ client, slug }) {
       </section>
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         const n = numOf.get(s.kicker)
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (

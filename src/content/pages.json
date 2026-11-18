@@ -166,66 +166,16 @@
         ]
       },
       {
-        "kicker": "duas famílias",
-        "title": "Duas formas de atender. Uma gestão organizada.",
-        "accent": "Uma gestão organizada.",
-        "accentMode": "text",
-        "text": [
-          "O Atelierin tem duas famílias de planos, pensadas para formas diferentes de trabalhar. Em uma, tudo acontece no seu ambiente administrativo. Na outra, seus clientes também ganham um espaço próprio para acessar o que você disponibiliza."
-        ],
-        "question": {
-          "label": "Para escolher, pense em uma coisa",
-          "text": "Seus clientes precisam apenas ser gerenciados por você",
-          "accent": "ou também precisam entrar no sistema?"
-        },
-        "layout": "families",
-        "deco": "band",
-        "highlight": "Você não precisa contratar um portal se não pretende utilizá-lo.",
-        "theme": "light",
-        "accentBreak": true,
-        "envs": [
-          {
-            "id": "estrutura",
-            "name": "Estrutura",
-            "tag": "sem portal",
-            "caption": "Um ambiente só seu. Você e sua equipe organizam tudo; os clientes ficam cadastrados, mas não entram.",
-            "admin": "seu ambiente",
-            "people": [
-              "você",
-              "equipe"
-            ],
-            "records": "clientes cadastrados",
-            "outside": "seus clientes não acessam"
-          },
-          {
-            "id": "relacionamento",
-            "name": "Relacionamento",
-            "tag": "com portal",
-            "caption": "O mesmo ambiente seu, ligado a um portal. Cada cliente entra com login próprio e vê o que é dele.",
-            "admin": "seu ambiente",
-            "people": [
-              "você",
-              "equipe"
-            ],
-            "records": "clientes cadastrados",
-            "portal": "portal dos clientes",
-            "portalItems": [
-              "aulas",
-              "materiais",
-              "pagamentos"
-            ],
-            "outside": "cada cliente com o próprio login"
-          }
-        ]
-      },
-      {
         "kicker": "planos · estrutura",
         "layout": "plans",
         "theme": "light",
         "deco": "band",
         "title": "Estrutura",
         "tag": "sem portal",
-        "text": "Gestão interna, sem portal para clientes.",
+        "text": [
+          "O primeiro modelo do Atelierin é a Estrutura: um ambiente só seu, para você e a sua equipe organizarem clientes, agenda e pagamentos.",
+          "Seus clientes ficam cadastrados, mas não acessam o sistema. Você cria a conta e começa a usar, inclusive pelo plano gratuito."
+        ],
         "plans": {
           "cols": [
             "Plano",
@@ -289,7 +239,10 @@
         "deco": "band",
         "title": "Relacionamento",
         "tag": "com portal",
-        "text": "Gestão interna + portal individual para clientes.",
+        "text": [
+          "O segundo modelo é o Relacionamento: o mesmo ambiente, ligado a um portal em que cada cliente entra com login próprio para ver aulas, materiais, agenda e pagamentos.",
+          "Nessa família, eu preparo e configuro o ambiente para você, sem taxa de entrada."
+        ],
         "plans": {
           "cols": [
             "Plano",
@@ -358,6 +311,23 @@
           ]
         },
         "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato."
+      },
+      {
+        "kicker": "antes de escolher",
+        "poster": true,
+        "theme": "light",
+        "giant": [
+          "POR",
+          "TAL?"
+        ],
+        "lines": [
+          "Seus clientes precisam",
+          "apenas ser gerenciados",
+          "por você ou também",
+          "precisam entrar",
+          "no sistema?"
+        ],
+        "text": "Escolha de acordo com a capacidade da sua operação hoje. Você não precisa contratar um portal se não pretende utilizá-lo."
       },
       {
         "kicker": "sem marca ainda",
