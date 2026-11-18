@@ -304,7 +304,7 @@ export default function Proposal({ client, slug }) {
                   <Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} />
                   {[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
                   <Body s={s} />
-                  {s.footnote && <p className="slide-foot">{s.footnote}</p>}
+                  {s.footnote && <p className="slide-foot"><span className="slide-foot-ic" aria-hidden="true">!!</span><span>{s.footnote}</span></p>}
                 </div>
               </div>
             </div>
