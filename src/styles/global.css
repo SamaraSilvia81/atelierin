@@ -1459,7 +1459,7 @@ h1, h2, h3, p { margin: 0; }
 /* a pergunta flutua no alto, à direita, perto da faixa; título e texto ficam livres à esquerda */
 .slide-families .slide-main { position: relative; }
 .s-intro-row { display: block; }
-.s-intro-text { display: grid; gap: 16px; max-width: 60ch; }
+.s-intro-text { display: grid; gap: 16px; max-width: 68ch; }
 .s-intro-text .slide-text { max-width: none; text-align: left; hyphens: manual; }
 .s-ask { position: absolute; top: -8px; right: calc(-1 * clamp(40px, 6vw, 90px) + 28px); width: min(400px, 36%); overflow: visible; display: grid; gap: 18px; padding: 36px 32px 34px; border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); rotate: 2deg; box-shadow: 0 14px 28px -18px rgba(26, 15, 15, .45); }
 /* fita adesiva transparente prendendo a ficha no topo, com as pontas rasgadas */
