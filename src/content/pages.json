@@ -566,96 +566,72 @@
         ],
         "price": {
           "label": "pagamento único",
-          "value": "R$ 950",
-          "sub": "em até 3x de R$ 316,67"
+          "value": "R$ 1.250",
+          "sub": "em até 3x de R$ 416,67"
         },
         "text": "O Atelierin pode ser utilizado com a apresentação padrão da plataforma ou receber uma personalização visual com a identidade do seu negócio. Ele adapta a aparência e configura o ambiente, sem criar um sistema separado."
       },
       {
-        "kicker": "sob medida · detalhes",
+        "kicker": "sob medida · o que entra",
         "layout": "sobdetalhe",
         "theme": "light",
-        "lead": "sob medida",
+        "lead": "o que entra nos R$ 1.250",
         "titleLines": [
-          "O que entra"
+          "Seu estilo,"
         ],
-        "titleAccentLine": "nos R$ 950.",
-        "aside": "A personalização muda a apresentação do seu ambiente, não o plano contratado. Se você estiver na Estrutura, continua na Estrutura; o portal externo continua sendo exclusivo da família Relacionamento.",
-        "includes": {
-          "title": "Inclui",
+        "titleAccentLine": "em cada detalhe.",
+        "items": [
+          [
+            "Direcionamento de estilo",
+            "Definimos juntos a linha visual do seu ambiente, retrô, minimalista, editorial ou o que combinar com você, além das cores e da tipografia."
+          ],
+          [
+            "Sua marca em todas as telas",
+            "Seu logo, ou um monograma criado para você, aplicado no login, no painel, no portal e no banner de divulgação."
+          ],
+          [
+            "E-mails com a sua cara",
+            "Lembretes, promoções e outros avisos que você quiser, escritos e enviados pelo sistema no seu estilo."
+          ]
+        ],
+        "extras": {
+          "kicker": "opcional",
+          "title": "Quer ir além?",
           "items": [
-            "Aplicação da sua identidade visual (logo, cores e tipografia) ou criação de um monograma, se você ainda não tiver.",
-            "Domínio próprio (ex.: seunegocio.com.br), configurado por mim. O registro do domínio é pago à parte.",
-            "Configuração de e-mails com a identidade do negócio.",
-            "Configuração das funcionalidades já disponíveis no modelo contratado."
+            {
+              "name": "Logo de verdade",
+              "price": "+ R$ 550",
+              "text": "Uma marca no lugar do monograma: logotipo, paleta, tipografia, mockups e duas rodadas de ajustes.",
+              "totalLabel": "sob medida + logo",
+              "total": "R$ 1.800"
+            },
+            {
+              "name": "Landing page",
+              "price": "+ R$ 1.200",
+              "text": "Uma página completa para divulgar o seu trabalho, no mesmo estilo do seu ambiente.",
+              "totalLabel": "pacote completo",
+              "total": "R$ 3.000",
+              "hl": true
+            }
           ]
         },
-        "excludes": {
-          "title": "O que não está incluído",
-          "items": [
-            "Logotipo e identidade completa (à parte)",
-            "Desenvolvimento de funcionalidades novas ou exclusivas",
-            "Landing page completa",
-            "Hospedagem própria de vídeos"
-          ],
-          "note": "Esses itens podem ser avaliados e contratados separadamente, quando disponíveis."
-        },
-        "upgrade": {
-          "label": "Quer um logo?",
-          "text": "Troque o monograma por uma identidade básica: logotipo simples, paleta, tipografia, dois mockups e duas rodadas de ajustes.",
-          "value": "+ R$ 350",
-          "total": "total R$ 1.300",
-          "kicker": "opcional"
-        },
-        "inpi": "Registro no INPI não incluso: a taxa oficial é paga por você, diretamente ao INPI. Se quiser, eu acompanho o pedido como serviço à parte.",
+        "inpi": "Se o logo for virar uma marca registrada, o registro no INPI é feito por você, com a taxa paga diretamente ao INPI.",
         "inpiLink": {
           "label": "Página de marcas do INPI",
           "href": "https://www.gov.br/inpi/pt-br/servicos/marcas"
         }
       },
       {
-        "kicker": "página de divulgação",
+        "kicker": "banner de divulgação",
         "layout": "lp",
         "theme": "light",
         "deco": "none",
-        "title": "Quer uma página completa para divulgar?",
-        "accent": "completa para divulgar?",
+        "title": "Sem landing page? Seu banner divulga.",
+        "accent": "Seu banner divulga.",
         "accentMode": "text",
-        "text": "Todos os planos já vêm com um banner de divulgação no seu endereço: sua foto, o que você oferece, contato e o botão de entrar. Se você quiser uma landing page completa, com texto, seções e design próprios, ela é um serviço à parte, feito pelo Atelierin para você.",
-        "cards": [
-          {
-            "name": "Banner de divulgação",
-            "price": "incluso",
-            "for": "vem em todos os planos",
-            "items": [
-              "Foto, nome e bio curta",
-              "O que você oferece",
-              "WhatsApp e botão de entrar"
-            ]
-          },
-          {
-            "name": "Landing page completa",
-            "price": "+ R$ 1.500",
-            "for": "somada ao Sob medida",
-            "items": [
-              "Texto e seções pensados para você",
-              "Design próprio",
-              "Usa a identidade aplicada no Sob medida"
-            ]
-          },
-          {
-            "name": "Pacote completo",
-            "price": "R$ 2.800",
-            "for": "Sob medida + logo + landing page",
-            "items": [
-              "Sob medida · R$ 950",
-              "Logo e identidade básica · + R$ 350",
-              "Landing page completa · + R$ 1.500"
-            ],
-            "hl": true
-          }
-        ],
-        "footnote": "O registro da marca no INPI não está incluso em nenhum serviço. A taxa oficial é paga por você, diretamente ao INPI.",
+        "accentBreak": true,
+        "textWide": true,
+        "text": "Todos os planos já vêm com um banner de divulgação no seu endereço: sua foto, o que você oferece, contato e o botão de entrar. Se você não contratar a landing page, é um banner parecido com este que fica no lugar.",
         "example": {
           "label": "exemplo de banner de divulgação",
           "host": "anaribeiro.atelierin.com.br",
@@ -693,12 +669,6 @@
           "badge": "Agenda aberta · dezembro",
           "quote": "Pela primeira vez abri o armário e soube\no que vestir. Valeu cada encontro.",
           "quoteBy": "Carla M., cliente desde 2025"
-        },
-        "accentBreak": true,
-        "textWide": true,
-        "footnoteLink": {
-          "label": "Página de marcas do INPI",
-          "href": "https://www.gov.br/inpi/pt-br/servicos/marcas"
         }
       },
       {

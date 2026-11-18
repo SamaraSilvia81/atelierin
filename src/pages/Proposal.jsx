@@ -323,40 +323,33 @@ function EscadaSlide({ s, n, total }) {
   )
 }
 
-// Detalhes do Sob medida: título largo, frase ao lado e três colunas (inclui, não inclui, logo)
+// Sob medida, o que entra: três itens numerados à esquerda, opcionais (logo, landing) à direita
 function SobDetalhe({ s, n, total }) {
   return (
     <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-sobdet">
       <div className="sd-wrap">
         <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
         <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
-        <div className="sd-head" data-reveal>
-          <div>
+        <div className="sd-grid">
+          <div className="sd-main" data-reveal>
             {s.lead && <p className="pn-kick">› {s.lead}</p>}
             <h2 className="display pn-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}<em>{s.titleAccentLine}</em></h2>
+            <ol className="sd-items">{s.items.map(([h, p], i) => (
+              <li key={h}><b>{String(i + 1).padStart(2, '0')}</b><div><h3>{h}</h3><p>{p}</p></div></li>
+            ))}</ol>
           </div>
-          {s.aside && <p className="sd-aside">{s.aside}</p>}
-        </div>
-        <div className="sd-cols" data-reveal>
-          <div className="sd-col">
-            <h3>{s.includes.title}</h3>
-            <ol className="sd-in">{s.includes.items.map((it, i) => <li key={it}><b>{String(i + 1).padStart(2, '0')}</b><span>{it}</span></li>)}</ol>
+          <div className="sd-side" data-reveal>
+            {s.extras.kicker && <p className="pn-kick">› {s.extras.kicker}</p>}
+            <h3 className="display sd-side-title">{s.extras.title}</h3>
+            {s.extras.items.map((x) => (
+              <div key={x.name} className={`sd-add ${x.hl ? 'is-hl' : ''}`}>
+                <div className="sd-add-row"><h4>{x.name}</h4><strong>{x.price}</strong></div>
+                <p>{x.text}</p>
+                <div className="sd-add-tot"><span>{x.totalLabel}</span><b>{x.total}</b></div>
+              </div>
+            ))}
+            {s.inpi && <p className="sd-inpi">{s.inpi}{s.inpiLink && <> <a href={s.inpiLink.href} target="_blank" rel="noreferrer">{s.inpiLink.label} ↗</a></>}</p>}
           </div>
-          <div className="sd-col">
-            <h3>Não inclui</h3>
-            <ul className="sd-out">{s.excludes.items.map((it) => <li key={it}>{it}</li>)}</ul>
-            {s.excludes.note && <p className="sd-sm">{s.excludes.note}</p>}
-            {s.inpi && <p className="sd-sm sd-inpi">{s.inpi}{s.inpiLink && <> <a href={s.inpiLink.href} target="_blank" rel="noreferrer">{s.inpiLink.label} ↗</a></>}</p>}
-          </div>
-          {s.upgrade && (
-            <div className="sd-col sd-logo">
-              {s.upgrade.kicker && <span className="sd-k">{s.upgrade.kicker}</span>}
-              <h3>{s.upgrade.label}</h3>
-              <p>{s.upgrade.text}</p>
-              <strong>{s.upgrade.value}</strong>
-              <span className="sd-k">{s.upgrade.total}</span>
-            </div>
-          )}
         </div>
         <div className="pn-foot sd-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
       </div>
@@ -558,7 +551,7 @@ function Body({ s }) {
   )
   if (s.layout === 'lp') return (
     <>
-      <div className="s-options s-lp">
+      {s.cards && <div className="s-options s-lp">
         {s.cards.map((o) => (
           <div key={o.name} className={`s-option ${o.hl ? 'is-hl' : ''}`}>
             <span className="s-option-for">{o.for}</span>
@@ -567,7 +560,7 @@ function Body({ s }) {
             <ul>{o.items.map((it) => <li key={it}><Check size={14} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
           </div>
         ))}
-      </div>
+      </div>}
     </>
   )
   if (s.layout === 'offer') return (
