@@ -52,6 +52,47 @@ export default function FounderCard() {
   )
 }
 
+// Faixa de largura total "Quer ser cliente fundador?", dentro de Planos, entre os
+// cards e a tabela. Sem card dentro de card: texto, listas e formulário em três
+// colunas separadas por filetes. Vale só para o sob medida (PRD-008).
+export function FounderBand() {
+  const f = content.founder
+  return (
+    <section id="fundador" className="fdr-band" data-reveal aria-labelledby="fdr-band-t">
+      <div className="fdr-band-id">
+        <p className={`founder-status ${f.open ? '' : 'is-closed'}`}><i aria-hidden="true" />{f.open ? f.statusOpen : f.statusClosed}</p>
+        <h3 id="fdr-band-t" className="display">{f.title} <em>{f.titleAccent}</em></h3>
+        <p className="fdr-band-lede">{f.lede}</p>
+        <p className="fdr-band-off"><strong>{f.badge}</strong><span>{f.badgeSub}</span></p>
+      </div>
+
+      <div className="fdr-band-trade">
+        <div>
+          <h4>{f.get.title}</h4>
+          <ul>{f.get.items.map((t) => <li key={t}><Check size={13} weight="bold" aria-hidden="true" />{t}</li>)}</ul>
+        </div>
+        <div>
+          <h4>{f.give.title}</h4>
+          <ul>{f.give.items.map((t) => <li key={t}><Check size={13} weight="bold" aria-hidden="true" />{t}</li>)}</ul>
+        </div>
+      </div>
+
+      <div className="fdr-band-form">
+        {f.open ? (
+          <>
+            <Waitlist cfg={f.waitlist} extra={<FounderLink f={f} />} />
+            <a className="founder-wa" href={whatsappWith(f.cta.message)} target="_blank" rel="noopener noreferrer">
+              <WhatsappLogo size={15} weight="fill" aria-hidden="true" /> {f.whatsappLabel}
+            </a>
+          </>
+        ) : (
+          <div className="founder-closed-row"><p className="founder-closed">{f.closedNote}</p><FounderLink f={f} /></div>
+        )}
+      </div>
+    </section>
+  )
+}
+
 // Versão B do teste A/B (?fundador=b): o fundador como um bloco DENTRO do
 // card Sob medida, para ficar claro que é uma condição desse plano.
 // "Quero uma vaga" abre o modal de fundador (que tem o formulário da lista).

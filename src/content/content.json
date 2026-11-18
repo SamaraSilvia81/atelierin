@@ -579,9 +579,9 @@
   },
   "plans": {
     "piece": "Nº 06 · Etiquetas",
-    "title": "Do primeiro cliente à alta-costura",
+    "title": "Planos",
     "titleAccent": "",
-    "lede": "Comece sozinho com um modelo pronto, por assinatura, ou tenha um sistema com a sua marca, no sob medida. O mensal acompanha o tamanho da turma. Hoje a linha disponível é a School, para professores e escolas pequenas.",
+    "lede": "Duas famílias de planos: Gestão, para organizar o seu negócio por dentro, e Portal, que soma um espaço com login para os seus clientes. O Sob medida é um serviço opcional, à parte.",
     "items": [
       {
         "line": "Outras linhas",
@@ -616,9 +616,78 @@
       }
     ],
     "pricing": {
+      "extraMax": 10,
+      "over": {
+        "estrutura": "Empresarial",
+        "relacionamento": "Alta-costura"
+      },
+      "estrutura": {
+        "extra": 1.9,
+        "tiers": [
+          {
+            "name": "Grátis",
+            "price": 0,
+            "clients": 5,
+            "team": 0
+          },
+          {
+            "name": "Essencial",
+            "price": 39,
+            "clients": 20,
+            "team": 0
+          },
+          {
+            "name": "Completo",
+            "price": 79,
+            "clients": 50,
+            "team": 5
+          },
+          {
+            "name": "Avançado",
+            "price": 139,
+            "clients": 150,
+            "team": 15
+          }
+        ]
+      },
+      "relacionamento": {
+        "extra": 8.9,
+        "tiers": [
+          {
+            "name": "Casual",
+            "price": 190,
+            "clients": 15,
+            "team": 0
+          },
+          {
+            "name": "Social",
+            "price": 290,
+            "clients": 30,
+            "team": 0
+          },
+          {
+            "name": "Gala",
+            "price": 390,
+            "clients": 50,
+            "team": 5
+          },
+          {
+            "name": "Black Tie",
+            "price": 490,
+            "clients": 100,
+            "team": 5
+          },
+          {
+            "name": "White Tie",
+            "price": 690,
+            "clients": 150,
+            "team": 15
+          }
+        ]
+      },
       "sobMedida": {
         "name": "Sob medida",
-        "setup": 3000,
+        "setup": 1200,
         "installments": 10,
         "bunny": 49
       },
@@ -645,84 +714,29 @@
       "overLabel": "mais de 50 alunos",
       "overName": "Alta-costura"
     },
-    "rules": {
-      "label": "Como é cobrado",
-      "title": "Uma vez, e todo mês",
-      "cols": [
-        "Alunos",
-        "Mensal"
-      ],
-      "rows": [
-        {
-          "mark": "1×",
-          "name": "Implantação",
-          "values": [
-            "todos os planos",
-            "10x R$ 300"
-          ],
-          "accent": 1
-        },
-        {
-          "mark": "↻",
-          "name": "Casual",
-          "values": [
-            "até 15 alunos",
-            "R$ 190"
-          ]
-        },
-        {
-          "mark": "↻",
-          "name": "Social",
-          "values": [
-            "16 a 30 alunos",
-            "R$ 290"
-          ]
-        },
-        {
-          "mark": "↻",
-          "name": "Gala",
-          "values": [
-            "31 a 50 alunos",
-            "R$ 390"
-          ]
-        },
-        {
-          "mark": "↻",
-          "name": "Alta-costura",
-          "values": [
-            "mais de 50 alunos",
-            "sob consulta"
-          ],
-          "founder": "−20% sobre o combinado"
-        }
-      ],
-      "note": "O mensal é a licença e manutenção: um valor fixo pelo plano, com hospedagem, backup, atualizações e suporte incluídos. É revisto uma vez por ano. A implantação de R$ 3.000 é a mesma nos quatro planos e já inclui cadastrar os seus alunos. Vídeo próprio pelo Bunny entra à parte. Funcionalidade nova só entra se você pedir, com orçamento antes."
-    },
     "calc": {
       "label": "Simule o seu",
-      "students": "Quantos alunos você tem",
-      "access": "Seus alunos vão acessar o ambiente?",
-      "accessYes": "Sim",
-      "accessNo": "Não, é só para mim",
-      "video": "Vídeo",
-      "videoFree": "YouTube ou Drive",
-      "videoBunny": "Bunny (próprio)",
-      "bunnyHint": "Bunny entra à parte",
-      "plan": "Plano",
-      "setup": "Implantação",
-      "once": "uma vez",
-      "bunny": "Vídeo Bunny",
-      "estimated": "estimado",
+      "clients": {
+        "estrutura": "Quantos clientes você cadastra",
+        "relacionamento": "Quantos clientes vão ter portal"
+      },
+      "team": "Equipe além de você",
+      "team0": "Só eu",
+      "team5": "Até 5",
+      "team15": "Até 15",
+      "plan": "Plano indicado",
+      "base": "Mensalidade",
+      "extra": {
+        "estrutura": "Registros adicionais",
+        "relacionamento": "Contas externas adicionais"
+      },
+      "founder": "Como fundador",
+      "next": "Plano seguinte",
       "month": "Por mês",
-      "year1": "1º ano, com a implantação",
-      "years": "Anos seguintes",
-      "note": "Valores de referência. A proposta final sai da nossa conversa.",
-      "kind": "Como você quer o ambiente?",
-      "kindPadrao": "Como ele é, com a minha marca",
-      "kindPers": "Ajustado ao meu jeito",
-      "tier": "Licença e manutenção",
+      "year": "No ano",
       "over": "sob consulta",
-      "overNote": "Acima de 50 alunos, o mensal é combinado na conversa."
+      "overNote": "Acima disso, o plano é combinado na conversa.",
+      "note": "Valores de referência. A proposta final sai da nossa conversa."
     },
     "foot": {
       "text": "O pagamento dos alunos vai direto para você. Nenhuma taxa por transação.",
@@ -731,85 +745,128 @@
     },
     "tabs": [
       {
-        "id": "pronto",
-        "label": "Modelo pronto",
-        "sub": "por assinatura · em breve"
+        "id": "estrutura",
+        "label": "Gestão",
+        "sub": "só administração",
+        "lede": "Gestão é para organizar o seu negócio por dentro: clientes, agenda, financeiro e equipe num lugar só. Quem usa o sistema é você e a sua equipe; os seus clientes não entram."
       },
       {
-        "id": "medida",
-        "label": "Sob medida",
-        "sub": "com a sua marca · disponível"
+        "id": "relacionamento",
+        "label": "Portal",
+        "sub": "gestão + portal dos clientes",
+        "lede": "Portal é a gestão completa mais um espaço com login para cada cliente, no celular ou no computador. Eles acompanham agenda, materiais e pagamentos, e você acompanha cada um."
       }
     ],
     "sets": {
-      "pronto": {
-        "note": "Sem taxa de entrada. Teste de 7 dias nos planos pagos. O app Atelierin no celular é incluído no Ilimitado e à parte nos outros.",
+      "estrutura": {
+        "note": "",
         "items": [
           {
-            "line": "Modelo pronto",
+            "line": "Estrutura",
             "name": "Grátis",
             "status": "Em breve",
             "tone": "wait",
-            "for": "até 5 alunos",
+            "for": "Para conhecer, até 5 clientes",
             "price": "R$ 0",
             "priceSub": "por mês",
             "features": [
-              "Cadastro de alunos, aulas e agenda",
-              "Turmas e grupos",
+              "1 acesso (o seu), sem equipe",
+              "Cadastro, agenda, turmas e anotações",
               "Pagamento manual com status",
               "Banner de divulgação, com a marca Atelierin",
-              "500 MB de armazenamento",
-              "Exporta os seus dados em CSV"
-            ]
+              "500 MB · exporta em CSV"
+            ],
+            "amount": 0,
+            "cta": {
+              "label": "Entrar na lista",
+              "href": "#lista-espera"
+            },
+            "text": "Ex.: quem está testando a plataforma."
           },
           {
-            "line": "Modelo pronto",
+            "line": "Estrutura",
             "name": "Essencial",
             "status": "Em breve",
             "tone": "wait",
-            "for": "até 20 alunos",
+            "for": "Atende sozinho, até 20 clientes",
             "price": "R$ 39",
             "priceSub": "por mês",
             "features": [
               "Tudo do Grátis",
-              "Portal do aluno",
+              "Importação de clientes por planilha",
               "Materiais e vídeos (YouTube ou Drive)",
               "Contratos e lembretes por e-mail",
               "Logo e nome seus no ambiente",
-              "2 GB · suporte por e-mail"
-            ]
+              "2 GB · relatório mensal · suporte por e-mail"
+            ],
+            "amount": 39,
+            "cta": {
+              "label": "Entrar na lista",
+              "href": "#lista-espera"
+            },
+            "text": "Ex.: autônomos e professores que não precisam de portal."
           },
           {
-            "line": "Modelo pronto",
+            "line": "Estrutura",
             "name": "Completo",
             "status": "Em breve",
             "tone": "wait",
-            "for": "até 50 alunos",
+            "for": "Equipe de até 5, até 50 clientes",
             "price": "R$ 79",
             "priceSub": "por mês",
             "features": [
               "Tudo do Essencial",
+              "Você + até 5 integrantes da equipe",
               "Pix com confirmação automática",
-              "Previsão de recebimentos",
-              "Importa extrato (OFX ou CSV)",
-              "2 acessos da equipe · 10 GB",
-              "Suporte por e-mail prioritário"
-            ]
+              "Previsão de recebimentos e extrato (OFX ou CSV)",
+              "Relatórios completos · 10 GB"
+            ],
+            "amount": 79,
+            "cta": {
+              "label": "Entrar na lista",
+              "href": "#lista-espera"
+            },
+            "text": "Ex.: consultório, estúdio ou agência pequena."
           },
           {
-            "line": "Modelo pronto",
-            "name": "Ilimitado",
+            "line": "Estrutura",
+            "name": "Avançado",
             "status": "Em breve",
             "tone": "wait",
-            "for": "sem limite de alunos (uso justo)",
+            "for": "Equipe de até 15, até 150 clientes",
             "price": "R$ 139",
             "priceSub": "por mês",
             "features": [
               "Tudo do Completo",
-              "3 acessos da equipe · 30 GB",
-              "App Atelierin incluído",
-              "Relatórios completos"
-            ]
+              "Você + até 15 integrantes da equipe",
+              "30 GB de armazenamento",
+              "Suporte por e-mail prioritário"
+            ],
+            "amount": 139,
+            "cta": {
+              "label": "Entrar na lista",
+              "href": "#lista-espera"
+            },
+            "text": "Ex.: pequena empresa com carteira grande, sem portal."
+          },
+          {
+            "line": "Estrutura",
+            "name": "Empresarial",
+            "status": "Em breve",
+            "tone": "wait",
+            "for": "Acima do Avançado",
+            "priceBig": "Sob consulta",
+            "priceExtra": "para além do Avançado",
+            "features": [
+              "Equipe, clientes e armazenamento a combinar",
+              "Relatórios personalizados",
+              "Demonstração antes de contratar"
+            ],
+            "cta": {
+              "label": "Falar comigo",
+              "href": "/#contato"
+            },
+            "text": "Ex.: operação com limites próprios."
           }
         ],
         "waitlistTitle": "Quer ser avisado quando abrir?",
@@ -827,108 +884,687 @@
           "consent": "Uso seu e-mail só para avisar quando o modelo pronto abrir.",
           "ok": "Pronto, você está na lista. Chegou um e-mail de confirmação.",
           "fail": "Não consegui salvar agora. Me chama no WhatsApp que eu anoto."
+        },
+        "rules": {
+          "label": "Como é cobrado",
+          "title": "Passou do limite? Adicione, sem trocar de plano",
+          "cols": [
+            "O que é",
+            "Mensal"
+          ],
+          "rows": [
+            {
+              "mark": "+",
+              "name": "Registro adicional",
+              "values": [
+                "cadastro extra, sem login",
+                "R$ 1,90"
+              ],
+              "accent": 1
+            },
+            {
+              "mark": "≤",
+              "name": "Limite",
+              "values": [
+                "até 10 adicionais por plano",
+                "depois, o plano seguinte"
+              ]
+            }
+          ],
+          "note": "Se os adicionais saírem mais caros que o plano seguinte, a calculadora mostra os dois e você escolhe. O pagamento dos clientes vai direto para você. As taxas do gateway (Pix) são suas, não do Atelierin."
+        },
+        "compare": {
+          "cols": [
+            "Grátis",
+            "Essencial",
+            "Completo",
+            "Avançado",
+            "Empresarial"
+          ],
+          "sections": [
+            {
+              "title": "Capacidade",
+              "rows": [
+                [
+                  "Clientes cadastrados",
+                  5,
+                  20,
+                  50,
+                  150,
+                  "Negociado"
+                ],
+                [
+                  "Integrantes da equipe",
+                  0,
+                  0,
+                  "Até 5",
+                  "Até 15",
+                  "Negociado"
+                ],
+                [
+                  "Armazenamento",
+                  "500 MB",
+                  "2 GB",
+                  "10 GB",
+                  "30 GB",
+                  "Negociado"
+                ]
+              ]
+            },
+            {
+              "title": "Gestão",
+              "rows": [
+                [
+                  "Cadastro, ficha, agenda e anotações",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Turmas e grupos",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Importação por planilha",
+                  false,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Materiais e vídeos (YouTube ou Drive)",
+                  false,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Contratos e lembretes por e-mail",
+                  false,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Logo e nome seus no ambiente",
+                  false,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Banner de divulgação",
+                  "Marca Atelierin",
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ]
+            },
+            {
+              "title": "Financeiro",
+              "rows": [
+                [
+                  "Pagamento manual e comprovante",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Importação de extrato (OFX ou CSV)",
+                  false,
+                  false,
+                  true,
+                  true,
+                  "Conforme escopo"
+                ],
+                [
+                  "Pix com confirmação automática",
+                  false,
+                  false,
+                  true,
+                  true,
+                  "Conforme escopo"
+                ],
+                [
+                  "Previsão de recebimentos",
+                  false,
+                  false,
+                  true,
+                  true,
+                  "Conforme escopo"
+                ]
+              ]
+            },
+            {
+              "title": "Relatórios e suporte",
+              "rows": [
+                [
+                  "Relatórios",
+                  "Básico",
+                  "Mensal",
+                  "Completo",
+                  "Completo",
+                  "Personalizado"
+                ],
+                [
+                  "Exportação de dados",
+                  "CSV",
+                  "CSV, MD, DOCX, TXT",
+                  "CSV, MD, DOCX, TXT",
+                  "CSV, MD, DOCX, TXT",
+                  "Conforme escopo"
+                ],
+                [
+                  "Suporte",
+                  "Central de ajuda",
+                  "E-mail",
+                  "E-mail",
+                  "E-mail prioritário",
+                  "Negociado"
+                ],
+                [
+                  "Implantação assistida",
+                  "Demonstração",
+                  "Opcional, paga",
+                  "Opcional, paga",
+                  "Opcional, paga",
+                  "Negociado"
+                ]
+              ]
+            }
+          ]
+        },
+        "guide": {
+          "clients": [
+            [
+              "até 5",
+              5
+            ],
+            [
+              "6 a 20",
+              20
+            ],
+            [
+              "21 a 50",
+              50
+            ],
+            [
+              "51 a 150",
+              150
+            ],
+            [
+              "mais de 150",
+              999
+            ]
+          ]
         }
       },
-      "medida": {
-        "note": "A implantação é de R$ 3.000 (10x de R$ 300), igual nos quatro planos: monta o ambiente, aplica a sua identidade, cadastra os seus alunos e ensina a usar. O mensal é fixo pelo plano.",
+      "relacionamento": {
+        "note": "",
         "items": [
           {
-            "line": "Sob medida",
+            "line": "Relacionamento",
             "name": "Casual",
-            "status": "até 15 alunos",
+            "status": "até 15 clientes",
             "tone": "plain",
-            "for": "Para quem está começando",
+            "for": "Quem está começando, até 15 clientes",
             "price": "R$ 190",
             "priceSub": "por mês",
-            "priceExtra": "mais a implantação de R$ 3.000",
-            "monthly": 190,
+            "priceExtra": "gestão + portal dos clientes",
             "cta": {
               "label": "Conversar sobre este plano",
               "href": "/#contato"
             },
             "features": [
-              "Todos os recursos do plano Ilimitado",
-              "2 acessos da equipe · 10 GB",
-              "Sua marca, seu endereço e seus e-mails",
-              "Cadastro dos seus alunos e treinamento",
-              "Página pública simples",
-              "App Atelierin incluído"
-            ]
+              "Portal do cliente com login próprio, também no celular",
+              "Tudo da gestão: cadastro, agenda, materiais e financeiro",
+              "1 acesso (o seu), sem equipe · 10 GB",
+              "Relatório básico · exporta em CSV",
+              "Suporte por e-mail"
+            ],
+            "monthly": 190,
+            "amount": 190,
+            "text": "Ex.: professor particular, personal trainer, mentor."
           },
           {
-            "line": "Sob medida",
+            "line": "Relacionamento",
             "name": "Social",
-            "status": "16 a 30 alunos",
+            "status": "até 30 clientes",
             "tone": "plain",
-            "for": "Para quem já tem a turma formada",
+            "for": "Turma formada, até 30 clientes",
             "price": "R$ 290",
             "priceSub": "por mês",
-            "priceExtra": "mais a implantação de R$ 3.000",
-            "monthly": 290,
+            "priceExtra": "gestão + portal dos clientes",
             "cta": {
               "label": "Conversar sobre este plano",
               "href": "/#contato"
             },
             "features": [
-              "Todos os recursos do plano Ilimitado",
-              "3 acessos da equipe · 20 GB",
-              "Sua marca, seu endereço e seus e-mails",
-              "Cadastro dos seus alunos e treinamento",
-              "Página pública simples",
-              "App Atelierin incluído"
-            ]
+              "Tudo do Casual",
+              "Relatório mensal",
+              "Exporta em CSV, MD, DOCX e TXT",
+              "20 GB de armazenamento"
+            ],
+            "monthly": 290,
+            "amount": 290,
+            "text": "Ex.: professor de música ou redação com turma fixa."
           },
           {
-            "line": "Sob medida",
+            "line": "Relacionamento",
             "name": "Gala",
-            "status": "31 a 50 alunos",
+            "status": "até 50 clientes",
             "tone": "plain",
-            "for": "Para quem tem uma turma grande",
+            "for": "Equipe pequena, até 50 clientes",
             "price": "R$ 390",
             "priceSub": "por mês",
-            "priceExtra": "mais a implantação de R$ 3.000",
-            "monthly": 390,
+            "priceExtra": "gestão + portal dos clientes",
             "cta": {
               "label": "Conversar sobre este plano",
               "href": "/#contato"
             },
             "features": [
-              "Todos os recursos do plano Ilimitado",
-              "5 acessos da equipe · 40 GB",
-              "Sua marca, seu endereço e seus e-mails",
-              "Cadastro dos seus alunos e treinamento",
-              "Página pública simples",
-              "App Atelierin incluído"
-            ]
+              "Tudo do Social",
+              "Você + até 5 integrantes, com permissões por função",
+              "Pix automático, extrato (OFX ou CSV) e previsão de recebimentos",
+              "Relatórios completos · 40 GB"
+            ],
+            "monthly": 390,
+            "amount": 390,
+            "text": "Ex.: consultório, clínica pequena ou estúdio."
           },
           {
-            "line": "Sob medida",
-            "name": "Alta-costura",
-            "status": "acima de 50 alunos",
+            "line": "Relacionamento",
+            "name": "Black Tie",
+            "status": "até 100 clientes",
             "tone": "plain",
-            "for": "Para quem passa de 50 alunos",
-            "priceBig": "Sob consulta",
-            "priceExtra": "implantação de R$ 3.000 ou orçamento",
-            "founderNote": "−20% sobre o valor combinado",
+            "for": "Carteira maior, até 100 clientes",
+            "price": "R$ 490",
+            "priceSub": "por mês",
+            "priceExtra": "gestão + portal dos clientes",
             "cta": {
               "label": "Conversar sobre este plano",
               "href": "/#contato"
             },
             "features": [
-              "Todos os recursos do plano Ilimitado",
-              "Projeto próprio, só seu",
-              "Acessos e armazenamento a combinar",
-              "Vídeo próprio (Bunny) como extra",
-              "Suporte direto comigo",
-              "App Atelierin incluído"
-            ]
+              "Tudo do Gala",
+              "100 clientes com portal",
+              "60 GB de armazenamento",
+              "Suporte por e-mail prioritário"
+            ],
+            "amount": 490,
+            "text": "Ex.: clínica com agenda cheia, escola pequena."
+          },
+          {
+            "line": "Relacionamento",
+            "name": "White Tie",
+            "status": "até 150 clientes",
+            "tone": "plain",
+            "for": "Equipe de até 15, até 150 clientes",
+            "price": "R$ 690",
+            "priceSub": "por mês",
+            "priceExtra": "gestão + portal dos clientes",
+            "cta": {
+              "label": "Conversar sobre este plano",
+              "href": "/#contato"
+            },
+            "features": [
+              "Tudo do Black Tie",
+              "Você + até 15 integrantes",
+              "150 clientes com portal · 100 GB",
+              "Suporte por e-mail prioritário"
+            ],
+            "amount": 690,
+            "text": "Ex.: escola, clínica maior ou agência com portal."
+          },
+          {
+            "line": "Relacionamento",
+            "name": "Alta-costura",
+            "status": "acima de 150 clientes",
+            "tone": "plain",
+            "for": "Fora do padrão, acima de 150",
+            "priceBig": "Sob consulta",
+            "priceExtra": "dimensionado na conversa",
+            "cta": {
+              "label": "Conversar sobre este plano",
+              "href": "/#contato"
+            },
+            "features": [
+              "Capacidade e infraestrutura negociadas",
+              "Ambiente isolado, se o projeto pedir",
+              "Permissões e relatórios personalizados",
+              "Suporte direto"
+            ],
+            "text": "Ex.: redes, escolas grandes ou requisitos próprios."
           }
-        ]
+        ],
+        "rules": {
+          "label": "Como é cobrado",
+          "title": "Mais clientes no portal? Adicione, sem trocar de plano",
+          "cols": [
+            "O que é",
+            "Mensal"
+          ],
+          "rows": [
+            {
+              "mark": "+",
+              "name": "Conta externa adicional",
+              "values": [
+                "cliente extra com acesso ao portal",
+                "R$ 8,90"
+              ],
+              "accent": 1
+            },
+            {
+              "mark": "≤",
+              "name": "Limite",
+              "values": [
+                "até 10 adicionais por plano",
+                "depois, o plano seguinte"
+              ]
+            }
+          ],
+          "note": "Conta externa tem login, permissões e portal, por isso custa mais que um cadastro simples. O pagamento dos clientes vai direto para você. As taxas do gateway (Pix) são suas, não do Atelierin."
+        },
+        "compare": {
+          "cols": [
+            "Casual",
+            "Social",
+            "Gala",
+            "Black Tie",
+            "White Tie",
+            "Alta-costura"
+          ],
+          "sections": [
+            {
+              "title": "Capacidade",
+              "rows": [
+                [
+                  "Clientes com portal",
+                  15,
+                  30,
+                  50,
+                  100,
+                  150,
+                  "Negociado"
+                ],
+                [
+                  "Integrantes da equipe",
+                  0,
+                  0,
+                  "Até 5",
+                  "Até 5",
+                  "Até 15",
+                  "Negociado"
+                ],
+                [
+                  "Armazenamento",
+                  "10 GB",
+                  "20 GB",
+                  "40 GB",
+                  "60 GB",
+                  "100 GB",
+                  "Negociado"
+                ]
+              ]
+            },
+            {
+              "title": "Portal do cliente",
+              "rows": [
+                [
+                  "Login próprio por cliente",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Perfil, histórico e acompanhamento",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Agenda, materiais e conteúdos liberados",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Status financeiro e avisos",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Uso no celular",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              ]
+            },
+            {
+              "title": "Gestão",
+              "rows": [
+                [
+                  "Cadastro, ficha, agenda e anotações",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Importação por planilha",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Contratos e lembretes por e-mail",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                [
+                  "Permissões da equipe",
+                  "Só você",
+                  "Só você",
+                  "Por função",
+                  "Por função",
+                  "Por função",
+                  "Personalizada"
+                ],
+                [
+                  "Banner de divulgação",
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  "Com a sua identidade"
+                ]
+              ]
+            },
+            {
+              "title": "Financeiro",
+              "rows": [
+                [
+                  "Importação de extrato (OFX ou CSV)",
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  "Conforme escopo"
+                ],
+                [
+                  "Pix com confirmação automática",
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  "Conforme escopo"
+                ],
+                [
+                  "Previsão de recebimentos",
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  "Conforme escopo"
+                ]
+              ]
+            },
+            {
+              "title": "Relatórios e suporte",
+              "rows": [
+                [
+                  "Relatórios",
+                  "Básico",
+                  "Mensal",
+                  "Completo",
+                  "Completo",
+                  "Completo",
+                  "Personalizado"
+                ],
+                [
+                  "Exportação de dados",
+                  "CSV",
+                  "CSV, MD, DOCX, TXT",
+                  "CSV, MD, DOCX, TXT",
+                  "CSV, MD, DOCX, TXT",
+                  "CSV, MD, DOCX, TXT",
+                  "Conforme escopo"
+                ],
+                [
+                  "Suporte",
+                  "E-mail",
+                  "E-mail",
+                  "E-mail",
+                  "Prioritário",
+                  "Prioritário",
+                  "Direto"
+                ]
+              ]
+            }
+          ]
+        },
+        "guide": {
+          "clients": [
+            [
+              "até 15",
+              15
+            ],
+            [
+              "16 a 30",
+              30
+            ],
+            [
+              "31 a 50",
+              50
+            ],
+            [
+              "51 a 100",
+              100
+            ],
+            [
+              "101 a 150",
+              150
+            ],
+            [
+              "mais de 150",
+              999
+            ]
+          ]
+        }
       }
-    }
+    },
+    "custom": {
+      "line": "Serviço opcional",
+      "name": "Sob medida",
+      "status": "Independe do plano",
+      "tone": "plain",
+      "for": "Para quem quer a marca, o endereço e a implantação com a sua cara",
+      "priceBig": "R$ 1.200",
+      "priceExtra": "implantação, uma vez · até 10x de R$ 120 · mais o mensal do plano escolhido",
+      "cta": {
+        "label": "Pedir orçamento",
+        "href": "/#contato"
+      },
+      "features": [
+        "Sua marca, cores e tipografia aplicadas",
+        "Subdomínio ou domínio próprio e e-mails da empresa",
+        "Configuração, importação de dados e treinamento",
+        "Página pública simples",
+        "Funcionalidade exclusiva, com orçamento antes"
+      ],
+      "priceLabel": "Implantação · uma vez",
+      "priceSub": "até 10x de R$ 120",
+      "priceNote": "mais o mensal do plano escolhido"
+    },
+    "billing": [
+      {
+        "id": "mensal",
+        "label": "Mensal",
+        "months": 1,
+        "disc": 0
+      },
+      {
+        "id": "trimestral",
+        "label": "Trimestral",
+        "months": 3,
+        "disc": 0.1,
+        "badge": "−10%"
+      },
+      {
+        "id": "anual",
+        "label": "Anual",
+        "months": 12,
+        "disc": 0.2,
+        "badge": "−20%"
+      }
+    ]
   },
   "founder": {
-    "enabled": true,
+    "enabled": false,
     "open": true,
     "discount": 0.2,
     "seatsPerLine": 5,
@@ -1022,13 +1658,18 @@
       "seats": "Até 5 vagas por linha",
       "price": "no mensal",
       "text": "Para sempre, em troca de um depoimento, autorização para mostrar o seu ambiente como caso e feedback nos primeiros meses."
+    },
+    "bar": {
+      "label": "Cliente fundador",
+      "text": "20% a menos no mensal do sob medida, para sempre",
+      "more": "Saiba mais"
     }
   },
   "finalCta": {
     "piece": "Nº 08 · Prova",
     "title": "Vamos tirar",
     "titleAccent": "as suas medidas",
-    "lede": "Responda a ficha ao lado em um minuto. Ela vira uma mensagem no meu WhatsApp e eu volto com o que faria sentido para o seu ambiente.",
+    "lede": "Não sabe qual modelo é o melhor para você e seu negócio ? Responda a ficha ao lado em um minuto. Ela vira uma mensagem no meu WhatsApp e eu volto com o que faria sentido para o seu ambiente.",
     "aside": [
       "Sem compromisso",
       "Conversa com quem vai fazer",

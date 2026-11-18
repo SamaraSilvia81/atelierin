@@ -1,89 +1,152 @@
 import { useState } from 'react'
-import { Check, ArrowRight, Seal } from '@phosphor-icons/react'
+import { Check, Minus, ArrowRight } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 import PriceCalc from '@/components/PriceCalc'
 import Waitlist from '@/components/Waitlist'
-import FounderCard from '@/sections/Founder'
 
-// Planos, com navegação em abas: "Modelo pronto" (assinatura, em breve) e
-// "Sob medida" (disponível). Cada aba mostra os quatro planos com valores.
-// Abaixo: "Sua área" (lista de espera) e, só no sob medida, fundador, tabela
-// "Uma vez, e todo mês" e calculadora (valores em plans.pricing).
-// Conteúdo em content.json > plans (tabs, sets, items).
-function Price({ it }) {
-  if (it.priceBig) {
-    return (
-      <div className="plan-price is-soft">
-        <strong>{it.priceBig}</strong>
-        {it.priceExtra && <small>{it.priceExtra}</small>}
-      </div>
-    )
-  }
+// Planos: título "Planos"; seletor Gestão | Portal (à direita) que troca o texto
+// de apresentação; seletor de cobrança (mensal, trimestral, anual) com o desconto
+// dentro do preço; guia "qual é o seu" que destaca o plano indicado; cards no
+// visual da identidade (.plan); "Comparar todas as funcionalidades"; adicionais,
+// calculadora e Sob medida. Conteúdo: content.json > plans.
+const brl = (v) => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 })
+
+function Seg({ label, options, value, onChange }) {
   return (
-    <div className="plan-price">
-      {it.priceLabel && <span className="plan-price-label">{it.priceLabel}</span>}
-      <div className="plan-amount">
-        {it.pricePre && <em>{it.pricePre}</em>}
-        <strong>{it.price}</strong>
-      </div>
-      {it.priceSub && <span className="plan-price-sub">{it.priceSub}</span>}
-      {it.priceExtra && <small>{it.priceExtra}</small>}
+    <div className="pseg" role="group" aria-label={label}>
+      {options.map((o) => (
+        <button key={String(o.value)} type="button" aria-pressed={value === o.value} onClick={() => { play('click'); onChange(o.value) }}>
+          {o.label}{o.badge && <em> {o.badge}</em>}
+        </button>
+      ))}
     </div>
   )
 }
 
-const brl = (v) => 'R$ ' + Math.round(v).toLocaleString('pt-BR')
+function Cell({ v }) {
+  if (v === true) return <Check size={16} weight="bold" aria-label="Incluído" />
+  if (v === false) return <Minus size={14} aria-label="Não incluído" className="pcmp-no" />
+  return v
+}
 
-function PlanCard({ it, fOn, f }) {
+function PCard({ it, b, fam, pick }) {
+  const avail = it.tone === 'plain'
+  const has = it.amount != null
+  const month = has ? it.amount * (1 - b.disc) : 0
+  const off = Math.round(b.disc * 100)
   return (
-    <li className={`plan tone-${it.tone}`} data-reveal>
+    <li className={`plan ${avail ? 'tone-avail' : ''} ${pick ? 'is-pick' : ''}`} data-reveal>
+      {pick && <span className="plan-pick">Indicado para você</span>}
       <div className="plan-top">
-        <span className="plan-line">{it.line}</span>
-        <span className="plan-status"><i />{it.status}</span>
+        <span className="plan-line">{fam}</span>
+        <span className="plan-status"><i />{avail ? 'Disponível' : 'Em breve'}</span>
       </div>
       <h3 className="display">{it.name}</h3>
       <p className="plan-for">{it.for}</p>
-      {it.text && <p className="plan-text">{it.text}</p>}
-
-      <Price it={it} />
-
-      {fOn && (it.monthly || it.founderNote) && (
-        <p className="plan-fdr-price">
-          <Seal size={14} weight="fill" aria-hidden="true" />
-          <span>Fundador: <b>{it.monthly ? `${brl(it.monthly * (1 - f.discount))} por mês` : it.founderNote}</b></span>
-        </p>
+      <p className="plan-text">{it.text}</p>
+      {has ? (
+        <div className="plan-price">
+          <span className="plan-price-label">{it.amount === 0 ? 'Plano gratuito' : off ? `${b.label} · −${off}%` : b.label}</span>
+          <div className="plan-amount"><strong>{brl(month)}</strong></div>
+          <span className="plan-price-sub">por mês</span>
+          <small>
+            {it.amount === 0 ? 'sem custo' : off
+              ? <><s>{brl(it.amount)}</s> · cobrado {brl(month * b.months)} {b.months === 3 ? 'a cada 3 meses' : 'por ano'}</>
+              : 'cobrado todo mês'}
+          </small>
+        </div>
+      ) : (
+        <div className="plan-price is-soft"><strong>{it.priceBig}</strong><small>{it.priceExtra}</small></div>
       )}
-
-      {it.waitlist ? (
-        <Waitlist cfg={it.waitlist} />
-      ) : it.cta && (
+      {it.cta && (
         <div className="plan-act">
-          <a href={it.cta.href} className="plan-cta" onClick={() => play('click')} onPointerEnter={() => play('tick')}>
-            {it.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" />
-          </a>
-          {it.ctaNote && <p className="plan-note">{it.ctaNote}</p>}
+          <a href={it.cta.href} className="plan-cta" onClick={() => play('click')}>{it.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></a>
+        </div>
+      )}
+      <ul className="plan-feat">{it.features.slice(0, 5).map((x) => <li key={x}><Check size={14} weight="bold" aria-hidden="true" />{x}</li>)}</ul>
+    </li>
+  )
+}
+
+function Compare({ cm, pick }) {
+  const hi = (c) => (c === pick ? 'is-pick' : undefined)
+  return (
+    <details className="pcmp" onToggle={() => play('click')}>
+      <summary>Comparar todas as funcionalidades</summary>
+      <div className="pcmp-scroll">
+        <table>
+          <thead><tr><th><span className="sr-only">Recurso</span></th>{cm.cols.map((c) => <th key={c} scope="col" className={hi(c)}>{c}</th>)}</tr></thead>
+          {cm.sections.map((s) => (
+            <tbody key={s.title}>
+              <tr className="pcmp-sec"><th colSpan={cm.cols.length + 1}>{s.title}</th></tr>
+              {s.rows.map((r) => <tr key={r[0]}><th scope="row">{r[0]}</th>{r.slice(1).map((v, i) => <td key={i} className={hi(cm.cols[i])}><Cell v={v} /></td>)}</tr>)}
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </details>
+  )
+}
+
+// Um painel por família; o guia escolhe o plano indicado e o destaca nos cards.
+function Panel({ t, set, b, hidden }) {
+  const p = content.plans
+  const F = p.pricing[t.id]
+  const [cl, setCl] = useState(null)
+  const [tm, setTm] = useState(0)
+  const pick = cl == null ? null : (F.tiers.find((x) => x.clients >= cl && x.team >= tm)?.name ?? p.pricing.over[t.id])
+  const r = set.rules
+  return (
+    <div hidden={hidden} role="tabpanel">
+      <div className="plans-guide" data-reveal>
+        <p className="label">Qual é o seu?</p>
+        <div className="guide-row"><span>Quantos clientes você atende</span><Seg label="Clientes" value={cl} onChange={setCl} options={set.guide.clients.map(([label, value]) => ({ label, value }))} /></div>
+        <div className="guide-row"><span>Equipe além de você</span><Seg label="Equipe" value={tm} onChange={setTm} options={[{ label: 'Só eu', value: 0 }, { label: 'Até 5', value: 5 }, { label: 'Até 15', value: 15 }]} /></div>
+        <p className="guide-res">{pick ? <>Indicado para você: <b className="display">{pick}</b> Passou pouco do limite? Dá para adicionar clientes, veja abaixo.</> : 'Escolha uma faixa e a gente destaca o plano certo.'}</p>
+      </div>
+
+      <ul className="plans-grid">{set.items.map((it) => <PCard key={it.name} it={it} b={b} fam={t.label} pick={it.name === pick} />)}</ul>
+      <Compare cm={set.compare} pick={pick} />
+
+      {set.waitlist && (
+        <div id="lista-espera" className="plans-band" data-reveal>
+          <div><h3 className="display">{set.waitlistTitle}</h3></div>
+          <Waitlist cfg={set.waitlist} />
         </div>
       )}
 
-      <ul className="plan-feat">
-        {it.features.map((x) => <li key={x}><Check size={14} weight="bold" aria-hidden="true" />{x}</li>)}
-      </ul>
-    </li>
+      <div className="pricing">
+        <div className="rules" data-reveal>
+          <p className="label">{r.label}</p>
+          <h3 className="display">{r.title}</h3>
+          <table>
+            <thead><tr><th><span className="sr-only">Item</span></th>{r.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
+            <tbody>
+              {r.rows.map((row) => (
+                <tr key={row.name}>
+                  <th scope="row"><b aria-hidden="true">{row.mark}</b>{row.name}</th>
+                  {row.values.map((v, i) => <td key={i} className={row.accent === i ? 'is-acc' : ''}>{v}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="rules-note">{r.note}</p>
+        </div>
+        <PriceCalc fam={t.id} />
+      </div>
+    </div>
   )
 }
 
 export default function Plans() {
   const p = content.plans
-  const r = p.rules
-  const [tab, setTab] = useState('medida')
-  const set = p.sets[tab]
-  // Cliente fundador (PRD-008): com vagas abertas, os cards do sob medida mostram
-  // o valor de fundador e a tabela ganha a coluna com os 20% já aplicados.
-  const f = content.founder
-  const fOn = f && f.enabled !== false && f.open
-  // const fTier = (name) => p.pricing.tiers.find((t) => t.label.toLowerCase() === name.toLowerCase())
-  const fTier = (name) => p.pricing.tiers.find((t) => t.name.toLowerCase() === name.toLowerCase())
+  const [tab, setTab] = useState('relacionamento')
+  const [bid, setBid] = useState('anual')
+  const b = p.billing.find((x) => x.id === bid)
+  const cur = p.tabs.find((x) => x.id === tab)
+  const c = p.custom
+
   return (
     <section id="planos" data-theme="light" className="section plans-sec" aria-labelledby="planos-t">
       <div className="wrap">
@@ -92,84 +155,47 @@ export default function Plans() {
             <p className="label"><b aria-hidden="true">&gt;</b> {p.piece}</p>
             <h2 id="planos-t" className="display">{p.title}</h2>
           </div>
-          <p className="lede">{p.lede}</p>
+          <div className="plans-head-r">
+            <Seg label="Família de planos" value={tab} onChange={setTab} options={p.tabs.map((x) => ({ label: x.label, value: x.id }))} />
+            <p className="lede" aria-live="polite">{cur.lede}</p>
+          </div>
         </header>
 
-        <div className="plans-tabs" role="tablist" aria-label="Tipo de plano" data-reveal>
-          {p.tabs.map((t) => (
-            <button key={t.id} type="button" role="tab" id={`tab-${t.id}`} aria-selected={tab === t.id} aria-controls="planos-painel"
-              className="plans-tab" onClick={() => { play('click'); setTab(t.id) }}>
-              <b>{t.label}</b><small>{t.sub}</small>
-            </button>
-          ))}
+        <div className="plans-bill" data-reveal>
+          <Seg label="Cobrança" value={bid} onChange={setBid} options={p.billing.map((x) => ({ label: x.label, value: x.id, badge: x.badge }))} />
         </div>
 
-        <div id="planos-painel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
-          <p className="plans-tabnote">{set.note}</p>
-          <ul className="plans is-4">
-            {set.items.map((it) => <PlanCard key={it.name} it={it} fOn={fOn && tab === 'medida'} f={f} />)}
-          </ul>
+        {p.tabs.map((t) => <Panel key={t.id} t={t} set={p.sets[t.id]} b={b} hidden={tab !== t.id} />)}
 
-          {set.waitlist && (
-            <div className="plans-wait" data-reveal>
-              <h3 className="display">{set.waitlistTitle}</h3>
-              <Waitlist cfg={set.waitlist} />
+        <div className="plans-band plans-area" data-reveal>
+          <div>
+            <p className="plan-line">{c.line}</p>
+            <h3 className="display">{c.name}</h3>
+            <p className="plan-for">{c.for}</p>
+            <ul className="plan-feat">{c.features.map((x) => <li key={x}><Check size={14} weight="bold" aria-hidden="true" />{x}</li>)}</ul>
+          </div>
+          <div>
+            <div className="plan-price">
+              <span className="plan-price-label">{c.priceLabel}</span>
+              <div className="plan-amount"><strong>{c.priceBig}</strong></div>
+              <span className="plan-price-sub">{c.priceSub}</span>
+              <small>{c.priceNote}</small>
             </div>
-          )}
-
-          {tab === 'medida' && f && f.enabled !== false && <FounderCard />}
-
-          {tab === 'medida' && (
-            <div className="pricing">
-              <div className="rules" data-reveal>
-                <p className="label">{r.label}</p>
-                <h3 className="display">{r.title}</h3>
-                <table>
-                  <thead><tr><th><span className="sr-only">Item</span></th>{r.cols.map((c) => <th key={c} scope="col">{c}</th>)}{fOn && <th scope="col" className="is-founder">{f.tableCol}</th>}</tr></thead>
-                  <tbody>
-                    {r.rows.map((row) => (
-                      <tr key={row.name}>
-                        <th scope="row"><b aria-hidden="true">{row.mark}</b>{row.name}</th>
-                        {row.values.map((v, i) => <td key={i} className={row.accent === i ? 'is-acc' : ''}>{v}</td>)}
-                        {fOn && (() => {
-                          const t = fTier(row.name)
-                          return <td className={`is-founder ${t ? 'is-acc' : ''}`}>{t ? brl(t.price * (1 - f.discount)) : (row.founder ?? f.tableSame)}</td>
-                        })()}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <p className="rules-note">{r.note}</p>
-                {fOn && (
-                  <p className="rules-founder">
-                    <Seal size={15} weight="fill" aria-hidden="true" />
-                    <span>{f.tableNote} <a href={f.link.href}>{f.link.label}</a></span>
-                  </p>
-                )}
-              </div>
-              <PriceCalc />
-            </div>
-          )}
+            <div className="plan-act"><a href={c.cta.href} className="plan-cta" onClick={() => play('click')}>{c.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></a></div>
+          </div>
         </div>
 
-        <ul className="plans is-area">
-          {p.items.map((it) => (
-            <li key={it.name} className={`plan tone-${it.tone}`} data-reveal>
-              <div className="plan-top">
-                <span className="plan-line">{it.line}</span>
-                <span className="plan-status"><i />{it.status}</span>
-              </div>
+        {p.items.map((it) => (
+          <div key={it.name} className="plans-band plans-area" data-reveal>
+            <div>
+              <p className="plan-line">{it.line} · {it.status}</p>
               <h3 className="display">{it.name}</h3>
               <p className="plan-for">{it.for}</p>
               <p className="plan-text">{it.text}</p>
-              <Price it={it} />
-              <Waitlist cfg={it.waitlist} />
-              <ul className="plan-feat">
-                {it.features.map((x) => <li key={x}><Check size={14} weight="bold" aria-hidden="true" />{x}</li>)}
-              </ul>
-            </li>
-          ))}
-        </ul>
+            </div>
+            <Waitlist cfg={it.waitlist} />
+          </div>
+        ))}
 
         <div className="plans-foot" data-reveal>
           <p>{p.foot.text}</p>

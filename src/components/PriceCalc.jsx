@@ -2,76 +2,57 @@ import { useState } from 'react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 
-// Calculadora de Planos. Regras em content.plans.pricing:
-// o tipo de ambiente (como é / ajustado) define a implantação;
-// o mensal é fixo pelo plano do sob medida (tiers: Casual, Social, Gala). A calculadora
-// só cobre o sob medida; o modelo pronto entra quando abrir.
-const brl = (v) => 'R$ ' + Math.round(v).toLocaleString('pt-BR')
+// Calculadora de Planos, por família (fam = 'estrutura' | 'relacionamento').
+// Escolhe o plano mais barato que comporta os clientes e a equipe, usando até
+// pricing.extraMax adicionais. Regras em content.plans.pricing.
+const brl = (v) => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 })
 
-function Seg({ label, options, value, onChange }) {
-  return (
-    <fieldset className="calc-field">
-      <legend>{label}</legend>
-      <div className="seg">
-        {options.map((o) => (
-          <button key={String(o.value)} type="button" aria-pressed={value === o.value} disabled={o.disabled}
-            title={o.title} onClick={() => { play('click'); onChange(o.value) }}>{o.label}</button>
-        ))}
-      </div>
-    </fieldset>
-  )
-}
-
-export default function PriceCalc() {
+export default function PriceCalc({ fam }) {
   const { pricing: P, calc: t } = content.plans
   const f = content.founder
-  const fOn = f && f.enabled !== false && f.open
-  const [students, setStudents] = useState(8)
-  // const [pers, setPers] = useState(false)
-  const pers = true // só o sob medida está disponível
-  const [access, setAccess] = useState(true)
-  const [bunny, setBunny] = useState(false)
+  const fOn = f && f.enabled !== false && f.open && fam === 'relacionamento'
+  const [clients, setClients] = useState(fam === 'estrutura' ? 12 : 33)
+  const [team, setTeam] = useState(0)
+  const F = P[fam]
 
-  // const plan = pers ? P.personalizado : P.padrao
-  const plan = P.sobMedida
-  const tier = P.tiers.find((x) => students <= x.max)
-  const useBunny = pers && bunny
-  const setup = pers ? plan.setup : (access ? plan.setupStudents : plan.setup)
-  const video = useBunny ? plan.bunny : 0
-  const month = tier ? tier.price + video : null
+  const options = F.tiers
+    .filter((x) => x.team >= team && clients <= x.clients + (x.price > 0 ? P.extraMax : 0))
+    .map((x) => {
+      const extras = Math.max(0, clients - x.clients)
+      return { ...x, extras, total: x.price + extras * F.extra }
+    })
+  const best = options.sort((a, b) => a.total - b.total)[0]
+  const next = best && F.tiers[F.tiers.indexOf(F.tiers.find((x) => x.name === best.name)) + 1]
+  const discount = fOn && best ? best.price * f.discount : 0
+  const month = best ? best.total - discount : null
 
   return (
     <div className="calc" data-reveal>
       <p className="label">{t.label}</p>
-
       <div className="calc-field">
-        <label htmlFor="calc-students">{t.students} <b>{students}</b></label>
-        <input id="calc-students" type="range" min="1" max="80" value={students} onChange={(e) => setStudents(+e.target.value)} />
+        <label htmlFor={`calc-${fam}`}>{t.clients[fam]} <b>{clients}</b></label>
+        <input id={`calc-${fam}`} type="range" min="1" max="160" value={clients} onChange={(e) => setClients(+e.target.value)} />
       </div>
-
-      {/* <Seg label={t.kind} value={pers} onChange={setPers}
-        options={[{ value: false, label: t.kindPadrao }, { value: true, label: t.kindPers }]} /> */}
-      {!pers && <Seg label={t.access} value={access} onChange={setAccess}
-        options={[{ value: true, label: t.accessYes }, { value: false, label: t.accessNo }]} />}
-      <Seg label={t.video} value={useBunny} onChange={setBunny}
-        options={[{ value: false, label: t.videoFree }, { value: true, label: t.videoBunny, disabled: !pers, title: pers ? undefined : t.bunnyHint }]} />
+      <fieldset className="calc-field">
+        <legend>{t.team}</legend>
+        <div className="seg">
+          {[[0, t.team0], [5, t.team5], [15, t.team15]].map(([v, l]) => (
+            <button key={v} type="button" aria-pressed={team === v} onClick={() => { play('click'); setTeam(v) }}>{l}</button>
+          ))}
+        </div>
+      </fieldset>
 
       <div className="calc-res" aria-live="polite">
-        <div className="calc-res-top"><span>{t.plan}</span><strong>{tier ? tier.name : P.overName}</strong></div>
-        <div className="calc-row"><span>{t.setup} <em>{t.once}</em></span><b>{pers ? `${plan.installments}x ${brl(plan.setup / plan.installments)}` : brl(setup)}</b></div>
-        <div className="calc-row"><span>{t.tier} <em>{tier ? tier.label : P.overLabel}</em></span><b>{tier ? brl(tier.price) : t.over}</b></div>
-        {useBunny && <div className="calc-row"><span>{t.bunny} <em>{t.estimated}</em></span><b>{brl(video)}</b></div>}
-        <div className="calc-total">
-          <span>{t.month}</span><strong>{month != null ? brl(month) : t.over}</strong>
-        </div>
-        {fOn && pers && tier && (
-          <div className="calc-row calc-founder"><span>{f.calcLabel} <em>{f.calcSub}</em></span><b>{brl(tier.price * (1 - f.discount) + video)}</b></div>
-        )}
-        {month != null ? (
-          <div className="calc-years">
-            <div><span>{t.year1}</span><b>{brl(setup + 12 * month)}</b></div>
-            <div><span>{t.years}</span><b>{brl(12 * month)}</b></div>
-          </div>
+        <div className="calc-res-top"><span>{t.plan}</span><strong>{best ? best.name : P.over[fam]}</strong></div>
+        {best ? (
+          <>
+            <div className="calc-row"><span>{t.base}</span><b>{brl(best.price)}</b></div>
+            {best.extras > 0 && <div className="calc-row"><span>{t.extra[fam]} <em>{best.extras} × {brl(F.extra)}</em></span><b>{brl(best.extras * F.extra)}</b></div>}
+            {discount > 0 && <div className="calc-row calc-founder"><span>{t.founder} <em>−{Math.round(f.discount * 100)}% na mensalidade</em></span><b>−{brl(discount)}</b></div>}
+            <div className="calc-total"><span>{t.month}</span><strong>{brl(month)}</strong></div>
+            <div className="calc-years"><div><span>{t.year}</span><b>{brl(12 * month)}</b></div></div>
+            {best.extras > 0 && next && <p className="calc-note">{t.next}: {next.name}, {brl(next.price)} por mês.</p>}
+          </>
         ) : <p className="calc-note">{t.overNote}</p>}
         <p className="calc-note">{t.note}</p>
       </div>

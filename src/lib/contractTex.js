@@ -70,6 +70,8 @@ function common({ client, slug, picks, deal: d, fields }, file) {
     TOTAL: money(d.total),
     MENSAL: d.monthly != null ? money(d.monthly) : 'valor a combinar',
     FAIXA: d.tier ? esc(d.tier.label) : 'acima de 50 alunos',
+    LIMITE_FUNDADOR: d.tier?.founderMax ? String(d.tier.founderMax) : '',
+    LIMITE_FUNDADOR_EXT: d.tier?.founderMax ? ate999(d.tier.founderMax) : '',
     PLANO: d.tier ? esc(d.tier.name) : 'Alta-costura',
     VENC: String(picks.dueDay),
     _f: f,
@@ -119,7 +121,7 @@ export function buildContractTex(tpl, ctx) {
       : `O valor total será pago em ${d.n} (${NUM[d.n] ?? d.n}) parcelas mensais e sucessivas de ${money(d.installment)} (${extenso(d.installment)}), sem juros, por Pix, vencendo a primeira na data de assinatura deste contrato e as demais no mesmo dia dos meses subsequentes.`,
   }
   delete map._f
-  return fill(applyFlags(tpl, { basica, lp: d.lp, lock: !!picks.lockPrice, bunny: picks.video === 'bunny', fundador: !!d.founder }), map)
+  return fill(applyFlags(tpl, { basica, lp: d.lp, lock: !!picks.lockPrice, bunny: picks.video === 'bunny', fundador: !!d.founder, cortesia: !!d.courtesy }), map)
 }
 
 export function buildInvoiceTex(tpl, ctx) {

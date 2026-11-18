@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { content } from '@/lib/content'
+import { tierFor } from '@/lib/tiers'
 
 // Escolhas da reunião (proposta do cliente) e a conta que sai delas.
 // Ficam no sessionStorage só para a página do contrato ler; nada vai para servidor.
@@ -24,7 +25,10 @@ export function defaults(client) {
 export function compute(client, picks) {
   const P = client.pricing
   const tiers = content.plans.pricing.tiers
-  const tier = tiers.find((t) => picks.students <= t.max) ?? null
+  // fundador: tolerância de faixa (ex.: Social até 36 alunos); nominal = plano pela faixa da tabela
+  const tier = tierFor(tiers, picks.students, !!picks.founder)
+  const nominal = tierFor(tiers, picks.students, false)
+  const courtesy = !!picks.founder && !!tier && !!nominal && nominal.name !== tier.name
   const lp = picks.offer === 'completo'
   const identityPrice = picks.identity === 'basica' ? P.identityBasic : 0
   const items = [
@@ -44,7 +48,7 @@ export function compute(client, picks) {
   const monthlyTable = tier ? tier.price : null
   const monthly = tier ? Math.round(tier.price * (1 - discount) * 100) / 100 : null
   return {
-    tier, lp, items, total, n,
+    tier, nominal, courtesy, lp, items, total, n,
     installment: total / n,
     founder, discount, monthlyTable,
     monthly,
