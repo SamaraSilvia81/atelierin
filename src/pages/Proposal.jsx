@@ -231,6 +231,27 @@ function Body({ s }) {
       {s.note && <p className="s-plans-note">{s.note}</p>}
     </>
   )
+  if (s.layout === 'sobmedida') return (
+    <>
+      <div className="sm-grid">
+        <div className="sm-price">
+          <span className="sm-price-k">{s.price.label}</span>
+          <strong>{s.price.value}</strong>
+          <span className="sm-price-sub">{s.price.sub}</span>
+        </div>
+        <div className="sm-in" data-theme="light">
+          <h3>{s.includes.title}</h3>
+          <ul>{s.includes.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
+        </div>
+      </div>
+      <div className="sm-out">
+        <span className="sm-out-k">{s.excludes.title}</span>
+        <div className="s-out sm-out-list">{s.excludes.items.map((x) => <i key={x}>{x}</i>)}</div>
+        {s.excludes.note && <p>{s.excludes.note}</p>}
+      </div>
+      {s.closing && <p className="sm-close">{s.closing}</p>}
+    </>
+  )
   if (s.layout === 'families') return (
     <>
       {s.envs && <div className="fx-grid">{s.envs.map((e) => <EnvDiagram key={e.id} e={e} />)}</div>}

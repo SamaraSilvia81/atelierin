@@ -373,6 +373,45 @@
         "text": "Escolha de acordo com a capacidade da sua operação hoje. Você não precisa contratar um portal se não pretende utilizá-lo."
       },
       {
+        "kicker": "sob medida",
+        "layout": "sobmedida",
+        "theme": "dark",
+        "deco": "band",
+        "title": "Sua marca no seu ambiente.",
+        "accent": "no seu ambiente.",
+        "accentMode": "text",
+        "text": [
+          "O Atelierin pode ser utilizado com a apresentação padrão da plataforma ou receber uma personalização visual com a identidade do seu negócio. O serviço Sob medida é opcional: ele adapta a aparência e configura o ambiente, sem criar um sistema separado."
+        ],
+        "price": {
+          "label": "Sob medida · personalização do ambiente",
+          "value": "R$ 1.500",
+          "sub": "pagamento único · em até 5x de R$ 300"
+        },
+        "includes": {
+          "title": "Inclui",
+          "items": [
+            "Aplicação da identidade visual que você já possui: logo, cores e tipografia.",
+            "Subdomínio personalizado: nome.atelierin.com.br.",
+            "Configuração de e-mails com a identidade do negócio.",
+            "Configuração das funcionalidades já disponíveis no modelo contratado.",
+            "Importação de dados a partir de planilha."
+          ]
+        },
+        "excludes": {
+          "title": "O que não está incluído",
+          "items": [
+            "Criação de uma identidade visual do zero",
+            "Desenvolvimento de funcionalidades novas ou exclusivas",
+            "Landing page completa",
+            "Domínio próprio fora do subdomínio Atelierin",
+            "Hospedagem própria de vídeos"
+          ],
+          "note": "Esses itens podem ser avaliados e contratados separadamente, quando disponíveis."
+        },
+        "closing": "A personalização muda a apresentação do seu ambiente, não o plano contratado. Se você estiver na Estrutura, continua na Estrutura; o portal externo continua sendo exclusivo da família Relacionamento."
+      },
+      {
         "kicker": "sem marca ainda",
         "title": "Ainda não tem marca? Eu faço o básico",
         "accent": "o básico",

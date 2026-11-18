@@ -1542,6 +1542,28 @@ h1, h2, h3, p { margin: 0; }
   .poster-body { width: 100%; }
 }
 
+/* 06 · sob medida: preço num bloco carmesim, o que inclui num card claro, o que fica de fora riscado */
+.slide-sobmedida .slide-grid.wrap { width: min(1480px, 100% - 48px); }
+.slide-sobmedida .slide-main h2 { max-width: none; }
+.sm-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 22px; margin-top: 8px; align-items: stretch; }
+.sm-price { display: grid; align-content: space-between; gap: 18px; padding: 28px 30px; border-radius: 4px; background: var(--palette-crimson); color: var(--palette-osso); box-shadow: 12px 12px 0 rgba(0, 0, 0, .55); }
+.sm-price-k { font: 500 13px/1.4 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: rgba(240, 237, 232, .85); }
+.sm-price strong { font: 400 clamp(84px, 9vw, 150px)/.85 var(--font-display); letter-spacing: .01em; }
+.sm-price-sub { padding-top: 14px; border-top: 1px solid rgba(240, 237, 232, .35); font: 500 14px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.sm-in { display: grid; gap: 14px; align-content: start; padding: 26px 30px; border: 1px solid var(--palette-tinta); border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); }
+.sm-in h3 { font: 400 clamp(30px, 2.8vw, 42px)/1 var(--font-display); text-transform: uppercase; }
+.sm-in ul { display: grid; }
+.sm-in li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px dashed var(--palette-borda-clara); font-size: 18px; line-height: 1.45; }
+.sm-in li svg { flex: none; margin-top: 3px; color: var(--palette-sangue); }
+.sm-out { display: grid; gap: 12px; margin-top: 10px; }
+.sm-out-k { font: 500 13px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--acc-text); }
+.sm-out-list { margin-top: 0; }
+.sm-out-list i { font-size: 16.5px; padding: 8px 12px; }
+.sm-out p { font-size: 16px; color: var(--text-muted); }
+.sm-close { margin-top: 8px; padding: 18px 22px; border-left: 3px solid var(--acc-text); background: rgba(240, 237, 232, .04); font-size: clamp(18px, 1.6vw, 21px); line-height: 1.6; color: var(--text); max-width: 80ch; }
+.slide[data-theme="light"] .sm-close { background: rgba(26, 15, 15, .04); }
+@media (max-width: 900px) { .sm-grid { grid-template-columns: 1fr; } }
+
 /* 03-04 · planos por família: texto de um lado, faixa carmesim vertical afastada da borda
    e o card da tabela por cima dela (no espelhado, os lados se invertem) */
 .slide-plans2 { position: relative; overflow: hidden; display: grid; align-items: center; min-height: min(100vh, 980px); }
