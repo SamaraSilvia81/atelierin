@@ -202,6 +202,37 @@ function SobMedida({ s, n, total, theme }) {
   )
 }
 
+// Slide em painéis: conteúdo à esquerda, com o quadro fixo (número, fita métrica, rodapé),
+// e duas colunas de cor de cima a baixo à direita (ex.: SEU x MEU)
+function PanelsSlide({ s, n, total }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-panels">
+      <div className="pn-left" data-reveal>
+        <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
+        <div className="pn-rule" aria-hidden="true">{Array.from({ length: 46 }, (_, i) => <i key={i} />)}</div>
+        <div className="pn-body">
+          {s.lead && <p className="pn-kick">› {s.lead}</p>}
+          <h2 className="display pn-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}<em>{s.titleAccentLine}</em></h2>
+          {s.tag && <span className="s-title-tag pn-tag">{s.tag}</span>}
+          {[].concat(s.text ?? []).map((t) => <p key={t} className="pn-p">{t}</p>)}
+          {s.footnote && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.footnote}</span></p>}
+        </div>
+        <div className="pn-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
+      </div>
+      {s.split.map((c, i) => (
+        <div key={c.label} className={`pn-panel ${i === 0 ? 'is-a' : 'is-b'}`} data-reveal>
+          <div className="pn-head">
+            <span className="pn-chip">{c.note}</span>
+            <h3>{c.label}</h3>
+            {c.sub && <p>{c.sub}</p>}
+          </div>
+          <ul>{c.items.map((it) => <li key={it}>{it}</li>)}</ul>
+        </div>
+      ))}
+    </section>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -605,6 +636,7 @@ export default function Proposal({ client, slug }) {
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'panels') return <PanelsSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'sobmedida2') return <SobMedida key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'dark'} />
         if (s.layout === 'plans') return <PlansSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'light'} />
         const n = numOf.get(s.kicker)

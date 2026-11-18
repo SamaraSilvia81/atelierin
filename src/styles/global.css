@@ -1632,6 +1632,37 @@ h1, h2, h3, p { margin: 0; }
 .s-others li { padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 17px; line-height: 1.5; color: var(--text-sub); }
 .s-others li:last-child { border-bottom: 0; }
 
+/* slide em painéis (01): conteúdo à esquerda com quadro fixo, duas colunas de cor à direita */
+.slide-panels { display: grid; grid-template-columns: minmax(0, 1fr) clamp(240px, 21vw, 340px) clamp(240px, 21vw, 340px); min-height: min(100vh, 980px); padding: 0; }
+.pn-left { display: grid; grid-template-rows: auto auto 1fr auto; padding: 36px clamp(32px, 4vw, 72px) 34px clamp(24px, 5vw, 96px); }
+.pn-top, .pn-foot { display: flex; justify-content: space-between; gap: 16px; font: 500 12px/1 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--text-muted); }
+.pn-top b { color: var(--acc); font-weight: 500; }
+.pn-rule { display: flex; justify-content: space-between; height: 14px; margin-top: 18px; border-top: 1.5px solid var(--text); }
+.pn-rule i { width: 1px; height: 6px; background: var(--text); opacity: .45; }
+.pn-rule i:nth-child(5n + 1) { height: 12px; opacity: .8; }
+.pn-body { display: grid; gap: 18px; align-content: center; padding-block: clamp(40px, 6vh, 72px); max-width: 720px; }
+.pn-kick { font: 500 12px/1 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--acc); }
+.pn-title { display: grid; font-size: clamp(76px, 7.4vw, 124px); line-height: .86; color: var(--text); }
+.pn-title em { font-style: normal; color: var(--acc); }
+.pn-tag { justify-self: start; margin: 4px 0 0; vertical-align: baseline; }
+.pn-p { font-size: clamp(17px, 1.4vw, 19px); line-height: 1.62; color: var(--text-sub); max-width: 62ch; }
+.pn-foot { padding-top: 14px; border-top: 1px solid var(--border); }
+.pn-panel { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 44px clamp(22px, 2.2vw, 34px); color: var(--palette-osso); }
+.pn-panel.is-a { background: linear-gradient(180deg, #A31C18, #7E1311); }
+.pn-panel.is-b { background: #100D0D; }
+.pn-chip { display: inline-block; padding: 8px 11px 7px; border-radius: 2px; background: rgba(240, 237, 232, .92); color: var(--palette-tinta); font: 500 11.5px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; }
+.pn-panel.is-b .pn-chip { background: #2A1E1E; color: var(--palette-osso); }
+.pn-head h3 { margin-top: 22px; font: 400 clamp(72px, 6.6vw, 110px)/.85 var(--font-display); text-transform: uppercase; }
+.pn-head p { margin-top: 12px; font-size: 16px; line-height: 1.5; color: rgba(240, 237, 232, .85); max-width: 24ch; }
+.pn-panel ul { display: grid; }
+.pn-panel li { padding: 12px 0; border-top: 1px dashed rgba(240, 237, 232, .35); font-size: 16px; line-height: 1.4; }
+.pn-panel li:last-child { border-bottom: 1px dashed rgba(240, 237, 232, .35); }
+.pn-panel.is-b li { border-color: rgba(240, 237, 232, .18); }
+@media (max-width: 1000px) {
+  .slide-panels { grid-template-columns: 1fr; }
+  .pn-panel { min-height: 0; gap: 28px; }
+}
+
 /* texto de abertura mais largo em alguns slides */
 .slide.is-wide-text .slide-text { max-width: 70ch; }
 .slide-assistida .slide-grid.wrap { width: min(1480px, 100% - 48px); }

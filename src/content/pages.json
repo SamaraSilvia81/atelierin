@@ -123,36 +123,45 @@
         "accentMode": "text",
         "text": [
           "Você recebe um ambiente para organizar o seu trabalho, configurado a partir do modelo contratado. A plataforma é mantida por mim: cuido da parte técnica, enquanto você administra o seu negócio e mantém o controle sobre seus clientes, conteúdos e dados.",
-          "O sistema parte de uma mesma base. O que muda é o modelo escolhido, os recursos disponíveis no plano e, se você contratar o Sob medida, a aplicação da sua identidade visual."
+          "O sistema parte de uma mesma base. O que muda é o modelo escolhido, os recursos do plano e, se você contratar o Sob medida, a sua identidade visual."
         ],
         "footnote": "Você utiliza o Atelierin por licença de uso enquanto sua assinatura estiver ativa. O código-fonte e a plataforma continuam pertencendo ao Atelierin.",
-        "layout": "split",
-        "deco": "band",
+        "layout": "panels",
+        "deco": "none",
         "split": [
           {
             "label": "seu",
             "note": "fica com você",
             "items": [
-              "Seu nome, sua marca e sua identidade visual.",
-              "Seus clientes e os dados da sua operação.",
-              "Seus conteúdos, materiais e informações.",
-              "Os pagamentos que seus clientes fazem diretamente a você.",
-              "A possibilidade de exportar seus dados."
-            ]
+              "Seu nome, sua marca e sua identidade visual",
+              "Seus clientes e os dados da operação",
+              "Seus conteúdos e materiais",
+              "Os pagamentos dos seus clientes",
+              "A possibilidade de exportar seus dados"
+            ],
+            "sub": "O que é do seu negócio continua seu."
           },
           {
             "label": "meu",
             "note": "eu cuido",
             "items": [
-              "O sistema e sua estrutura técnica.",
-              "Hospedagem e infraestrutura do ambiente.",
-              "Atualizações, correções e manutenção da plataforma.",
-              "Segurança e evolução do produto.",
-              "Configuração e suporte conforme o plano contratado."
-            ]
+              "O sistema e a estrutura técnica",
+              "Hospedagem e infraestrutura",
+              "Atualizações, correções e manutenção",
+              "Segurança e evolução do produto",
+              "Configuração e suporte do plano"
+            ],
+            "sub": "A parte técnica fica comigo, do começo ao fim."
           }
         ],
-        "theme": "light"
+        "theme": "light",
+        "titleLines": [
+          "O seu",
+          "ambiente",
+          "mantido"
+        ],
+        "titleAccentLine": "por mim.",
+        "lead": "licença + manutenção"
       },
       {
         "kicker": "planos",
