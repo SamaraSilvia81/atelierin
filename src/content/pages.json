@@ -216,22 +216,32 @@
             ]
           ]
         },
-        "addons": {
-          "title": "Quando precisar de um pouco mais",
-          "text": "Você não precisa mudar de plano por ultrapassar o limite em poucos clientes. É possível contratar adicionais, respeitando o limite de até 10 por plano.",
-          "cols": [
-            "Adicional",
-            "Valor mensal"
-          ],
-          "rows": [
-            [
-              "Registro administrativo extra, sem login",
-              "R$ 1,90*"
-            ]
-          ]
-        },
         "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
-        "subtitle": "Gestão interna, sem portal para clientes."
+        "subtitle": "Gestão interna, sem portal para clientes.",
+        "dark": true,
+        "billing": [
+          {
+            "id": "mensal",
+            "label": "Mensal",
+            "months": 1,
+            "discount": 0,
+            "suffix": "/mês"
+          },
+          {
+            "id": "trimestral",
+            "label": "Trimestral",
+            "months": 3,
+            "discount": 0,
+            "suffix": "/trimestre"
+          },
+          {
+            "id": "anual",
+            "label": "Anual",
+            "months": 12,
+            "discount": 0,
+            "suffix": "/ano"
+          }
+        ]
       },
       {
         "kicker": "planos · relacionamento",
@@ -302,7 +312,8 @@
               "Conta externa extra, com acesso ao portal",
               "R$ 8,90*"
             ]
-          ]
+          ],
+          "circle": true
         },
         "sample": {
           "label": "exemplo",
@@ -313,7 +324,30 @@
         },
         "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
         "subtitle": "Gestão interna + portal individual para clientes.",
-        "mirror": true
+        "mirror": true,
+        "billing": [
+          {
+            "id": "mensal",
+            "label": "Mensal",
+            "months": 1,
+            "discount": 0,
+            "suffix": "/mês"
+          },
+          {
+            "id": "trimestral",
+            "label": "Trimestral",
+            "months": 3,
+            "discount": 0,
+            "suffix": "/trimestre"
+          },
+          {
+            "id": "anual",
+            "label": "Anual",
+            "months": 12,
+            "discount": 0,
+            "suffix": "/ano"
+          }
+        ]
       },
       {
         "kicker": "antes de escolher",

@@ -94,11 +94,26 @@ function Poster({ s, n, total }) {
   )
 }
 
+// Valor de um plano no período escolhido (mensal, trimestral, anual), com desconto
+// opcional por período em pages.json. "Sob consulta" e R$ 0 ficam como estão.
+function periodPrice(v, b) {
+  const m = /R\$\s*([\d.]+(?:,\d+)?)/.exec(v)
+  if (!m || !b) return v
+  const n = Number(m[1].replace(/\./g, '').replace(',', '.'))
+  if (!n) return v
+  const total = n * b.months * (1 - (b.discount || 0))
+  return `R$ ${total.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}${b.suffix}${v.includes('*') ? '*' : ''}`
+}
+
 // Slide de planos de uma família: texto ocupando um lado, uma faixa carmesim
-// vertical afastada da borda e o card da tabela por cima dela. mirror inverte os lados.
+// vertical afastada da borda e o card da tabela por cima dela. mirror inverte os lados;
+// dark pinta de escuro a área depois da faixa (como no slide final).
 function PlansSlide({ s, n, total, theme }) {
+  const [bid, setBid] = useState(s.billing?.[0]?.id)
+  const b = s.billing?.find((x) => x.id === bid)
   return (
-    <section id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-plans2 ${s.mirror ? 'is-mirror' : ''}`}>
+    <section id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-plans2 ${s.mirror ? 'is-mirror' : ''} ${s.dark ? 'has-dark' : ''}`}>
+      {s.dark && <span className="pl-dark" aria-hidden="true" />}
       <span className="pl-band" aria-hidden="true" />
       <div className="wrap pl-grid" data-reveal>
         <div className="pl-text">
@@ -110,18 +125,29 @@ function PlansSlide({ s, n, total, theme }) {
             <div className="pl-addons">
               <h3>{s.addons.title}</h3>
               <p>{s.addons.text}</p>
-              <ul>{s.addons.rows.map(([a, b]) => <li key={a}><span>{a}</span><strong>{b}</strong></li>)}</ul>
+              <ul>{s.addons.rows.map(([a, v]) => (
+                <li key={a}><span>{a}</span><strong className={s.addons.circle ? 'pl-circled' : undefined}>{v}{s.addons.circle && (
+                  <svg viewBox="0 0 120 50" preserveAspectRatio="none" aria-hidden="true"><path d="M86 6 C 60 0, 18 4, 8 20 C 0 34, 22 46, 60 45 C 98 44, 118 34, 112 18 C 107 7, 84 3, 64 6" /></svg>
+                )}</strong></li>
+              ))}</ul>
             </div>
           )}
         </div>
         <div className="pl-side">
           <div className="pl-card" data-theme="light">
-            <div className="pl-card-head"><span>planos · {s.title}</span><span>mensal</span></div>
+            <div className="pl-card-head">
+              <span>planos · {s.title}</span>
+              {s.billing && (
+                <div className="pl-billing" role="group" aria-label="Período de cobrança">
+                  {s.billing.map((x) => <button key={x.id} className={x.id === bid ? 'on' : ''} aria-pressed={x.id === bid} onClick={() => setBid(x.id)}>{x.label}</button>)}
+                </div>
+              )}
+            </div>
             <table className="s-plans">
               <thead><tr>{s.plans.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
               <tbody>{s.plans.rows.map((r) => (
                 <tr key={r[0]} className={/consulta/i.test(r[1]) ? 'is-quote' : undefined}>
-                  {r.map((v, i) => i === 0 ? <th key={i} scope="row">{v}</th> : <td key={i} className={i === 1 ? 's-plans-price' : undefined}>{v}</td>)}
+                  {r.map((v, i) => i === 0 ? <th key={i} scope="row">{v}</th> : <td key={i} className={i === 1 ? 's-plans-price' : undefined}>{i === 1 ? periodPrice(v, b) : v}</td>)}
                 </tr>
               ))}</tbody>
             </table>
