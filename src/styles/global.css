@@ -1735,7 +1735,7 @@ h1, h2, h3, p { margin: 0; }
 .slide-escada .pn-rule i { background: var(--palette-osso); }
 .slide-escada .pn-foot { border-top-color: rgba(240, 237, 232, .35); }
 .slide-escada .pn-kick { color: rgba(240, 237, 232, .85); }
-.es-frame { grid-column: 1 / -1; padding: 36px clamp(24px, 5vw, 96px) 0; }
+.es-frame { grid-column: 1 / -1; padding: clamp(56px, 8vh, 80px) clamp(24px, 5vw, 96px) 0; }
 .es-left { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 5vh, 56px) clamp(24px, 3vw, 56px) 0 clamp(24px, 5vw, 96px); }
 .es-title { max-width: 4.9em; font-size: clamp(72px, 6.6vw, 124px); line-height: .84; color: var(--palette-osso); }
 .es-title em { font-style: normal; color: var(--palette-crimson); }
@@ -1746,7 +1746,7 @@ h1, h2, h3, p { margin: 0; }
 .es-note { display: flex; gap: 10px; align-items: flex-start; max-width: 64ch; padding-left: 14px; border-left: 2px solid var(--palette-crimson); font-size: clamp(15px, 1.1vw, 16.5px); line-height: 1.6; color: rgba(240, 237, 232, .72); }
 .es-note svg { flex: none; margin-top: 3px; color: var(--palette-crimson); }
 .slide-escada .es-left > .pn-kick { margin-top: clamp(16px, 3vh, 36px); }
-.es-foot { margin-top: clamp(36px, 5vh, 60px); padding-bottom: 0; line-height: 1; }
+.es-foot { margin-top: clamp(36px, 5vh, 60px); padding-bottom: clamp(28px, 4vh, 44px); line-height: 1; }
 .es-right { position: relative; min-height: 560px; }
 .es-head { position: relative; z-index: 1; padding: clamp(32px, 5vh, 56px) clamp(24px, 3vw, 48px) 0 0; }
 .es-head h3 { margin-top: 12px; font-size: clamp(56px, 5vw, 96px); line-height: .86; color: var(--palette-osso); }
