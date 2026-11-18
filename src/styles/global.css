@@ -1456,12 +1456,13 @@ h1, h2, h3, p { margin: 0; }
    (borda fina na cor do texto, canto de 4px), fechamento justificado + ficha com sombra */
 .slide-families .slide-grid.wrap { width: min(1480px, 100% - 48px); }
 .slide-families .slide-main h2 { max-width: none; }
-/* a pergunta flutua no alto, à direita, perto da faixa; título e texto ficam livres à esquerda */
+/* abertura à esquerda, bilhete à direita com bastante espaço entre os dois (e longe do título) */
 .slide-families .slide-main { position: relative; }
-.s-intro-row { display: block; }
-.s-intro-text { display: grid; gap: 16px; max-width: 68ch; }
+.s-intro-row { display: grid; grid-template-columns: minmax(0, 54ch) minmax(0, 1fr); gap: clamp(48px, 8vw, 140px); align-items: start; }
+.s-intro-text { display: grid; gap: 16px; }
 .s-intro-text .slide-text { max-width: none; text-align: left; hyphens: manual; }
-.s-ask.bilhete { position: absolute; top: -8px; right: calc(-1 * clamp(40px, 6vw, 90px) + 28px); width: min(400px, 36%); }
+.s-ask.bilhete { justify-self: end; width: min(360px, 100%); margin: 8px 6px 0 0; }
+@media (max-width: 1000px) { .s-intro-row { grid-template-columns: 1fr; gap: 28px; } .s-ask.bilhete { justify-self: start; } }
 /* ---------- BILHETE: ficha creme inclinada, presa com fita adesiva ----------
    Padrão reutilizável da proposta. Uso: <aside className="bilhete"><i className="bilhete-fita" />…</aside>
    Variações: .bilhete.is-left (inclina pro outro lado); .bilhete.is-hanging (pendurado por uma linha, sem fita). */
@@ -1487,11 +1488,6 @@ h1, h2, h3, p { margin: 0; }
 .s-ask-k b { color: var(--palette-sangue); font-weight: 500; margin-right: 4px; }
 .s-ask p { font-size: clamp(22px, 1.9vw, 28px); line-height: 1.28; font-weight: 500; letter-spacing: -.01em; }
 .s-ask em { font-style: italic; color: var(--palette-sangue); }
-/* em telas largas sobra espaço até a faixa: a ficha anda mais pra direita, longe do título */
-@media (min-width: 1500px) { .s-ask { right: calc(-1 * clamp(40px, 6vw, 90px) - 110px); width: 380px; } }
-@media (max-width: 1180px) {
-  .s-ask.bilhete { position: relative; top: auto; right: auto; width: auto; max-width: 520px; margin: 14px 0 0; rotate: 1deg; }
-}
 .s-fam { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
 .s-fam-part { display: grid; gap: 14px; align-content: start; padding: 28px 30px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg-card); }
 .s-fam-head { display: grid; gap: 10px; margin-bottom: 4px; }
@@ -1553,30 +1549,52 @@ h1, h2, h3, p { margin: 0; }
 .s-plans-note { padding-top: 16px; border-top: 1px dashed var(--border); font-size: 14.5px; line-height: 1.55; color: var(--text-muted); max-width: 90ch; }
 @media (max-width: 900px) { .s-plans-more.has-sample { grid-template-columns: 1fr; } }
 
-/* 03 · demonstração das famílias (mesmo visual dos ambientes da landing, numa janela escura) */
-.fdemo { margin-top: 12px; border: 1px solid var(--palette-tinta); border-radius: 4px; overflow: hidden; background: #100D0D; color: var(--text); box-shadow: 10px 10px 0 var(--palette-tinta); }
-.fdemo .mods-bar code { flex: 1; text-align: center; }
-.fdemo-in { display: grid; gap: 20px; padding: 22px clamp(18px, 2.4vw, 30px) 28px; }
-.fdemo-top { display: grid; gap: 14px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
-.fdemo-top > div { display: flex; flex-wrap: wrap; gap: 8px; }
-.fdemo-cap { font-size: 18px; line-height: 1.5; color: var(--text-sub); animation: m-in .4s ease both; }
-.fdemo-cols { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 22px; }
-.fdemo-col { display: grid; gap: 12px; align-content: start; }
-.fdemo-k { display: inline-flex; align-items: center; gap: 8px; font: 400 11px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); }
-.fdemo-k i { width: 6px; height: 6px; border-radius: 50%; }
-.fdemo-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.fdemo-portal { display: grid; gap: 12px; }
-.fcard .fcard-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 16px 6px; }
-.fcard h3 { font-size: 20px; }
-.fcard .gcard-log { padding: 6px 16px 12px; }
-.fcard .gcard-foot { padding: 10px 16px; }
-.fdemo-off { display: grid; place-items: center; min-height: 100%; padding: 28px; border: 1px dashed #5a1f1f; border-radius: 4px; text-align: center; font: 500 12px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); animation: m-in .4s ease both; }
-.fdemo-cols.is-on .fdemo-col:last-child .fdemo-k { color: var(--text); }
-.s-fam-hl { justify-self: start; max-width: 520px; margin-top: 18px; }
-@media (max-width: 900px) {
-  .fdemo-cols { grid-template-columns: 1fr; }
-  .fdemo-panel { grid-template-columns: 1fr; }
+/* 03 · esquema das duas famílias: ambiente do profissional x ambiente + portal dos clientes */
+.fx-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 22px; margin-top: 10px; }
+.fx { display: grid; gap: 14px; align-content: start; padding: 26px 28px 28px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg-card); }
+.fx-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.fx-head h3 { font: 400 clamp(36px, 3.4vw, 50px)/.95 var(--font-display); text-transform: uppercase; }
+.fx-cap { font-size: 18px; line-height: 1.55; color: var(--text-sub); max-width: 52ch; }
+.fx-map { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 6px; padding: 22px; border-radius: 4px; background: color-mix(in srgb, var(--text) 4%, transparent); }
+.fx-map.has-portal { grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr); align-items: center; }
+.fx-box { display: grid; gap: 14px; padding: 16px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg-card); }
+.fx-k { font: 500 10.5px/1.3 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); }
+.fx-people { display: flex; flex-wrap: wrap; gap: 8px; }
+.fx-person { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 6px; border: 1px solid var(--border); border-radius: 2px; font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--text); }
+.fx-person svg { color: var(--acc); }
+.fx-records { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; padding-top: 12px; border-top: 1px dashed var(--border); }
+.fx-records span { flex-basis: 100%; margin-bottom: 4px; font: 400 10px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+.fx-records i { width: 26px; height: 18px; border: 1px solid var(--border); border-radius: 2px; background: repeating-linear-gradient(180deg, transparent 0 5px, color-mix(in srgb, var(--text) 18%, transparent) 5px 6px); }
+/* o alinhavo que liga o ambiente ao portal, com um ponto correndo */
+.fx-link { position: relative; height: 0; border-top: 2px dashed var(--acc); }
+.fx-link i { position: absolute; top: -5px; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--acc); animation: fx-run 2.4s linear infinite; }
+@keyframes fx-run { from { left: 0; } to { left: calc(100% - 8px); } }
+.fx-portal { border-style: dashed; border-color: var(--acc); }
+.fx-portal ul { display: grid; gap: 6px; }
+.fx-portal li { padding: 7px 10px; border: 1px solid var(--border); border-radius: 2px; font: 400 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--text-sub); }
+/* clientes do lado de fora */
+.fx-out { grid-column: 1 / -1; display: grid; justify-items: center; gap: 10px; padding-top: 22px; }
+.fx-map.has-portal .fx-out { grid-column: 3; }
+.fx-clients { display: flex; gap: 18px; }
+.fx-client { position: relative; display: grid; justify-items: center; color: var(--text-muted); }
+.fx-out.is-in .fx-client { color: var(--text); }
+.fx-lock, .fx-key { position: absolute; top: -4px; right: -8px; padding: 2px; border-radius: 50%; background: var(--bg-card); }
+.fx-lock { color: var(--text-muted); }
+.fx-key { color: var(--acc); }
+.fx-out.is-blocked .fx-clients { opacity: .55; }
+/* no Relacionamento, cada cliente sobe por uma linha até o portal */
+.fx-thread { position: absolute; bottom: 100%; left: 50%; width: 0; height: 22px; border-left: 1.5px dashed var(--acc); }
+.fx-thread::after { content: ""; position: absolute; left: -3.5px; bottom: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--acc); animation: fx-up 1.8s ease-in infinite; animation-delay: var(--d); }
+@keyframes fx-up { 0% { bottom: 0; opacity: 0; } 15% { opacity: 1; } 100% { bottom: 100%; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .fx-link i, .fx-thread::after { animation: none; } }
+@media (max-width: 1100px) { .fx-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .fx-map.has-portal { grid-template-columns: 1fr; }
+  .fx-link { width: 0; height: 36px; border-top: 0; border-left: 2px dashed var(--acc); justify-self: center; }
+  .fx-link i { display: none; }
+  .fx-map.has-portal .fx-out { grid-column: 1; }
 }
+.s-fam-hl { justify-self: start; max-width: 520px; margin-top: 18px; }
 
 /* 02 · ficha da implantação */
 .s-ficha { margin-top: 8px; padding: 26px 28px; background: var(--bg-card); border: 1px solid var(--text); border-radius: 4px; box-shadow: 10px 10px 0 var(--text); max-width: 720px; }

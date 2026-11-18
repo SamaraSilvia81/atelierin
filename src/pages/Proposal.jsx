@@ -1,5 +1,5 @@
-import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning, CaretDoubleDown } from '@phosphor-icons/react'
-import { useEffect, useRef, useState } from 'react'
+import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning, CaretDoubleDown, UserCircle, Key, LockSimple } from '@phosphor-icons/react'
+import { useState } from 'react'
 import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
 import FlowMap from '@/components/FlowMap'
@@ -35,65 +35,44 @@ function Interlude({ s, n, total }) {
   )
 }
 
-// Demonstração das duas famílias, no visual dos ambientes da landing: o mesmo
-// painel nas duas, e o portal do cliente que só acende no Relacionamento.
-// Alterna sozinho enquanto está na tela; se a pessoa clicar, ela assume.
-const ST = { ativo: 'em dia', atencao: 'atenção' }
-function MiniCard({ c, i = 0 }) {
-  return (
-    <li className={`gcard fcard is-${c.status}`} style={{ animationDelay: `${i * 90}ms` }}>
-      <span className="gcard-bar" aria-hidden="true" />
-      <div className="fcard-head"><h3>{c.title}</h3><span className="gcard-status"><i />{ST[c.status]}</span></div>
-      <div className="gcard-log"><p><b>›_</b> <span>{c.log}</span></p><small>{c.meta}</small></div>
-      <div className="gcard-foot"><span>{c.foot}</span></div>
-    </li>
-  )
+// Esquema das duas famílias: o ambiente do profissional (ele e a equipe) e,
+// no Relacionamento, o portal ligado por um alinhavo, com os clientes entrando.
+function Person({ label, dim }) {
+  return <span className={`fx-person ${dim ? 'is-dim' : ''}`}><UserCircle size={22} weight="duotone" aria-hidden="true" />{label}</span>
 }
-function FamiliesDemo({ d }) {
-  const [mode, setMode] = useState(d.modes[0].id)
-  const [user, setUser] = useState(false)
-  const [inView, setInView] = useState(false)
-  const ref = useRef(null)
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setUser(true); return undefined }
-    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.4 })
-    if (ref.current) io.observe(ref.current)
-    return () => io.disconnect()
-  }, [])
-  useEffect(() => {
-    if (user || !inView) return undefined
-    const t = setInterval(() => setMode((m) => (m === d.modes[0].id ? d.modes[1].id : d.modes[0].id)), 4200)
-    return () => clearInterval(t)
-  }, [user, inView, d.modes])
-  const on = mode === d.modes[1].id
-  const cur = d.modes.find((m) => m.id === mode)
+function EnvDiagram({ e }) {
+  const portal = Boolean(e.portal)
   return (
-    <div className="fdemo" data-theme="dark" ref={ref}>
-      <div className="mods-bar"><span className="dots"><i /><i /><i /></span><code>{d.host}</code></div>
-      <div className="fdemo-in">
-        <div className="fdemo-top">
-          <div role="group" aria-label="Família">
-            {d.modes.map((m) => (
-              <button key={m.id} className={`filter-btn ${mode === m.id ? 'active' : ''}`} aria-pressed={mode === m.id}
-                onClick={() => { setUser(true); setMode(m.id) }}>// {m.label}</button>
+    <article className={`fx is-${e.id}`}>
+      <header className="fx-head"><h3>{e.name}</h3><span className="s-fam-badge">{e.tag}</span></header>
+      <p className="fx-cap">{e.caption}</p>
+      <div className={`fx-map ${portal ? 'has-portal' : ''}`} aria-hidden="true">
+        <div className="fx-box fx-admin">
+          <span className="fx-k">{e.admin}</span>
+          <div className="fx-people">{e.people.map((p) => <Person key={p} label={p} />)}</div>
+          <div className="fx-records"><span>{e.records}</span><i /><i /><i /><i /><i /></div>
+        </div>
+        {portal && <span className="fx-link"><i /></span>}
+        {portal && (
+          <div className="fx-box fx-portal">
+            <span className="fx-k">{e.portal}</span>
+            <ul>{e.portalItems.map((it) => <li key={it}>{it}</li>)}</ul>
+          </div>
+        )}
+        <div className={`fx-out ${portal ? 'is-in' : 'is-blocked'}`}>
+          <div className="fx-clients">
+            {[0, 1, 2].map((k) => (
+              <span key={k} className="fx-client" style={{ '--d': `${k * 0.6}s` }}>
+                {portal && <i className="fx-thread" />}
+                {portal ? <Key size={12} weight="bold" className="fx-key" /> : <LockSimple size={12} weight="bold" className="fx-lock" />}
+                <UserCircle size={26} weight="duotone" />
+              </span>
             ))}
           </div>
-          <p key={mode} className="fdemo-cap" aria-live="polite">{cur.caption}</p>
-        </div>
-        <div className={`fdemo-cols ${on ? 'is-on' : ''}`}>
-          <div className="fdemo-col">
-            <span className="fdemo-k"><i className="dot-green" />{d.panelLabel}</span>
-            <ul className="fdemo-panel">{d.panel.map((c) => <MiniCard key={c.title} c={c} />)}</ul>
-          </div>
-          <div className="fdemo-col">
-            <span className="fdemo-k"><i className={on ? 'dot-green' : 'dot-dim'} />{d.portalLabel}</span>
-            {on
-              ? <ul key="on" className="fdemo-portal">{d.portal.map((c, i) => <MiniCard key={c.title} c={c} i={i} />)}</ul>
-              : <div key="off" className="fdemo-off"><span>{d.portalOff}</span></div>}
-          </div>
+          <span className="fx-k">{e.outside}</span>
         </div>
       </div>
-    </div>
+    </article>
   )
 }
 
@@ -165,7 +144,7 @@ function Body({ s }) {
   )
   if (s.layout === 'families') return (
     <>
-      {s.demo && <FamiliesDemo d={s.demo} />}
+      {s.envs && <div className="fx-grid">{s.envs.map((e) => <EnvDiagram key={e.id} e={e} />)}</div>}
       {s.highlight && <p className="s-highlight s-fam-hl">{s.highlight}</p>}
     </>
   )

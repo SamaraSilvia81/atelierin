@@ -183,63 +183,40 @@
         "highlight": "Você não precisa contratar um portal se não pretende utilizá-lo.",
         "theme": "light",
         "accentBreak": true,
-        "demo": {
-          "host": "seunome.atelierin.com.br",
-          "modes": [
-            {
-              "id": "estrutura",
-              "label": "Estrutura",
-              "caption": "Tudo acontece no seu painel. Seus clientes ficam cadastrados, mas não acessam o sistema."
-            },
-            {
-              "id": "relacionamento",
-              "label": "Relacionamento",
-              "caption": "Seu painel e mais um portal: cada cliente entra com login próprio."
-            }
-          ],
-          "panelLabel": "seu painel",
-          "panel": [
-            {
-              "title": "Clientes",
-              "status": "ativo",
-              "log": "33 cadastrados",
-              "meta": "2 novos este mês",
-              "foot": "clientes"
-            },
-            {
-              "title": "Agenda",
-              "status": "ativo",
-              "log": "Próxima: Ana, seg 14h",
-              "meta": "4 atendimentos hoje",
-              "foot": "agenda"
-            },
-            {
-              "title": "Cobrança",
-              "status": "atencao",
-              "log": "18 de 21 pagas",
-              "meta": "3 vencem na sexta",
-              "foot": "cobrança"
-            }
-          ],
-          "portalLabel": "portal do cliente",
-          "portalOff": "Não incluso na Estrutura",
-          "portal": [
-            {
-              "title": "Meus horários",
-              "status": "ativo",
-              "log": "Próximo: seg 14h",
-              "meta": "material novo disponível",
-              "foot": "login da Ana"
-            },
-            {
-              "title": "Mensalidade",
-              "status": "ativo",
-              "log": "Novembro · paga",
-              "meta": "Pix direto na sua chave",
-              "foot": "login da Ana"
-            }
-          ]
-        }
+        "envs": [
+          {
+            "id": "estrutura",
+            "name": "Estrutura",
+            "tag": "sem portal",
+            "caption": "Um ambiente só seu. Você e sua equipe organizam tudo; os clientes ficam cadastrados, mas não entram.",
+            "admin": "seu ambiente",
+            "people": [
+              "você",
+              "equipe"
+            ],
+            "records": "clientes cadastrados",
+            "outside": "seus clientes não acessam"
+          },
+          {
+            "id": "relacionamento",
+            "name": "Relacionamento",
+            "tag": "com portal",
+            "caption": "O mesmo ambiente seu, ligado a um portal. Cada cliente entra com login próprio e vê o que é dele.",
+            "admin": "seu ambiente",
+            "people": [
+              "você",
+              "equipe"
+            ],
+            "records": "clientes cadastrados",
+            "portal": "portal dos clientes",
+            "portalItems": [
+              "aulas",
+              "materiais",
+              "pagamentos"
+            ],
+            "outside": "cada cliente com o próprio login"
+          }
+        ]
       },
       {
         "kicker": "planos · estrutura",
