@@ -414,12 +414,7 @@
               "Fazemos os cadastros durante uma chamada."
             ],
             [
-              "Até 50 clientes",
-              "R$ 190",
-              "Fazemos os cadastros durante uma chamada."
-            ],
-            [
-              "Acima de 50 clientes",
+              "Mais de 20 clientes",
               "R$ 190",
               "Você preenche uma planilha, eu importo os dados e usamos a chamada para orientar o uso."
             ]
@@ -572,7 +567,7 @@
         "price": {
           "label": "pagamento único",
           "value": "R$ 950",
-          "sub": "em até 5x de R$ 190"
+          "sub": "em até 3x de R$ 316,67"
         },
         "text": "O Atelierin pode ser utilizado com a apresentação padrão da plataforma ou receber uma personalização visual com a identidade do seu negócio. Ele adapta a aparência e configura o ambiente, sem criar um sistema separado."
       },
@@ -592,8 +587,7 @@
             "Aplicação da sua identidade visual (logo, cores e tipografia) ou criação de um monograma, se você ainda não tiver.",
             "Domínio próprio (ex.: seunegocio.com.br), configurado por mim. O registro do domínio é pago à parte.",
             "Configuração de e-mails com a identidade do negócio.",
-            "Configuração das funcionalidades já disponíveis no modelo contratado.",
-            "Importação de dados a partir de planilha."
+            "Configuração das funcionalidades já disponíveis no modelo contratado."
           ]
         },
         "excludes": {
@@ -609,8 +603,8 @@
         "upgrade": {
           "label": "Quer um logo?",
           "text": "Troque o monograma por uma identidade básica: logotipo simples, paleta, tipografia, dois mockups e duas rodadas de ajustes.",
-          "value": "+ R$ 100",
-          "total": "total R$ 1.050",
+          "value": "+ R$ 350",
+          "total": "total R$ 1.300",
           "kicker": "opcional"
         },
         "inpi": "Registro no INPI não incluso: a taxa oficial é paga por você, diretamente ao INPI. Se quiser, eu acompanho o pedido como serviço à parte.",
@@ -641,24 +635,24 @@
           },
           {
             "name": "Landing page completa",
-            "price": "R$ 2.500",
-            "for": "com identidade básica",
+            "price": "+ R$ 1.500",
+            "for": "somada ao Sob medida",
             "items": [
               "Texto e seções pensados para você",
               "Design próprio",
-              "Identidade básica inclusa: logotipo, paleta e tipografia"
-            ],
-            "hl": true
+              "Usa a identidade aplicada no Sob medida"
+            ]
           },
           {
-            "name": "Landing page sem logo",
-            "price": "R$ 2.100",
-            "for": "se você não quiser um logotipo",
+            "name": "Pacote completo",
+            "price": "R$ 2.800",
+            "for": "Sob medida + logo + landing page",
             "items": [
-              "A mesma landing page completa",
-              "Usa a identidade que você já tem",
-              "Sem criação de logotipo"
-            ]
+              "Sob medida · R$ 950",
+              "Logo e identidade básica · + R$ 350",
+              "Landing page completa · + R$ 1.500"
+            ],
+            "hl": true
           }
         ],
         "footnote": "O registro da marca no INPI não está incluso em nenhum serviço. A taxa oficial é paga por você, diretamente ao INPI.",
