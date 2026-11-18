@@ -646,17 +646,35 @@
       },
       {
         "kicker": "se quiser sair",
-        "title": "Você sai quando quiser, com os seus dados",
-        "text": "O cancelamento é avisado com 30 dias de antecedência. Antes de encerrar, você exporta os dados da sua operação.",
+        "title": "Se um dia quiser encerrar",
+        "text": "A assinatura não prende seus dados ao Atelierin. Se decidir encerrar, você pode solicitar o cancelamento e exportar as informações da sua operação, respeitando os prazos e as condições previstas em contrato.",
         "points": [
-          "Aviso de 30 dias",
-          "Exportação dos dados de alunos e conteúdo",
-          "A licença de uso termina junto com o contrato",
-          "O sistema e o subdomínio continuam da Atelierin"
+          "O cancelamento deve ser comunicado com 30 dias de antecedência, conforme contrato",
+          "Seus dados podem ser exportados antes do encerramento",
+          "A licença de uso termina com o contrato",
+          "O sistema, o código-fonte, a marca Atelierin e o subdomínio permanecem com o Atelierin"
         ],
-        "accent": "com os seus dados",
+        "accent": "quiser encerrar",
         "deco": "tape",
-        "theme": "dark"
+        "theme": "dark",
+        "textWide": true,
+        "blocks": [
+          {
+            "title": "Nos primeiros meses",
+            "text": [
+              "Como os planos não têm taxa de entrada, existe uma condição específica para cancelamentos nos três primeiros meses após a ativação: uma taxa equivalente a uma mensalidade do plano vigente.",
+              "Depois desse período inicial, aplica-se o aviso prévio de 30 dias, sem essa taxa. Contratações feitas online por pessoa física mantêm o direito de arrependimento de 7 dias, previsto no Código de Defesa do Consumidor."
+            ]
+          },
+          {
+            "title": "Serviços opcionais",
+            "items": [
+              "Sob medida: em caso de cancelamento durante a execução, é devido o valor correspondente à etapa concluída, descontando o que já foi pago.",
+              "Implantação assistida: após a realização da chamada, não há reembolso; se o cancelamento ocorrer antes da chamada, o valor é reembolsado integralmente."
+            ]
+          }
+        ],
+        "highlight": "Seus dados são seus. O acesso ao sistema depende da licença ativa."
       },
       {
         "kicker": "próximo passo",

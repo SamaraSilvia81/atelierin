@@ -1948,6 +1948,15 @@ h1, h2, h3, p { margin: 0; }
 .s-owns li { padding: 11px 0; border-bottom: 1px dashed var(--border); font-size: 18px; line-height: 1.45; color: var(--text-sub); }
 .s-owns li:last-child { border-bottom: 0; }
 .slide-terms .slide-main h2 { max-width: none; }
+/* blocos de texto extras (ex.: cancelamento) */
+.s-blocks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); margin-top: 10px; }
+.s-block { display: grid; gap: 12px; align-content: start; padding-left: 18px; border-left: 2px solid var(--text); }
+.s-block p { font-size: 18px; line-height: 1.6; color: var(--text-sub); }
+.s-block ul { display: grid; }
+.s-block li { padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 18px; line-height: 1.5; color: var(--text-sub); }
+.s-block li:last-child { border-bottom: 0; }
+.s-block-hl { justify-self: start; max-width: 640px; margin-top: 18px; }
+@media (max-width: 900px) { .s-blocks { grid-template-columns: 1fr; } }
 
 /* próximo passo: conversa ao lado */
 .slide-main.has-chat { grid-template-columns: minmax(0, 1fr) minmax(340px, 420px); gap: clamp(40px, 5vw, 80px); align-items: center; }

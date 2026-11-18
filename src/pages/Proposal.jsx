@@ -445,7 +445,23 @@ function Body({ s }) {
   if (s.layout === 'cta') return (
     <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="s-cta"><WhatsappLogo size={26} weight="fill" aria-hidden="true" /> {s.cta.label}</a>
   )
-  return <Points list={s.points} />
+  return (
+    <>
+      <Points list={s.points} />
+      {s.blocks && (
+        <div className="s-blocks">
+          {s.blocks.map((b) => (
+            <div key={b.title} className="s-block">
+              <span className="s-terms-k">{b.title}</span>
+              {b.text?.map((t) => <p key={t}>{t}</p>)}
+              {b.items && <ul>{b.items.map((it) => <li key={it}>{it}</li>)}</ul>}
+            </div>
+          ))}
+        </div>
+      )}
+      {s.highlight && <p className="s-highlight s-block-hl">{s.highlight}</p>}
+    </>
+  )
 }
 
 // Exemplo da página simples que todo ambiente ganha. Se existir a imagem do
