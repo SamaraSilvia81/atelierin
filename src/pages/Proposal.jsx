@@ -328,8 +328,6 @@ function SobDetalhe({ s, n, total }) {
   return (
     <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-sobdet">
       <div className="sd-wrap">
-        <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
-        <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
         <div className="sd-grid">
           <div className="sd-main" data-reveal>
             {s.lead && <p className="pn-kick">› {s.lead}</p>}
@@ -351,7 +349,6 @@ function SobDetalhe({ s, n, total }) {
             {s.inpi && <p className="sd-inpi">{s.inpi}{s.inpiLink && <> <a href={s.inpiLink.href} target="_blank" rel="noreferrer">{s.inpiLink.label} ↗</a></>}</p>}
           </div>
         </div>
-        <div className="pn-foot sd-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
       </div>
     </section>
   )
