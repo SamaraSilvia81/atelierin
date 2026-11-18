@@ -1593,7 +1593,7 @@ h1, h2, h3, p { margin: 0; }
 /* sob medida (v2): à esquerda título, preço e o que fica de fora; uma coluna creme
    de cima a baixo com o que está incluído (como a coluna preta da referência) */
 .slide-sobmedida2 { display: grid; grid-template-columns: 58% 30% 12%; min-height: min(100vh, 980px); padding: 0; }
-.sm2-left { display: grid; gap: 22px; align-content: center; padding: clamp(72px, 10vh, 120px) clamp(32px, 4vw, 72px) clamp(72px, 10vh, 120px) max(24px, calc((100% / .58 - 1480px) / 2)); }
+.sm2-left { display: grid; gap: 22px; align-content: center; padding: clamp(110px, 15vh, 180px) clamp(32px, 4vw, 72px) clamp(110px, 15vh, 180px) max(24px, calc((100% / .58 - 1480px) / 2)); }
 .sm2-num { display: grid; gap: 12px; }
 .sm2-num .slide-n { font-size: clamp(80px, 8vw, 130px); }
 .sm2-num .slide-n small { font-size: .3em; color: var(--text-muted); }
@@ -1601,11 +1601,11 @@ h1, h2, h3, p { margin: 0; }
 .sm2-left .slide-text { max-width: 56ch; }
 .sm2-left mark.hl { background: none; padding: 0; color: var(--acc-text); }
 .sm2-left .s-title-tag { background: var(--palette-crimson); color: var(--palette-osso); }
-.sm2-price { display: grid; gap: 4px; justify-items: center; text-align: center; padding-bottom: 18px; border-bottom: 1px solid var(--text); }
+.sm2-price { display: grid; gap: 4px; justify-items: center; text-align: center; padding-block: 18px; border-top: 1px solid var(--text); border-bottom: 1px solid var(--text); }
 .sm2-price-k { font: 500 14px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--acc-text); }
 .sm2-price strong { font: 400 clamp(84px, 8vw, 140px)/.9 var(--font-display); white-space: nowrap; }
 .sm2-price-sub { font: 500 15px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-sub); }
-.sm2-col { position: relative; z-index: 1; display: grid; gap: 18px; align-content: center; padding: clamp(56px, 8vh, 96px) clamp(28px, 3vw, 48px); background: var(--palette-linho); color: var(--palette-tinta); }
+.sm2-col { position: relative; z-index: 1; display: grid; gap: 18px; align-content: center; padding: clamp(110px, 15vh, 180px) clamp(28px, 3vw, 48px); background: var(--palette-linho); color: var(--palette-tinta); }
 .sm2-col h3 { font: 400 clamp(36px, 3.2vw, 52px)/1 var(--font-display); text-transform: uppercase; }
 .sm2-col ul { display: grid; border-top: 1px solid var(--palette-tinta); }
 .sm2-col li { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px dashed var(--palette-borda-clara); font-size: 17.5px; line-height: 1.45; }
