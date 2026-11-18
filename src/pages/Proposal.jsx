@@ -327,7 +327,7 @@ export default function Proposal({ client, slug }) {
                     <div className="s-intro-row">
                       <div className="s-intro-text">{[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}</div>
                       <aside className="s-ask">
-                        <i className="s-ask-pin" aria-hidden="true" />
+                        <i className="s-ask-tape" aria-hidden="true" />
                         <span className="s-ask-k"><b aria-hidden="true">»</b> {s.question.label}</span>
                         <p>{s.question.text} <em>{s.question.accent}</em></p>
                         <i className="s-ask-mark" aria-hidden="true">?</i>
