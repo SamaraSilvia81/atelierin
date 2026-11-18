@@ -468,7 +468,7 @@ export default function Proposal({ client, slug }) {
           <header className="flow-head" data-reveal>
             <p className="label"><b aria-hidden="true">&gt;</b> {p.flow.kicker}</p>
             <h2 className="display">{p.flow.title}</h2>
-            <p className="lede">{p.flow.lede}</p>
+            {p.flow.lede && <p className="lede">{p.flow.lede}</p>}
           </header>
           <div data-reveal><FlowMap data={p.flow} name={client?.name} /></div>
         </div>
