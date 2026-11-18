@@ -218,7 +218,6 @@
         },
         "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
         "subtitle": "Gestão interna, sem portal para clientes.",
-        "dark": true,
         "billing": [
           {
             "id": "mensal",
@@ -362,8 +361,7 @@
             "discount": 0,
             "suffix": "/ano"
           }
-        ],
-        "dark": true
+        ]
       },
       {
         "kicker": "antes de escolher",

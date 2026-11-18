@@ -1545,8 +1545,8 @@ h1, h2, h3, p { margin: 0; }
 /* 03-04 · planos por família: texto de um lado, faixa carmesim vertical afastada da borda
    e o card da tabela por cima dela (no espelhado, os lados se invertem) */
 .slide-plans2 { position: relative; overflow: hidden; display: grid; align-items: center; min-height: min(100vh, 980px); }
-.fp-band { position: absolute; top: 0; bottom: 0; left: 71%; width: 13%; background: linear-gradient(180deg, #A31C18, #7E1311) fixed; }
-.slide-plans2.is-mirror .fp-band { left: 16%; }
+.fp-band { position: absolute; top: 0; bottom: 0; left: 84%; width: 16%; background: linear-gradient(180deg, #A31C18, #7E1311) fixed; }
+.slide-plans2.is-mirror .fp-band { left: 0; }
 .fp-grid { position: relative; z-index: 1; width: min(1480px, 100% - 48px); display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 110px); align-items: center; padding-block: clamp(72px, 10vh, 120px); }
 .slide-plans2.is-mirror .fp-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
 .slide-plans2.is-mirror .fp-text { order: 2; }
