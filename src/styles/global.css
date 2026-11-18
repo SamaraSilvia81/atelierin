@@ -1437,9 +1437,13 @@ h1, h2, h3, p { margin: 0; }
 .s-split-col.is-seu li { font-weight: 500; }
 .s-split-col li::before { content: "›"; position: absolute; left: 0; opacity: .8; }
 .s-split-col.is-seu li::before { color: var(--acc); opacity: 1; }
-/* etiqueta em cima do título */
-.s-title-tag { display: inline-block; margin-bottom: 18px; padding: 9px 14px 8px; border-radius: 999px; background: var(--acc); color: var(--on-acc); font: 500 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; box-shadow: 4px 4px 0 var(--text); }
-[data-theme="dark"] .s-title-tag { background: var(--palette-crimson); color: var(--palette-osso); box-shadow: 4px 4px 0 var(--palette-osso); }
+/* etiqueta ao lado do destaque do título: o slide fica mais largo pra caber na mesma linha */
+.slide-split .slide-grid.wrap { width: min(1400px, 100% - 48px); }
+.slide-main h2:has(.s-title-tag) { max-width: none; }
+.s-title-pair { white-space: nowrap; }
+.s-title-tag { display: inline-block; margin-left: 18px; vertical-align: .55em; padding: 9px 14px 8px; border-radius: 999px; background: var(--acc); color: var(--on-acc); font: 500 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+[data-theme="dark"] .s-title-tag { background: var(--palette-crimson); color: var(--palette-osso); }
+@media (max-width: 760px) { .s-title-pair { white-space: normal; } .s-title-tag { margin: 12px 0 0; display: table; } }
 /* destaque só na cor, sem tarja */
 .slide-main .hl.hl-text, [data-theme="dark"] .slide-main .hl.hl-text { background: none; padding: 0; color: var(--acc); }
 [data-theme="dark"] .slide-main .hl.hl-text { color: var(--acc-text); }

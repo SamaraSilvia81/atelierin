@@ -15,7 +15,8 @@ function Title({ text, accent, accentMode, tag }) {
   const t = tag && <span className="s-title-tag">{tag}</span>
   if (!accent || !text.includes(accent)) return <h2 className="display">{text}{t}</h2>
   const [a, b] = text.split(accent)
-  return <h2 className="display">{a}<mark className={accentMode === 'text' ? 'hl hl-text' : 'hl'}>{accent}</mark>{t}{b}</h2>
+  const m = <mark className={accentMode === 'text' ? 'hl hl-text' : 'hl'}>{accent}</mark>
+  return <h2 className="display">{a}{t ? <span className="s-title-pair">{m}{t}</span> : m}{b}</h2>
 }
 
 function Deco({ kind, n }) {
