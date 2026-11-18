@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 
@@ -7,7 +7,7 @@ import { play } from '@/lib/sounds'
 // pricing.extraMax adicionais. Regras em content.plans.pricing.
 const brl = (v) => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 })
 
-export default function PriceCalc({ fam }) {
+export default function PriceCalc({ fam, onPick }) {
   const { pricing: P, calc: t } = content.plans
   const f = content.founder
   const fOn = f && f.enabled !== false && f.open && fam === 'relacionamento'
@@ -16,7 +16,7 @@ export default function PriceCalc({ fam }) {
   const F = P[fam]
 
   const options = F.tiers
-    .filter((x) => x.team >= team && clients <= x.clients + (x.price > 0 ? P.extraMax : 0))
+    .filter((x) => x.team >= team && clients <= x.clients + (x.price > 0 && F.extra ? P.extraMax : 0))
     .map((x) => {
       const extras = Math.max(0, clients - x.clients)
       return { ...x, extras, total: x.price + extras * F.extra }
@@ -25,10 +25,13 @@ export default function PriceCalc({ fam }) {
   const next = best && F.tiers[F.tiers.indexOf(F.tiers.find((x) => x.name === best.name)) + 1]
   const discount = fOn && best ? best.price * f.discount : 0
   const month = best ? best.total - discount : null
+  useEffect(() => { onPick?.(best ? best.name : null) }, [best?.name])
 
   return (
-    <div className="calc" data-reveal>
+    <div className="calc calc-wide" data-reveal>
+      <div className="calc-in">
       <p className="label">{t.label}</p>
+      <h3 className="display calc-title">{t.title}</h3>
       <div className="calc-field">
         <label htmlFor={`calc-${fam}`}>{t.clients[fam]} <b>{clients}</b></label>
         <input id={`calc-${fam}`} type="range" min="1" max="160" value={clients} onChange={(e) => setClients(+e.target.value)} />
@@ -42,6 +45,7 @@ export default function PriceCalc({ fam }) {
         </div>
       </fieldset>
 
+      </div>
       <div className="calc-res" aria-live="polite">
         <div className="calc-res-top"><span>{t.plan}</span><strong>{best ? best.name : P.over[fam]}</strong></div>
         {best ? (

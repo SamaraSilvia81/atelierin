@@ -581,7 +581,7 @@
     "piece": "Nº 06 · Etiquetas",
     "title": "Planos",
     "titleAccent": "",
-    "lede": "Duas famílias de planos: Gestão, para organizar o seu negócio por dentro, e Portal, que soma um espaço com login para os seus clientes. O Sob medida é um serviço opcional, à parte.",
+    "lede": "Duas famílias de planos: Estrutura, para organizar o seu negócio por dentro, e Relacionamento, que soma um portal com login para os seus clientes. O Sob medida é um serviço opcional, à parte.",
     "items": [
       {
         "line": "Outras linhas",
@@ -622,7 +622,7 @@
         "relacionamento": "Alta-costura"
       },
       "estrutura": {
-        "extra": 1.9,
+        "extra": 0,
         "tiers": [
           {
             "name": "Grátis",
@@ -736,7 +736,8 @@
       "year": "No ano",
       "over": "sob consulta",
       "overNote": "Acima disso, o plano é combinado na conversa.",
-      "note": "Valores de referência. A proposta final sai da nossa conversa."
+      "note": "Passou um pouco do limite no Relacionamento? Você adiciona até 10 contas sem trocar de plano. Valores de referência: a proposta final sai da nossa conversa.",
+      "title": "Qual plano é o seu?"
     },
     "foot": {
       "text": "O pagamento dos alunos vai direto para você. Nenhuma taxa por transação.",
@@ -746,15 +747,15 @@
     "tabs": [
       {
         "id": "estrutura",
-        "label": "Gestão",
+        "label": "Estrutura",
         "sub": "só administração",
-        "lede": "Gestão é para organizar o seu negócio por dentro: clientes, agenda, financeiro e equipe num lugar só. Quem usa o sistema é você e a sua equipe; os seus clientes não entram."
+        "lede": "Estrutura é para organizar o seu negócio por dentro: clientes, agenda, financeiro e equipe num lugar só. Quem usa o sistema é você e a sua equipe; os seus clientes não entram."
       },
       {
         "id": "relacionamento",
-        "label": "Portal",
+        "label": "Relacionamento",
         "sub": "gestão + portal dos clientes",
-        "lede": "Portal é a gestão completa mais um espaço com login para cada cliente, no celular ou no computador. Eles acompanham agenda, materiais e pagamentos, e você acompanha cada um."
+        "lede": "Relacionamento é a gestão completa mais um portal com login para cada cliente, no celular ou no computador. Eles acompanham agenda, materiais e pagamentos, e você acompanha cada um."
       }
     ],
     "sets": {
@@ -1518,27 +1519,32 @@
       }
     },
     "custom": {
-      "line": "Serviço opcional",
+      "line": "Serviço opcional · pagamento único",
       "name": "Sob medida",
-      "status": "Independe do plano",
-      "tone": "plain",
-      "for": "Para quem quer a marca, o endereço e a implantação com a sua cara",
-      "priceBig": "R$ 1.200",
-      "priceExtra": "implantação, uma vez · até 10x de R$ 120 · mais o mensal do plano escolhido",
+      "for": "Seu estilo em cada detalhe: direcionamento visual, sua marca (ou um monograma) em todas as telas e e-mails com a sua cara. Vale para qualquer plano.",
       "cta": {
-        "label": "Pedir orçamento",
-        "href": "/#contato"
+        "label": "Ver na proposta",
+        "href": "/proposta"
       },
-      "features": [
-        "Sua marca, cores e tipografia aplicadas",
-        "Subdomínio ou domínio próprio e e-mails da empresa",
-        "Configuração, importação de dados e treinamento",
-        "Página pública simples",
-        "Funcionalidade exclusiva, com orçamento antes"
-      ],
-      "priceLabel": "Implantação · uma vez",
-      "priceSub": "até 10x de R$ 120",
-      "priceNote": "mais o mensal do plano escolhido"
+      "steps": [
+        {
+          "name": "Sob medida",
+          "text": "estilo, marca e e-mails · em até 5x de R$ 250",
+          "price": "R$ 1.250"
+        },
+        {
+          "name": "+ Logo de verdade",
+          "text": "logotipo, paleta, tipografia e mockups",
+          "price": "+ R$ 550",
+          "total": "total R$ 1.800"
+        },
+        {
+          "name": "+ Landing page",
+          "text": "página completa, no mesmo estilo",
+          "price": "+ R$ 1.200",
+          "total": "total R$ 3.000"
+        }
+      ]
     },
     "billing": [
       {
@@ -1561,7 +1567,8 @@
         "disc": 0.2,
         "badge": "−20%"
       }
-    ]
+    ],
+    "video": "Vídeos pelo YouTube ou Google Drive, sem custo. Se você preferir uma hospedagem de vídeo própria (ex.: Bunny), eu faço a integração, e o serviço é contratado e pago por você direto ao provedor."
   },
   "founder": {
     "enabled": false,
