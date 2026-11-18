@@ -295,8 +295,8 @@ function EscadaSlide({ s, n, total }) {
         {s.lead && <p className="pn-kick">› {s.lead}</p>}
         <h2 className="display es-title">{s.titleLines.join(' ')} <em>{s.titleAccentLine}</em></h2>
         {[].concat(s.text ?? []).map((t) => <p key={t} className="es-p">{t}</p>)}
+        {s.note && <p className="es-p">{s.note}</p>}
         <p className="poster-lines es-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</p>
-        {s.note && <p className="es-note"><Info size={18} aria-hidden="true" /><span>{s.note}</span></p>}
         <div className="pn-foot es-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
       </div>
       <div className="es-right" data-reveal>
