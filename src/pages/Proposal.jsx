@@ -1,4 +1,4 @@
-import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle } from '@phosphor-icons/react'
+import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
@@ -304,7 +304,7 @@ export default function Proposal({ client, slug }) {
                   <Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} />
                   {[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
                   <Body s={s} />
-                  {s.footnote && <p className="slide-foot"><span className="slide-foot-ic" aria-hidden="true">!!</span><span>{s.footnote}</span></p>}
+                  {s.footnote && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.footnote}</span></p>}
                 </div>
               </div>
             </div>
