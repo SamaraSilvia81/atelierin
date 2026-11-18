@@ -155,6 +155,18 @@
         "theme": "light"
       },
       {
+        "kicker": "planos",
+        "interlude": true,
+        "theme": "dark",
+        "title": "Planos que acompanham o tamanho do seu negócio.",
+        "accent": "o tamanho do seu negócio.",
+        "text": "Escolha a capacidade que atende à sua operação hoje. Cada família tem seus próprios planos, e você pode ampliar quando sua carteira ou sua equipe crescer.",
+        "deco": [
+          "tape",
+          "mark"
+        ]
+      },
+      {
         "kicker": "duas famílias",
         "title": "Duas formas de atender. Uma gestão organizada.",
         "accent": "Uma gestão organizada.",
@@ -196,6 +208,147 @@
         "highlight": "Você não precisa contratar um portal se não pretende utilizá-lo.",
         "theme": "light",
         "accentBreak": true
+      },
+      {
+        "kicker": "planos · estrutura",
+        "layout": "plans",
+        "theme": "light",
+        "deco": "band",
+        "title": "Estrutura",
+        "tag": "sem portal",
+        "text": "Gestão interna, sem portal para clientes.",
+        "plans": {
+          "cols": [
+            "Plano",
+            "Mensalidade",
+            "Clientes cadastrados",
+            "Equipe adicional"
+          ],
+          "rows": [
+            [
+              "Grátis",
+              "R$ 0",
+              "Até 5",
+              "—"
+            ],
+            [
+              "Essencial",
+              "R$ 39/mês",
+              "Até 20",
+              "—"
+            ],
+            [
+              "Completo",
+              "R$ 79/mês",
+              "Até 50",
+              "Até 5"
+            ],
+            [
+              "Avançado",
+              "R$ 139/mês",
+              "Até 150*",
+              "Até 15*"
+            ],
+            [
+              "Empresarial",
+              "Sob consulta",
+              "Negociado",
+              "Negociado"
+            ]
+          ]
+        },
+        "addons": {
+          "title": "Quando precisar de um pouco mais",
+          "text": "Você não precisa mudar de plano por ultrapassar o limite em poucos clientes. É possível contratar adicionais, respeitando o limite de até 10 por plano.",
+          "cols": [
+            "Adicional",
+            "Valor mensal"
+          ],
+          "rows": [
+            [
+              "Registro administrativo extra, sem login",
+              "R$ 1,90*"
+            ]
+          ]
+        },
+        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato."
+      },
+      {
+        "kicker": "planos · relacionamento",
+        "layout": "plans",
+        "theme": "dark",
+        "deco": "band",
+        "title": "Relacionamento",
+        "tag": "com portal",
+        "text": "Gestão interna + portal individual para clientes.",
+        "plans": {
+          "cols": [
+            "Plano",
+            "Mensalidade",
+            "Contas no portal",
+            "Equipe adicional"
+          ],
+          "rows": [
+            [
+              "Casual",
+              "R$ 190/mês",
+              "Até 15",
+              "—"
+            ],
+            [
+              "Social",
+              "R$ 290/mês",
+              "Até 30",
+              "—"
+            ],
+            [
+              "Gala",
+              "R$ 390/mês",
+              "Até 50",
+              "Até 5"
+            ],
+            [
+              "Black Tie",
+              "R$ 490/mês*",
+              "Até 100*",
+              "Até 5"
+            ],
+            [
+              "White Tie",
+              "R$ 690/mês*",
+              "Até 150*",
+              "Até 15"
+            ],
+            [
+              "Alta-costura",
+              "Sob consulta",
+              "Negociado",
+              "Negociado"
+            ]
+          ]
+        },
+        "addons": {
+          "title": "Quando precisar de um pouco mais",
+          "text": "Você não precisa mudar de plano por ultrapassar o limite em poucos clientes. É possível contratar adicionais, respeitando o limite de até 10 por plano.",
+          "cols": [
+            "Adicional",
+            "Valor mensal"
+          ],
+          "rows": [
+            [
+              "Conta externa extra, com acesso ao portal",
+              "R$ 8,90*"
+            ]
+          ]
+        },
+        "sample": {
+          "label": "exemplo",
+          "text": [
+            "No Social, 3 contas externas adicionais levam a capacidade de 30 para 33 clientes. O valor fica em R$ 316,70/mês.",
+            "Com 40 contas, o Social com 10 adicionais fica em R$ 379/mês. Nesse ponto, vale comparar com o Gala, que custa R$ 390/mês, comporta até 50 contas e inclui capacidade para equipe e recursos financeiros avançados."
+          ]
+        },
+        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato."
       },
       {
         "kicker": "sem marca ainda",

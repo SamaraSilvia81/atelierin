@@ -1496,6 +1496,46 @@ h1, h2, h3, p { margin: 0; }
   .s-fam-close-text { text-align: left; }
 }
 
+/* todo fundo escuro da proposta com a mesma textura do hero (granulado), para o dark ser igual em todas as telas */
+.page-proposal .flow-sec { position: relative; }
+.page-proposal .flow-sec .wrap { position: relative; z-index: 1; }
+.page-proposal section[data-theme="dark"]:not(.slide-cover)::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+/* abertura de capítulo (interlude): frase grande centralizada, sem número */
+.slide-interlude { min-height: min(86vh, 820px); display: grid; align-items: center; }
+.interlude { display: grid; justify-items: center; gap: 28px; text-align: center; padding-block: clamp(64px, 10vh, 120px); }
+.interlude-k { padding: 7px 12px 6px; border: 1px dashed rgba(229, 86, 75, .55); border-radius: 2px; font: 500 12px/1 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--text-sub); }
+.interlude-t { max-width: 16ch; font: 400 clamp(64px, 8vw, 132px)/.9 var(--font-display); letter-spacing: .005em; text-transform: uppercase; }
+.interlude-t em { font-style: normal; color: var(--palette-brasa); }
+.interlude-sub { max-width: 52ch; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.6; color: var(--text-sub); }
+.interlude-down { margin-top: 12px; color: var(--text-muted); }
+
+/* 03-04 · tabelas de planos por família */
+.slide-plans .slide-grid.wrap { width: min(1480px, 100% - 48px); }
+.slide-plans .slide-main h2 { max-width: none; }
+.s-plans-wrap { overflow-x: auto; border: 1px solid var(--text); border-radius: 4px; background: var(--bg-card); }
+.s-plans { width: 100%; min-width: 640px; border-collapse: collapse; }
+.s-plans th, .s-plans td { padding: 16px 22px; text-align: left; border-bottom: 1px dashed var(--border); font-size: 18px; line-height: 1.4; }
+.s-plans thead th { padding-block: 14px; font: 500 11.5px/1.3 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--text); }
+.s-plans tbody th { font: 400 30px/1 var(--font-display); text-transform: uppercase; white-space: nowrap; }
+.s-plans-price { font-weight: 600; white-space: nowrap; }
+.s-plans tr.is-quote td, .s-plans tr.is-quote th { color: var(--text-muted); }
+.s-plans tbody tr:last-child th, .s-plans tbody tr:last-child td { border-bottom: 0; }
+.s-plans-more { display: grid; gap: 22px; margin-top: 8px; }
+.s-plans-more.has-sample { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.s-addons { display: grid; gap: 12px; align-content: start; }
+.s-addons h3 { font: 400 clamp(28px, 2.6vw, 38px)/1 var(--font-display); text-transform: uppercase; }
+.s-addons p { font-size: 18px; line-height: 1.6; color: var(--text-sub); max-width: 62ch; }
+.s-addons ul { display: grid; margin-top: 4px; border-top: 1px solid var(--text); }
+.s-addons li { display: flex; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px dashed var(--border); font-size: 18px; }
+.s-addons li strong { font-weight: 600; white-space: nowrap; }
+.s-sample { display: grid; gap: 12px; align-content: start; padding: 24px 26px; border: 1px dashed var(--acc-text); border-radius: 4px; }
+.s-sample-k { font: 500 12px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--acc-text); }
+.s-sample p { font-size: 18px; line-height: 1.6; color: var(--text-sub); }
+.s-plans-note { padding-top: 16px; border-top: 1px dashed var(--border); font-size: 14.5px; line-height: 1.55; color: var(--text-muted); max-width: 90ch; }
+@media (max-width: 900px) { .s-plans-more.has-sample { grid-template-columns: 1fr; } }
+
 /* 02 · ficha da implantação */
 .s-ficha { margin-top: 8px; padding: 26px 28px; background: var(--bg-card); border: 1px solid var(--text); border-radius: 4px; box-shadow: 10px 10px 0 var(--text); max-width: 720px; }
 .s-ficha-head { display: grid; gap: 12px; margin-bottom: 14px; }

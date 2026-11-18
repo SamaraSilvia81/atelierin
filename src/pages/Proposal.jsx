@@ -1,4 +1,4 @@
-import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning } from '@phosphor-icons/react'
+import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning, CaretDoubleDown } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
@@ -17,6 +17,22 @@ function Title({ text, accent, accentMode, accentBreak, tag }) {
   const [a, b] = text.split(accent)
   const m = <mark className={accentMode === 'text' ? 'hl hl-text' : 'hl'}>{accent}</mark>
   return <h2 className="display">{a}{accentBreak && <br />}{t ? <span className="s-title-pair">{m}{t}</span> : m}{b}</h2>
+}
+
+// tela de abertura de capítulo: frase grande no centro, sem número
+function Interlude({ s }) {
+  const [a, b] = s.accent && s.title.includes(s.accent) ? s.title.split(s.accent) : [s.title, '']
+  return (
+    <section data-theme={s.theme || 'dark'} className={`section slide slide-interlude ${[].concat(s.deco || []).map((k) => `has-${k}`).join(' ')}`} aria-label={s.kicker}>
+      {[].concat(s.deco || []).map((k) => <Deco key={k} kind={k} n="" />)}
+      <div className="wrap interlude" data-reveal>
+        <span className="interlude-k">{s.kicker}</span>
+        <h2 className="interlude-t">{a}{s.accent && <em>{s.accent}</em>}{b}</h2>
+        {s.text && <p className="interlude-sub">{s.text}</p>}
+        <CaretDoubleDown className="interlude-down" size={22} aria-hidden="true" />
+      </div>
+    </section>
+  )
 }
 
 function Deco({ kind, n }) {
@@ -53,6 +69,36 @@ function Body({ s }) {
         ))}
       </div>
       <Points list={s.points} />
+    </>
+  )
+  if (s.layout === 'plans') return (
+    <>
+      <div className="s-plans-wrap">
+        <table className="s-plans">
+          <thead><tr>{s.plans.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
+          <tbody>{s.plans.rows.map((r) => (
+            <tr key={r[0]} className={/consulta/i.test(r[1]) ? 'is-quote' : undefined}>
+              {r.map((v, i) => i === 0 ? <th key={i} scope="row">{v}</th> : <td key={i} className={i === 1 ? 's-plans-price' : undefined}>{v}</td>)}
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
+      <div className={`s-plans-more ${s.sample ? 'has-sample' : ''}`}>
+        {s.addons && (
+          <div className="s-addons">
+            <h3>{s.addons.title}</h3>
+            <p>{s.addons.text}</p>
+            <ul>{s.addons.rows.map(([a, b]) => <li key={a}><span>{a}</span><strong>{b}</strong></li>)}</ul>
+          </div>
+        )}
+        {s.sample && (
+          <div className="s-sample">
+            <span className="s-sample-k">{s.sample.label}</span>
+            {s.sample.text.map((t) => <p key={t}>{t}</p>)}
+          </div>
+        )}
+      </div>
+      {s.note && <p className="s-plans-note">{s.note}</p>}
     </>
   )
   if (s.layout === 'families') return (
@@ -270,7 +316,10 @@ export default function Proposal({ client, slug }) {
   const base = content.pages.proposal
   const p = client ? { ...base, title: client.title ?? base.title, titleAccent: client.titleAccent ?? base.titleAccent, lede: client.lede ?? base.lede } : base
   const slides = withClient(base.slides, client)
-  const total = String(slides.length).padStart(2, '0')
+  // telas de abertura (interlude) não entram na numeração nem no índice
+  const numbered = slides.filter((s) => !s.interlude)
+  const total = String(numbered.length).padStart(2, '0')
+  const numOf = new Map(numbered.map((s, i) => [s.kicker, String(i + 1).padStart(2, '0')]))
   return (
     <ClientCtx.Provider value={client ? { client, slug } : null}>
     <div className="page page-proposal">
@@ -294,7 +343,7 @@ export default function Proposal({ client, slug }) {
         <div className="wrap">
           <PageHead label={p.label} title={p.title} titleAccent={p.titleAccent} lede={p.lede}>
             <ol className="slide-index">
-              {slides.map((s, i) => <li key={s.kicker}><a href={`#slide-${i + 1}`}><b>{String(i + 1).padStart(2, '0')}</b> {s.kicker}</a></li>)}
+              {numbered.map((s, i) => <li key={s.kicker}><a href={`#slide-${i + 1}`}><b>{String(i + 1).padStart(2, '0')}</b> {s.kicker}</a></li>)}
             </ol>
           </PageHead>
         </div>
@@ -310,10 +359,11 @@ export default function Proposal({ client, slug }) {
         </div>
       </section>
       {slides.map((s, i) => {
-        const n = String(i + 1).padStart(2, '0')
+        if (s.interlude) return <Interlude key={s.kicker} s={s} />
+        const n = numOf.get(s.kicker)
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (
-          <section key={s.kicker} id={`slide-${i + 1}`} data-theme={theme} className={`section slide slide-${s.layout || 'default'} ${[].concat(s.deco || 'none').map((k) => `has-${k}`).join(' ')}`}>
+          <section key={s.kicker} id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-${s.layout || 'default'} ${[].concat(s.deco || 'none').map((k) => `has-${k}`).join(' ')}`}>
             {[].concat(s.deco || []).map((k) => <Deco key={k} kind={k} n={n} />)}
             <div className="wrap slide-grid" data-reveal>
               <div className="slide-side">
