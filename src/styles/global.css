@@ -1572,6 +1572,7 @@ h1, h2, h3, p { margin: 0; }
 /* cobrança: passos numerados ligados por um alinhavo, painel ao lado e a frase em tarjas */
 .slide-pagamentos .slide-grid.wrap { width: min(1480px, 100% - 48px); }
 .slide-pagamentos .slide-main h2 { max-width: none; }
+.slide-pagamentos.is-wide-text .slide-text { max-width: 60ch; }
 .pg-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); margin-top: 8px; }
 .pg-how, .pg-panel { display: grid; gap: 14px; align-content: start; }
 .pg-how ol { position: relative; display: grid; gap: 18px; }
