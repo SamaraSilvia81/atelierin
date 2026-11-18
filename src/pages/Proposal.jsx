@@ -11,25 +11,12 @@ import OfferPicker, { ClientCtx } from '@/components/OfferPicker'
 
 // título com a palavra de destaque numa tarja (ou só na cor, com accentMode "text")
 // e, se houver, uma etiqueta logo depois do destaque (tag)
-function Title({ text, accent, accentMode, tag }) {
+function Title({ text, accent, accentMode, accentBreak, tag }) {
   const t = tag && <span className="s-title-tag">{tag}</span>
   if (!accent || !text.includes(accent)) return <h2 className="display">{text}{t}</h2>
   const [a, b] = text.split(accent)
   const m = <mark className={accentMode === 'text' ? 'hl hl-text' : 'hl'}>{accent}</mark>
-  return <h2 className="display">{a}{t ? <span className="s-title-pair">{m}{t}</span> : m}{b}</h2>
-}
-
-// pergunta num balão escuro "feito à mão", afastado do título
-function Bubble({ text }) {
-  return (
-    <aside className="s-bubble">
-      <svg viewBox="0 0 320 240" preserveAspectRatio="none" aria-hidden="true">
-        <path className="fill" d="M200 18 C 140 4, 64 14, 30 56 C 2 92, 8 166, 52 200 C 98 236, 224 234, 280 196 C 318 168, 320 90, 290 54 C 268 28, 236 22, 200 18 Z" />
-        <path className="line" d="M214 26 C 160 10, 78 16, 40 54 C 6 90, 10 164, 54 198 C 100 232, 222 230, 276 194 C 316 166, 318 92, 288 58 C 266 32, 232 20, 196 22 M 208 16 C 214 20, 220 24, 226 30" />
-      </svg>
-      <p>{text}</p>
-    </aside>
-  )
+  return <h2 className="display">{a}{accentBreak && <br />}{t ? <span className="s-title-pair">{m}{t}</span> : m}{b}</h2>
 }
 
 function Deco({ kind, n }) {
@@ -336,10 +323,16 @@ export default function Proposal({ client, slug }) {
               </div>
               <div className="slide-main">
                 <div className="slide-copy">
-                  {s.question
-                    ? <div className="slide-head-row"><Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} /><Bubble text={s.question} /></div>
-                    : <Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} />}
-                  {[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
+                  <Title text={s.title} accent={s.accent} accentMode={s.accentMode} accentBreak={s.accentBreak} tag={s.tag} />
+                  {s.question ? (
+                    <div className="s-intro-row">
+                      <div className="s-intro-text">{[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}</div>
+                      <aside className="s-ask">
+                        <span className="s-ask-k"><b aria-hidden="true">»</b> {s.question.label}</span>
+                        <p>{s.question.text} <em>{s.question.accent}</em></p>
+                      </aside>
+                    </div>
+                  ) : [].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
                   <Body s={s} />
                   {s.footnote && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.footnote}</span></p>}
                 </div>
