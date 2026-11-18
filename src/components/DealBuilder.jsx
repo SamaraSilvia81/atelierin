@@ -55,6 +55,9 @@ function useCatalog() {
 export default function DealBuilder({ onClose }) {
   const [clientName, setClientName] = useState('')
   const [party, setParty] = useState({})
+  const [me, setMe] = useState(() => { try { return JSON.parse(localStorage.getItem('atelierin:contratada') || '{}') } catch { return {} } })
+  const [meOpen, setMeOpen] = useState(false)
+  const setMeField = (k, v) => setMe((o) => { const n = { ...o, [k]: v }; try { localStorage.setItem('atelierin:contratada', JSON.stringify(n)) } catch { /* sem storage */ } return n })
   const client = { name: clientName || 'cliente', contract: { number: `AT-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`, provider: { name: 'Samara Silvia Sabino', email: 'contato@atelierin.com.br' } } }
   const C = useCatalog()
   const [famId, setFam] = useState('relacionamento')
@@ -102,7 +105,7 @@ export default function DealBuilder({ onClose }) {
     return { n: i + 1, date: d.toLocaleDateString('pt-BR'), value: Math.round((onceTotal / onceN) * 100) / 100 }
   })
   const pay = { start: fmt(start), dueDay, schedule, video, periodLabel: b.months === 1 ? 'todo mês' : b.months === 3 ? 'a cada 3 meses' : 'uma vez por ano' }
-  const summary = { pay, client, F, plan, b, lines, monthly, period, once, onceTotal, year1, agree, party: { ...party, cNome: clientName } }
+  const summary = { pay, client, F, plan, b, lines, monthly, period, once, onceTotal, year1, agree, party: { ...party, cNome: clientName }, me }
 
   return createPortal(
     <div className="db-modal" role="dialog" aria-modal="true" aria-label="Montar contrato" onClick={(e) => e.target === e.currentTarget && onClose()}>
@@ -112,11 +115,19 @@ export default function DealBuilder({ onClose }) {
           <button type="button" onClick={onClose} aria-label="Fechar"><X size={22} /></button>
         </header>
         <div className="db-modal-grid db-party">
-          <label><span>Nome do cliente</span><input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder="Ex.: Maxwell Souza" /></label>
+          <label><span>Nome completo do cliente (contratante)</span><input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder="Ex.: Maxwell Souza" /></label>
           {FIELDS.slice(1).map(([k, label]) => (
             <label key={k}><span>{label}</span><input value={party[k] ?? ''} onChange={(e) => setParty((o) => ({ ...o, [k]: e.target.value }))} placeholder="em branco vira linha para preencher à mão" /></label>
           ))}
         </div>
+        <details className="db-me" open={meOpen} onToggle={(e) => setMeOpen(e.currentTarget.open)}>
+          <summary>Seus dados (contratada) · {me.nome || 'Samara Silvia Sabino'}{me.doc ? ` · ${me.doc}` : ' · preencha uma vez, fica salvo neste navegador'}</summary>
+          <div className="db-modal-grid">
+            {[['nome', 'Seu nome completo', 'Samara Silvia Sabino'], ['doc', 'Seu CPF ou CNPJ', ''], ['end', 'Seu endereço', ''], ['email', 'Seu e-mail', 'contato@atelierin.com.br'], ['pix', 'Sua chave Pix', '']].map(([k, label, ph]) => (
+              <label key={k}><span>{label}</span><input value={me[k] ?? ''} onChange={(e) => setMeField(k, e.target.value)} placeholder={ph || 'fica salvo só aqui'} /></label>
+            ))}
+          </div>
+        </details>
         <div className="db-grid">
           <div className="db-form">
             <Seg label="Família" value={famId} onChange={pickFam} options={C.fams.map((f) => ({ value: f.id, label: f.label, sub: f.id === 'estrutura' ? 'sem portal' : 'com portal' }))} />
@@ -202,19 +213,19 @@ function printContract(s) {
 .k{font:12px/1 monospace;letter-spacing:.14em;text-transform:uppercase;color:#7A5A5A}table{width:100%;border-collapse:collapse}td{padding:7px 0;border-bottom:1px dashed #C8B8B0}tfoot td{font-weight:700;border-bottom:0;border-top:1.5px solid #1A0F0F}
 .sig{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:64px}.sig div{border-top:1px solid #1A0F0F;padding-top:6px;font-size:13px}.ok{padding:10px 14px;border:1.5px solid #8B1410;color:#8B1410;margin-top:18px}</style></head><body>
 <p class="k">contrato ${esc(C.number || '')} · atelierin</p><h1>Contrato de licença de uso e serviços · Atelierin</h1><p>${today}</p>
-<h2>Partes</h2><p><b>Contratada:</b> ${esc(C.provider?.name || 'Samara Silvia Sabino')}, ${esc(C.provider?.email || '')}.<br><b>Contratante:</b> ${blank(f.cNome)}, CPF/CNPJ ${blank(f.cDoc, 180)}, endereço ${blank(f.cEnd)}, e-mail ${blank(f.cEmail, 220)}.</p>
+<h2>Partes</h2><p><b>Contratada:</b> ${esc(s.me?.nome || C.provider?.name || 'Samara Silvia Sabino')}, CPF/CNPJ ${blank(s.me?.doc, 180)}, endereço ${blank(s.me?.end)}, e-mail ${esc(s.me?.email || C.provider?.email || 'contato@atelierin.com.br')}.<br><b>Contratante:</b> ${blank(f.cNome)}, CPF/CNPJ ${blank(f.cDoc, 180)}, endereço ${blank(f.cEnd)}, e-mail ${blank(f.cEmail, 220)}.</p>
 <h2>Plano e cobrança</h2><p>Família ${esc(s.F.label)}, plano ${esc(s.plan.name)}, cobrança ${esc(s.b.label.toLowerCase())}.</p>
 <table>${s.lines.map(row).join('')}<tfoot><tr><td>Por mês</td><td style="text-align:right">${brl(s.monthly)}</td></tr></tfoot></table>
 ${s.b.months > 1 ? `<p>Cobrado ${brl(s.period)} ${s.b.months === 3 ? 'a cada 3 meses' : 'por ano'}.</p>` : ''}
 ${s.once.length ? `<h2>Serviços de pagamento único</h2><table>${s.once.map(row).join('')}<tfoot><tr><td>Total</td><td style="text-align:right">${brl(s.onceTotal)}</td></tr></tfoot></table>` : ''}
-<h2>Forma de pagamento</h2><p>Todos os pagamentos são feitos por Pix.</p>
+<h2>Forma de pagamento</h2><p>Todos os pagamentos são feitos por Pix${s.me?.pix ? `, na chave ${esc(s.me.pix)}` : ''}.</p>
 <p><b>Assinatura:</b> início em ${esc(s.pay.start)}, com vencimento todo dia ${s.pay.dueDay}, cobrada ${esc(s.pay.periodLabel)} (${brl(s.b.months > 1 ? s.period : s.monthly)} por cobrança). A primeira cobrança ocorre na data de início.</p>
 ${s.pay.schedule.length ? `<p><b>Serviços de pagamento único:</b> ${s.pay.schedule.length === 1 ? 'à vista' : `${s.pay.schedule.length} parcelas, sem juros`}. O trabalho começa após a confirmação da 1ª parcela.</p><table>${s.pay.schedule.map((p) => `<tr><td>Parcela ${p.n}</td><td>${p.date}</td><td style="text-align:right">${brl(p.value)}</td></tr>`).join('')}</table>` : ''}
 <h2>Vídeos</h2><p>${s.pay.video === 'bunny' ? 'Os vídeos das aulas serão hospedados em serviço de vídeo escolhido pela contratante (ex.: Bunny Stream), contratado e pago por ela diretamente ao provedor. O Atelierin faz a integração com o ambiente, sem custo adicional, mas não arca com os valores de hospedagem, armazenamento ou transmissão.' : 'Os vídeos das aulas serão publicados no YouTube ou no Google Drive da contratante, sem custo, e incorporados ao ambiente. Se no futuro a contratante optar por um serviço pago de hospedagem de vídeo, o custo dele será dela, pago diretamente ao provedor.'}</p>
 <h2>Condições</h2><p>O Atelierin é utilizado por licença de uso enquanto a assinatura estiver ativa; o código-fonte e a plataforma continuam pertencendo ao Atelierin. Os dados da operação são da contratante e podem ser exportados antes do encerramento. Os pagamentos dos clientes da contratante são feitos diretamente a ela. O cancelamento deve ser comunicado com 30 dias de antecedência; nos três primeiros meses após a ativação, aplica-se uma taxa equivalente a uma mensalidade do plano vigente. Contratações online por pessoa física mantêm o direito de arrependimento de 7 dias (CDC).</p>
 <p><b>Total estimado no 1º ano:</b> ${brl(s.year1)}.</p>
 ${s.agree ? `<p class="ok">A contratante declarou estar de acordo com os valores acima em ${today}.</p>` : ''}
-<div class="sig"><div>${esc(C.provider?.name || 'Samara Silvia Sabino')}<br>contratada</div><div>${f.cNome ? esc(f.cNome) : '&nbsp;'}<br>contratante</div></div>
+<div class="sig"><div>${esc(s.me?.nome || C.provider?.name || 'Samara Silvia Sabino')}<br>contratada</div><div>${f.cNome ? esc(f.cNome) : '&nbsp;'}<br>contratante</div></div>
 <script>window.onload=()=>window.print()</script></body></html>`
     const w = window.open('', '_blank')
     if (!w) return
