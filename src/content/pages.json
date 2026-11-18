@@ -373,9 +373,63 @@
         "text": "Escolha de acordo com a capacidade da sua operação hoje. Você não precisa contratar um portal se não pretende utilizá-lo."
       },
       {
+        "kicker": "implantação assistida",
+        "layout": "assistida",
+        "theme": "dark",
+        "deco": "band",
+        "title": "Se preferir, começamos juntos.",
+        "accent": "começamos juntos.",
+        "accentMode": "text",
+        "tag": "opcional",
+        "text": [
+          "Você pode fazer seus próprios cadastros ou contar comigo para organizar os primeiros clientes. A implantação assistida é um serviço opcional, contratado uma única vez, para quem prefere começar com orientação e deixar a base inicial organizada."
+        ],
+        "textWide": true,
+        "options": {
+          "title": "Implantação assistida",
+          "cols": [
+            "Opção",
+            "Investimento",
+            "Como funciona"
+          ],
+          "rows": [
+            [
+              "Demonstração",
+              "Grátis",
+              "Cadastramos 1 cliente juntos para você conhecer o fluxo."
+            ],
+            [
+              "Até 20 clientes",
+              "R$ 90",
+              "Fazemos os cadastros durante uma chamada."
+            ],
+            [
+              "Até 50 clientes",
+              "R$ 190",
+              "Fazemos os cadastros durante uma chamada."
+            ],
+            [
+              "Acima de 50 clientes",
+              "R$ 190",
+              "Você preenche uma planilha, eu importo os dados e usamos a chamada para orientar o uso."
+            ]
+          ]
+        },
+        "receive": {
+          "title": "Você recebe",
+          "items": [
+            "Ajuda para organizar os cadastros iniciais.",
+            "Orientação para utilizar as principais áreas do ambiente.",
+            "Uma chamada gravada para consultar depois.",
+            "Um guia escrito de apoio."
+          ]
+        },
+        "closing": "É um serviço de apoio para começar. Não altera sua família, seu plano ou os recursos disponíveis no Atelierin."
+      },
+      {
         "kicker": "sob medida",
         "layout": "sobmedida",
-        "theme": "dark",
+        "theme": "light",
         "deco": "band",
         "title": "Sua marca no seu ambiente.",
         "accent": "no seu ambiente.",
@@ -384,7 +438,7 @@
           "O Atelierin pode ser utilizado com a apresentação padrão da plataforma ou receber uma personalização visual com a identidade do seu negócio. O serviço Sob medida é opcional: ele adapta a aparência e configura o ambiente, sem criar um sistema separado."
         ],
         "price": {
-          "label": "Sob medida · personalização do ambiente",
+          "label": "Serviço opcional · personalização do ambiente",
           "value": "R$ 1.500",
           "sub": "pagamento único · em até 5x de R$ 300"
         },
@@ -409,7 +463,9 @@
           ],
           "note": "Esses itens podem ser avaliados e contratados separadamente, quando disponíveis."
         },
-        "closing": "A personalização muda a apresentação do seu ambiente, não o plano contratado. Se você estiver na Estrutura, continua na Estrutura; o portal externo continua sendo exclusivo da família Relacionamento."
+        "closing": "A personalização muda a apresentação do seu ambiente, não o plano contratado. Se você estiver na Estrutura, continua na Estrutura; o portal externo continua sendo exclusivo da família Relacionamento.",
+        "tag": "sob medida",
+        "textWide": true
       },
       {
         "kicker": "sem marca ainda",
@@ -460,7 +516,7 @@
         },
         "points": [],
         "complete": "Quer uma identidade completa, com manual, aplicações e papelaria? É outro projeto, com orçamento próprio.",
-        "theme": "light"
+        "theme": "dark"
       },
       {
         "kicker": "manutenção",

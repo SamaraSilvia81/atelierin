@@ -231,6 +231,26 @@ function Body({ s }) {
       {s.note && <p className="s-plans-note">{s.note}</p>}
     </>
   )
+  if (s.layout === 'assistida') return (
+    <>
+      <div className="as-grid">
+        <div className="as-card" data-theme="light">
+          <div className="fp-card-head"><span>{s.options.title}</span><span>uma única vez</span></div>
+          <table className="as-table">
+            <thead><tr>{s.options.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
+            <tbody>{s.options.rows.map(([a, b, c]) => (
+              <tr key={a} className={/grátis/i.test(b) ? 'is-free' : undefined}><th scope="row">{a}</th><td className="as-price">{b}</td><td>{c}</td></tr>
+            ))}</tbody>
+          </table>
+        </div>
+        <div className="as-get">
+          <h3>{s.receive.title}</h3>
+          <ul>{s.receive.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
+        </div>
+      </div>
+      {s.closing && <p className="sm-close">{s.closing}</p>}
+    </>
+  )
   if (s.layout === 'sobmedida') return (
     <>
       <div className="sm-grid">
@@ -501,7 +521,7 @@ export default function Proposal({ client, slug }) {
         const n = numOf.get(s.kicker)
         const theme = s.theme || (i % 2 === 0 ? 'light' : 'dark')
         return (
-          <section key={s.kicker} id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-${s.layout || 'default'} ${[].concat(s.deco || 'none').map((k) => `has-${k}`).join(' ')}`}>
+          <section key={s.kicker} id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-${s.layout || 'default'} ${s.textWide ? 'is-wide-text' : ''} ${[].concat(s.deco || 'none').map((k) => `has-${k}`).join(' ')}`}>
             {[].concat(s.deco || []).map((k) => <Deco key={k} kind={k} n={n} />)}
             <div className="wrap slide-grid" data-reveal>
               <div className="slide-side">
