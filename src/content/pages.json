@@ -385,9 +385,9 @@
       },
       {
         "kicker": "implantação assistida",
-        "layout": "assistida",
-        "theme": "dark",
-        "deco": "band",
+        "layout": "menu",
+        "theme": "light",
+        "deco": "none",
         "title": "Se preferir, começamos juntos.",
         "accent": "começamos juntos.",
         "accentMode": "text",
@@ -395,7 +395,6 @@
         "text": [
           "Você pode fazer seus próprios cadastros ou contar comigo para organizar os primeiros clientes. A implantação assistida é um serviço opcional, contratado uma única vez, para quem prefere começar com orientação e deixar a base inicial organizada."
         ],
-        "textWide": true,
         "options": {
           "title": "Implantação assistida",
           "cols": [
@@ -424,7 +423,8 @@
               "R$ 190",
               "Você preenche uma planilha, eu importo os dados e usamos a chamada para orientar o uso."
             ]
-          ]
+          ],
+          "chip": "por volume de clientes"
         },
         "receive": {
           "title": "Você recebe",
@@ -435,7 +435,12 @@
             "Um guia escrito de apoio."
           ]
         },
-        "closing": "É um serviço de apoio para começar. Não altera sua família, seu plano ou os recursos disponíveis no Atelierin."
+        "closing": "É um serviço de apoio para começar. Não altera sua família, seu plano ou os recursos disponíveis no Atelierin.",
+        "lead": "pagamento único",
+        "titleLines": [
+          "Se preferir,"
+        ],
+        "titleAccentLine": "começamos juntos."
       },
       {
         "kicker": "cobrança",

@@ -1696,6 +1696,31 @@ h1, h2, h3, p { margin: 0; }
   .fp-stub-prices li { justify-items: start; }
 }
 
+/* slide em cardápio (06): esquerda com quadro fixo, painel carmim com preços em linha pontilhada */
+.slide.slide-menu { grid-template-columns: minmax(0, 1fr) 42%; }
+.slide-menu .pn-title { font-size: clamp(60px, 5.4vw, 104px); }
+.slide-menu .pn-title em { white-space: nowrap; }
+.mn-get { display: grid; gap: 14px; margin-top: 8px; padding-top: 20px; border-top: 1px dashed var(--border); }
+.mn-get ul { display: grid; gap: 10px; }
+.mn-get li { display: flex; gap: 10px; align-items: baseline; font-size: clamp(16px, 1.25vw, 18px); color: var(--text); }
+.mn-get li svg { flex: none; color: var(--acc); translate: 0 2px; }
+.mn-panel { display: flex; flex-direction: column; justify-content: center; padding: 56px clamp(28px, 3.6vw, 64px); background: linear-gradient(180deg, #A31C18, #7E1311); color: var(--palette-osso); }
+.mn-panel .pn-chip { align-self: flex-start; }
+.mn-title { margin-top: 20px; font: 400 clamp(56px, 4.6vw, 84px)/.9 var(--font-display); text-transform: uppercase; }
+.mn-rows { margin-top: 32px; border-top: 1px solid rgba(240, 237, 232, .6); }
+.mn-rows li { padding: 20px 0; border-bottom: 1px dashed rgba(240, 237, 232, .35); }
+.mn-line { display: flex; align-items: baseline; gap: 12px; }
+.mn-line h4 { display: flex; align-items: baseline; gap: 10px; font: 400 clamp(26px, 2.2vw, 36px)/1 var(--font-display); text-transform: uppercase; white-space: nowrap; }
+.mn-line h4 span { font: 500 11px/1 var(--font-mono); letter-spacing: .14em; color: rgba(240, 237, 232, .6); }
+.mn-line i { flex: 1; min-width: 24px; border-bottom: 2px dotted rgba(240, 237, 232, .5); translate: 0 -6px; }
+.mn-line strong { font: 400 clamp(36px, 3vw, 50px)/1 var(--font-display); white-space: nowrap; }
+.mn-rows li.is-free strong { padding: 5px 12px 1px; border-radius: 2px; background: var(--palette-osso); color: var(--palette-sangue); font-size: clamp(30px, 2.4vw, 40px); }
+.mn-rows p { margin-top: 8px; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.5; color: rgba(240, 237, 232, .85); max-width: 48ch; }
+@media (max-width: 1000px) {
+  .slide.slide-menu { grid-template-columns: 1fr; }
+  .slide-menu .pn-title em { white-space: normal; }
+}
+
 /* texto de abertura mais largo em alguns slides */
 .slide.is-wide-text .slide-text { max-width: 70ch; }
 .slide-assistida .slide-grid.wrap { width: min(1480px, 100% - 48px); }

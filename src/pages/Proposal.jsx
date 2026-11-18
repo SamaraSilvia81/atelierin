@@ -241,6 +241,48 @@ function PanelsSlide({ s, n, total }) {
   )
 }
 
+// Slide com painel de preços tipo cardápio à direita (ex.: implantação assistida)
+function MenuSlide({ s, n, total }) {
+  return (
+    <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-panels slide-menu">
+      <div className="pn-left" data-reveal>
+        <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
+        <div className="pn-rule" aria-hidden="true">{Array.from({ length: 46 }, (_, i) => <i key={i} />)}</div>
+        <div className="pn-body">
+          {s.lead && <p className="pn-kick">› {s.lead}</p>}
+          <h2 className="display pn-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}<em>{s.titleAccentLine}</em></h2>
+          {s.tag && <span className="s-title-tag pn-tag">{s.tag}</span>}
+          {[].concat(s.text ?? []).map((t) => <p key={t} className="pn-p">{t}</p>)}
+          {s.receive && (
+            <div className="mn-get">
+              <span className="pn-kick">{s.receive.title}</span>
+              <ul>{s.receive.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
+            </div>
+          )}
+          {s.closing && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.closing}</span></p>}
+        </div>
+        <div className="pn-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
+      </div>
+      <div className="mn-panel" data-reveal>
+        {s.options.chip && <span className="pn-chip">{s.options.chip}</span>}
+        <h3 className="mn-title">{s.options.title}</h3>
+        <ol className="mn-rows">
+          {s.options.rows.map(([a, b, c], i) => (
+            <li key={a} className={/grátis/i.test(b) ? 'is-free' : undefined}>
+              <div className="mn-line">
+                <h4><span>{String(i + 1).padStart(2, '0')}</span>{a}</h4>
+                <i aria-hidden="true" />
+                <strong>{b}</strong>
+              </div>
+              <p>{c}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )
+}
+
 function Deco({ kind, n }) {
   if (kind === 'band') return <div className="sdeco sdeco-band" aria-hidden="true"><span>nº {n}</span></div>
   if (kind === 'tape') return <div className="sdeco sdeco-tape" aria-hidden="true">{Array.from({ length: 61 }, (_, i) => <i key={i} />)}</div>
@@ -644,6 +686,7 @@ export default function Proposal({ client, slug }) {
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'menu') return <MenuSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'panels') return <PanelsSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'sobmedida2') return <SobMedida key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'dark'} />
         if (s.layout === 'plans') return <PlansSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'light'} />
