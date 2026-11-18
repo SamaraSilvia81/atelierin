@@ -28,7 +28,7 @@ function Interlude({ s }) {
       <div className="wrap interlude" data-reveal>
         <span className="interlude-k">{s.kicker}</span>
         <h2 className="interlude-t">{a}{s.accent && <em>{s.accent}</em>}{b}</h2>
-        {s.text && <p className="interlude-sub">{s.text}</p>}
+        {s.text && <aside className="bilhete is-left interlude-note"><i className="bilhete-fita" aria-hidden="true" /><p>{s.text}</p></aside>}
         <CaretDoubleDown className="interlude-down" size={22} aria-hidden="true" />
       </div>
     </section>
@@ -376,8 +376,8 @@ export default function Proposal({ client, slug }) {
                   {s.question ? (
                     <div className="s-intro-row">
                       <div className="s-intro-text">{[].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}</div>
-                      <aside className="s-ask">
-                        <i className="s-ask-tape" aria-hidden="true" />
+                      <aside className="s-ask bilhete">
+                        <i className="bilhete-fita" aria-hidden="true" />
                         <span className="s-ask-k"><b aria-hidden="true">»</b> {s.question.label}</span>
                         <p>{s.question.text} <em>{s.question.accent}</em></p>
                         <i className="s-ask-mark" aria-hidden="true">?</i>
