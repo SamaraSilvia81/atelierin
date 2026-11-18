@@ -117,30 +117,34 @@
     "slides": [
       {
         "kicker": "o que você recebe",
-        "title": "Com a sua marca. Mantido por mim.",
-        "text": "Você recebe um ambiente com a sua marca, o seu endereço e só os módulos que fazem sentido para o seu trabalho. O sistema é o mesmo para todos e já está pronto; o que muda é a identidade e o que fica ligado. O que é seu continua seu, e a parte técnica fica comigo.",
-        "points": [
-          "Você usa o ambiente por licença, enquanto o contrato estiver ativo",
-          "Seus alunos entram por convite e veem você"
-        ],
+        "title": "O seu ambiente. Mantido por mim.",
+        "tag": "parte técnica comigo",
         "accent": "Mantido por mim.",
+        "accentMode": "text",
+        "text": "Você recebe um ambiente pronto para o seu trabalho, com o seu nome e o seu logo, e só os módulos que fazem sentido para você. O sistema é o mesmo para todos; o que muda é o que fica ligado e, se você quiser a personalização, a identidade inteira e o seu próprio endereço. O que é seu continua seu, e a parte técnica fica comigo.",
+        "points": [
+          "Você usa o ambiente por licença, enquanto a assinatura estiver ativa",
+          "Nos planos com portal, seus clientes entram com login próprio e veem você"
+        ],
         "layout": "split",
         "deco": "band",
         "split": [
           {
             "label": "seu",
+            "note": "fica com você",
             "items": [
-              "Marca e identidade",
-              "Endereço seunome.atelierin.com.br",
-              "Conteúdo, alunos e dados",
-              "O dinheiro dos alunos"
+              "Seu nome, logo e identidade",
+              "Conteúdo, clientes e dados",
+              "O dinheiro dos seus clientes",
+              "Exportar tudo quando quiser"
             ]
           },
           {
             "label": "meu",
+            "note": "eu cuido",
             "items": [
               "O sistema por trás",
-              "Hospedagem e infraestrutura",
+              "Hospedagem, infraestrutura e endereço",
               "Atualizações e correções",
               "Evolução da plataforma"
             ]

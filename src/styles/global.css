@@ -1424,14 +1424,25 @@ h1, h2, h3, p { margin: 0; }
 .has-band .slide-grid { padding-right: clamp(40px, 6vw, 90px); }
 
 /* 01 · seu × meu */
-.s-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 8px; border: 1px solid var(--text); border-radius: 4px; overflow: hidden; }
-.s-split-col { padding: 22px 24px; display: grid; gap: 14px; align-content: start; }
-.s-split-col.is-seu { background: var(--acc); color: #fff; }
-.s-split-col.is-meu { background: var(--bg-card); }
-.s-split-k { font: 400 clamp(40px, 4vw, 58px)/.9 var(--font-display); text-transform: uppercase; }
-.s-split-col ul { display: grid; gap: 8px; }
-.s-split-col li { font-size: 17px; line-height: 1.4; padding-left: 16px; position: relative; }
+/* dois cards separados: o "seu" com contorno carmesim tracejado, o "meu" neutro */
+.s-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.s-split-col { padding: 22px 24px; display: grid; gap: 14px; align-content: start; border-radius: 12px; }
+.s-split-col.is-seu { background: var(--bg-card); border: 1.5px dashed var(--acc); }
+.s-split-col.is-meu { background: transparent; border: 1px solid var(--border); color: var(--text-sub); }
+.s-split-k { display: flex; align-items: baseline; gap: 12px; font: 400 clamp(44px, 4.4vw, 64px)/.9 var(--font-display); text-transform: uppercase; }
+.is-seu .s-split-k { color: var(--acc); }
+.s-split-k small { font: 500 12px/1 var(--font-mono); letter-spacing: .16em; color: var(--text-muted); }
+.s-split-col ul { display: grid; gap: 10px; }
+.s-split-col li { font-size: 20px; line-height: 1.4; padding-left: 18px; position: relative; }
+.s-split-col.is-seu li { font-weight: 500; }
 .s-split-col li::before { content: "›"; position: absolute; left: 0; opacity: .8; }
+.s-split-col.is-seu li::before { color: var(--acc); opacity: 1; }
+/* etiqueta em cima do título */
+.s-title-tag { display: inline-block; margin-bottom: 18px; padding: 9px 14px 8px; border-radius: 999px; background: var(--acc); color: var(--on-acc); font: 500 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; box-shadow: 4px 4px 0 var(--text); }
+[data-theme="dark"] .s-title-tag { background: var(--palette-crimson); color: var(--palette-osso); box-shadow: 4px 4px 0 var(--palette-osso); }
+/* destaque só na cor, sem tarja */
+.slide-main .hl.hl-text, [data-theme="dark"] .slide-main .hl.hl-text { background: none; padding: 0; color: var(--acc); }
+[data-theme="dark"] .slide-main .hl.hl-text { color: var(--acc-text); }
 
 /* 02 · ficha da implantação */
 .s-ficha { margin-top: 8px; padding: 26px 28px; background: var(--bg-card); border: 1px solid var(--text); border-radius: 4px; box-shadow: 10px 10px 0 var(--text); max-width: 720px; }

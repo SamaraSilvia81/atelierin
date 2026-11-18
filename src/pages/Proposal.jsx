@@ -9,11 +9,13 @@ import OfferPicker, { ClientCtx } from '@/components/OfferPicker'
 // desenho próprio (layout) e um detalhe gráfico (deco), sempre com as peças
 // da identidade: faixa carmesim, o símbolo, a fita métrica e o alinhavo.
 
-// título com a palavra de destaque numa tarja
-function Title({ text, accent }) {
-  if (!accent || !text.includes(accent)) return <h2 className="display">{text}</h2>
+// título com a palavra de destaque numa tarja (ou só na cor, com accentMode "text")
+// e, se houver, uma etiqueta logo depois do destaque (tag)
+function Title({ text, accent, accentMode, tag }) {
+  const t = tag && <span className="s-title-tag">{tag}</span>
+  if (!accent || !text.includes(accent)) return <h2 className="display">{text}{t}</h2>
   const [a, b] = text.split(accent)
-  return <h2 className="display">{a}<mark className="hl">{accent}</mark>{b}</h2>
+  return <h2 className="display">{a}<mark className={accentMode === 'text' ? 'hl hl-text' : 'hl'}>{accent}</mark>{t}{b}</h2>
 }
 
 function Deco({ kind, n }) {
@@ -44,7 +46,7 @@ function Body({ s }) {
       <div className="s-split">
         {s.split.map((c) => (
           <div key={c.label} className={`s-split-col is-${c.label}`}>
-            <span className="s-split-k">{c.label}</span>
+            <span className="s-split-k">{c.label}{c.note && <small>{c.note}</small>}</span>
             <ul>{c.items.map((it) => <li key={it}>{it}</li>)}</ul>
           </div>
         ))}
@@ -298,7 +300,7 @@ export default function Proposal({ client, slug }) {
               </div>
               <div className="slide-main">
                 <div className="slide-copy">
-                  <Title text={s.title} accent={s.accent} />
+                  <Title text={s.title} accent={s.accent} accentMode={s.accentMode} tag={s.tag} />
                   <p className="slide-text">{s.text}</p>
                   <Body s={s} />
                 </div>
