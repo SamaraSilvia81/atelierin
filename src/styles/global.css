@@ -1664,6 +1664,36 @@ h1, h2, h3, p { margin: 0; }
   .pn-panel { min-height: 0; gap: 28px; }
 }
 
+/* planos (03/04): quadro fixo do slide 01, título grande e adicionais como canhoto do cartão */
+.slide-plans2 { --fp-out: var(--bg); }
+@media (min-width: 1001px) { .slide-plans2 .fp-card { overflow: visible; } }
+.fp-frame { position: absolute; z-index: 2; top: 36px; left: clamp(24px, 5vw, 96px); right: calc(16% + clamp(20px, 2vw, 40px)); }
+.fp-frame.is-foot { top: auto; bottom: 34px; }
+.slide-plans2 .fp-grid { padding-block: clamp(120px, 14vh, 160px) clamp(100px, 12vh, 140px); }
+.slide-plans2 .pn-kick { margin-bottom: -4px; }
+.slide-plans2 .fp-title { flex-direction: column; align-items: flex-start; gap: 20px; }
+.slide-plans2 .fp-title h2 { font-size: clamp(96px, 10vw, 180px); line-height: .84; }
+.slide-plans2 .fp-p { font-size: clamp(17px, 1.35vw, 19px); line-height: 1.62; }
+.fp-stub { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; padding: 20px 26px 22px 22px; border-top: 2px dashed var(--palette-tinta); background: var(--palette-areia, #F2EDE6); color: var(--palette-tinta); }
+.fp-stub::before, .fp-stub::after { content: ''; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--palette-tinta); background: var(--bg); }
+.fp-stub::before { left: -11px; clip-path: inset(0 0 0 50%); background: var(--fp-out); }
+.fp-stub::after { right: -11px; clip-path: inset(0 50% 0 0); background: #8A1713; }
+.fp-stub-plus { font: 400 60px/.8 var(--font-display); color: var(--palette-sangue); }
+.fp-stub-text h3 { font: 400 clamp(24px, 2vw, 30px)/1 var(--font-display); letter-spacing: .02em; text-transform: uppercase; }
+.fp-stub-text p { margin-top: 8px; font-size: 16px; line-height: 1.5; color: var(--palette-tinta-2); max-width: 52ch; }
+.fp-stub-prices { display: grid; gap: 14px; justify-items: end; text-align: right; }
+.fp-stub-prices li { display: grid; gap: 14px; justify-items: end; }
+.fp-stub-prices strong { font: 400 clamp(38px, 3.2vw, 50px)/1 var(--font-display); color: var(--palette-tinta); padding: 2px 8px; }
+.fp-stub-prices span { max-width: 20ch; font: 500 11px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--palette-tinta-2); }
+.fp-stub .fp-circled svg { inset: -12px -16px; width: calc(100% + 32px); height: calc(100% + 24px); }
+.fp-stub .fp-circled path { stroke: var(--palette-crimson); }
+@media (max-width: 1000px) {
+  .fp-frame { right: clamp(24px, 5vw, 96px); }
+  .fp-stub { grid-template-columns: auto 1fr; }
+  .fp-stub-prices { grid-column: 1 / -1; justify-items: start; text-align: left; }
+  .fp-stub-prices li { justify-items: start; }
+}
+
 /* texto de abertura mais largo em alguns slides */
 .slide.is-wide-text .slide-text { max-width: 70ch; }
 .slide-assistida .slide-grid.wrap { width: min(1480px, 100% - 48px); }

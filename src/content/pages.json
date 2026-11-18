@@ -180,7 +180,7 @@
         "theme": "light",
         "deco": "none",
         "title": "Estrutura",
-        "tag": "sem portal",
+        "tag": "sem portal para clientes",
         "text": [
           "O primeiro modelo do Atelierin é a Estrutura: um ambiente só seu, para você e a sua equipe organizarem clientes, agenda e pagamentos.",
           "Seus clientes ficam cadastrados, mas não acessam o sistema. Você cria a conta e começa a usar, inclusive pelo plano gratuito."
@@ -264,7 +264,8 @@
             ]
           ],
           "circle": true
-        }
+        },
+        "lead": "família 1 de 2"
       },
       {
         "kicker": "planos · relacionamento",
@@ -362,7 +363,8 @@
             "discount": 0,
             "suffix": "/ano"
           }
-        ]
+        ],
+        "lead": "família 2 de 2"
       },
       {
         "kicker": "antes de escolher",

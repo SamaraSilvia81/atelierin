@@ -115,9 +115,14 @@ function PlansSlide({ s, n, total, theme }) {
     <section id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-plans2 ${s.mirror ? 'is-mirror' : ''} ${s.dark ? 'has-dark' : ''}`}>
       {s.dark && <span className="fp-dark" aria-hidden="true" />}
       <span className="fp-band" aria-hidden="true" />
+      <div className="fp-frame" aria-hidden="true">
+        <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
+        <div className="pn-rule">{Array.from({ length: 70 }, (_, i) => <i key={i} />)}</div>
+      </div>
+      <div className="fp-frame is-foot" aria-hidden="true"><div className="pn-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div></div>
       <div className="wrap fp-grid" data-reveal>
         <div className="fp-text">
-          <div className="fp-num"><span className="slide-n">{n}<small>/{total}</small></span><p className="label"><b aria-hidden="true">&gt;</b> {s.kicker}</p></div>
+          {s.lead && <p className="pn-kick">› {s.lead}</p>}
           <div className="fp-title"><h2 className="display">{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
           {s.subtitle && <p className="fp-sub">{s.subtitle}</p>}
           {[].concat(s.text ?? []).map((t) => <p key={t} className="fp-p">{t}</p>)}
@@ -125,17 +130,6 @@ function PlansSlide({ s, n, total, theme }) {
             <div className="fp-sample">
               <span className="fp-sample-k">{s.sample.label}</span>
               {s.sample.text.map((t) => <p key={t}>{t}</p>)}
-            </div>
-          )}
-          {s.addons && (
-            <div className="fp-addons">
-              <h3>{s.addons.title}</h3>
-              <p>{s.addons.text}</p>
-              <ul>{s.addons.rows.map(([a, v]) => (
-                <li key={a}><span>{a}</span><strong className={s.addons.circle ? 'fp-circled' : undefined}>{v}{s.addons.circle && (
-                  <svg viewBox="0 0 120 50" preserveAspectRatio="none" aria-hidden="true"><path d="M86 6 C 60 0, 18 4, 8 20 C 0 34, 22 46, 60 45 C 98 44, 118 34, 112 18 C 107 7, 84 3, 64 6" /></svg>
-                )}</strong></li>
-              ))}</ul>
             </div>
           )}
         </div>
@@ -157,6 +151,20 @@ function PlansSlide({ s, n, total, theme }) {
                 </tr>
               ))}</tbody>
             </table>
+            {s.addons && (
+              <div className="fp-stub">
+                <span className="fp-stub-plus" aria-hidden="true">+</span>
+                <div className="fp-stub-text"><h3>{s.addons.title}</h3><p>{s.addons.text}</p></div>
+                <ul className="fp-stub-prices">{s.addons.rows.map(([a, v]) => (
+                  <li key={a}>
+                    <strong className={s.addons.circle ? 'fp-circled' : undefined}>{v}{s.addons.circle && (
+                      <svg viewBox="0 0 150 62" preserveAspectRatio="none" aria-hidden="true"><path d="M108 7 C 76 0, 22 5, 10 25 C 0 42, 28 57, 75 56 C 122 55, 147 42, 140 22 C 134 9, 105 4, 80 7" /></svg>
+                    )}</strong>
+                    <span>{a}</span>
+                  </li>
+                ))}</ul>
+              </div>
+            )}
           </div>
           {s.note && <p className="fp-note">{s.note}</p>}
         </div>
