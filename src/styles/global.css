@@ -1601,7 +1601,7 @@ h1, h2, h3, p { margin: 0; }
 .sm2-left .slide-text { max-width: 56ch; }
 .sm2-left mark.hl { background: none; padding: 0; color: var(--acc-text); }
 .sm2-left .s-title-tag { background: var(--palette-crimson); color: var(--palette-osso); }
-.sm2-price { display: grid; gap: 4px; justify-items: center; text-align: center; padding-top: 18px; border-top: 1px solid var(--text); }
+.sm2-price { display: grid; gap: 4px; justify-items: center; text-align: center; padding-bottom: 18px; border-bottom: 1px solid var(--text); }
 .sm2-price-k { font: 500 14px/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--acc-text); }
 .sm2-price strong { font: 400 clamp(84px, 8vw, 140px)/.9 var(--font-display); white-space: nowrap; }
 .sm2-price-sub { font: 500 15px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-sub); }
