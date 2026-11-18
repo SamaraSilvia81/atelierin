@@ -61,9 +61,8 @@ function Body({ s }) {
         {s.families.map((f, i) => (
           <article key={f.name} className={`s-fam-part is-${i === 0 ? 'a' : 'b'}`}>
             <header className="s-fam-head">
-              <h3>{f.name}</h3>
+              <div className="s-fam-title"><h3>{f.name}</h3>{f.badge && <span className="s-fam-badge">{f.badge}</span>}</div>
               <span className="s-fam-for">{f.for}</span>
-              {f.badge && <span className="s-fam-badge">{f.badge}</span>}
             </header>
             {f.text.map((t) => <p key={t}>{t}</p>)}
           </article>
@@ -330,6 +329,7 @@ export default function Proposal({ client, slug }) {
                       <aside className="s-ask">
                         <span className="s-ask-k"><b aria-hidden="true">»</b> {s.question.label}</span>
                         <p>{s.question.text} <em>{s.question.accent}</em></p>
+                        <i className="s-ask-mark" aria-hidden="true">?</i>
                       </aside>
                     </div>
                   ) : [].concat(s.text ?? []).map((t) => <p key={t} className="slide-text">{t}</p>)}
