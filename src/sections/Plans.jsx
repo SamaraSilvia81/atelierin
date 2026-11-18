@@ -60,7 +60,7 @@ function PCard({ it, b, fam, pick }) {
   const off = Math.round(b.disc * 100)
   const free = it.amount === 0
   return (
-    <li className={`plan ${pick ? 'is-pick' : ''}`} data-reveal>
+    <li className={`plan ${pick ? 'is-pick' : ''}`}>
       {pick && <span className="plan-pick">Indicado para você</span>}
       <div className="plan-top">
         <span className="plan-line">{fam}</span>
@@ -115,11 +115,29 @@ function Panel({ t, set, b, hidden }) {
   const priced = set.items.filter((x) => x.amount != null)
   const custom = set.items.find((x) => x.amount == null)
   const cols = priced.length === 4 ? 4 : 3
+  // com 5 planos de preço, o sob consulta entra como 6º card (fecha a grade 3 + 3); senão vira faixa
+  const inGrid = priced.length === 5
   return (
     <div hidden={hidden} role="tabpanel">
-      <ul className={`plans-grid cols-${cols}`}>{priced.map((it) => <PCard key={it.name} it={it} b={b} fam={t.label} pick={it.name === pick} />)}</ul>
+      <ul className={`plans-grid cols-${cols}`} data-reveal>
+        {priced.map((it) => <PCard key={it.name} it={it} b={b} fam={t.label} pick={it.name === pick} />)}
+        {custom && inGrid && (
+          <li className="plan plan-custom-card">
+            <div className="plan-top"><span className="plan-line">{t.label}</span><span className="plan-status"><i />{custom.status}</span></div>
+            <h3 className="display">{custom.name}</h3>
+            <p className="plan-for">{custom.for}</p>
+            <div className="plan-price">
+              <span className="plan-price-label">{custom.priceExtra}</span>
+              <div className="plan-amount"><strong className="is-soft">{custom.priceBig}</strong></div>
+              <small>{custom.text}</small>
+            </div>
+            <ul className="plan-feat">{custom.features.slice(0, 5).map((x) => <li key={x}><Check size={14} weight="bold" aria-hidden="true" />{x}</li>)}</ul>
+            {custom.cta && <div className="plan-act"><a href={custom.cta.href} className="plan-cta" onClick={() => play('click')}>{custom.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></a></div>}
+          </li>
+        )}
+      </ul>
 
-      {custom && (
+      {custom && !inGrid && (
         <div className="plans-custom" data-reveal>
           <div className="plans-custom-id">
             <span className="plan-line">{t.label} · {custom.for}</span>

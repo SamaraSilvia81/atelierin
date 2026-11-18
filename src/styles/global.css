@@ -2826,3 +2826,14 @@ h1, h2, h3, p { margin: 0; }
   .plans-custom-act { justify-items: start; }
 }
 .plans-grid .plan-act { margin-top: auto; padding-top: 16px; }
+.plans-sec > .wrap { width: min(1440px, 100% - 48px); }
+.plan.plan-custom-card { background: #100D0D; border-color: #100D0D; color: var(--palette-osso); }
+.plan-custom-card .plan-line, .plan-custom-card .plan-status, .plan-custom-card .plan-price-label { color: rgba(240, 237, 232, .6); }
+.plan-custom-card h3, .plan-custom-card .plan-for { color: var(--palette-osso); }
+.plan-custom-card .plan-price { border-color: rgba(240, 237, 232, .2); }
+.plan-custom-card .plan-amount strong.is-soft { font-size: clamp(44px, 4vw, 60px); color: var(--palette-osso); }
+.plan-custom-card .plan-price small { color: rgba(240, 237, 232, .7); }
+.plan-custom-card .plan-feat li { color: rgba(240, 237, 232, .8); }
+.plan-custom-card .plan-feat svg { color: var(--palette-brasa, #E5564B); }
+.plan-custom-card .plan-cta { border-color: var(--palette-osso); color: var(--palette-osso); background: transparent; }
+.plan-custom-card .plan-cta:hover { background: var(--palette-crimson); border-color: var(--palette-crimson); color: #fff; }
