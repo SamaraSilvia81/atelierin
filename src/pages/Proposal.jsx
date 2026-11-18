@@ -195,6 +195,7 @@ function SobMedida({ s, n, total, theme }) {
             <span className="sm2-up-v"><strong>{s.upgrade.value}</strong><small>{s.upgrade.total}</small></span>
           </div>
         )}
+        {s.inpi && <p className="sm2-inpi"><Info size={16} aria-hidden="true" />{s.inpi}</p>}
       </div>
       <span className="sm2-rest" aria-hidden="true" />
     </section>
