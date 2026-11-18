@@ -157,8 +157,8 @@ export default function DealBuilder({ onClose }) {
               </div>
               {onceTotal > 0 && (
                 <div className="db-row2">
-                  <Seg label="Pagamento único em" value={parts} onChange={setParts} options={[1, 2, 3, 4, 5].map((n) => ({ value: n, label: n === 1 ? 'à vista' : `${n}x`, sub: brl(Math.round((onceTotal / n) * 100) / 100) }))} />
                   <label className="db-field"><span>1ª parcela em</span><input type="date" value={firstPay} onChange={(e) => setFirstPay(e.target.value)} /></label>
+                  <Seg label="Pagamento único em" value={parts} onChange={setParts} options={[1, 2, 3, 4, 5].map((n) => ({ value: n, label: n === 1 ? 'à vista' : `${n}x`, sub: brl(Math.round((onceTotal / n) * 100) / 100) }))} />
                 </div>
               )}
               <Seg label="Vídeos das aulas" value={video} onChange={setVideo} options={[{ value: 'youtube', label: 'YouTube ou Drive', sub: 'sem custo' }, { value: 'bunny', label: 'Hospedagem de vídeo', sub: 'ex.: Bunny, pago pela contratante' }]} />
