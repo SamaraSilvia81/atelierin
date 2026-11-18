@@ -1623,6 +1623,12 @@ h1, h2, h3, p { margin: 0; }
   .sm2-rest { display: none; }
 }
 
+/* serviços complementares: lista simples de outros serviços */
+.s-others { display: grid; gap: 10px; margin-top: 14px; }
+.s-others ul { display: grid; padding-left: 18px; border-left: 2px solid var(--text); }
+.s-others li { padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 17px; line-height: 1.5; color: var(--text-sub); }
+.s-others li:last-child { border-bottom: 0; }
+
 /* texto de abertura mais largo em alguns slides */
 .slide.is-wide-text .slide-text { max-width: 70ch; }
 .slide-assistida .slide-grid.wrap { width: min(1480px, 100% - 48px); }

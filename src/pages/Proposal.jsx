@@ -375,8 +375,14 @@ function Body({ s }) {
           </div>
         ))}
       </div>
-      <div className="s-out"><span>não entra</span>{s.excluded.map((x) => <i key={x}>{x}</i>)}</div>
-      <p className="s-complete">{s.complete}</p>
+      {s.excluded?.length > 0 && <div className="s-out"><span>não entra</span>{s.excluded.map((x) => <i key={x}>{x}</i>)}</div>}
+      {s.complete && <p className="s-complete">{s.complete}</p>}
+      {s.others && (
+        <div className="s-others">
+          <span className="sm-out-k">{s.others.title}</span>
+          <ul>{s.others.items.map((x) => <li key={x}>{x}</li>)}</ul>
+        </div>
+      )}
       <aside className="s-notice">
         <Info size={20} aria-hidden="true" />
         <div>

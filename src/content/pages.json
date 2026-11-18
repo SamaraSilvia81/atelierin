@@ -512,309 +512,71 @@
         }
       },
       {
-        "kicker": "sem marca ainda",
-        "title": "Ainda não tem marca? Eu faço o básico",
-        "accent": "o básico",
+        "kicker": "serviços complementares",
+        "title": "Serviços que podem complementar o projeto",
+        "accent": "complementar o projeto",
         "layout": "options",
-        "deco": "none",
-        "text": "A implantação aplica a sua identidade; ela não cria uma. Se você ainda não tem marca, faço uma identidade básica antes, como um serviço à parte. São dois trabalhos diferentes, e por isso aparecem separados na proposta.",
+        "deco": "band",
+        "text": "Além da assinatura, existem serviços independentes para quem precisa de uma presença digital mais completa ou ainda não tem uma identidade visual definida. Você contrata somente o que fizer sentido para o seu momento.",
         "options": [
           {
-            "name": "Monograma",
-            "price": "R$ 450",
-            "for": "Quem quer começar com o próprio nome",
+            "name": "Landing page completa",
+            "price": "R$ 2.500",
+            "for": "Página de divulgação",
             "items": [
-              "Seu nome com uma tipografia escolhida",
-              "Paleta de cores",
-              "Um ícone com a sua inicial (não é um logo)",
-              "Uma rodada de ajuste"
+              "Texto e estrutura de seções",
+              "Design próprio",
+              "Identidade básica inclusa"
             ],
-            "note": "Não há logo, só o seu nome. Por isso não precisa de registro no INPI."
+            "note": "Uma página para apresentar seu trabalho e seus serviços e levar o visitante a entrar em contato ou contratar."
           },
           {
             "name": "Identidade básica",
             "price": "R$ 850",
             "for": "Quem quer um logo próprio",
             "items": [
-              "Logo simples",
+              "Logotipo simples",
               "Paleta de cores",
               "Tipografia",
-              "Dois mockups mostrando a marca aplicada",
-              "Duas rodadas de ajuste"
+              "Dois mockups com a marca aplicada",
+              "Duas rodadas de ajustes"
             ],
-            "note": "Se quiser proteger o logo, o registro é feito no INPI (veja abaixo)."
+            "note": "Junto com o Sob medida, sai por + R$ 400, no lugar do monograma."
+          },
+          {
+            "name": "Monograma",
+            "price": "R$ 450",
+            "for": "Para quem não contrata o Sob medida",
+            "items": [
+              "Seu nome com uma tipografia escolhida",
+              "Paleta de cores",
+              "Ícone com a sua inicial",
+              "Uma rodada de ajustes"
+            ],
+            "note": "Já está incluso no Sob medida. Não inclui criação de logotipo."
           }
         ],
-        "excluded": [
-          "Mockups além dos dois inclusos",
-          "Manual de marca completo",
-          "Papelaria, posts e peças de redes sociais"
-        ],
+        "excluded": [],
         "inpi": {
-          "title": "Registro no INPI",
-          "text": "O registro protege o nome ou o logo da sua marca. A taxa é paga por você, direto ao INPI, por uma guia (GRU): R$ 880 por classe, ou R$ 440 para MEI, microempresa e pessoa física com desconto. Se quiser, eu cuido do pedido para você, como serviço à parte, sem incluir a taxa.",
+          "title": "Registro de marca no INPI",
+          "text": "O registro protege o nome ou o logo da sua marca. Eu acompanho o pedido como serviço à parte; a taxa oficial é paga por você, diretamente ao INPI.",
           "link": {
             "label": "Página de marcas do INPI",
             "href": "https://www.gov.br/inpi/pt-br/servicos/marcas"
           }
         },
         "points": [],
-        "complete": "Quer uma identidade completa, com manual, aplicações e papelaria? É outro projeto, com orçamento próprio.",
-        "theme": "light"
-      },
-      {
-        "kicker": "manutenção",
-        "title": "Depois que está no ar",
-        "text": "Todo mês entra a licença e manutenção: um valor fixo, pela faixa de alunos, com a infraestrutura incluída. Você sabe quanto vai pagar e não precisa se preocupar com nada técnico.",
-        "points": [
-          "Licença de uso do sistema",
-          "Hospedagem, banco de dados e domínio",
-          "Cópias de segurança e atualizações de segurança",
-          "Correções e monitoramento do ambiente",
-          "Suporte por mensagem e pequenos ajustes de texto e configuração"
-        ],
-        "accent": "no ar",
-        "deco": "mark",
-        "theme": "dark"
-      },
-      {
-        "kicker": "investimento",
-        "title": "Dois caminhos, o mesmo sistema",
-        "text": "O sistema é o mesmo nos dois. O modelo pronto é por assinatura, para começar sozinho, e está chegando. O sob medida é o ambiente com a sua marca, montado por mim: a implantação é paga uma vez e todo mês entra a licença e manutenção, pelo plano.",
-        "points": [
-          "Sob medida: Casual, Social, Gala e Alta-costura, conforme o número de alunos",
-          "Funcionalidade nova: orçamento à parte, combinado antes"
-        ],
-        "accent": "Dois caminhos",
-        "layout": "table",
-        "deco": "band",
-        "table": {
-          "cols": [
-            "",
-            "Modelo pronto",
-            "Sob medida"
-          ],
-          "rows": [
-            [
-              "Para quem",
-              "quer começar sozinho, com o sistema como ele é",
-              "quer o ambiente com a sua marca, ajustado ao seu jeito de trabalhar"
-            ],
-            [
-              "Implantação",
-              "nenhuma · teste de 7 dias",
-              "R$ 3.000 ou 10x de R$ 300"
-            ],
-            [
-              "Por mês",
-              "R$ 0 a R$ 139, conforme o plano",
-              "Casual R$ 190 · Social R$ 290 · Gala R$ 390"
-            ],
-            [
-              "Vídeo",
-              "YouTube ou Google Drive",
-              "YouTube, Drive ou Bunny (à parte)"
-            ]
-          ],
-          "highlight": 2
-        },
-        "theme": "dark"
-      },
-      {
-        "kicker": "página de divulgação",
-        "title": "Quer também uma página para divulgar?",
-        "accent": "divulgar",
-        "layout": "lp",
-        "deco": "none",
-        "text": "Todo ambiente já vem com uma página simples no seu endereço: sua foto, o que você oferece, contato e o botão de entrar. Uma landing page completa, com texto, seções e design próprios, é outro serviço, e quem quiser só ela contrata só ela.",
-        "points": [],
-        "cards": [
-          {
-            "name": "Página simples",
-            "price": "inclusa",
-            "for": "vem com todo ambiente",
-            "items": [
-              "Foto, nome e bio curta",
-              "O que você oferece",
-              "WhatsApp e botão de entrar"
-            ]
-          },
-          {
-            "name": "Landing page",
-            "price": "R$ 2.500",
-            "for": "avulsa",
-            "items": [
-              "Texto e seções pensados para você",
-              "Design próprio, com a sua marca",
-              "Pode existir sem o ambiente"
-            ]
-          },
-          {
-            "name": "Combo",
-            "price": "R$ 5.000",
-            "for": "sob medida + landing page",
-            "items": [
-              "Implantação do sob medida: R$ 3.000",
-              "Landing page: R$ 2.000 (em vez de R$ 2.500)",
-              "Uma conversa e um projeto só"
-            ],
-            "hl": true
-          }
-        ],
-        "example": {
-          "label": "exemplo de página simples",
-          "host": "anaribeiro.atelierin.com.br",
-          "name": "Ana Ribeiro",
-          "role": "Consultora de imagem e estilo",
-          "bio": "Ajudo mulheres a montar um guarda-roupa que conversa com quem elas são, sem comprar mais do que precisam. Atendimento em Recife e online.",
-          "offers": [
-            [
-              "01",
-              "Consultoria de estilo",
-              "R$ 380",
-              "Dois encontros para entender seu estilo e montar seus looks."
-            ],
-            [
-              "02",
-              "Análise de coloração",
-              "R$ 220",
-              "As cores que valorizam você, com cartela para levar."
-            ],
-            [
-              "03",
-              "Personal shopper",
-              "R$ 150 / hora",
-              "Compras guiadas, na loja ou online, sem desperdício."
-            ]
-          ],
-          "image": "https://images.pexels.com/photos/6665063/pexels-photo-6665063.jpeg?auto=compress&cs=tinysrgb&w=1600",
-          "mockup": "/proposta/exemplo-tablet.png",
-          "credit": "foto: Antoni Shkraba · Pexels",
-          "initials": "AR",
-          "eyebrow": "Consultoria de imagem e estilo",
-          "headline": "Seu estilo,",
-          "headlineAccent": "sem esforço.",
-          "proof": "+120 clientes atendidas · Recife e online",
-          "badge": "Agenda aberta · dezembro",
-          "quote": "Pela primeira vez abri o armário e soube\no que vestir. Valeu cada encontro.",
-          "quoteBy": "Carla M., cliente desde 2025"
-        },
-        "theme": "light"
-      },
-      {
-        "kicker": "licença e manutenção",
-        "title": "Um valor fixo por mês, pelo tamanho da turma",
-        "text": "Licença, hospedagem, banco de dados, backup, atualizações e suporte num valor só. Ele muda só se a sua turma mudar de faixa, e é revisto uma vez por ano.",
-        "points": [],
-        "accent": "valor fixo",
-        "deco": "mark",
-        "layout": "table",
-        "table": {
-          "cols": [
-            "",
-            "Por mês"
-          ],
-          "rows": [
-            [
-              "Até 15 alunos",
-              "R$ 190"
-            ],
-            [
-              "De 16 a 30 alunos",
-              "R$ 290"
-            ],
-            [
-              "De 31 a 50 alunos",
-              "R$ 390"
-            ],
-            [
-              "Mais de 50 alunos",
-              "sob consulta"
-            ],
-            [
-              "Vídeo pelo YouTube ou Drive",
-              "sem custo"
-            ],
-            [
-              "Vídeo próprio (Bunny)",
-              "à parte, a partir de ~R$ 49 por mês"
-            ]
-          ],
-          "highlight": 1
-        },
-        "theme": "dark"
-      },
-      {
-        "kicker": "comparando",
-        "title": "Entre o pronto e o feito só para você",
-        "accent": "feito só para você",
-        "layout": "table",
-        "deco": "none",
+        "complete": "Identidade completa, com manual de marca, aplicações, papelaria e outros materiais: sob orçamento.",
         "theme": "light",
-        "text": "Existem três caminhos para organizar alunos, cobrança e agenda. O Atelierin fica no meio: o sistema já existe, então você não paga para construir, e mesmo assim ele tem a sua cara e alguém de verdade cuidando.",
-        "table": {
-          "cols": [
-            "",
-            "Plataforma pronta",
-            "Atelierin",
-            "Sistema só seu"
-          ],
-          "rows": [
-            [
-              "Para começar",
-              "sem entrada",
-              "R$ 3.000",
-              "a partir de R$ 8.000"
-            ],
-            [
-              "Por mês",
-              "~R$ 60 a R$ 200",
-              "R$ 190 a R$ 390, tudo incluso",
-              "hospedagem + manutenção por hora"
-            ],
-            [
-              "Marca e endereço",
-              "os da plataforma",
-              "os seus",
-              "os seus"
-            ],
-            [
-              "Quem se adapta",
-              "você, à ferramenta",
-              "o ambiente, ao seu trabalho",
-              "o sistema, ao seu trabalho"
-            ],
-            [
-              "Parte técnica",
-              "da plataforma",
-              "comigo",
-              "sua, ou de quem você contratar"
-            ],
-            [
-              "Com quem você fala",
-              "suporte por ticket",
-              "comigo",
-              "com quem você contratar"
-            ]
-          ],
-          "highlight": 2
-        },
-        "points": []
-      },
-      {
-        "kicker": "fora do escopo",
-        "title": "O que não está incluso",
-        "text": "Para não ter surpresa, o que fica de fora também fica escrito. Tudo isso pode entrar, com orçamento próprio.",
-        "points": [
-          "Funcionalidades feitas só para você",
-          "Integrações com bancos e outros sistemas de sua escolha",
-          "Produção de conteúdo (aulas, textos, fotos)",
-          "Linhas que ainda não foram lançadas"
-        ],
-        "accent": "não",
-        "layout": "strike",
-        "deco": "none",
-        "theme": "light"
+        "accentMode": "text",
+        "others": {
+          "title": "Outros serviços",
+          "items": [
+            "Domínio próprio fora do subdomínio Atelierin: sob orçamento.",
+            "Hospedagem de vídeos em serviço externo: conforme provedor e consumo.",
+            "Funcionalidades específicas: avaliadas e orçadas conforme escopo."
+          ]
+        }
       },
       {
         "kicker": "prazos e contrato",
