@@ -418,18 +418,28 @@ function Body({ s }) {
     <>
       <div className="s-terms">
         <div className="s-terms-col">
-          <span className="s-terms-k"><Clock size={16} aria-hidden="true" /> prazos</span>
-          <table className="s-terms-table"><tbody>{s.terms.map(([a, b, c]) => <tr key={a}><th scope="row">{a}</th><td><strong>{b}</strong><small>{c}</small></td></tr>)}</tbody></table>
-          <span className="s-terms-k"><UsersThree size={16} aria-hidden="true" /> reuniões</span>
-          <ol className="s-meet">{s.meetings.map((m, i) => <li key={m}><b>{i + 1}</b>{m}</li>)}</ol>
+          {s.owns ? s.owns.map((g) => (
+            <div key={g.title} className="s-owns">
+              <span className="s-terms-k">{g.title}</span>
+              <ul>{g.items.map((it) => <li key={it}>{it}</li>)}</ul>
+            </div>
+          )) : (
+            <>
+              <span className="s-terms-k"><Clock size={16} aria-hidden="true" /> prazos</span>
+              <table className="s-terms-table"><tbody>{s.terms.map(([a, b, c]) => <tr key={a}><th scope="row">{a}</th><td><strong>{b}</strong><small>{c}</small></td></tr>)}</tbody></table>
+              <span className="s-terms-k"><UsersThree size={16} aria-hidden="true" /> reuniões</span>
+              <ol className="s-meet">{s.meetings.map((m, i) => <li key={m}><b>{i + 1}</b>{m}</li>)}</ol>
+            </>
+          )}
         </div>
         <div className="s-contract" aria-label="Exemplo do que o contrato garante">
-          <span className="s-contract-k"><FileText size={16} aria-hidden="true" /> contrato · o que ele garante</span>
+          <span className="s-contract-k"><FileText size={16} aria-hidden="true" /> {s.contractTitle ?? 'contrato · o que ele garante'}</span>
           <ul>{s.contract.map((c, i) => <li key={c} style={{ animationDelay: `${.15 * i}s` }}><CheckCircle size={16} weight="fill" aria-hidden="true" />{c}</li>)}</ul>
           <div className="s-sign"><span><i />contratante</span><span><i />Atelierin</span></div>
         </div>
       </div>
-      <p className="s-warn">{s.notice}</p>
+      {s.closing && <p className="sm-close">{s.closing}</p>}
+      {s.notice && <p className="s-warn">{s.notice}</p>}
     </>
   )
   if (s.layout === 'cta') return (
