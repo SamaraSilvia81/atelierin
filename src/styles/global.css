@@ -1810,7 +1810,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* slides escuros do fim (11 prazos e contrato, 12 se quiser sair) */
 .slide.slide-dk { display: block; padding: clamp(40px, 6vh, 64px) clamp(24px, 5vw, 96px) clamp(56px, 8vh, 88px); background: #100D0D; color: var(--palette-osso); }
-.slide-dk > * { position: relative; z-index: 1; }
+.slide-dk > * { position: relative; z-index: 1; max-width: 1240px; margin-inline: auto; }
 .slide-dk .pn-top { color: rgba(240, 237, 232, .6); }
 .slide-dk .pn-top b { color: var(--palette-crimson); }
 .slide-dk .pn-rule { border-top-color: rgba(240, 237, 232, .8); }
