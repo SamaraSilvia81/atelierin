@@ -444,7 +444,7 @@
       },
       {
         "kicker": "cobrança",
-        "layout": "cobranca",
+        "layout": "escada",
         "theme": "light",
         "deco": "none",
         "title": "Seus clientes pagam direto a você.",
@@ -460,7 +460,13 @@
             "Seu cliente realiza o pagamento diretamente para você.",
             "Você confere o recebimento e atualiza o status no Atelierin.",
             "O painel reúne quem está em dia, quem está pendente e quem está atrasado."
-          ]
+          ],
+          "statuses": [
+            "em dia",
+            "pendente",
+            "atrasado"
+          ],
+          "kicker": "passo a passo"
         },
         "panel": {
           "title": "No seu painel financeiro",

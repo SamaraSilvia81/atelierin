@@ -283,43 +283,35 @@ function MenuSlide({ s, n, total }) {
   )
 }
 
-// Cobrança: texto e tarjas à esquerda, painel financeiro ilustrado à direita, passos em trilho embaixo
-const STATUS = { ok: 'em dia', pe: 'pendente', at: 'atrasado' }
-function CobrancaSlide({ s, n, total }) {
-  const dsh = s.dash
+// Cobrança em carmim cheio: texto e tarjas à esquerda, passos em escada subindo da base à direita
+function EscadaSlide({ s, n, total }) {
   return (
-    <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-cobranca">
-      <div className="cb-wrap">
+    <section id={`slide-${Number(n)}`} data-theme="light" className="section slide slide-escada">
+      <div className="es-frame">
         <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
         <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
-        <div className="cb-main" data-reveal>
-          <div className="cb-text">
-            {s.lead && <p className="pn-kick">› {s.lead}</p>}
-            <h2 className="display pn-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}<em>{s.titleAccentLine}</em></h2>
-            {[].concat(s.text ?? []).map((t) => <p key={t} className="pn-p">{t}</p>)}
-            <p className="poster-lines pg-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</p>
-          </div>
-          <figure className="cb-fig">
-            <div className="cb-dash" data-theme="light" aria-label="Exemplo ilustrativo do painel financeiro">
-              <div className="cb-dh"><span>{dsh.title}</span><span>{dsh.count}</span></div>
-              <div className="cb-sum">{dsh.summary.map(([k, l, v]) => <div key={k}><span><i className={`cb-dot is-${k}`} />{l}</span><b>{v}</b></div>)}</div>
-              <table className="cb-table">
-                <thead><tr>{dsh.cols.map((c, i) => <th key={i} scope="col">{c}</th>)}</tr></thead>
-                <tbody>{dsh.rows.map(([nm, due, val, st]) => (
-                  <tr key={nm}><td>{nm}</td><td>{due}</td><td className="cb-v">{val}</td><td><span className={`cb-st is-${st}`}>{STATUS[st]}</span></td><td className="cb-clip">{st === 'ok' ? 'comprov. ✓' : ''}</td></tr>
-                ))}</tbody>
-              </table>
-              <div className="cb-df"><span>{dsh.total[0]}</span><b>{dsh.total[1]}</b></div>
-            </div>
-            {dsh.caption && <figcaption>{dsh.caption}</figcaption>}
-          </figure>
-        </div>
-        <div className="cb-how" data-reveal>
-          <span className="pn-kick">{s.how.title}</span>
-          <ol>{s.how.items.map((it, i) => <li key={it}><b>{String(i + 1).padStart(2, '0')}</b><p>{it}</p></li>)}</ol>
-        </div>
-        {s.note && <p className="cb-note"><Info size={16} aria-hidden="true" />{s.note}</p>}
-        <div className="pn-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
+      </div>
+      <div className="es-left" data-reveal>
+        {s.lead && <p className="pn-kick">› {s.lead}</p>}
+        <h2 className="display es-title">{s.titleLines.join(' ')} <em>{s.titleAccentLine}</em></h2>
+        {[].concat(s.text ?? []).map((t) => <p key={t} className="es-p">{t}</p>)}
+        <p className="poster-lines es-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</p>
+        {s.note && <p className="slide-foot es-alert"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.note}</span></p>}
+        <div className="pn-foot es-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
+      </div>
+      <div className="es-right" data-reveal>
+        <div className="es-head">{s.how.kicker && <p className="pn-kick">› {s.how.kicker}</p>}<h3 className="display">{s.how.title}</h3></div>
+        <ol className="es-stairs">
+          {s.how.items.map((it, i) => (
+            <li key={it}>
+              <b>{String(i + 1).padStart(2, '0')}</b>
+              <p>{it}</p>
+              {i === s.how.items.length - 1 && s.how.statuses && (
+                <span className="es-status">{s.how.statuses.map((x, j) => <i key={x} className={`is-${j}`}>{x}</i>)}</span>
+              )}
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )
@@ -728,7 +720,7 @@ export default function Proposal({ client, slug }) {
       {slides.map((s, i) => {
         if (s.interlude) return <Interlude key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.poster) return <Poster key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
-        if (s.layout === 'cobranca') return <CobrancaSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
+        if (s.layout === 'escada') return <EscadaSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'menu') return <MenuSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'panels') return <PanelsSlide key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} />
         if (s.layout === 'sobmedida2') return <SobMedida key={s.kicker} s={s} n={numOf.get(s.kicker)} total={total} theme={s.theme || 'dark'} />
