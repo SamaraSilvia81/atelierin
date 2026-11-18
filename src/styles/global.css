@@ -1780,7 +1780,8 @@ h1, h2, h3, p { margin: 0; }
 
 /* sob medida, o que entra (09): itens numerados à esquerda, opcionais à direita */
 .slide.slide-sobdet { display: block; padding: 0; min-height: 0; }
-.sd-wrap { padding: clamp(8px, 2vh, 24px) clamp(24px, 5vw, 96px) clamp(16px, 2vh, 28px); }
+.page-proposal .slide.slide-sobdet, .page-proposal .section.slide.slide-lp { min-height: 0; }
+.sd-wrap { padding: clamp(8px, 2vh, 24px) clamp(24px, 5vw, 96px) 8px; }
 .sd-grid { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 560px); justify-content: center; gap: clamp(40px, 6vw, 120px); align-items: start; }
 .sd-main .pn-title { margin-top: 14px; font-size: clamp(64px, 6vw, 112px); }
 .sd-items { margin-top: clamp(24px, 3.5vh, 36px); border-top: 2px solid var(--text); }
