@@ -296,14 +296,14 @@ function EscadaSlide({ s, n, total }) {
         <h2 className="display es-title">{s.titleLines.join(' ')} <em>{s.titleAccentLine}</em></h2>
         {[].concat(s.text ?? []).map((t) => <p key={t} className="es-p">{t}</p>)}
         <p className="poster-lines es-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</p>
-        {s.note && <p className="slide-foot es-alert"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.note}</span></p>}
+        {s.note && <p className="es-note"><Info size={18} aria-hidden="true" /><span>{s.note}</span></p>}
         <div className="pn-foot es-foot"><span>atelierin.com.br</span><span>proposta · 2026</span></div>
       </div>
       <div className="es-right" data-reveal>
-        <div className="es-head">{s.how.kicker && <p className="pn-kick">› {s.how.kicker}</p>}<h3 className="display">{s.how.title}</h3></div>
         <ol className="es-stairs">
           {s.how.items.map((it, i) => (
             <li key={it}>
+              {i === 0 && <span className="es-label">› {s.how.title}</span>}
               <b>{String(i + 1).padStart(2, '0')}</b>
               <p>{it}</p>
               {i === s.how.items.length - 1 && s.how.statuses && (
