@@ -233,20 +233,19 @@ function Body({ s }) {
   )
   if (s.layout === 'assistida') return (
     <>
-      <div className="as-grid">
-        <div className="as-card" data-theme="light">
-          <div className="fp-card-head"><span>{s.options.title}</span><span>uma única vez</span></div>
-          <table className="as-table">
-            <thead><tr>{s.options.cols.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
-            <tbody>{s.options.rows.map(([a, b, c]) => (
-              <tr key={a} className={/grátis/i.test(b) ? 'is-free' : undefined}><th scope="row">{a}</th><td className="as-price">{b}</td><td>{c}</td></tr>
-            ))}</tbody>
-          </table>
-        </div>
-        <div className="as-get">
-          <h3>{s.receive.title}</h3>
-          <ul>{s.receive.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
-        </div>
+      <ol className="as-tiles">
+        {s.options.rows.map(([a, b, c], i) => (
+          <li key={a} className={/grátis/i.test(b) ? 'is-free' : undefined}>
+            <span className="as-k">opção {String(i + 1).padStart(2, '0')}</span>
+            <h3>{a}</h3>
+            <strong className="as-price">{b}</strong>
+            <p>{c}</p>
+          </li>
+        ))}
+      </ol>
+      <div className="as-get">
+        <span className="as-get-k">{s.receive.title}</span>
+        <ul>{s.receive.items.map((it) => <li key={it}><Check size={16} weight="bold" aria-hidden="true" />{it}</li>)}</ul>
       </div>
       {s.closing && <p className="sm-close">{s.closing}</p>}
     </>

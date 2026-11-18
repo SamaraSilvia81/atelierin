@@ -1546,9 +1546,9 @@ h1, h2, h3, p { margin: 0; }
 .slide-sobmedida .slide-grid.wrap { width: min(1480px, 100% - 48px); }
 .slide-sobmedida .slide-main h2 { max-width: none; }
 .sm-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; margin-top: 8px; align-items: stretch; }
-.sm-price { display: grid; align-content: space-between; gap: 24px; padding: 36px 38px; min-height: 360px; border-radius: 4px; background: var(--palette-crimson); color: var(--palette-osso); box-shadow: 12px 12px 0 rgba(0, 0, 0, .55); }
+.sm-price { display: grid; align-content: space-between; gap: 22px; padding: 30px 34px; border-radius: 4px; background: var(--palette-crimson); color: var(--palette-osso); box-shadow: 12px 12px 0 rgba(0, 0, 0, .55); }
 .sm-price-k { font: 500 13px/1.4 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: rgba(240, 237, 232, .85); }
-.sm-price strong { font: 400 clamp(110px, 12vw, 210px)/.82 var(--font-display); letter-spacing: .01em; }
+.sm-price strong { white-space: nowrap; font: 400 clamp(64px, 6vw, 104px)/.9 var(--font-display); letter-spacing: .01em; }
 .sm-price-sub { padding-top: 16px; border-top: 1px solid rgba(240, 237, 232, .35); font: 500 16px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .sm-in { display: grid; gap: 14px; align-content: start; padding: 26px 30px; border: 1px solid var(--palette-tinta); border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); }
 .sm-in h3 { font: 400 clamp(30px, 2.8vw, 42px)/1 var(--font-display); text-transform: uppercase; }
@@ -1570,22 +1570,22 @@ h1, h2, h3, p { margin: 0; }
 .slide-assistida .slide-main h2, .slide-sobmedida .slide-main h2 { max-width: none; }
 .slide.slide-sobmedida[data-theme="light"] .sm-price { box-shadow: 12px 12px 0 var(--palette-tinta); }
 
-/* 06 · implantação assistida: tabela num card claro + o que você recebe */
-.as-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; margin-top: 8px; }
-.as-card { border: 1px solid var(--palette-tinta); border-radius: 4px; background: var(--palette-linho); color: var(--palette-tinta); box-shadow: 12px 12px 0 rgba(0, 0, 0, .55); overflow-x: auto; }
-.as-table { width: 100%; min-width: 560px; border-collapse: collapse; }
-.as-table th, .as-table td { padding: 16px 22px; text-align: left; vertical-align: top; border-bottom: 1px dashed var(--palette-borda-clara); font-size: 18px; line-height: 1.45; }
-.as-table thead th { padding-block: 14px; font: 500 13px/1.3 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--palette-poeira-clara); border-bottom: 1px solid var(--palette-tinta); }
-.as-table tbody th { font: 400 26px/1 var(--font-display); text-transform: uppercase; white-space: nowrap; }
-.as-price { font-weight: 600; white-space: nowrap; }
-.as-table tr.is-free .as-price { color: var(--palette-sangue); }
-.as-table tbody tr:last-child th, .as-table tbody tr:last-child td { border-bottom: 0; }
-.as-get { display: grid; gap: 14px; align-content: start; }
-.as-get h3 { font: 400 clamp(30px, 2.8vw, 42px)/1 var(--font-display); text-transform: uppercase; }
-.as-get ul { display: grid; border-top: 1px solid var(--text); }
+/* 06 · implantação assistida: quatro opções em blocos lado a lado, direto no fundo escuro */
+.as-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 8px; counter-reset: none; }
+.as-tiles li { display: grid; gap: 10px; align-content: start; padding: 24px 22px 26px; border: 1px solid var(--border); border-top: 3px solid var(--text-muted); border-radius: 4px; background: color-mix(in srgb, var(--text) 3%, transparent); }
+.as-tiles li.is-free { border-top-color: var(--acc-text); border-style: solid; }
+.as-k { font: 500 12px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); }
+.as-tiles h3 { font: 400 clamp(26px, 2.2vw, 34px)/1 var(--font-display); text-transform: uppercase; }
+.as-price { font: 400 clamp(44px, 4vw, 64px)/1 var(--font-display); color: var(--text); white-space: nowrap; }
+.as-tiles li.is-free .as-price { color: var(--acc-text); }
+.as-tiles p { padding-top: 12px; border-top: 1px dashed var(--border); font-size: 17px; line-height: 1.5; color: var(--text-sub); }
+.as-get { display: grid; gap: 12px; margin-top: 10px; }
+.as-get-k { font: 500 13px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--acc-text); }
+.as-get ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; border-top: 1px solid var(--text); }
 .as-get li { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-bottom: 1px dashed var(--border); font-size: 18px; line-height: 1.45; color: var(--text-sub); }
 .as-get li svg { flex: none; margin-top: 3px; color: var(--acc-text); }
-@media (max-width: 1000px) { .as-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) { .as-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .as-tiles, .as-get ul { grid-template-columns: 1fr; } }
 
 /* 03-04 · planos por família: texto de um lado, faixa carmesim vertical afastada da borda
    e o card da tabela por cima dela (no espelhado, os lados se invertem) */
