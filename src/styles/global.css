@@ -1580,7 +1580,7 @@ h1, h2, h3, p { margin: 0; }
 .pg-how li b { flex: none; display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg); font: 400 28px/1 var(--font-display); }
 .pg-how li:last-child b { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
 .pg-how li span { font-size: 19px; line-height: 1.45; color: var(--text); }
-.pg-panel ul { display: grid; padding: 6px 22px; border: 1px solid var(--text); border-radius: 4px; background: var(--bg-card); }
+.pg-panel ul { display: grid; padding: 0 0 0 22px; border-left: 2px solid var(--text); }
 .pg-panel li { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px dashed var(--border); font-size: 18px; line-height: 1.45; color: var(--text-sub); }
 .pg-panel li:last-child { border-bottom: 0; }
 .pg-panel li svg { flex: none; margin-top: 3px; color: var(--acc); }

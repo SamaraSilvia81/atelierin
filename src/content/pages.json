@@ -462,7 +462,8 @@
           "A relação financeira continua",
           "entre você e seu cliente."
         ],
-        "note": "Recursos de confirmação automática ou integração bancária dependem do plano e da disponibilidade da integração. Taxas cobradas por provedores externos, quando houver, são informadas separadamente."
+        "note": "Recursos de confirmação automática ou integração bancária dependem do plano e da disponibilidade da integração. Taxas cobradas por provedores externos, quando houver, são informadas separadamente.",
+        "accentBreak": true
       },
       {
         "kicker": "sob medida",
