@@ -86,8 +86,8 @@ function Poster({ s, n, total }) {
         {s.giant.map((g, i) => <span key={g}>{i === s.giantAccent ? <em>{g}</em> : g.endsWith('?') ? <>{g.slice(0, -1)}<em>?</em></> : g}</span>)}
       </div>
       <div className="wrap poster" data-reveal>
-        <span className="interlude-k"><b>{n}</b>/{total} · {s.kicker}</span>
         <div className="poster-body">
+          <span className="interlude-k"><b>{n}</b>/{total} · {s.kicker}</span>
           <h2 className="poster-lines">{s.lines.map((l, i) => <span key={l} className={i === s.lines.length - 1 ? 'is-acc' : undefined}>{l}</span>)}</h2>
           {s.price && (
             <div className="poster-price">
@@ -817,7 +817,6 @@ function SlidePager({ slides, total }) {
     document.getElementById(`slide-${n}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
   const max = slides.length
-  const label = cur ? slides[cur - 1].kicker : 'capa'
   return (
     <div className="pager">
       {open && (
@@ -830,7 +829,7 @@ function SlidePager({ slides, total }) {
       )}
       <button type="button" className="pager-arrow" aria-label="Tela anterior" disabled={cur === 0} onClick={() => go(cur - 1)}><CaretUp size={14} aria-hidden="true" /></button>
       <button type="button" className="pager-now" aria-expanded={open} aria-label="Ver todas as telas" onClick={() => setOpen((v) => !v)}>
-        <b>{String(cur).padStart(2, '0')}</b><span>/ {total}</span><em>{label}</em>
+        <b>{String(cur).padStart(2, '0')}</b><span>/ {total}</span>
       </button>
       <button type="button" className="pager-arrow" aria-label="Próxima tela" disabled={cur >= max} onClick={() => go(cur + 1)}><CaretDown size={14} aria-hidden="true" /></button>
     </div>

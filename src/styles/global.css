@@ -2863,3 +2863,15 @@ h1, h2, h3, p { margin: 0; }
 .pager-list button.is-on { background: var(--palette-crimson); }
 .pager-list button.is-on b { color: var(--palette-osso); }
 @media (max-width: 600px) { .pager { right: 72px; bottom: 16px; } .pager-now em { display: none; } }
+
+/* largura padrão dos slides largos da proposta (hero e 01 seguem a mesma) */
+.page-proposal { --slide-w: 1600px; }
+.slide-cover > .wrap { width: min(var(--slide-w), 100% - 96px); }
+.slide-cover .page-head { max-width: 70%; }
+.slide-cover .slide-index { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.slide.slide-panels { padding-inline: max(24px, calc((100% - var(--slide-w)) / 2)); }
+.slide-panels .pn-left { padding-left: 0; }
+.poster-body .interlude-k { justify-self: start; }
+.pager { box-sizing: border-box; height: 40px; }
+.pager button { height: 100%; }
+@media (max-width: 1000px) { .slide-cover .slide-index { grid-template-columns: repeat(2, minmax(0, 1fr)); } .slide-cover .page-head { max-width: none; } }
