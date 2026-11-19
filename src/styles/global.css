@@ -2974,3 +2974,20 @@ h1, h2, h3, p { margin: 0; }
 .slide-plans2 .fp-cmp .pcmp { margin-top: 0; }
 .slide-plans2[data-theme="dark"] .fp-cmp .pcmp { background: #161212; border-color: rgba(240, 237, 232, .18); }
 .slide-plans2[data-theme="dark"] .fp-cmp .pcmp thead th { border-color: rgba(240, 237, 232, .6); }
+/* 03/04: o texto centraliza com o cartão (nota e botão saem do fluxo, logo abaixo dele) */
+@media (min-width: 1001px) {
+  .slide-plans2 .fp-side { position: relative; }
+  .slide-plans2 .fp-after { position: absolute; top: calc(100% + 22px); left: 0; right: 0; display: grid; gap: 18px; justify-items: start; }
+  .slide-plans2 .fp-grid { padding-bottom: clamp(220px, 26vh, 280px); }
+}
+.slide-plans2 .fp-after > .fp-note { padding: 10px 14px; background: var(--bg); }
+.slide-plans2 .fp-more { margin-top: 0; }
+/* tabela de funcionalidades dentro do slide: sem abre/fecha próprio, alinhada ao texto e mais legível */
+.slide-plans2 .fp-cmp { margin-top: calc(200px - clamp(220px, 26vh, 280px)); }
+.slide-plans2 .fp-cmp .pcmp { max-width: 1300px; }
+.pcmp.is-plain { padding-top: 6px; }
+.pcmp-title { padding: 20px 28px 4px; font: 500 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+.slide-plans2 .fp-cmp .pcmp table { font-size: clamp(16px, 1.25vw, 18px); }
+.slide-plans2 .fp-cmp .pcmp thead th { font-size: clamp(26px, 2.2vw, 32px); }
+.slide-plans2 .fp-cmp .pcmp tbody th[scope="row"], .slide-plans2 .fp-cmp .pcmp td { padding-block: 14px; }
+.slide-plans2 .fp-cmp .pcmp .pcmp-sec th { font-size: 13px; }

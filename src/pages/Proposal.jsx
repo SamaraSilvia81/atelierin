@@ -180,15 +180,17 @@ function PlansSlide({ s, n, total, theme }) {
               </div>
             )}
           </div>
+          <div className="fp-after">
           {s.note && <p className="fp-note">{s.note}</p>}
           <button type="button" className="fp-more" aria-expanded={more} aria-controls={`mais-${famId}`} onClick={() => setMore((v) => !v)}>
             {more ? 'Fechar as funcionalidades' : `Ver todas as funcionalidades da ${famId === 'estrutura' ? 'Estrutura' : 'família Relacionamento'}`} {more ? <CaretUp size={14} aria-hidden="true" /> : <CaretDown size={14} aria-hidden="true" />}
           </button>
+          </div>
         </div>
       </div>
       {more && (
         <div id={`mais-${famId}`} className="wrap fp-cmp">
-          <Compare cm={content.plans.sets[famId].compare} open />
+          <Compare cm={content.plans.sets[famId].compare} plain />
         </div>
       )}
     </section>

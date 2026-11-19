@@ -90,22 +90,27 @@ function PCard({ it, b, fam, pick, onWait }) {
   )
 }
 
-export function Compare({ cm, pick, open }) {
+export function Compare({ cm, pick, open, plain }) {
   const hi = (c) => (c === pick ? 'is-pick' : undefined)
+  const table = (
+    <div className="pcmp-scroll">
+      <table>
+        <thead><tr><th><span className="sr-only">Recurso</span></th>{cm.cols.map((c) => <th key={c} scope="col" className={hi(c)}>{c}</th>)}</tr></thead>
+        {cm.sections.map((s) => (
+          <tbody key={s.title}>
+            <tr className="pcmp-sec"><th colSpan={cm.cols.length + 1}>{s.title}</th></tr>
+            {s.rows.map((r) => <tr key={r[0]}><th scope="row">{r[0]}</th>{r.slice(1).map((v, i) => <td key={i} className={hi(cm.cols[i])}><Cell v={v} /></td>)}</tr>)}
+          </tbody>
+        ))}
+      </table>
+    </div>
+  )
+  // plain: sem o abre/fecha próprio (quem controla é o botão de fora, ex.: na proposta)
+  if (plain) return <div className="pcmp is-plain"><p className="pcmp-title">Todas as funcionalidades</p>{table}</div>
   return (
     <details className="pcmp" open={open} onToggle={() => play('click')}>
       <summary>Comparar todas as funcionalidades</summary>
-      <div className="pcmp-scroll">
-        <table>
-          <thead><tr><th><span className="sr-only">Recurso</span></th>{cm.cols.map((c) => <th key={c} scope="col" className={hi(c)}>{c}</th>)}</tr></thead>
-          {cm.sections.map((s) => (
-            <tbody key={s.title}>
-              <tr className="pcmp-sec"><th colSpan={cm.cols.length + 1}>{s.title}</th></tr>
-              {s.rows.map((r) => <tr key={r[0]}><th scope="row">{r[0]}</th>{r.slice(1).map((v, i) => <td key={i} className={hi(cm.cols[i])}><Cell v={v} /></td>)}</tr>)}
-            </tbody>
-          ))}
-        </table>
-      </div>
+      {table}
     </details>
   )
 }
