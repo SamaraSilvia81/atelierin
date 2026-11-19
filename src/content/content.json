@@ -90,10 +90,11 @@
   },
   "what": {
     "label": "Nº 01 · o que é",
-    "statement": "O Atelierin é uma plataforma SaaS de [gestão] e [relacionamento] voltada a profissionais autônomos, pequenos negócios e empresas de pequeno e médio porte que precisam organizar suas operações e, quando necessário, oferecer uma experiência digital aos seus clientes.",
+    "statement": "O Atelierin é uma plataforma SaaS de [gestão] e [relacionamento] voltada a profissionais autônomos, pequenos negócios e empresas de pequeno e médio porte que precisam organizar suas operações e, quando necessário, oferecer uma [experiência digital] aos seus clientes.",
     "chips": {
       "gestão": "SquaresFour",
-      "relacionamento": "ChatsCircle"
+      "relacionamento": "ChatsCircle",
+      "experiência digital": "Devices"
     },
     "aside": "O posicionamento não é o de uma plataforma corporativa voltada a grandes empresas ou operações de grande porte. O foco está em profissionais e negócios que precisam de uma estrutura organizada, acessível e escalável, sem a complexidade e os custos normalmente associados a soluções empresariais de grande escala.",
     "segmentsLabel": "O produto contempla diferentes segmentos, como",
@@ -122,7 +123,34 @@
         "icon": "Storefront",
         "label": "Pequenos negócios com equipes e carteiras de clientes"
       }
-    ]
+    ],
+    "_variantes": "a = leitura acesa + carrossel de cards; b = arco de cards (estilo Havenly); c = editorial com cards variados. Troca pelo painel Teste A/B no yarn dev ou ?oquee=b na URL.",
+    "variant": "a",
+    "cardsC": [
+      {
+        "type": "segs",
+        "title": "Para quem"
+      },
+      {
+        "type": "families",
+        "n": "2",
+        "title": "famílias de planos",
+        "text": "Estrutura organiza o seu negócio por dentro. Relacionamento acrescenta um portal com login para os seus clientes."
+      },
+      {
+        "type": "address",
+        "big": "seunome.atelierin.com.br",
+        "text": "Um endereço seu, em todos os planos."
+      },
+      {
+        "type": "link",
+        "title": "Do tamanho do seu negócio",
+        "text": "Ver os planos",
+        "href": "/#planos"
+      }
+    ],
+    "carouselPrev": "Anterior",
+    "carouselNext": "Próximo"
   },
   "problem": {
     "label": "Nº 02 · retalhos",

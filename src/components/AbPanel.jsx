@@ -3,11 +3,9 @@ import { content } from '@/lib/content'
 import { setAb, useAb } from '@/lib/ab'
 
 // Painel flutuante para trocar as versões do teste A/B. Só no `yarn dev`.
+// Os testes antigos (faixa, fundador, selo e modal) eram do cliente fundador, que saiu.
 const TESTS = [
-  { key: 'faixa', label: 'Faixa do topo', def: () => content.founder?.announce?.style || 'fixa', options: [['fixa', 'Fixa'], ['fixa-mono', 'Fixa mono'], ['letreiro', 'Letreiro'], ['letreiro-mono', 'Letreiro mono']] },
-  { key: 'fundador', label: 'Fundador em Planos', def: () => content.founder?.planStyle || 'card', options: [['card', 'A · card'], ['dentro', 'B · dentro']] },
-  { key: 'selo', label: 'Selo do −20% no modal', def: () => content.founder?.modal?.badgeStyle || 'retro', options: [['retro', 'Retrô'], ['branco', 'Branco'], ['vidro', 'Vidro carmim']] },
-  { key: 'modal', label: 'Imagem do modal', def: () => content.founder?.modal?.imageStyle || 'foto', options: [['foto', 'Foto'], ['noir', 'Topo noir'], ['carmim', 'Topo carmim'], ['areia', 'Topo areia']] },
+  { key: 'oquee', label: 'Nº 01 · o que é', def: () => content.what?.variant || 'a', options: [['a', 'A · atual'], ['b', 'B · arco'], ['c', 'C · editorial']] },
 ]
 
 function Row({ t }) {
@@ -15,7 +13,7 @@ function Row({ t }) {
   return (
     <fieldset className="ab-row">
       <legend>{t.label}</legend>
-      <div>
+      <div className={t.options.length === 3 ? 'is-3' : undefined}>
         {t.options.map(([val, label]) => (
           <button key={val} type="button" aria-pressed={v === val} onClick={() => setAb(t.key, val)}>{label}</button>
         ))}
