@@ -156,12 +156,11 @@
         ],
         "theme": "light",
         "titleLines": [
-          "O seu",
-          "ambiente",
-          "mantido"
+          "O seu ambiente"
         ],
         "titleAccentLine": "por mim.",
-        "lead": "licença + manutenção"
+        "lead": "licença + manutenção",
+        "titleTail": "mantido"
       },
       {
         "kicker": "planos",
@@ -588,7 +587,8 @@
               "price": "+ R$ 550",
               "text": "Uma marca no lugar do monograma: logotipo, paleta, tipografia, mockups e duas rodadas de ajustes.",
               "totalLabel": "sob medida + logo",
-              "total": "R$ 1.800"
+              "total": "R$ 1.800",
+              "totalSub": "em até 5x de R$ 360"
             },
             {
               "name": "Landing page",
@@ -596,7 +596,8 @@
               "text": "Uma página completa para divulgar o seu trabalho, no mesmo estilo do seu ambiente.",
               "totalLabel": "pacote completo",
               "total": "R$ 3.000",
-              "hl": true
+              "hl": true,
+              "totalSub": "em até 5x de R$ 600"
             }
           ]
         },
@@ -692,7 +693,6 @@
           "Cancelamento com 30 dias e exportação dos dados",
           "Seus dados são seus; o sistema, inclusive o que for feito na implantação, e o subdomínio são do Atelierin"
         ],
-        "notice": "Trabalho com prazo combinado e respeito dos dois lados. Se a ideia é ter tudo pra ontem, eu não sou a pessoa certa, e tudo bem. Pressa costuma sair caro para quem pede e para quem faz.",
         "points": [],
         "theme": "dark",
         "lead": "como a gente trabalha",
@@ -701,8 +701,19 @@
           "contrato assinado."
         ],
         "meetingsTitle": "reuniões",
-        "contractTitle": "O que ele garante",
-        "noticeTitle": "Sem pressa"
+        "contractTitle": "O que ele garante"
+      },
+      {
+        "kicker": "sem pressa",
+        "interlude": true,
+        "theme": "light",
+        "title": "Sem pressa.",
+        "accent": "pressa.",
+        "deco": [
+          "tape",
+          "mark"
+        ],
+        "lede": "Trabalho com prazo combinado e respeito dos dois lados. Se a ideia é ter tudo pra ontem, eu não sou a pessoa certa, e tudo bem. Pressa costuma sair caro para quem pede e para quem faz."
       },
       {
         "kicker": "se quiser sair",

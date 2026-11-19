@@ -2906,3 +2906,23 @@ h1, h2, h3, p { margin: 0; }
 .slide-contrato .ct-notice p { font-size: clamp(18px, 1.5vw, 21px); max-width: 64ch; }
 .slide.slide-dk.slide-sair { padding-top: clamp(84px, 12vh, 136px); }
 .slide-sair .dk-frame { margin-bottom: clamp(84px, 12vh, 136px); }
+/* 19/11 · rodada 2 */
+.page-proposal { --t-kick: clamp(13px, 1vw, 15px); }
+.pn-kick, .fp-sub { font-size: var(--t-kick); }
+.fp-sub { margin-bottom: -4px; }
+.page-proposal .slide-menu .pn-title { font-size: clamp(68px, 6.6vw, 120px); }
+.slide-menu .pn-body { align-content: start; padding-top: clamp(56px, 8vh, 88px); }
+.slide-menu .mn-panel { justify-content: flex-start; padding-top: calc(36px + 44px + clamp(56px, 8vh, 88px)); }
+.page-proposal .mn-rows p { font-size: clamp(16.5px, 1.35vw, 19px); }
+.slide-escada .es-frame { padding-bottom: 0; }
+.slide-escada .es-foot { margin-top: clamp(48px, 7vh, 80px); padding-bottom: clamp(36px, 5vh, 56px); }
+.page-proposal .sd-inpi { font-size: clamp(16px, 1.3vw, 18.5px); }
+.page-proposal .sd-add p { font-size: clamp(16.5px, 1.35vw, 19px); }
+.page-proposal .sd-add strong { font-size: clamp(42px, 3.6vw, 58px); }
+.page-proposal .sd-add-tot { font-size: 13px; }
+.page-proposal .sd-add-tot b { display: grid; justify-items: end; font-size: clamp(32px, 2.6vw, 42px); }
+.sd-add-tot b small { margin-top: 6px; font: 500 11.5px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+.interlude-lede { max-width: 58ch; margin-top: -6px; font-size: clamp(19px, 1.6vw, 23px); line-height: 1.6; color: var(--text-sub); }
+.slide-interlude[data-theme="light"] .interlude-t em { color: var(--acc); }
+/* paginador: agora fica no body, ao lado do "topo" */
+.pager { position: fixed; right: 132px; bottom: 24px; }

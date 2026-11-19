@@ -5,6 +5,7 @@ import PageHead from '@/pages/PageHead'
 import FlowMap from '@/components/FlowMap'
 import OfferPicker, { ClientCtx } from '@/components/OfferPicker'
 import DealBuilder from '@/components/DealBuilder'
+import { createPortal } from 'react-dom'
 import { useState as useLocalState } from 'react'
 
 // Proposta comercial em "slides" que se lê rolando. Cada slide tem um
@@ -30,6 +31,7 @@ function Interlude({ s, n, total }) {
       <div className="wrap interlude" data-reveal>
         <span className="interlude-k"><b>{n}</b>/{total} · {s.kicker}</span>
         <h2 className="interlude-t">{a}{s.accent && <em>{s.accent}</em>}{b}</h2>
+        {s.lede && <p className="interlude-lede">{s.lede}</p>}
         <CaretDoubleDown className="interlude-down" size={22} aria-hidden="true" />
         {s.text && <aside className="bilhete is-hanging interlude-note"><i className="bilhete-linha" aria-hidden="true" /><p>{s.text}</p></aside>}
       </div>
@@ -131,8 +133,8 @@ function PlansSlide({ s, n, total, theme }) {
       <div className="wrap fp-grid" data-reveal>
         <div className="fp-text">
           {s.lead && <p className="pn-kick">› {s.lead}</p>}
-          <div className="fp-title"><h2 className="display" style={{ '--len': s.title.length }}>{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
           {s.subtitle && <p className="fp-sub">{s.subtitle}</p>}
+          <div className="fp-title"><h2 className="display" style={{ '--len': s.title.length }}>{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
           {[].concat(s.text ?? []).map((t) => <p key={t} className="fp-p">{t}</p>)}
           {s.sample && (
             <div className="fp-sample">
@@ -228,7 +230,7 @@ function PanelsSlide({ s, n, total }) {
         <div className="pn-rule" aria-hidden="true">{Array.from({ length: 46 }, (_, i) => <i key={i} />)}</div>
         <div className="pn-body">
           {s.lead && <p className="pn-kick">› {s.lead}</p>}
-          <h2 className="display pn-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}<em>{s.titleAccentLine}</em></h2>
+          <h2 className="display pn-title">{s.titleLines.map((l) => <span key={l}>{l}</span>)}{s.titleTail ? <span>{s.titleTail} <em>{s.titleAccentLine}</em></span> : <em>{s.titleAccentLine}</em>}</h2>
           {s.tag && <span className="s-title-tag pn-tag">{s.tag}</span>}
           {[].concat(s.text ?? []).map((t) => <p key={t} className="pn-p">{t}</p>)}
           {s.footnote && <p className="slide-foot"><Warning className="slide-foot-ic" size={24} aria-hidden="true" /><span>{s.footnote}</span></p>}
@@ -297,7 +299,6 @@ function EscadaSlide({ s, n, total }) {
     <section id={`slide-${Number(n)}`} data-theme="dark" className="section slide slide-escada">
       <div className="es-frame">
         <div className="pn-top"><span><b>{n}</b> / {total} — {s.kicker}</span><span>proposta comercial</span></div>
-        <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
       </div>
       <div className="es-left" data-reveal>
         {s.lead && <p className="pn-kick">› {s.lead}</p>}
@@ -345,7 +346,7 @@ function SobDetalhe({ s, n, total }) {
               <div key={x.name} className={`sd-add ${x.hl ? 'is-hl' : ''}`}>
                 <div className="sd-add-row"><h4>{x.name}</h4><strong>{x.price}</strong></div>
                 <p>{x.text}</p>
-                <div className="sd-add-tot"><span>{x.totalLabel}</span><b>{x.total}</b></div>
+                <div className="sd-add-tot"><span>{x.totalLabel}</span><b>{x.total}{x.totalSub && <small>{x.totalSub}</small>}</b></div>
               </div>
             ))}
             {s.inpi && <p className="sd-inpi">{s.inpi}{s.inpiLink && <> <a href={s.inpiLink.href} target="_blank" rel="noreferrer">{s.inpiLink.label} ↗</a></>}</p>}
@@ -817,7 +818,7 @@ function SlidePager({ slides, total }) {
     document.getElementById(`slide-${n}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
   const max = slides.length
-  return (
+  return createPortal(
     <div className="pager">
       {open && (
         <ol className="pager-list">
@@ -832,7 +833,8 @@ function SlidePager({ slides, total }) {
         <b>{String(cur).padStart(2, '0')}</b><span>/ {total}</span>
       </button>
       <button type="button" className="pager-arrow" aria-label="Próxima tela" disabled={cur >= max} onClick={() => go(cur + 1)}><CaretDown size={14} aria-hidden="true" /></button>
-    </div>
+    </div>,
+    document.body,
   )
 }
 
