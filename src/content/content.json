@@ -577,10 +577,10 @@
     "lede": "Cada linha é uma peça pensada para um tipo de profissional. A School já está em uso; as outras chegam conforme a demanda."
   },
   "custom": {
-    "piece": "Nº 05 · Sob medida",
-    "title": "A marca é",
-    "titleAccent": "sua",
-    "lede": "Seu aluno ou cliente vê você, não a plataforma. Cores, fontes, logo e até o jeito da tela de entrada mudam com a sua identidade. O Atelierin só aparece pequeno, no rodapé.",
+    "piece": "Nº 05 · serviço opcional",
+    "title": "Sob",
+    "titleAccent": "medida",
+    "lede": "Os planos já vêm com o seu nome e logo. Se você quer o ambiente inteiro com a sua cara, o Sob medida leva o seu estilo para todas as telas, a tela de entrada e os e-mails. É opcional, pago uma vez e vale para qualquer plano.",
     "showcase": {
       "label": "estilos de login",
       "note": "Três dos estilos que já desenhei. O seu sai da sua marca.",
@@ -610,6 +610,33 @@
           "slug": "lente"
         }
       ]
+    },
+    "pricing": {
+      "label": "Serviço opcional · pagamento único",
+      "steps": [
+        {
+          "name": "Sob medida",
+          "text": "estilo, marca e e-mails · em até 5x de R$ 250",
+          "price": "R$ 1.250"
+        },
+        {
+          "name": "+ Logo de verdade",
+          "text": "logotipo, paleta, tipografia e mockups",
+          "price": "+ R$ 550",
+          "total": "total R$ 1.800"
+        },
+        {
+          "name": "+ Landing page",
+          "text": "página completa, no mesmo estilo",
+          "price": "+ R$ 1.200",
+          "total": "total R$ 3.000"
+        }
+      ],
+      "note": "Registro de marca no INPI à parte: a taxa é paga por você, e eu posso cuidar do pedido.",
+      "cta": {
+        "label": "Ver na proposta",
+        "href": "/proposta"
+      }
     }
   },
   "plans": {
@@ -1552,34 +1579,6 @@
           ]
         }
       }
-    },
-    "custom": {
-      "line": "Serviço opcional · pagamento único",
-      "name": "Sob medida",
-      "for": "Seu estilo em cada detalhe: direcionamento visual, sua marca (ou um monograma) em todas as telas e e-mails com a sua cara. Vale para qualquer plano.",
-      "cta": {
-        "label": "Ver na proposta",
-        "href": "/proposta"
-      },
-      "steps": [
-        {
-          "name": "Sob medida",
-          "text": "estilo, marca e e-mails · em até 5x de R$ 250",
-          "price": "R$ 1.250"
-        },
-        {
-          "name": "+ Logo de verdade",
-          "text": "logotipo, paleta, tipografia e mockups",
-          "price": "+ R$ 550",
-          "total": "total R$ 1.800"
-        },
-        {
-          "name": "+ Landing page",
-          "text": "página completa, no mesmo estilo",
-          "price": "+ R$ 1.200",
-          "total": "total R$ 3.000"
-        }
-      ]
     },
     "billing": [
       {

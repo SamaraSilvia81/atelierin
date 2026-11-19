@@ -214,7 +214,6 @@ export default function Plans() {
   const [bid, setBid] = useState('anual')
   const b = p.billing.find((x) => x.id === bid)
   const cur = p.tabs.find((x) => x.id === tab)
-  const c = p.custom
 
   return (
     <section id="planos" data-theme="light" className="section plans-sec" aria-labelledby="planos-t">
@@ -235,22 +234,7 @@ export default function Plans() {
 
         {p.video && <p className="plans-video" data-reveal>{p.video}</p>}
 
-        <div className="plans-sob" data-reveal>
-          <div>
-            <p className="plans-sob-k">{c.line}</p>
-            <h3 className="display">{c.name}</h3>
-            <p>{c.for}</p>
-            {c.cta && <a href={c.cta.href} className="plans-sob-cta" onClick={() => play('click')}>{c.cta.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></a>}
-          </div>
-          <ol className="plans-sob-steps">
-            {c.steps.map((s) => (
-              <li key={s.name}>
-                <div><b>{s.name}</b><span>{s.text}</span></div>
-                <div><strong>{s.price}</strong>{s.total && <small>{s.total}</small>}</div>
-              </li>
-            ))}
-          </ol>
-        </div>
+        {/* o Sob medida saiu daqui: agora é a seção própria (sections/Custom.jsx) */}
 
         {/* "Sua área ainda não tem linha": escondido por enquanto, a UI vai ser refeita
         {p.items.map((it) => (
