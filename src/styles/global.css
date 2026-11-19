@@ -185,7 +185,9 @@ h1, h2, h3, p { margin: 0; }
 .h-fade {
   background: linear-gradient(100deg, var(--palette-osso) 0 28%, #D9D2CC 50%, #A99F9A 72%, rgba(240,237,232,.55) 100%); /* efeito prata */
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding-top: .14em; margin-top: -.14em; /* o fundo cobre o acento de NEGÓCIO, senão ele some */
 }
+.h-title span { text-wrap: balance; }
 .badge b { color: var(--palette-osso); font-weight: 700; }
 .h-lede { max-width: max(440px, 36cqw); margin-inline: auto; text-wrap: balance; font: 400 max(14px, 1.08cqw)/1.5 var(--font-body); color: rgba(240,237,232,.82); }
 
@@ -241,19 +243,30 @@ h1, h2, h3, p { margin: 0; }
 .edit-panel button.ghost { background: none; color: var(--palette-osso); border: 1px solid var(--border); }
 
 /* telas em pé ou estreitas: blocos saem do monitor e empilham no centro */
-@media (max-aspect-ratio: 11/10), (max-width: 760px) {
+@media (max-aspect-ratio: 11/10), (max-width: 760px), (orientation: landscape) and (max-height: 560px) {
   .hero-desk::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(8,6,6,.55), rgba(8,6,6,.3) 40%, rgba(8,6,6,.85)); }
   .stage-ui { inset: 0; left: 0; top: 0; width: auto; transform: none; z-index: 2; container-type: normal; aspect-ratio: auto; }
   .screen { left: 0; top: 0; width: 100%; height: 100%; padding: 96px 20px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
-  .el { position: static; transform: none; width: 100%; max-width: 460px; }
-  .h-lede { max-width: 34ch; }
-  .badge { font-size: 10px; letter-spacing: .1em; padding: 7px 10px; }
-  .h-title { font-size: clamp(52px, 15vw, 96px); }
+  .el { position: static; transform: none; width: 100%; max-width: 560px; }
+  .el-title { max-width: 720px; }
+  .h-lede { max-width: 40ch; }
+  .badge { font-size: clamp(9px, 2.4vw, 11px); letter-spacing: .06em; padding: 7px 10px; white-space: nowrap; }
+  .h-title { font-size: clamp(44px, 12vw, 84px); }
   .h-lede { font-size: 16px; }
   .address { width: 100%; }
   .address-field { font-size: 13px; }
   .address-prompt { width: 36px; }
   .address button { height: 42px; padding: 0 14px; font-size: 11px; }
+}
+/* celular deitado: pouca altura, então tudo encolhe e a página pode rolar */
+@media (orientation: landscape) and (max-height: 560px) {
+  .hero-desk { height: auto; min-height: calc(100svh / var(--z)); }
+  .stage-ui { position: relative; }
+  .screen { position: relative; height: auto; min-height: calc(100svh / var(--z)); padding: 80px 32px 24px; gap: 10px; }
+  .el { max-width: 640px; }
+  .h-title { font-size: clamp(30px, 10svh, 52px); }
+  .h-lede { font-size: 14px; max-width: 60ch; }
+  .address { max-width: 480px; }
 }
 @media (max-width: 420px) {
   .address { flex-direction: column; align-items: stretch; padding: 12px; gap: 12px; }
