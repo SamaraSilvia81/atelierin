@@ -16,7 +16,7 @@ import Footer from '@/sections/Footer'
 import BackToTop from '@/components/BackToTop'
 import ExitStage from '@/components/ExitStage'
 import { PromoBar, PromoModal } from '@/components/Promo'
-// import AbPanel from '@/components/AbPanel' // teste A/B escondido por enquanto
+import AbPanel from '@/components/AbPanel' // teste A/B da abertura dos retalhos (só no yarn dev)
 import DevPen from '@/components/DevPen'
 import About from '@/pages/About'
 import Proposal from '@/pages/Proposal'
@@ -67,7 +67,7 @@ export default function App() {
       <Footer />
       <BackToTop />
       <PromoModal hidden={!!client || path === '/fundador'} />
-      {/* {!client && <AbPanel />} */}
+      {!client && <AbPanel />}
       {import.meta.env.DEV && <DevPen />}
     </>
   )

@@ -6,6 +6,7 @@ import {
 import { content } from '@/lib/content'
 import { useScrollProgress } from '@/lib/useScrollProgress'
 import { play } from '@/lib/sounds'
+import { useAb } from '@/lib/ab'
 import Stitch from '@/components/Stitch'
 
 // Ícones disponíveis para problem.chips em content.json
@@ -162,6 +163,13 @@ function TypedLine({ text }) {
 export default function Problem() {
   const p = content.problem
   const tokens = tokenize(p.statement)
+  // abertura em teste A/B (?retalhos=a|b|c): a · frase acesa; b · como "A marca é sua"; c · como "Como funciona"
+  const head = useAb('retalhos', p.headStyle || 'a')
+  const headFirst = useRef(true)
+  useEffect(() => { // ao trocar de versão, o bloco novo já entra visível
+    if (headFirst.current) { headFirst.current = false; return }
+    document.querySelectorAll('#problema .problem-top [data-reveal], #problema .rhead').forEach((el) => el.classList.add('is-in'))
+  }, [head])
   const [ref, progress] = useScrollProgress()
   const lit = Math.ceil(progress * tokens.length)
   const [filter, setFilter] = useState('todos')
@@ -244,6 +252,7 @@ export default function Problem() {
   return (
     <section id="problema" data-theme="dark" className="section problem" aria-labelledby="problema-t">
       <div className="wrap">
+        {head === 'a' ? (
         <div className="problem-top">
           <p className="label" data-reveal><b aria-hidden="true">&gt;</b> {p.label}</p>
           <h2 id="problema-t" ref={ref} className="statement">
@@ -260,6 +269,24 @@ export default function Problem() {
           </h2>
           <p className="problem-aside" data-reveal>{p.aside}</p>
         </div>
+        ) : (
+        <header className={`rhead rhead-${head}`} data-reveal>
+          <div>
+            <p className="label"><b aria-hidden="true">&gt;</b> {p.label}</p>
+            <h2 id="problema-t" className="display">{p.title} <em>{p.titleAccent}</em></h2>
+          </div>
+          <div className="rhead-copy">
+            <p className="lede rlede">
+              {tokenize(p.lede).map((t, i) => {
+                if (t.word) return <span key={i}>{t.word} </span>
+                const Icon = ICONS[p.chips[t.chip]] ?? Circle
+                return <span key={i} className="chip-wrap"><span className="chip"><Icon size="0.9em" aria-hidden="true" />{t.chip}</span>{t.tail} </span>
+              })}
+            </p>
+            <p className="rhead-note">{p.aside}</p>
+          </div>
+        </header>
+        )}
 
         <div className="gdemo" ref={area}>
         <span className={`gcursor ${cursor.on ? 'is-on' : ''}`} style={{ '--x': `${cursor.x}px`, '--y': `${cursor.y}px` }} aria-hidden="true">

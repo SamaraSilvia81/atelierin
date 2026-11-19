@@ -5,7 +5,7 @@ import { setAb, useAb } from '@/lib/ab'
 // Painel flutuante para trocar as versões do teste A/B. Só no `yarn dev`.
 // Os testes antigos (faixa, fundador, selo e modal) eram do cliente fundador, que saiu.
 const TESTS = [
-  { key: 'oquee', label: 'Nº 01 · o que é', def: () => content.what?.variant || 'a', options: [['a', 'A · atual'], ['b', 'B · arco'], ['c', 'C · editorial']] },
+  { key: 'retalhos', label: 'Nº 02 · abertura dos retalhos', def: () => content.problem?.headStyle || 'a', options: [['a', 'A · atual'], ['b', 'B · marca'], ['c', 'C · como funciona']] },
 ]
 
 function Row({ t }) {

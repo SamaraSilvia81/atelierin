@@ -333,6 +333,22 @@ h1, h2, h3, p { margin: 0; }
 .wa-card.is-acc small, .wa-card.is-acc svg { color: rgba(240,237,232,.8); }
 
 
+/* retalhos · aberturas B e C do teste A/B */
+.rhead { display: grid; gap: 24px 64px; }
+.rhead > div:first-child { display: grid; gap: 18px; }
+.rhead .display { font-size: clamp(56px, 8vw, var(--display-xl)); max-width: 11ch; }
+.rhead-copy { display: grid; gap: 18px; }
+.rlede { color: var(--text-sub); line-height: 1.6; }
+.rlede .chip { display: inline-flex; align-items: center; gap: .3em; vertical-align: .08em; padding: .1em .45em; border-radius: 2px; font: 400 .82em/1.2 var(--font-mono); background: rgba(192,33,28,.16); border: 1px solid rgba(229,86,75,.45); color: var(--palette-osso); }
+.rlede .chip svg { color: var(--palette-brasa); }
+.rhead-note { font-size: var(--text-sm); color: var(--text-muted); border-left: 1px solid var(--border); padding-left: 16px; max-width: 40ch; }
+/* B · igual a "A marca é sua": título à esquerda, texto à direita, alinhados pela base */
+.rhead-b { grid-template-columns: 1fr 1fr; align-items: end; }
+.rhead-b .rhead-copy { justify-self: end; max-width: 46ch; }
+/* C · igual a "Como funciona": tudo empilhado à esquerda */
+.rhead-c .rhead-copy { max-width: 54ch; }
+@media (max-width: 900px) { .rhead-b { grid-template-columns: 1fr; } .rhead-b .rhead-copy { justify-self: start; } }
+
 /* filtros e cards no desenho do Atelier.sh (raio 2px/4px, mono, barra de status) */
 .pfilters { margin-top: clamp(120px, 15vw, 200px); border-bottom: 1px solid var(--border); }
 .pfilters-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; }
