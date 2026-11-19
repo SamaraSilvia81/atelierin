@@ -1,5 +1,5 @@
-import { Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning, CaretDoubleDown, UserCircle, Key, LockSimple } from '@phosphor-icons/react'
-import { useState } from 'react'
+import { CaretUp, CaretDown, Check, X, ArrowUpRight, WhatsappLogo, Info, Clock, FileText, UsersThree, CheckCircle, Warning, CaretDoubleDown, UserCircle, Key, LockSimple } from '@phosphor-icons/react'
+import { useEffect, useState } from 'react'
 import { content, whatsappHref } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
 import FlowMap from '@/components/FlowMap'
@@ -794,6 +794,49 @@ function withClient(slides, client) {
   return out
 }
 
+// Paginador de slides: fica ao lado do botão "topo", mostra em que tela você está
+// (07 / 13 · cobrança), com setas para a anterior e a próxima e a lista de todas
+function SlidePager({ slides, total }) {
+  const [cur, setCur] = useState(0)
+  const [open, setOpen] = useState(false)
+  useEffect(() => {
+    const els = slides.map((_, i) => document.getElementById(`slide-${i + 1}`)).filter(Boolean)
+    const onScroll = () => {
+      const mid = window.innerHeight * 0.45
+      let at = 0
+      els.forEach((el) => { if (el.getBoundingClientRect().top <= mid) at = Number(el.id.slice(6)) })
+      setCur(at)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [slides])
+  const go = (n) => {
+    setOpen(false)
+    if (n <= 0) { window.scrollTo({ top: 0, behavior: 'smooth' }); return }
+    document.getElementById(`slide-${n}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+  const max = slides.length
+  const label = cur ? slides[cur - 1].kicker : 'capa'
+  return (
+    <div className="pager">
+      {open && (
+        <ol className="pager-list">
+          <li><button type="button" className={cur === 0 ? 'is-on' : ''} onClick={() => go(0)}><b>00</b>capa</button></li>
+          {slides.map((s, i) => (
+            <li key={s.kicker}><button type="button" className={cur === i + 1 ? 'is-on' : ''} onClick={() => go(i + 1)}><b>{String(i + 1).padStart(2, '0')}</b>{s.kicker}</button></li>
+          ))}
+        </ol>
+      )}
+      <button type="button" className="pager-arrow" aria-label="Tela anterior" disabled={cur === 0} onClick={() => go(cur - 1)}><CaretUp size={14} aria-hidden="true" /></button>
+      <button type="button" className="pager-now" aria-expanded={open} aria-label="Ver todas as telas" onClick={() => setOpen((v) => !v)}>
+        <b>{String(cur).padStart(2, '0')}</b><span>/ {total}</span><em>{label}</em>
+      </button>
+      <button type="button" className="pager-arrow" aria-label="Próxima tela" disabled={cur >= max} onClick={() => go(cur + 1)}><CaretDown size={14} aria-hidden="true" /></button>
+    </div>
+  )
+}
+
 export default function Proposal({ client, slug }) {
   const base = content.pages.proposal
   const p = client ? { ...base, title: client.title ?? base.title, titleAccent: client.titleAccent ?? base.titleAccent, lede: client.lede ?? base.lede } : base
@@ -885,6 +928,7 @@ export default function Proposal({ client, slug }) {
           </section>
         )
       })}
+      <SlidePager slides={numbered} total={total} />
     </div>
     </ClientCtx.Provider>
   )
