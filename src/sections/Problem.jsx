@@ -246,16 +246,7 @@ export default function Problem() {
             <p className="label"><b aria-hidden="true">&gt;</b> {p.label}</p>
             <h2 id="problema-t" className="display">{p.title}<br />{p.title2} <em>{p.titleAccent}</em></h2>
           </div>
-          <div className="rhead-copy">
-            <p className="lede rlede">
-              {tokenize(p.statement).map((t, i) => {
-                if (t.word) return <span key={i}>{t.word} </span>
-                const Icon = ICONS[p.chips[t.chip]] ?? Circle
-                return <span key={i} className="chip-wrap"><span className="chip"><Icon size="0.9em" aria-hidden="true" />{t.chip}</span>{t.tail} </span>
-              })}
-            </p>
-            <p className="rhead-note">{p.aside}</p>
-          </div>
+          <p className="lede rlede">{p.statement.replace(/[[\]]/g, '')}</p>
         </header>
 
         <div className="gdemo" ref={area}>
