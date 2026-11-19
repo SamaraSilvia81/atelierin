@@ -259,7 +259,6 @@ export default function Problem() {
             })}
           </h2>
           <p className="problem-aside" data-reveal>{p.aside}</p>
-          {p.note && <p className="problem-aside problem-note" data-reveal>{p.note}</p>}
         </div>
 
         <div className="gdemo" ref={area}>

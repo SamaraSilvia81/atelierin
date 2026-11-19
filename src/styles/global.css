@@ -278,8 +278,8 @@ h1, h2, h3, p { margin: 0; }
 
 /* ---------- problema: retalhos ---------- */
 .problem { background: var(--bg); padding-block: clamp(110px, 14vw, 180px); z-index: 3; }
-.problem::before { /* brilho crimson vindo do hero */
-  content: ""; position: absolute; left: 50%; top: -240px; width: 900px; height: 480px; transform: translateX(-50%);
+.problem::before { /* brilho agora mora no Nº 01 (.what::before) */
+  display: none; content: ""; position: absolute; left: 50%; top: -240px; width: 900px; height: 480px; transform: translateX(-50%);
   background: radial-gradient(closest-side, rgba(192,33,28,.14), transparent 75%); pointer-events: none;
 }
 .label { font: 500 var(--text-xs)/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); }
@@ -304,14 +304,22 @@ h1, h2, h3, p { margin: 0; }
 .statement .chip svg { color: var(--palette-brasa); opacity: .4; transition: opacity .35s; }
 .statement .chip.is-lit svg { opacity: 1; }
 .problem-aside { grid-column: 2; justify-self: end; max-width: 34ch; font-size: var(--text-sm); color: var(--text-muted); border-left: 1px solid var(--border); padding-left: 16px; }
-.problem-note { margin-top: -8px; }
-
-/* ---------- Nº 01 · o que é ---------- */
-.what { padding-block: clamp(72px, 9vw, 120px) 0; }
-.what-top { display: grid; grid-template-columns: 180px 1fr; gap: 24px 48px; align-items: start; }
-.what-top .label { padding-top: 12px; }
-.what-text { font: 400 clamp(22px, 2.5vw, 36px)/1.35 var(--font-body); letter-spacing: -.02em; max-width: 36ch; text-wrap: pretty; color: var(--palette-osso); }
-@media (max-width: 760px) { .what-top { grid-template-columns: 1fr; } .what-top .label { padding-top: 0; } }
+/* ---------- Nº 01 · o que é: mesma leitura acesa por rolagem dos retalhos ---------- */
+.what { padding-block: clamp(110px, 14vw, 180px) 0; z-index: 3; }
+.what::before { /* brilho crimson vindo do hero (antes ficava nos retalhos) */
+  content: ""; position: absolute; left: 50%; top: -240px; width: 900px; height: 480px; transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(192,33,28,.14), transparent 75%); pointer-events: none;
+}
+.what .statement { font-size: clamp(24px, 2.7vw, 38px); max-width: 34ch; }
+.what-segs { grid-column: 2; margin-top: clamp(48px, 6vw, 80px); }
+.what-segs .label { display: block; margin-bottom: 18px; }
+.what-segs ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(240,237,232,.22); border-left: 1px solid rgba(240,237,232,.22); }
+.what-segs li { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; align-items: start; padding: 18px 20px; border-right: 1px solid rgba(240,237,232,.22); border-bottom: 1px solid rgba(240,237,232,.22); font-size: var(--text-sm); color: var(--palette-osso); }
+.what-segs li small { grid-column: 1 / -1; font: 500 var(--text-xs)/1 var(--font-mono); letter-spacing: .14em; color: var(--text-muted); }
+.what-segs li svg { color: var(--palette-brasa); margin-top: 2px; }
+@media (max-width: 1080px) { .what-segs ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .what-segs { grid-column: 1; } }
+@media (max-width: 420px) { .what-segs ul { grid-template-columns: 1fr; } }
 
 /* filtros e cards no desenho do Atelier.sh (raio 2px/4px, mono, barra de status) */
 .pfilters { margin-top: clamp(120px, 15vw, 200px); border-bottom: 1px solid var(--border); }

@@ -90,7 +90,39 @@
   },
   "what": {
     "label": "Nº 01 · o que é",
-    "text": "O Atelierin é uma plataforma SaaS de gestão e relacionamento voltada a profissionais autônomos, pequenos negócios e empresas de pequeno e médio porte que precisam organizar suas operações e, quando necessário, oferecer uma experiência digital aos seus clientes."
+    "statement": "O Atelierin é uma plataforma SaaS de [gestão] e [relacionamento] voltada a profissionais autônomos, pequenos negócios e empresas de pequeno e médio porte que precisam organizar suas operações e, quando necessário, oferecer uma experiência digital aos seus clientes.",
+    "chips": {
+      "gestão": "SquaresFour",
+      "relacionamento": "ChatsCircle"
+    },
+    "aside": "O posicionamento não é o de uma plataforma corporativa voltada a grandes empresas ou operações de grande porte. O foco está em profissionais e negócios que precisam de uma estrutura organizada, acessível e escalável, sem a complexidade e os custos normalmente associados a soluções empresariais de grande escala.",
+    "segmentsLabel": "O produto contempla diferentes segmentos, como",
+    "segments": [
+      {
+        "icon": "GraduationCap",
+        "label": "Professores particulares e profissionais da educação"
+      },
+      {
+        "icon": "Stethoscope",
+        "label": "Clínicas e consultórios"
+      },
+      {
+        "icon": "Door",
+        "label": "Estúdios e espaços de atendimento"
+      },
+      {
+        "icon": "Briefcase",
+        "label": "Agências e pequenas empresas de serviços"
+      },
+      {
+        "icon": "UserCircle",
+        "label": "Profissionais autônomos"
+      },
+      {
+        "icon": "Storefront",
+        "label": "Pequenos negócios com equipes e carteiras de clientes"
+      }
+    ]
   },
   "problem": {
     "label": "Nº 02 · retalhos",
@@ -364,8 +396,7 @@
       "href": "#como-funciona"
     },
     "host": "maria.atelierin.com.br",
-    "cardsIntro": "No ambiente da Maria, professora de teclado, cada retalho vira um módulo. Clique num card para ver por dentro.",
-    "note": "E não, você não precisa largar o WhatsApp. O chat dentro do Atelierin é opcional e não custa nada a mais, só liga se quiser. Se preferir continuar conversando por lá, o Atelierin pode mandar os avisos (cobrança, aula, material novo) direto no WhatsApp dos seus clientes."
+    "cardsIntro": "No ambiente da Maria, professora de teclado, cada retalho vira um módulo. Clique num card para ver por dentro."
   },
   "how": {
     "label": "Nº 03 · o molde",
