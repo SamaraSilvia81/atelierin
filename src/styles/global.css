@@ -788,6 +788,10 @@ h1, h2, h3, p { margin: 0; }
 .bridge-tape i:nth-child(5n + 1) { height: 12px; }
 .bridge-label { font: 500 12.5px/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); }
 .bridge-label b { color: var(--acc); }
+/* aviso do Sob medida logo depois do passo a passo */
+.steps-sm { margin: clamp(40px, 5vw, 64px) auto 0; width: fit-content; max-width: 100%; padding: 14px 20px; border: 1px solid var(--text); border-radius: 2px; font-size: var(--text-md); color: var(--text); text-align: center; }
+.steps-sm a { display: inline-flex; align-items: center; gap: 6px; margin-left: 4px; font: 500 var(--text-xs)/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); text-decoration: none; }
+.steps-sm a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .bridge p { max-width: 16ch; font: 400 clamp(44px, 6vw, 88px)/.95 var(--font-display); text-transform: uppercase; }
 .bridge p em { font-style: normal; color: var(--acc); }
 .bridge .bridge-link { margin-top: 10px; }

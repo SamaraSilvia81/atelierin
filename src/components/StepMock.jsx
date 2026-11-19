@@ -72,7 +72,7 @@ function Conversa() {
         {pdf && (
           <div className="sm-msg me sm-file">
             <FilePdf size={26} weight="duotone" />
-            <div><strong>proposta-maestro.pdf</strong><small>escopo · módulos · prazo</small><i className={pdfDone ? 'done' : ''}><em /></i></div>
+            <div><strong>proposta-maestro.pdf</strong><small>família · plano · módulos</small><i className={pdfDone ? 'done' : ''}><em /></i></div>
           </div>
         )}
       </div>
@@ -167,6 +167,26 @@ function Ajuste() {
   )
 }
 
+/* 03 · Cadastro: implantação assistida, alunos entrando um a um na chamada */
+const ALUNOS = ['Ana Luiza', 'Bruno Reis', 'Carla Dias', 'Diego Alves']
+function Cadastro() {
+  const s = useScenes([500, 600, 600, 600, 600, 900])
+  const done = Math.min(ALUNOS.length, s)
+  return (
+    <div className="sm sm-panel sm-ajuste">
+      <div className="sm-row"><span className="sm-k">implantação assistida · chamada gravada</span><span className="sm-mono"><b>{done}</b>/20 cadastrados</span></div>
+      {ALUNOS.map((n, i) => (
+        <p key={n} className={`sm-note ${i < done ? 'done' : ''}`}>
+          <span className="sm-who">aluno</span>
+          <span className="sm-note-t">{n}</span>
+          <span className="sm-state">{i < done ? <Check size={13} weight="bold" /> : i === done ? <CircleNotch size={13} className="sm-spin" /> : null}</span>
+        </p>
+      ))}
+      <div className="sm-bar"><em style={{ transform: `scaleX(${done / 20})` }} /></div>
+    </div>
+  )
+}
+
 /* 05 · No ar: publicação estilo terminal e convites saindo */
 const DEPLOY = ['publicando maestro.atelierin.com.br', 'certificado de segurança ativo', 'endereço apontado', 'ambiente no ar']
 const INVITES = ['Ana Luiza', 'Bruno', 'Carla', 'Diego']
@@ -201,5 +221,6 @@ export default function StepMock({ kind }) {
   if (kind === 'molde') return <Molde />
   if (kind === 'prova') return <Prova />
   if (kind === 'ajuste') return <Ajuste />
+  if (kind === 'cadastro') return <Cadastro />
   return <NoAr />
 }

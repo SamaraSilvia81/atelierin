@@ -415,7 +415,7 @@
         "kicker": "vem em todo ambiente",
         "text": "A base que todo ambiente tem: quem entra, como entra e com qual cara.",
         "items": [
-          "Sua marca, cores e logo",
+          "Seu nome e logo",
           "Endereço seunome.atelierin.com.br",
           "Alunos e clientes por convite",
           "Papéis: você, equipe e quem você atende"
@@ -442,9 +442,9 @@
         "text": "Combinações prontas de módulos para cada tipo de profissional, já com o vocabulário certo.",
         "items": [
           "Aluno ou cliente, aula ou sessão",
-          "School, Consult, Fit, Studio, Care",
+          "School, Fit, Studio, Care, Consult e Gestão",
           "Modelos por especialidade",
-          "Ajuste fino na implantação"
+          "Estilo próprio no Sob medida"
         ],
         "tag": "Camada 03"
       }
@@ -502,49 +502,39 @@
           "actors": [
             "nos"
           ],
-          "text": "Uma conversa para entender como você trabalha hoje: quem você atende, o que ensina ou entrega, como cobra e o que mais toma o seu tempo.",
-          "deliverable": "proposta com escopo, módulos e prazo",
+          "text": "Entendemos como você trabalha hoje (quem você atende, como cobra, o que mais toma o seu tempo) e escolhemos juntos a família e o plano.",
+          "deliverable": "plano escolhido",
           "mock": "conversa"
         },
         {
           "n": "02",
-          "title": "Molde",
+          "title": "Montagem",
           "actors": [
             "eu"
           ],
-          "text": "Com a conversa em mãos, defino a linha e os módulos do seu ambiente. O que não faz sentido para o seu trabalho fica de fora.",
-          "deliverable": "mapa do ambiente: linha, módulos e vocabulário",
+          "text": "Crio o seu ambiente no seu endereço, com o seu nome e logo, e ligo só os módulos que fazem sentido para o seu trabalho.",
+          "deliverable": "ambiente no seu endereço",
           "mock": "molde"
         },
         {
           "n": "03",
-          "title": "Prova",
-          "actors": [
-            "eu"
-          ],
-          "text": "Aplico a sua marca, cores, logo e vocabulário e monto o ambiente com o seu conteúdo inicial. Você recebe um link para navegar antes de abrir.",
-          "deliverable": "ambiente de prova no seu endereço",
-          "mock": "prova"
-        },
-        {
-          "n": "04",
-          "title": "Ajuste",
+          "title": "Cadastro",
           "actors": [
             "voce",
             "eu"
           ],
-          "text": "Você aponta o que não caiu bem e eu ajusto: textos, cores, ordem dos menus, o que for. Quantas rodadas forem combinadas.",
-          "deliverable": "ambiente aprovado por você",
-          "mock": "ajuste"
+          "text": "Se quiser, cadastramos os seus clientes juntos numa chamada gravada, a implantação assistida. Se preferir, você mesmo cadastra.",
+          "deliverable": "clientes cadastrados e guia de uso",
+          "mock": "cadastro"
         },
         {
-          "n": "05",
+          "n": "04",
           "title": "No ar",
           "actors": [
             "eu"
           ],
-          "text": "Abro o endereço, convido as pessoas e acompanho as primeiras semanas de uso. Daí em diante, a manutenção é comigo.",
-          "deliverable": "ambiente publicado e manutenção",
+          "text": "Envio os convites e acompanho as primeiras semanas de uso.",
+          "deliverable": "ambiente publicado e acompanhamento",
           "mock": "noar"
         }
       ],
@@ -559,13 +549,17 @@
       "needs": {
         "title": "Você vai precisar de",
         "items": [
-          "Logo, se já tiver (se não tiver, a gente resolve junto)",
-          "Cores ou referências do que você gosta",
+          "Logo, se tiver (se não, o seu nome já basta)",
           "Lista de alunos ou clientes",
           "Conteúdo inicial: aulas, materiais, modelos"
         ]
       },
-      "deliverableLabel": "entrega"
+      "deliverableLabel": "entrega",
+      "sobMedida": {
+        "text": "Quer o ambiente com o seu estilo? O Sob medida entra entre a montagem e o cadastro.",
+        "link": "Ver o Sob medida",
+        "href": "/#sob-medida"
+      }
     },
     "bridge": {
       "text": "Tudo começa pela",
