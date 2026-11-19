@@ -358,11 +358,11 @@ function SobDetalhe({ s, n, total }) {
 }
 
 // Moldura simples (número + fita métrica) para os slides escuros do fim
-function Frame({ n, total, kicker }) {
+function Frame({ n, total, kicker, noRule }) {
   return (
     <div className="dk-frame">
       <div className="pn-top"><span><b>{n}</b> / {total} — {kicker}</span><span>proposta comercial</span></div>
-      <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>
+      {!noRule && <div className="pn-rule" aria-hidden="true">{Array.from({ length: 80 }, (_, i) => <i key={i} />)}</div>}
     </div>
   )
 }
@@ -371,7 +371,7 @@ function Frame({ n, total, kicker }) {
 function ContratoSlide({ s, n, total }) {
   return (
     <section id={`slide-${Number(n)}`} data-theme="dark" className="section slide slide-dk slide-contrato">
-      <Frame n={n} total={total} kicker={s.kicker} />
+      <Frame n={n} total={total} kicker={s.kicker} noRule />
       <div className="ct-grid">
         <div className="ct-left" data-reveal>
           {s.lead && <p className="pn-kick">› {s.lead}</p>}
@@ -390,8 +390,21 @@ function ContratoSlide({ s, n, total }) {
           <h3>{s.contractTitle}</h3>
           <ul>{s.contract.map((c) => <li key={c}>{c}</li>)}</ul>
           <div className="ct-sig">
-            <div><i className="ct-sign"><b>A</b>telierin<svg viewBox="0 0 160 24" aria-hidden="true"><path d="M2 16 C 30 4, 52 22, 80 12 S 130 2, 158 10" /></svg></i><span>contratada</span></div>
-            <div><i className="ct-sign is-you"><b>V</b>ocê<svg viewBox="0 0 160 24" aria-hidden="true"><path d="M4 12 C 26 20, 48 2, 76 12 S 120 20, 150 6" /></svg></i><span>você</span></div>
+            <div>
+              <svg className="ct-sign" viewBox="0 0 220 100" role="img" aria-label="Assinatura Atelierin">
+                <path d="M34 78 C 22 46, 44 6, 58 12 C 70 18, 46 58, 34 88 C 30 98, 42 94, 50 80 C 60 62, 72 48, 76 54 C 80 60, 72 72, 80 70 C 88 68, 94 54, 100 58 C 104 62, 100 72, 108 68 C 128 58, 160 54, 202 52" />
+                <path className="thin" d="M12 64 C 64 60, 128 58, 192 56" />
+                <circle cx="212" cy="52" r="2.6" />
+              </svg>
+              <span>contratada</span>
+            </div>
+            <div>
+              <svg className="ct-sign is-you" viewBox="0 0 220 100" role="img" aria-label="Assinatura de exemplo: você">
+                <path d="M22 34 C 44 12, 80 6, 70 24 C 60 42, 34 70, 22 86 C 14 96, 34 96, 50 76 C 64 58, 74 50, 78 56 C 82 62, 74 70, 84 66 C 96 60, 102 50, 112 56 C 120 62, 124 60, 144 52 C 164 44, 190 42, 206 50" />
+                <path className="thin" d="M30 74 C 70 82, 140 78, 196 70" />
+              </svg>
+              <span>você</span>
+            </div>
           </div>
         </div>
       </div>

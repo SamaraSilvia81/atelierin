@@ -2938,3 +2938,23 @@ h1, h2, h3, p { margin: 0; }
 .ct-sig .ct-sign svg { position: absolute; left: 0; bottom: 4px; width: 150px; height: 22px; overflow: visible; }
 .ct-sig .ct-sign path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 .ct-sig .ct-sign.is-you { color: #2B3A67; rotate: -2deg; }
+/* 19/11 · rodada 4 */
+.page-proposal .fp-note { font-size: clamp(16.5px, 1.3vw, 18.5px); }
+/* 06 e 07: a linha "nº / total — título" sobe; no 07 o conteúdo desce um pouco */
+.slide-menu .pn-left { padding-top: 6px; }
+.slide-menu .mn-panel { padding-top: calc(6px + 44px + clamp(56px, 8vh, 88px)); }
+.slide-escada .es-frame { padding-top: clamp(28px, 4vh, 44px); }
+.slide-escada .es-left { padding-top: clamp(64px, 10vh, 110px); }
+/* 11: sem a fita, tudo sobe um pouco */
+.slide-contrato .dk-frame { margin-bottom: clamp(48px, 7vh, 80px); }
+/* assinaturas em traço (SVG) */
+.ct-sig svg.ct-sign { display: block; width: 100%; max-width: 220px; height: 74px; overflow: visible; color: var(--palette-sangue); rotate: -4deg; }
+.ct-sig svg.ct-sign.is-you { color: #22305E; rotate: -2deg; }
+.ct-sig svg.ct-sign path { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.ct-sig svg.ct-sign path.thin { stroke-width: 1.2; opacity: .85; }
+.ct-sig svg.ct-sign circle { fill: currentColor; }
+/* 03 e 04: a fita acompanha a largura do conteúdo */
+.slide-plans2 .fp-frame { left: max(24px, calc((100% - 1200px) / 2)); right: max(24px, calc((100% - 1200px) / 2)); }
+/* hero: as linhas tracejadas viram fita métrica (linha + marcações), como nos slides */
+.seam-h1, .seam-h2 { height: 12px; border-top: 1.5px solid rgba(229,86,75,.45); background: repeating-linear-gradient(90deg, rgba(229,86,75,.45) 0 1px, transparent 1px 14px) top / 100% 6px no-repeat, repeating-linear-gradient(90deg, rgba(229,86,75,.6) 0 1px, transparent 1px 70px) top / 100% 11px no-repeat; }
+.seam-v1 { width: 12px; border-left: 1.5px solid rgba(229,86,75,.45); background: repeating-linear-gradient(180deg, rgba(229,86,75,.45) 0 1px, transparent 1px 14px) left / 6px 100% no-repeat, repeating-linear-gradient(180deg, rgba(229,86,75,.6) 0 1px, transparent 1px 70px) left / 11px 100% no-repeat; }
