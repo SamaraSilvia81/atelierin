@@ -344,7 +344,7 @@ h1, h2, h3, p { margin: 0; }
 .rlede-2 { margin: 0; font-size: clamp(18px, 1.55vw, 22px); line-height: 1.6; color: var(--text-sub); max-width: 82ch; }
 
 /* filtros e cards no desenho do Atelier.sh (raio 2px/4px, mono, barra de status) */
-.pfilters { margin-top: clamp(120px, 15vw, 200px); border-bottom: 1px solid var(--border); }
+.pfilters { margin-top: clamp(80px, 10vw, 136px); border-bottom: 1px solid var(--border); }
 .pfilters-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; }
 .pfilters-row > div { display: flex; gap: 8px; flex-wrap: wrap; }
 .filter-btn {
