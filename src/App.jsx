@@ -23,6 +23,7 @@ import Proposal from '@/pages/Proposal'
 import Cases from '@/pages/Cases'
 import ClientProposal from '@/pages/ClientProposal'
 import FounderPage from '@/pages/Founder'
+import Simulate from '@/pages/Simulate'
 
 function Home() {
   return (
@@ -44,7 +45,7 @@ function Home() {
   )
 }
 
-const PAGES = { '/': Home, '/quem-faz': About, '/proposta': Proposal, '/casos': Cases, '/fundador': FounderPage }
+const PAGES = { '/': Home, '/quem-faz': About, '/proposta': Proposal, '/casos': Cases, '/fundador': FounderPage, '/simular': Simulate }
 
 export default function App() {
   const path = usePath()

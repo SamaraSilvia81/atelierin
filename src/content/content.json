@@ -1605,7 +1605,39 @@
         "badge": "−20%"
       }
     ],
-    "video": "Vídeos pelo YouTube ou Google Drive, sem custo. Se você preferir uma hospedagem de vídeo própria (ex.: Bunny), eu faço a integração, e o serviço é contratado e pago por você direto ao provedor."
+    "video": "Vídeos pelo YouTube ou Google Drive, sem custo. Se você preferir uma hospedagem de vídeo própria (ex.: Bunny), eu faço a integração, e o serviço é contratado e pago por você direto ao provedor.",
+    "more": {
+      "open": "Ver todas as funcionalidades",
+      "fam": {
+        "estrutura": "da Estrutura",
+        "relacionamento": "da família Relacionamento"
+      },
+      "close": "Fechar as funcionalidades"
+    },
+    "links": [
+      {
+        "title": "Simule o seu plano",
+        "text": "Diga quantos clientes você atende e se tem equipe, e veja o plano indicado e quanto fica por mês.",
+        "label": "Abrir o simulador",
+        "href": "/simular"
+      },
+      {
+        "title": "Sob medida",
+        "text": "O ambiente inteiro com o seu estilo, a sua marca e e-mails com a sua cara. Opcional e pago uma vez.",
+        "label": "Ver o Sob medida",
+        "href": "/#sob-medida"
+      }
+    ],
+    "simPage": {
+      "label": "simulador",
+      "title": "Simule o",
+      "titleAccent": "seu plano",
+      "lede": "Escolha a família, diga quantos clientes você atende e se tem equipe. O simulador indica o plano e mostra quanto fica por mês e no ano.",
+      "back": {
+        "label": "Voltar aos planos",
+        "href": "/#planos"
+      }
+    }
   },
   "founder": {
     "enabled": false,

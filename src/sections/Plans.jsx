@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { Check, Minus, ArrowRight, X } from '@phosphor-icons/react'
+import { Check, Minus, ArrowRight, X, CaretDown, CaretUp, Calculator, Scissors } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import { play } from '@/lib/sounds'
 import PriceCalc from '@/components/PriceCalc'
@@ -9,11 +9,11 @@ import Waitlist from '@/components/Waitlist'
 // Planos: título com os seletores de família (Estrutura | Relacionamento) e de
 // cobrança (mensal, trimestral, anual) ao lado; cards com o valor no centro, que
 // anima ao trocar a cobrança e mostra o valor cheio riscado; o plano "sob consulta"
-// sai dos cards e vira uma faixa própria; comparar; simulador (que destaca o card
-// indicado); Sob medida em degraus. Conteúdo: content.json > plans.
+// sai dos cards e vira uma faixa própria; comparar num botão; e dois links,
+// para o simulador (/simular) e para o Sob medida. Conteúdo: content.json > plans.
 const brl = (v) => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 })
 
-function Seg({ label, options, value, onChange }) {
+export function Seg({ label, options, value, onChange }) {
   return (
     <div className="pseg" role="group" aria-label={label}>
       {options.map((o) => (
@@ -137,9 +137,11 @@ function WaitModal({ set, onClose }) {
 }
 
 // Um painel por família: cards com preço, faixa do plano sob consulta, comparar e simulador
-function Panel({ t, set, b, hidden }) {
+function Panel({ t, set, b, hidden, withCalc }) {
   const [pick, setPick] = useState(null)
   const [wait, setWait] = useState(false)
+  const [cmp, setCmp] = useState(false)
+  const lbl = content.plans.more
   const priced = set.items.filter((x) => x.amount != null)
   const custom = set.items.find((x) => x.amount == null)
   const cols = priced.length === 4 ? 4 : 3
@@ -179,12 +181,18 @@ function Panel({ t, set, b, hidden }) {
         </div>
       )}
 
-      <Compare cm={set.compare} pick={pick} />
+      {/* comparar: um botão menor, como na proposta, que abre a tabela */}
+      <div className="plans-more">
+        <button type="button" className="fp-more" aria-expanded={cmp} aria-controls={`cmp-${t.id}`} onClick={() => { play('click'); setCmp((v) => !v) }}>
+          {cmp ? lbl.close : `${lbl.open} ${lbl.fam[t.id]}`} {cmp ? <CaretUp size={14} aria-hidden="true" /> : <CaretDown size={14} aria-hidden="true" />}
+        </button>
+      </div>
+      {cmp && <div id={`cmp-${t.id}`}><Compare cm={set.compare} pick={pick} plain /></div>}
 
       {/* faixa "Quer ser avisado quando abrir?" escondida: a lista abre em modal pelo botão do card */}
       {wait && <WaitModal set={set} onClose={() => setWait(false)} />}
 
-      <PriceCalc fam={t.id} onPick={setPick} />
+      {withCalc && <PriceCalc fam={t.id} onPick={setPick} />}
     </div>
   )
 }
@@ -202,7 +210,7 @@ export function PlansFamily({ famId }) {
         <p className="plans-lede">{t.lede}</p>
         <Seg label="Cobrança" value={bid} onChange={setBid} options={p.billing.map((x) => ({ label: x.label, value: x.id, badge: x.badge }))} />
       </div>
-      <Panel t={t} set={p.sets[famId]} b={b} />
+      <Panel t={t} set={p.sets[famId]} b={b} withCalc />
       {p.video && <p className="plans-video">{p.video}</p>}
     </div>
   )
@@ -233,6 +241,23 @@ export default function Plans() {
         {p.tabs.map((t) => <Panel key={t.id} t={t} set={p.sets[t.id]} b={b} hidden={tab !== t.id} />)}
 
         {p.video && <p className="plans-video" data-reveal>{p.video}</p>}
+
+        {/* simulador e Sob medida viraram links: cada um tem o seu lugar */}
+        <ul className="plans-links" data-reveal>
+          {p.links.map((l, i) => {
+            const Icon = i === 0 ? Calculator : Scissors
+            return (
+              <li key={l.href}>
+                <a href={l.href} onClick={() => play('click')} onPointerEnter={() => play('tick')}>
+                  <Icon size={26} weight="light" aria-hidden="true" />
+                  <strong className="display">{l.title}</strong>
+                  <span>{l.text}</span>
+                  <em>{l.label} <ArrowRight size={14} weight="bold" aria-hidden="true" /></em>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
 
         {/* o Sob medida saiu daqui: agora é a seção própria (sections/Custom.jsx) */}
 

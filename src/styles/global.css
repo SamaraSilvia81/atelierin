@@ -3066,3 +3066,24 @@ h1, h2, h3, p { margin: 0; }
 .slide-plans2 .fp-cmp .pcmp thead th { font-size: clamp(26px, 2.2vw, 32px); }
 .slide-plans2 .fp-cmp .pcmp tbody th[scope="row"], .slide-plans2 .fp-cmp .pcmp td { padding-block: 14px; }
 .slide-plans2 .fp-cmp .pcmp .pcmp-sec th { font-size: 13px; }
+
+/* planos: botão de comparar e os dois links (simulador e Sob medida) */
+.plans-more { display: flex; justify-content: center; margin-top: 36px; }
+.plans-more + div .pcmp { margin-top: 20px; }
+.plans-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: clamp(48px, 6vw, 80px); }
+.plans-links a { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto auto; gap: 10px 18px; align-items: center; padding: 26px 28px; border: 1px solid var(--text); border-radius: 2px; background: var(--bg-card); color: var(--text); text-decoration: none; transition: background .15s, color .15s; }
+.plans-links a > svg { grid-row: 1; color: var(--acc); }
+.plans-links strong { grid-column: 2; font-size: clamp(34px, 3vw, 46px); line-height: .95; }
+.plans-links span { grid-column: 1 / -1; font-size: var(--text-md); line-height: 1.55; color: var(--text-sub); }
+.plans-links em { grid-column: 1 / -1; display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font: 500 12px/1 var(--font-mono); font-style: normal; letter-spacing: .14em; text-transform: uppercase; color: var(--acc); }
+.plans-links li:first-child a { background: var(--palette-tinta); color: var(--palette-osso); border-color: var(--palette-tinta); }
+.plans-links li:first-child span { color: rgba(240,237,232,.8); }
+.plans-links li:first-child em, .plans-links li:first-child a > svg { color: var(--palette-brasa); }
+.plans-links a:hover { border-color: var(--acc); }
+@media (max-width: 760px) { .plans-links { grid-template-columns: 1fr; } }
+
+/* página /simular */
+.sim-sec { padding-top: clamp(140px, 14vw, 200px); }
+.sim-fam { display: grid; gap: 14px; justify-items: start; margin: clamp(32px, 4vw, 48px) 0 24px; }
+.sim-fam p { margin: 0; max-width: 62ch; color: var(--text-sub); }
+.sim-back { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; font: 500 12px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--acc); text-decoration: none; }
