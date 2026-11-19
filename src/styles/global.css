@@ -850,6 +850,7 @@ h1, h2, h3, p { margin: 0; }
 /* degraus de preço do Sob medida */
 .sm-pricing { margin-top: clamp(64px, 8vw, 112px); }
 .sm-pricing > .label { display: block; margin-bottom: 20px; }
+.sm-intro { margin: -4px 0 28px; max-width: 70ch; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.6; color: var(--text-sub); }
 .sm-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .sm-steps li { display: grid; grid-template-rows: auto 1fr auto auto; gap: 8px; padding: 24px; border: 1px solid rgba(240,237,232,.3); border-radius: 2px; background: var(--bg-card); color: var(--palette-osso); }
 .sm-steps b { font: 400 clamp(28px, 2.4vw, 36px)/1 var(--font-display); text-transform: uppercase; }
