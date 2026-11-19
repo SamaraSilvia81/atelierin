@@ -129,11 +129,9 @@
   "problem": {
     "label": "Nº 02 · retalhos",
     "statement": "Hoje o atendimento fica no [WhatsApp], o material no [Drive], a [agenda] na cabeça e o pagamento no [extrato do Pix]. Cada pedaço funciona sozinho, e quem costura tudo é você.",
-    "_abertura": "headStyle: a = frase acesa; b = como \"A marca é sua\"; c = como \"Como funciona\". title/titleAccent/lede só valem em b e c (as mesmas palavras da frase, reorganizadas).",
-    "headStyle": "a",
-    "title": "Quem costura tudo é",
+    "title": "Quem costura",
+    "title2": "tudo é",
     "titleAccent": "você",
-    "lede": "Hoje o atendimento fica no [WhatsApp], o material no [Drive], a [agenda] na cabeça e o pagamento no [extrato do Pix]. Cada pedaço funciona sozinho.",
     "chips": {
       "WhatsApp": "ChatCircle",
       "Drive": "FolderSimple",
