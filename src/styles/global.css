@@ -2899,3 +2899,10 @@ h1, h2, h3, p { margin: 0; }
 .to-top, .pager { box-sizing: border-box; height: 40px; bottom: 24px; }
 .pager { align-items: center; }
 .pager-now { height: 100%; }
+/* 19/11 · ajustes finos */
+.page-proposal .slide-panels .pn-p, .page-proposal .slide-plans2 .fp-p, .page-proposal .slide-menu .pn-p { font-size: clamp(19px, 1.6vw, 22px); }
+.slide.slide-escada { padding-right: max(0px, calc((100% - var(--slide-w)) / 2 - 120px)); }
+.slide-contrato .ct-notice { justify-content: center; max-width: 1080px; margin-inline: auto; }
+.slide-contrato .ct-notice p { font-size: clamp(18px, 1.5vw, 21px); max-width: 64ch; }
+.slide.slide-dk.slide-sair { padding-top: clamp(84px, 12vh, 136px); }
+.slide-sair .dk-frame { margin-bottom: clamp(84px, 12vh, 136px); }
