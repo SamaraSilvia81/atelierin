@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowLeft } from '@phosphor-icons/react'
 import { content } from '@/lib/content'
 import PageHead from '@/pages/PageHead'
@@ -12,6 +12,11 @@ export default function Simulate() {
   const s = p.simPage
   const [fam, setFam] = useState('relacionamento')
   const t = p.tabs.find((x) => x.id === fam)
+  // a calculadora é recriada ao trocar de família; como ela usa data-reveal e o
+  // useReveal só observa o que existia quando a página abriu, ela já entra visível
+  useEffect(() => {
+    document.querySelectorAll('.page-sim [data-reveal]').forEach((el) => el.classList.add('is-in'))
+  }, [fam])
   return (
     <div className="page page-sim">
       <section data-theme="light" className="section sim-sec">
