@@ -128,7 +128,8 @@
   },
   "problem": {
     "label": "Nº 02 · retalhos",
-    "statement": "Hoje o atendimento fica no [WhatsApp], o material no [Drive], a [agenda] na cabeça e o pagamento no [extrato do Pix]. Cada pedaço funciona sozinho, e quem costura tudo é você.",
+    "statement": "Hoje o seu atendimento fica no [WhatsApp], o material no [Drive], a [agenda] na cabeça e o pagamento no [extrato do Pix]. Cada pedaço funciona sozinho, e quem costura tudo é você.",
+    "connect": "Não precisa largar o que já funciona. O Atelierin tem conversa, mural, materiais e agenda dentro dele, e cada peça liga e desliga sem custo a mais. Se você prefere continuar no WhatsApp ou no Drive, ele se conecta ao que você já usa e manda os avisos por lá.",
     "title": "Quem costura",
     "title2": "tudo é",
     "titleAccent": "você",

@@ -337,7 +337,11 @@ h1, h2, h3, p { margin: 0; }
 .rhead { display: grid; gap: clamp(28px, 3vw, 40px); }
 .rhead > div:first-child { display: grid; gap: 18px; }
 .rhead .display { font-size: clamp(56px, 8vw, var(--display-xl)); }
-.rlede { margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.55; color: var(--palette-osso); max-width: 68ch; }
+.rlede { margin: 0; font-size: clamp(21px, 2vw, 28px); line-height: 1.5; color: var(--palette-osso); max-width: 78ch; }
+.rhead-copy { display: grid; gap: 24px; max-width: 1040px; }
+.rlede .chip { display: inline-flex; align-items: center; gap: .3em; vertical-align: .08em; padding: .1em .45em; border-radius: 2px; font: 400 .8em/1.2 var(--font-mono); background: rgba(192,33,28,.16); border: 1px solid rgba(229,86,75,.45); color: var(--palette-osso); }
+.rlede .chip svg { color: var(--palette-brasa); }
+.rlede-2 { margin: 0; font-size: clamp(18px, 1.55vw, 22px); line-height: 1.6; color: var(--text-sub); max-width: 82ch; }
 
 /* filtros e cards no desenho do Atelier.sh (raio 2px/4px, mono, barra de status) */
 .pfilters { margin-top: clamp(120px, 15vw, 200px); border-bottom: 1px solid var(--border); }
