@@ -50,8 +50,8 @@
     "href": "/#contato"
   },
   "hero": {
-    "badge": "Plataforma para quem atende pessoas",
-    "lede": "Atenda, ensine, acompanhe e cobre num ambiente com a sua marca e o seu endereço.",
+    "badge": "Gestão e relacionamento para quem atende pessoas",
+    "lede": "Organize clientes, agenda e pagamentos num lugar só. Quando fizer sentido, dê a eles um portal com login próprio, no seu endereço.",
     "image": "/hero-desk.webp",
     "imageFallback": "/hero-desk.jpg",
     "imageAlt": "",
@@ -61,7 +61,7 @@
     "cta": "Quero o meu",
     "ctaMessage": "Oi! Vi o Atelierin e quero o meu ambiente: {endereco}",
     "titleLine1": "Seu ateliê digital,",
-    "titleLine2": "feito sob medida",
+    "titleLine2": "do tamanho do seu negócio",
     "layout": {
       "_comoUsar": "Posição de cada bloco, em % da tela do monitor (0,0 = canto superior esquerdo; 50,50 = centro). Ajuste arrastando em /?editar e cole aqui.",
       "badge": {
@@ -87,6 +87,10 @@
     },
     "addressPrompt": "›_",
     "prefill": "Quero o endereço {endereco}"
+  },
+  "what": {
+    "label": "Nº 01 · o que é",
+    "text": "O Atelierin é uma plataforma SaaS de gestão e relacionamento voltada a profissionais autônomos, pequenos negócios e empresas de pequeno e médio porte que precisam organizar suas operações e, quando necessário, oferecer uma experiência digital aos seus clientes."
   },
   "problem": {
     "label": "Nº 02 · retalhos",
@@ -360,7 +364,8 @@
       "href": "#como-funciona"
     },
     "host": "maria.atelierin.com.br",
-    "cardsIntro": "No ambiente da Maria, professora de teclado, cada retalho vira um módulo. Clique num card para ver por dentro."
+    "cardsIntro": "No ambiente da Maria, professora de teclado, cada retalho vira um módulo. Clique num card para ver por dentro.",
+    "note": "E não, você não precisa largar o WhatsApp. O chat dentro do Atelierin é opcional e não custa nada a mais, só liga se quiser. Se preferir continuar conversando por lá, o Atelierin pode mandar os avisos (cobrança, aula, material novo) direto no WhatsApp dos seus clientes."
   },
   "how": {
     "label": "Nº 03 · o molde",

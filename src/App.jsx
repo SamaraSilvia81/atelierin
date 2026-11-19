@@ -3,6 +3,7 @@ import { useReveal } from '@/lib/useReveal'
 import { usePath, useLinkInterceptor, useInitialHash } from '@/lib/router'
 import Header from '@/components/Header'
 import Hero from '@/sections/Hero'
+import What from '@/sections/What'
 import Problem from '@/sections/Problem'
 import How from '@/sections/How'
 import Steps from '@/sections/Steps'
@@ -27,6 +28,7 @@ function Home() {
   return (
     <>
       {isEnabled('hero') && <Hero />}
+      {isEnabled('what') && <What />}
       {isEnabled('problem') && <Problem />}
       {/* Seções que mudam de cor saem de cena como cartão (ExitStage).
           "to" é a cor que aparece por trás: a da seção seguinte.
