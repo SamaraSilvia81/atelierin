@@ -613,18 +613,20 @@
     },
     "pricing": {
       "label": "Serviço opcional · pagamento único",
-      "intro": "Ainda não tem marca? Sem problema. O Sob medida já inclui um monograma: o seu nome com tipografia, cor e um ícone com a sua inicial. Se você quer um logo de verdade, eu crio do zero, com logotipo, paleta, tipografia e mockups.",
       "steps": [
         {
           "name": "Sob medida",
-          "text": "estilo, a sua marca (ou um monograma, se você ainda não tem) e e-mails · em até 5x de R$ 250",
-          "price": "R$ 1.250"
+          "text": "estilo, marca e e-mails",
+          "price": "R$ 1.250",
+          "note": "Ainda não tem marca? Sem problema. O Sob medida já inclui um monograma: o seu nome com tipografia, cor e um ícone com a sua inicial.",
+          "total": "em até 5x de R$ 250"
         },
         {
           "name": "+ Logo de verdade",
-          "text": "não tem logo? eu crio: logotipo, paleta, tipografia e mockups",
+          "text": "logotipo, paleta, tipografia e mockups",
           "price": "+ R$ 550",
-          "total": "total R$ 1.800"
+          "total": "total R$ 1.800",
+          "note": "Se você quer um logo de verdade, eu crio do zero."
         },
         {
           "name": "+ Landing page",
