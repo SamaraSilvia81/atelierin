@@ -2969,3 +2969,8 @@ h1, h2, h3, p { margin: 0; }
 .fp-expand-in { width: min(1440px, 100% - 48px); margin-inline: auto; }
 .plans-fam-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
 .plans-fam-head .plans-lede { margin: 0; }
+/* funcionalidades abertas dentro dos slides 03 e 04 (acima do rodapé, no tema do slide) */
+.slide-plans2 .fp-cmp { position: relative; z-index: 2; width: min(1480px, 100% - 48px); margin: calc(-1 * clamp(40px, 6vh, 80px)) auto 0; padding-bottom: clamp(96px, 12vh, 130px); }
+.slide-plans2 .fp-cmp .pcmp { margin-top: 0; }
+.slide-plans2[data-theme="dark"] .fp-cmp .pcmp { background: #161212; border-color: rgba(240, 237, 232, .18); }
+.slide-plans2[data-theme="dark"] .fp-cmp .pcmp thead th { border-color: rgba(240, 237, 232, .6); }

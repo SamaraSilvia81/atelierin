@@ -6,7 +6,7 @@ import FlowMap from '@/components/FlowMap'
 import OfferPicker, { ClientCtx } from '@/components/OfferPicker'
 import DealBuilder from '@/components/DealBuilder'
 import { createPortal } from 'react-dom'
-import { PlansFamily } from '@/sections/Plans'
+import { Compare } from '@/sections/Plans'
 import { useState as useLocalState } from 'react'
 
 // Proposta comercial em "slides" que se lê rolando. Cada slide tem um
@@ -182,16 +182,16 @@ function PlansSlide({ s, n, total, theme }) {
           </div>
           {s.note && <p className="fp-note">{s.note}</p>}
           <button type="button" className="fp-more" aria-expanded={more} aria-controls={`mais-${famId}`} onClick={() => setMore((v) => !v)}>
-            {more ? 'Fechar os planos' : `Ver os planos da ${famId === 'estrutura' ? 'Estrutura' : 'família Relacionamento'} em detalhe`} {more ? <CaretUp size={14} aria-hidden="true" /> : <CaretDown size={14} aria-hidden="true" />}
+            {more ? 'Fechar as funcionalidades' : `Ver todas as funcionalidades da ${famId === 'estrutura' ? 'Estrutura' : 'família Relacionamento'}`} {more ? <CaretUp size={14} aria-hidden="true" /> : <CaretDown size={14} aria-hidden="true" />}
           </button>
         </div>
       </div>
+      {more && (
+        <div id={`mais-${famId}`} className="wrap fp-cmp">
+          <Compare cm={content.plans.sets[famId].compare} open />
+        </div>
+      )}
     </section>
-    {more && (
-      <section id={`mais-${famId}`} data-theme="light" className="section fp-expand" aria-label={`Planos da ${famId}`}>
-        <div className="fp-expand-in"><PlansFamily famId={famId} /></div>
-      </section>
-    )}
     </>
   )
 }

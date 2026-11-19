@@ -90,10 +90,10 @@ function PCard({ it, b, fam, pick, onWait }) {
   )
 }
 
-function Compare({ cm, pick }) {
+export function Compare({ cm, pick, open }) {
   const hi = (c) => (c === pick ? 'is-pick' : undefined)
   return (
-    <details className="pcmp" onToggle={() => play('click')}>
+    <details className="pcmp" open={open} onToggle={() => play('click')}>
       <summary>Comparar todas as funcionalidades</summary>
       <div className="pcmp-scroll">
         <table>
