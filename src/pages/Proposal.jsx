@@ -133,8 +133,8 @@ function PlansSlide({ s, n, total, theme }) {
       <div className="wrap fp-grid" data-reveal>
         <div className="fp-text">
           {s.lead && <p className="pn-kick">› {s.lead}</p>}
-          {s.subtitle && <p className="fp-sub">{s.subtitle}</p>}
           <div className="fp-title"><h2 className="display" style={{ '--len': s.title.length }}>{s.title}</h2>{s.tag && <span className="s-title-tag">{s.tag}</span>}</div>
+          {s.subtitle && <p className="fp-sub">{s.subtitle}</p>}
           {[].concat(s.text ?? []).map((t) => <p key={t} className="fp-p">{t}</p>)}
           {s.sample && (
             <div className="fp-sample">
@@ -389,7 +389,10 @@ function ContratoSlide({ s, n, total }) {
           <div className="ct-paper-k"><span>contrato</span><span>atelierin · 2026</span></div>
           <h3>{s.contractTitle}</h3>
           <ul>{s.contract.map((c) => <li key={c}>{c}</li>)}</ul>
-          <div className="ct-sig"><div><i>Atelierin</i><span>contratada</span></div><div><i /><span>você</span></div></div>
+          <div className="ct-sig">
+            <div><i className="ct-sign"><b>A</b>telierin<svg viewBox="0 0 160 24" aria-hidden="true"><path d="M2 16 C 30 4, 52 22, 80 12 S 130 2, 158 10" /></svg></i><span>contratada</span></div>
+            <div><i className="ct-sign is-you"><b>V</b>ocê<svg viewBox="0 0 160 24" aria-hidden="true"><path d="M4 12 C 26 20, 48 2, 76 12 S 120 20, 150 6" /></svg></i><span>você</span></div>
+          </div>
         </div>
       </div>
       {s.notice && <div className="ct-notice" data-reveal><b>{s.noticeTitle}</b><p>{s.notice}</p></div>}
