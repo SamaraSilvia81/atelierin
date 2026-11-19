@@ -2883,3 +2883,19 @@ h1, h2, h3, p { margin: 0; }
 .sd-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); justify-content: stretch; gap: clamp(48px, 7vw, 140px); }
 .slide-dk > * { max-width: var(--slide-w); }
 .slide-interlude .interlude { padding-bottom: clamp(110px, 16vh, 190px); }
+/* padrão de texto e título dos slides (19/11): corpo maior e igual em todos */
+.page-proposal { --t-body: clamp(18px, 1.5vw, 21px); --t-title: clamp(72px, 6.8vw, 120px); }
+.page-proposal .pn-p, .page-proposal .slide-plans2 .fp-p, .page-proposal .es-p, .page-proposal .dk-p, .page-proposal .sd-items p, .page-proposal .poster-text { font-size: var(--t-body); line-height: 1.6; }
+.page-proposal .mn-get li { font-size: var(--t-body); }
+.page-proposal .slide-cover .page-head .lede { font-size: clamp(19px, 1.6vw, 23px); max-width: 60ch; }
+.page-proposal .pn-title, .page-proposal .es-title, .page-proposal .dk-title { font-size: var(--t-title); }
+.page-proposal .slide-menu .pn-title { font-size: clamp(64px, 6vw, 112px); }
+.page-proposal .sd-main .pn-title { font-size: var(--t-title); }
+/* 01: painéis SEU e MEU mais para a direita, dando espaço ao texto */
+.slide.slide-panels { padding-right: max(0px, calc((100% - var(--slide-w)) / 2 - 120px)); }
+/* 12: mais respiro no fim */
+.slide.slide-dk.slide-sair { padding-bottom: clamp(96px, 14vh, 160px); }
+/* paginador com a mesma caixa do "topo" */
+.to-top, .pager { box-sizing: border-box; height: 40px; bottom: 24px; }
+.pager { align-items: center; }
+.pager-now { height: 100%; }
