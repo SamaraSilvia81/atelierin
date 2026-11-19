@@ -6,6 +6,7 @@ import FlowMap from '@/components/FlowMap'
 import OfferPicker, { ClientCtx } from '@/components/OfferPicker'
 import DealBuilder from '@/components/DealBuilder'
 import { createPortal } from 'react-dom'
+import { PlansFamily } from '@/sections/Plans'
 import { useState as useLocalState } from 'react'
 
 // Proposta comercial em "slides" que se lê rolando. Cada slide tem um
@@ -121,7 +122,10 @@ function periodPrice(v, b) {
 function PlansSlide({ s, n, total, theme }) {
   const [bid, setBid] = useState(s.billing?.[0]?.id)
   const b = s.billing?.find((x) => x.id === bid)
+  const [more, setMore] = useState(false)
+  const famId = s.kicker.includes('estrutura') ? 'estrutura' : 'relacionamento'
   return (
+    <>
     <section id={`slide-${Number(n)}`} data-theme={theme} className={`section slide slide-plans2 ${s.mirror ? 'is-mirror' : ''} ${s.dark ? 'has-dark' : ''}`}>
       {s.dark && <span className="fp-dark" aria-hidden="true" />}
       <span className="fp-band" aria-hidden="true" />
@@ -177,9 +181,18 @@ function PlansSlide({ s, n, total, theme }) {
             )}
           </div>
           {s.note && <p className="fp-note">{s.note}</p>}
+          <button type="button" className="fp-more" aria-expanded={more} aria-controls={`mais-${famId}`} onClick={() => setMore((v) => !v)}>
+            {more ? 'Fechar os planos' : `Ver os planos da ${famId === 'estrutura' ? 'Estrutura' : 'família Relacionamento'} em detalhe`} {more ? <CaretUp size={14} aria-hidden="true" /> : <CaretDown size={14} aria-hidden="true" />}
+          </button>
         </div>
       </div>
     </section>
+    {more && (
+      <section id={`mais-${famId}`} data-theme="light" className="section fp-expand" aria-label={`Planos da ${famId}`}>
+        <div className="fp-expand-in"><PlansFamily famId={famId} /></div>
+      </section>
+    )}
+    </>
   )
 }
 

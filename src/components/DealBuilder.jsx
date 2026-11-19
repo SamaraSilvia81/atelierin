@@ -95,7 +95,7 @@ export default function DealBuilder({ onClose }) {
   const year1 = monthly * 12 + onceTotal
   const lines = [
     { label: `Plano ${plan.name} (${F.label})${disc ? ` · ${b.label}` : ''}`, value: plan.price * (1 - disc), was: disc ? plan.price : null, per: 'por mês' },
-    extra > 0 && { label: `${extra} conta${extra > 1 ? 's' : ''} externa${extra > 1 ? 's' : ''} adicional${extra > 1 ? 'is' : ''} × ${brl(extraUnit)}`, value: extra * extraUnit, per: 'por mês' },
+    extra > 0 && { label: famId === 'estrutura' ? `${extra} cliente${extra > 1 ? 's' : ''} cadastrado${extra > 1 ? 's' : ''} adiciona${extra > 1 ? 'is' : 'l'} × ${brl(extraUnit)}` : `${extra} conta${extra > 1 ? 's' : ''} externa${extra > 1 ? 's' : ''} adicional${extra > 1 ? 'is' : ''} × ${brl(extraUnit)}`, value: extra * extraUnit, per: 'por mês' },
   ].filter(Boolean)
 
   const fmt = (s) => new Date(`${s}T12:00:00`).toLocaleDateString('pt-BR')
@@ -135,7 +135,7 @@ export default function DealBuilder({ onClose }) {
             <Seg label="Cobrança" value={bid} onChange={setBid} options={F.billing.map((x) => ({ value: x.id, label: x.label }))} />
             {F.extra != null && (
               <div className="db-field">
-                <label htmlFor="db-extra">Contas externas adicionais <b>{extra}</b> <small>{brl(F.extra)} cada, até 10</small></label>
+                <label htmlFor="db-extra">{famId === 'estrutura' ? 'Clientes cadastrados adicionais' : 'Contas externas adicionais'} <b>{extra}</b> <small>{brl(F.extra)} cada, até 10</small></label>
                 <input id="db-extra" type="range" min="0" max="10" value={extra} onChange={(e) => setExtra(+e.target.value)} />
               </div>
             )}

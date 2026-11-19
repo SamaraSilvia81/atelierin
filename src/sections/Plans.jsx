@@ -184,6 +184,25 @@ function Panel({ t, set, b, hidden }) {
   )
 }
 
+// Uma família de planos com o seletor de cobrança, para usar fora da landing
+// (ex.: o "Ver os planos" dos slides de planos da proposta)
+export function PlansFamily({ famId }) {
+  const p = content.plans
+  const [bid, setBid] = useState('mensal')
+  const b = p.billing.find((x) => x.id === bid)
+  const t = p.tabs.find((x) => x.id === famId)
+  return (
+    <div className="plans-fam">
+      <div className="plans-fam-head">
+        <p className="plans-lede">{t.lede}</p>
+        <Seg label="Cobrança" value={bid} onChange={setBid} options={p.billing.map((x) => ({ label: x.label, value: x.id, badge: x.badge }))} />
+      </div>
+      <Panel t={t} set={p.sets[famId]} b={b} />
+      {p.video && <p className="plans-video">{p.video}</p>}
+    </div>
+  )
+}
+
 export default function Plans() {
   const p = content.plans
   const [tab, setTab] = useState('relacionamento')

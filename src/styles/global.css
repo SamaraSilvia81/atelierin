@@ -2955,6 +2955,17 @@ h1, h2, h3, p { margin: 0; }
 .ct-sig svg.ct-sign circle { fill: currentColor; }
 /* 03 e 04: a fita acompanha a largura do conteúdo */
 .slide-plans2 .fp-frame { left: max(24px, calc((100% - 1200px) / 2)); right: max(24px, calc((100% - 1200px) / 2)); }
-/* hero: as linhas tracejadas viram fita métrica (linha + marcações), como nos slides */
-.seam-h1, .seam-h2 { height: 12px; border-top: 1.5px solid rgba(229,86,75,.45); background: repeating-linear-gradient(90deg, rgba(229,86,75,.45) 0 1px, transparent 1px 14px) top / 100% 6px no-repeat, repeating-linear-gradient(90deg, rgba(229,86,75,.6) 0 1px, transparent 1px 70px) top / 100% 11px no-repeat; }
-.seam-v1 { width: 12px; border-left: 1.5px solid rgba(229,86,75,.45); background: repeating-linear-gradient(180deg, rgba(229,86,75,.45) 0 1px, transparent 1px 14px) left / 6px 100% no-repeat, repeating-linear-gradient(180deg, rgba(229,86,75,.6) 0 1px, transparent 1px 70px) left / 11px 100% no-repeat; }
+
+/* 19/11 · rodada 5 */
+.slide-plans2 .fp-frame { left: max(24px, calc((100% - 1480px) / 2)); right: max(24px, calc((100% - 1480px) / 2)); }
+.slide-menu .pn-left { padding-top: 0; }
+.slide-menu .pn-left .pn-top { padding-top: 14px; }
+.slide-menu .mn-panel { padding-top: calc(14px + 44px + clamp(56px, 8vh, 88px)); }
+.slide-escada .es-frame { padding-top: clamp(64px, 9vh, 96px); }
+.fp-more { display: inline-flex; align-items: center; gap: 10px; justify-self: start; margin-top: 18px; padding: 12px 16px; border: 1px dashed var(--text); border-radius: 4px; background: transparent; color: var(--text); font: 500 12px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+.slide-plans2 .fp-more { position: relative; z-index: 2; background: var(--bg); }
+.fp-more:hover { border-style: solid; }
+.fp-expand.section { padding: clamp(56px, 8vh, 96px) 0; background: var(--bg); }
+.fp-expand-in { width: min(1440px, 100% - 48px); margin-inline: auto; }
+.plans-fam-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+.plans-fam-head .plans-lede { margin: 0; }

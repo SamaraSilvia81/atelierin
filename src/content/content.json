@@ -622,7 +622,7 @@
         "relacionamento": "Alta-costura"
       },
       "estrutura": {
-        "extra": 0,
+        "extra": 1.9,
         "tiers": [
           {
             "name": "Grátis",
@@ -736,7 +736,7 @@
       "year": "No ano",
       "over": "sob consulta",
       "overNote": "Acima disso, o plano é combinado na conversa.",
-      "note": "Passou um pouco do limite no Relacionamento? Você adiciona até 10 contas sem trocar de plano. Valores de referência: a proposta final sai da nossa conversa.",
+      "note": "Passou um pouco do limite? Você adiciona até 10 clientes ou contas extras sem trocar de plano. Valores de referência: a proposta final sai da nossa conversa.",
       "title": "Qual plano é o seu?"
     },
     "foot": {
