@@ -225,7 +225,7 @@
             ]
           ]
         },
-        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
+        "note": "Valores mensais. No trimestral, 10% de desconto; no anual, 20%. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
         "subtitle": "Gestão interna, sem portal para clientes.",
         "billing": [
           {
@@ -237,34 +237,19 @@
           },
           {
             "id": "trimestral",
-            "label": "Trimestral",
+            "label": "Trimestral −10%",
             "months": 3,
-            "discount": 0,
+            "discount": 0.1,
             "suffix": "/trimestre"
           },
           {
             "id": "anual",
-            "label": "Anual",
+            "label": "Anual −20%",
             "months": 12,
-            "discount": 0,
+            "discount": 0.2,
             "suffix": "/ano"
           }
         ],
-        "addons": {
-          "title": "Quando precisar de um pouco mais",
-          "text": "Você não precisa mudar de plano por ultrapassar o limite em poucos clientes. É possível contratar adicionais, respeitando o limite de até 10 por plano.",
-          "cols": [
-            "Adicional",
-            "Valor mensal"
-          ],
-          "rows": [
-            [
-              "Conta externa extra, com acesso ao portal",
-              "R$ 8,90*"
-            ]
-          ],
-          "circle": true
-        },
         "lead": "família 1 de 2"
       },
       {
@@ -339,7 +324,7 @@
           ],
           "circle": true
         },
-        "note": "Valores mensais. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
+        "note": "Valores mensais. No trimestral, 10% de desconto; no anual, 20%. Recursos e capacidades variam conforme a família, o plano e o modelo contratado. Planos Empresarial e Alta-costura sob consulta. * Valores e limites previstos, confirmados no contrato.",
         "subtitle": "Gestão interna + portal individual para clientes.",
         "billing": [
           {
@@ -351,16 +336,16 @@
           },
           {
             "id": "trimestral",
-            "label": "Trimestral",
+            "label": "Trimestral −10%",
             "months": 3,
-            "discount": 0,
+            "discount": 0.1,
             "suffix": "/trimestre"
           },
           {
             "id": "anual",
-            "label": "Anual",
+            "label": "Anual −20%",
             "months": 12,
-            "discount": 0,
+            "discount": 0.2,
             "suffix": "/ano"
           }
         ],
