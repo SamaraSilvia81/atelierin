@@ -23,12 +23,12 @@ export default function Custom() {
         {pr && (
           <div className="sm-pricing" data-reveal>
             <p className="label"><b aria-hidden="true">&gt;</b> {pr.label}</p>
-            {pr.intro && <p className="sm-intro">{pr.intro}</p>}
             <ol className="sm-steps">
               {pr.steps.map((s, i) => (
                 <li key={s.name} className={i === 0 ? 'is-acc' : undefined}>
                   <b>{s.name}</b>
                   <span>{s.text}</span>
+                  {s.note && <p className="sm-note">{s.note}</p>}
                   <strong>{s.price}</strong>
                   <small>{s.total || '\u00a0'}</small>
                 </li>

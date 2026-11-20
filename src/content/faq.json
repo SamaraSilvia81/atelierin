@@ -16,7 +16,7 @@
     },
     {
       "q": "Se já existe um ambiente parecido com o que eu quero, eu pago o mesmo valor?",
-      "a": "Não. O sistema é o mesmo para todos, então você não paga para construir, só para montar. No sob medida a implantação é R$ 3.000, igual em qualquer plano, e já inclui cadastrar os seus alunos e te ensinar a usar. Se você prefere começar sozinho, o modelo pronto, por assinatura e sem entrada, está chegando. Funcionalidade que ainda não existe é orçada à parte."
+      "a": "Não. O sistema é o mesmo para todos, então não existe taxa de entrada: você paga só a assinatura do plano. Se quiser o ambiente com a sua identidade, o Sob medida é opcional: R$ 1.250, em até 5x de R$ 250. Funcionalidade que ainda não existe é orçada à parte."
     },
     {
       "q": "Quero um sistema só meu, no meu servidor. Dá?",
@@ -24,7 +24,7 @@
     },
     {
       "q": "Quanto eu pago por mês?",
-      "a": "Um valor fixo, pelo plano: Casual R$ 190 (até 15 alunos), Social R$ 290 (16 a 30) e Gala R$ 390 (31 a 50). Acima disso, no Alta-costura, a gente combina. Ele cobre a licença de uso, a hospedagem, as cópias de segurança, as atualizações e o suporte, e é revisto uma vez por ano. Vídeo próprio pelo Bunny entra à parte. A calculadora em Planos mostra o seu caso."
+      "a": "Um valor fixo, pelo plano. No Relacionamento: Casual R$ 190 (até 15 clientes), Social R$ 290 (até 30), Gala R$ 390 (até 50, com equipe de até 5), Black Tie R$ 490 e White Tie R$ 690. Na Estrutura, de R$ 0 a R$ 139, e ela está em breve. Pagando por trimestre você tem 10% de desconto, e por ano, 20%. A calculadora em Planos mostra o seu caso. Vídeo próprio pelo Bunny entra à parte."
     },
     {
       "q": "O dinheiro dos alunos passa pelo Atelierin?",
@@ -40,7 +40,7 @@
     },
     {
       "q": "Comecei pequeno. E se eu crescer?",
-      "a": "O sistema continua o mesmo. Se a turma passa para outra faixa de alunos, você sobe de plano no mês seguinte, sem nova implantação, e o mensal muda junto."
+      "a": "O sistema continua o mesmo. Se a carteira passa do limite do plano, você sobe de plano no mês seguinte, sem nova implantação, e o mensal muda junto. No Relacionamento, dá para adicionar até 10 contas externas antes de trocar."
     },
     {
       "q": "E se eu quiser sair?",
